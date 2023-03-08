@@ -1,3 +1,3 @@
 write-host "Serving site with live reload..." -ForegroundColor green
 
-bundle exec jekyll serve --livereload
+bundle exec jekyll serve --livereload --source src
