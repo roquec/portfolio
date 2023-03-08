@@ -1,3 +1,3 @@
-write-host "Building Jekyll site" -ForegroundColor green
+write-host "Building site..." -ForegroundColor green
 
 bundle exec jekyll build

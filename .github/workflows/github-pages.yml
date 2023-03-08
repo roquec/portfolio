@@ -20,4 +20,5 @@ jobs:
 
       - uses: helaili/jekyll-action@v2
         with:
+          jekyll_src: 'src'
           token: ${{ secrets.PAGES_ACCESS_TOKEN }}
