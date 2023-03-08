@@ -17,6 +17,7 @@ defaults:
     values:
       layout: "post"
       author: "Roque Carrizo"
+      feature_index: 999
   - scope:
       path: ""
     values:
