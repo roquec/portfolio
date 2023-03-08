@@ -1,18 +1,22 @@
+url: "roquec.com"
+
+source: src
+collections_dir: content
+
 collections:
-  authors:
+  musings:
+    output: true
+  drawings:
+    output: true
+  projects:
     output: true
 
 defaults:
   - scope:
-      path: ""
-      type: "authors"
-    values:
-      layout: "author"
-  - scope:
-      path: ""
-      type: "posts"
+      path: "content/*"
     values:
       layout: "post"
+      author: "Roque Carrizo"
   - scope:
       path: ""
     values:
@@ -22,5 +26,3 @@ plugins:
   - jekyll-feed
   - jekyll-sitemap
   - jekyll-seo-tag
-
-url: "roquec.com"
