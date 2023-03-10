@@ -1,23 +1,22 @@
-<div class="sidebar-wrapper">
-
-  <div class="sidebar-menu">
-    <div class="sidebar-top">
-      <a href="#"><i class="fas fa-bars"></i></a>
-      <a href="#"><i class="fas fa-search"></i></a>
+<div class="sidebar-menu">
+  <div class="sidebar-top">
+    <a href="#" class="nav-icon"><i class="fas fa-bars"></i></a>
+    <a href="#" class="search-icon"><i class="fas fa-search"></i></a>
+    <div class="social-icons">
       <a href="#"><i class="fab fa-github"></i></a>
       <a href="#"><i class="fab fa-linkedin"></i></a>
       <a href="#"><i class="fas fa-envelope"></i></a>
     </div>
-
-    <div class="sidebar-bottom">
-      <div class="profile-picture"></div>
-      <a href="#"><i class="fas fa-cog"></i></a>
-    </div>
   </div>
 
-  <nav class="sidebar-navigation">
-    {% include navigation.html %}
-  </nav>
-
+  <div class="sidebar-bottom">
+    <div class="profile-pic">
+      <img src="/assets/images/roque_profile.png" alt="Profile Picture">
+    </div>
+    <a href="#" class="settings-icon"><i class="fas fa-cog"></i></a>
+  </div>
 </div>
 
+<nav class="sidebar-navigation">
+  {% include navigation.html %}
+</nav>

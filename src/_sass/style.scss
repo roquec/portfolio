@@ -14,20 +14,85 @@ html[data-theme="light"] {
   --color-background-footer: #{$light-mode-color-background-footer};
 }
 
-html,
-html *,
-html *:before,
-html *:after {
-  transition: background-color 200ms ease 0s,
-  color 200ms ease 0s,
-  border-bottom-color 200ms ease 0s,
-  border-top-color 200ms ease 0s,
-  border-left-color 200ms ease 0s,
-  border-right-color 200ms ease 0s;
-}
-
+// Sidebar
+//----------------------------
 .sidebar {
   background-color: var(--color-background-sidebar);
+}
+
+.sidebar-menu {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+
+  .sidebar-top {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-top: 10px;
+
+    .nav-icon,
+    .search-icon {
+      font-size: 20px;
+      margin-bottom: 20px;
+      color: #fff;
+      display: block;
+      text-align: center;
+      line-height: 1.2;
+    }
+
+    .social-icons {
+      display: flex;
+      flex-direction: column;
+
+      a {
+        font-size: 20px;
+        margin-bottom: 20px;
+        color: #fff;
+        display: block;
+        text-align: center;
+        line-height: 1.2;
+      }
+
+      i {
+        margin-right: 0;
+      }
+
+      .fab {
+        font-size: 22px;
+      }
+    }
+  }
+
+  .sidebar-bottom {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-bottom: 10px;
+
+    .profile-pic {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      overflow: hidden;
+      margin-bottom: 20px;
+
+      img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+    }
+
+    .settings-icon {
+      font-size: 20px;
+      color: #fff;
+      display: block;
+      text-align: center;
+      line-height: 1.2;
+    }
+  }
 }
 
 .navigation-wrapper {
@@ -38,6 +103,29 @@ html *:after {
   background-color: var(--color-background-content);
 }
 
+// Footer
+//----------------------------
 .footer {
   background-color: var(--color-background-footer);
+  color: #D4D4D4;
+  font-size: 12px;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Noto Sans", Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji";
+}
+
+.footer-wrapper {
+  height: 100%;
+  display: flex;
+  justify-content: space-between;
+
+  .footer-left {
+    display: flex;
+    align-items: center;
+    padding-left: 4px;
+  }
+
+  .footer-right {
+    display: flex;
+    align-items: center;
+    padding-right: 4px;
+  }
 }

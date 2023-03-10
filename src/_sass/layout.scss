@@ -1,25 +1,30 @@
 @import "variables";
 
-body {
-  display: grid;
-  grid-template-columns: $sidebar-width 1fr;
-  grid-template-rows: 1fr auto;
-  grid-template-areas:
-    "sidebar content"
-    "footer footer";
-  height: 100vh;
-}
-
 .sidebar {
-  grid-area: sidebar;
+  height: calc(100% - #{$footer-height});
   width: $sidebar-width;
+  position: fixed;
+  top: 0;
+  left: 0;
 }
 
 .content {
-  grid-area: content;
+  height: calc(100% - #{$footer-height});
+  width: calc(100% - #{$sidebar-width});
+  position: fixed;
+  top: 0;
+  right: 0;
+  overflow-y: auto;
 }
 
 .footer {
-  grid-area: footer;
   height: $footer-height;
+  width: 100%;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+}
+
+.content-wrapper {
+  padding: 20px;
 }

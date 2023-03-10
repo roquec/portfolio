@@ -9,36 +9,6 @@ $dark-mode-color-background-footer: #007ACC;
 $dark-mode-color-foreground-default: #858585;
 
 // Markdown
-$dark-mode-color-prettylights-syntax-comment: #8b949e;
-$dark-mode-color-prettylights-syntax-constant: #79c0ff;
-$dark-mode-color-prettylights-syntax-entity: #d2a8ff;
-$dark-mode-color-prettylights-syntax-storage-modifier-import: #c9d1d9;
-$dark-mode-color-prettylights-syntax-entity-tag: #7ee787;
-$dark-mode-color-prettylights-syntax-keyword: #ff7b72;
-$dark-mode-color-prettylights-syntax-string: #a5d6ff;
-$dark-mode-color-prettylights-syntax-variable: #ffa657;
-$dark-mode-color-prettylights-syntax-brackethighlighter-unmatched: #f85149;
-$dark-mode-color-prettylights-syntax-invalid-illegal-text: #f0f6fc;
-$dark-mode-color-prettylights-syntax-invalid-illegal-bg: #8e1519;
-$dark-mode-color-prettylights-syntax-carriage-return-text: #f0f6fc;
-$dark-mode-color-prettylights-syntax-carriage-return-bg: #b62324;
-$dark-mode-color-prettylights-syntax-string-regexp: #7ee787;
-$dark-mode-color-prettylights-syntax-markup-list: #f2cc60;
-$dark-mode-color-prettylights-syntax-markup-heading: #1f6feb;
-$dark-mode-color-prettylights-syntax-markup-italic: #c9d1d9;
-$dark-mode-color-prettylights-syntax-markup-bold: #c9d1d9;
-$dark-mode-color-prettylights-syntax-markup-deleted-text: #ffdcd7;
-$dark-mode-color-prettylights-syntax-markup-deleted-bg: #67060c;
-$dark-mode-color-prettylights-syntax-markup-inserted-text: #aff5b4;
-$dark-mode-color-prettylights-syntax-markup-inserted-bg: #033a16;
-$dark-mode-color-prettylights-syntax-markup-changed-text: #ffdfb6;
-$dark-mode-color-prettylights-syntax-markup-changed-bg: #5a1e02;
-$dark-mode-color-prettylights-syntax-markup-ignored-text: #c9d1d9;
-$dark-mode-color-prettylights-syntax-markup-ignored-bg: #1158c7;
-$dark-mode-color-prettylights-syntax-meta-diff-range: #d2a8ff;
-$dark-mode-color-prettylights-syntax-brackethighlighter-angle: #8b949e;
-$dark-mode-color-prettylights-syntax-sublimelinter-gutter-mark: #484f58;
-$dark-mode-color-prettylights-syntax-constant-other-reference-link: #a5d6ff;
 $dark-mode-color-fg-default: #D4D4D4; //#c9d1d9
 $dark-mode-color-fg-muted: #8b949e;
 $dark-mode-color-fg-subtle: #6e7681;
@@ -51,3 +21,12 @@ $dark-mode-color-accent-fg: #58a6ff;
 $dark-mode-color-accent-emphasis: #1f6feb;
 $dark-mode-color-attention-subtle: rgba(187, 128, 9, 0.15);
 $dark-mode-color-danger-fg: #f85149;
+
+// Code highlighting
+$dark-mode-color-code-highlight-background: #252526;
+$dark-mode-color-code-highlight-default: #D4D4D4;
+$dark-mode-color-code-highlight-comment: #8b949e;
+$dark-mode-color-code-highlight-keyword: #ff7b72;
+$dark-mode-color-code-highlight-string: #a5d6ff;
+$dark-mode-color-code-highlight-constant: #79c0ff;
+$dark-mode-color-code-highlight-function: #d2a8ff;

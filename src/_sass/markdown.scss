@@ -4,37 +4,6 @@
 @import "theme/light", "theme/dark";
 
 html .markdown-body {
-  color-scheme: dark;
-  --color-prettylights-syntax-comment: #{$dark-mode-color-prettylights-syntax-comment};
-  --color-prettylights-syntax-constant: #{$dark-mode-color-prettylights-syntax-constant};
-  --color-prettylights-syntax-entity: #{$dark-mode-color-prettylights-syntax-entity};
-  --color-prettylights-syntax-storage-modifier-import: #{$dark-mode-color-prettylights-syntax-storage-modifier-import};
-  --color-prettylights-syntax-entity-tag: #{$dark-mode-color-prettylights-syntax-entity-tag};
-  --color-prettylights-syntax-keyword: #{$dark-mode-color-prettylights-syntax-keyword};
-  --color-prettylights-syntax-string: #{$dark-mode-color-prettylights-syntax-string};
-  --color-prettylights-syntax-variable: #{$dark-mode-color-prettylights-syntax-variable};
-  --color-prettylights-syntax-brackethighlighter-unmatched: #{$dark-mode-color-prettylights-syntax-brackethighlighter-unmatched};
-  --color-prettylights-syntax-invalid-illegal-text: #{$dark-mode-color-prettylights-syntax-invalid-illegal-text};
-  --color-prettylights-syntax-invalid-illegal-bg: #{$dark-mode-color-prettylights-syntax-invalid-illegal-bg};
-  --color-prettylights-syntax-carriage-return-text: #{$dark-mode-color-prettylights-syntax-carriage-return-text};
-  --color-prettylights-syntax-carriage-return-bg: #{$dark-mode-color-prettylights-syntax-carriage-return-bg};
-  --color-prettylights-syntax-string-regexp: #{$dark-mode-color-prettylights-syntax-string-regexp};
-  --color-prettylights-syntax-markup-list: #{$dark-mode-color-prettylights-syntax-markup-list};
-  --color-prettylights-syntax-markup-heading: #{$dark-mode-color-prettylights-syntax-markup-heading};
-  --color-prettylights-syntax-markup-italic: #{$dark-mode-color-prettylights-syntax-markup-italic};
-  --color-prettylights-syntax-markup-bold: #{$dark-mode-color-prettylights-syntax-markup-bold};
-  --color-prettylights-syntax-markup-deleted-text: #{$dark-mode-color-prettylights-syntax-markup-deleted-text};
-  --color-prettylights-syntax-markup-deleted-bg: #{$dark-mode-color-prettylights-syntax-markup-deleted-bg};
-  --color-prettylights-syntax-markup-inserted-text: #{$dark-mode-color-prettylights-syntax-markup-inserted-text};
-  --color-prettylights-syntax-markup-inserted-bg: #{$dark-mode-color-prettylights-syntax-markup-inserted-bg};
-  --color-prettylights-syntax-markup-changed-text: #{$dark-mode-color-prettylights-syntax-markup-changed-text};
-  --color-prettylights-syntax-markup-changed-bg: #{$dark-mode-color-prettylights-syntax-markup-changed-bg};
-  --color-prettylights-syntax-markup-ignored-text: #{$dark-mode-color-prettylights-syntax-markup-ignored-text};
-  --color-prettylights-syntax-markup-ignored-bg: #{$dark-mode-color-prettylights-syntax-markup-ignored-bg};
-  --color-prettylights-syntax-meta-diff-range: #{$dark-mode-color-prettylights-syntax-meta-diff-range};
-  --color-prettylights-syntax-brackethighlighter-angle: #{$dark-mode-color-prettylights-syntax-brackethighlighter-angle};
-  --color-prettylights-syntax-sublimelinter-gutter-mark: #{$dark-mode-color-prettylights-syntax-sublimelinter-gutter-mark};
-  --color-prettylights-syntax-constant-other-reference-link: #{$dark-mode-color-prettylights-syntax-constant-other-reference-link};
   --color-fg-default: #{$dark-mode-color-fg-default};
   --color-fg-muted: #{$dark-mode-color-fg-muted};
   --color-fg-subtle: #{$dark-mode-color-fg-subtle};
@@ -47,40 +16,16 @@ html .markdown-body {
   --color-accent-emphasis: #{$dark-mode-color-accent-emphasis};
   --color-attention-subtle: #{$dark-mode-color-attention-subtle};
   --color-danger-fg: #{$dark-mode-color-danger-fg};
+  --color-code-highlight-background: #{$dark-mode-color-code-highlight-background};
+  --color-code-highlight-default: #{$dark-mode-color-code-highlight-default};
+  --color-code-highlight-comment: #{$dark-mode-color-code-highlight-comment};
+  --color-code-highlight-keyword: #{$dark-mode-color-code-highlight-keyword};
+  --color-code-highlight-string: #{$dark-mode-color-code-highlight-string};
+  --color-code-highlight-constant: #{$dark-mode-color-code-highlight-constant};
+  --color-code-highlight-function: #{$dark-mode-color-code-highlight-function};
 }
 
 html[data-theme="light"] .markdown-body {
-  color-scheme: light;
-  --color-prettylights-syntax-comment: #{$light-mode-color-prettylights-syntax-comment};
-  --color-prettylights-syntax-constant: #{$light-mode-color-prettylights-syntax-constant};
-  --color-prettylights-syntax-entity: #{$light-mode-color-prettylights-syntax-entity};
-  --color-prettylights-syntax-storage-modifier-import: #{$light-mode-color-prettylights-syntax-storage-modifier-import};
-  --color-prettylights-syntax-entity-tag: #{$light-mode-color-prettylights-syntax-entity-tag};
-  --color-prettylights-syntax-keyword: #{$light-mode-color-prettylights-syntax-keyword};
-  --color-prettylights-syntax-string: #{$light-mode-color-prettylights-syntax-string};
-  --color-prettylights-syntax-variable: #{$light-mode-color-prettylights-syntax-variable};
-  --color-prettylights-syntax-brackethighlighter-unmatched: #{$light-mode-color-prettylights-syntax-brackethighlighter-unmatched};
-  --color-prettylights-syntax-invalid-illegal-text: #{$light-mode-color-prettylights-syntax-invalid-illegal-text};
-  --color-prettylights-syntax-invalid-illegal-bg: #{$light-mode-color-prettylights-syntax-invalid-illegal-bg};
-  --color-prettylights-syntax-carriage-return-text: #{$light-mode-color-prettylights-syntax-carriage-return-text};
-  --color-prettylights-syntax-carriage-return-bg: #{$light-mode-color-prettylights-syntax-carriage-return-bg};
-  --color-prettylights-syntax-string-regexp: #{$light-mode-color-prettylights-syntax-string-regexp};
-  --color-prettylights-syntax-markup-list: #{$light-mode-color-prettylights-syntax-markup-list};
-  --color-prettylights-syntax-markup-heading: #{$light-mode-color-prettylights-syntax-markup-heading};
-  --color-prettylights-syntax-markup-italic: #{$light-mode-color-prettylights-syntax-markup-italic};
-  --color-prettylights-syntax-markup-bold: #{$light-mode-color-prettylights-syntax-markup-bold};
-  --color-prettylights-syntax-markup-deleted-text: #{$light-mode-color-prettylights-syntax-markup-deleted-text};
-  --color-prettylights-syntax-markup-deleted-bg: #{$light-mode-color-prettylights-syntax-markup-deleted-bg};
-  --color-prettylights-syntax-markup-inserted-text: #{$light-mode-color-prettylights-syntax-markup-inserted-text};
-  --color-prettylights-syntax-markup-inserted-bg: #{$light-mode-color-prettylights-syntax-markup-inserted-bg};
-  --color-prettylights-syntax-markup-changed-text: #{$light-mode-color-prettylights-syntax-markup-changed-text};
-  --color-prettylights-syntax-markup-changed-bg: #{$light-mode-color-prettylights-syntax-markup-changed-bg};
-  --color-prettylights-syntax-markup-ignored-text: #{$light-mode-color-prettylights-syntax-markup-ignored-text};
-  --color-prettylights-syntax-markup-ignored-bg: #{$light-mode-color-prettylights-syntax-markup-ignored-bg};
-  --color-prettylights-syntax-meta-diff-range: #{$light-mode-color-prettylights-syntax-meta-diff-range};
-  --color-prettylights-syntax-brackethighlighter-angle: #{$light-mode-color-prettylights-syntax-brackethighlighter-angle};
-  --color-prettylights-syntax-sublimelinter-gutter-mark: #{$light-mode-color-prettylights-syntax-sublimelinter-gutter-mark};
-  --color-prettylights-syntax-constant-other-reference-link: #{$light-mode-color-prettylights-syntax-constant-other-reference-link};
   --color-fg-default: #{$light-mode-color-fg-default};
   --color-fg-muted: #{$light-mode-color-fg-muted};
   --color-fg-subtle: #{$light-mode-color-fg-subtle};
@@ -93,6 +38,13 @@ html[data-theme="light"] .markdown-body {
   --color-accent-emphasis: #{$light-mode-color-accent-emphasis};
   --color-attention-subtle: #{$light-mode-color-attention-subtle};
   --color-danger-fg: #{$light-mode-color-danger-fg};
+  --color-code-highlight-background: #{$light-mode-color-code-highlight-background};
+  --color-code-highlight-default: #{$light-mode-color-code-highlight-default};
+  --color-code-highlight-comment: #{$light-mode-color-code-highlight-comment};
+  --color-code-highlight-keyword: #{$light-mode-color-code-highlight-keyword};
+  --color-code-highlight-string: #{$light-mode-color-code-highlight-string};
+  --color-code-highlight-constant: #{$light-mode-color-code-highlight-constant};
+  --color-code-highlight-function: #{$light-mode-color-code-highlight-function};
 }
 
 .markdown-body {
@@ -919,126 +871,6 @@ html[data-theme="light"] .markdown-body {
   font-family: monospace;
 }
 
-.markdown-body .pl-c {
-  color: var(--color-prettylights-syntax-comment);
-}
-
-.markdown-body .pl-c1,
-.markdown-body .pl-s .pl-v {
-  color: var(--color-prettylights-syntax-constant);
-}
-
-.markdown-body .pl-e,
-.markdown-body .pl-en {
-  color: var(--color-prettylights-syntax-entity);
-}
-
-.markdown-body .pl-smi,
-.markdown-body .pl-s .pl-s1 {
-  color: var(--color-prettylights-syntax-storage-modifier-import);
-}
-
-.markdown-body .pl-ent {
-  color: var(--color-prettylights-syntax-entity-tag);
-}
-
-.markdown-body .pl-k {
-  color: var(--color-prettylights-syntax-keyword);
-}
-
-.markdown-body .pl-s,
-.markdown-body .pl-pds,
-.markdown-body .pl-s .pl-pse .pl-s1,
-.markdown-body .pl-sr,
-.markdown-body .pl-sr .pl-cce,
-.markdown-body .pl-sr .pl-sre,
-.markdown-body .pl-sr .pl-sra {
-  color: var(--color-prettylights-syntax-string);
-}
-
-.markdown-body .pl-v,
-.markdown-body .pl-smw {
-  color: var(--color-prettylights-syntax-variable);
-}
-
-.markdown-body .pl-bu {
-  color: var(--color-prettylights-syntax-brackethighlighter-unmatched);
-}
-
-.markdown-body .pl-ii {
-  color: var(--color-prettylights-syntax-invalid-illegal-text);
-  background-color: var(--color-prettylights-syntax-invalid-illegal-bg);
-}
-
-.markdown-body .pl-c2 {
-  color: var(--color-prettylights-syntax-carriage-return-text);
-  background-color: var(--color-prettylights-syntax-carriage-return-bg);
-}
-
-.markdown-body .pl-sr .pl-cce {
-  font-weight: bold;
-  color: var(--color-prettylights-syntax-string-regexp);
-}
-
-.markdown-body .pl-ml {
-  color: var(--color-prettylights-syntax-markup-list);
-}
-
-.markdown-body .pl-mh,
-.markdown-body .pl-mh .pl-en,
-.markdown-body .pl-ms {
-  font-weight: bold;
-  color: var(--color-prettylights-syntax-markup-heading);
-}
-
-.markdown-body .pl-mi {
-  font-style: italic;
-  color: var(--color-prettylights-syntax-markup-italic);
-}
-
-.markdown-body .pl-mb {
-  font-weight: bold;
-  color: var(--color-prettylights-syntax-markup-bold);
-}
-
-.markdown-body .pl-md {
-  color: var(--color-prettylights-syntax-markup-deleted-text);
-  background-color: var(--color-prettylights-syntax-markup-deleted-bg);
-}
-
-.markdown-body .pl-mi1 {
-  color: var(--color-prettylights-syntax-markup-inserted-text);
-  background-color: var(--color-prettylights-syntax-markup-inserted-bg);
-}
-
-.markdown-body .pl-mc {
-  color: var(--color-prettylights-syntax-markup-changed-text);
-  background-color: var(--color-prettylights-syntax-markup-changed-bg);
-}
-
-.markdown-body .pl-mi2 {
-  color: var(--color-prettylights-syntax-markup-ignored-text);
-  background-color: var(--color-prettylights-syntax-markup-ignored-bg);
-}
-
-.markdown-body .pl-mdr {
-  font-weight: bold;
-  color: var(--color-prettylights-syntax-meta-diff-range);
-}
-
-.markdown-body .pl-ba {
-  color: var(--color-prettylights-syntax-brackethighlighter-angle);
-}
-
-.markdown-body .pl-sg {
-  color: var(--color-prettylights-syntax-sublimelinter-gutter-mark);
-}
-
-.markdown-body .pl-corl {
-  text-decoration: underline;
-  color: var(--color-prettylights-syntax-constant-other-reference-link);
-}
-
 .markdown-body g-emoji {
   display: inline-block;
   min-width: 1ch;
@@ -1101,140 +933,45 @@ html[data-theme="light"] .markdown-body {
   filter: invert(50%);
 }
 
-// Highlighting
-//-------------
 
-// Background
-$dt-gray-dark: #282a36;
-// Current Line & Selection
-$dt-gray: #44475a;
-// Foreground
-$dt-gray-light: #f8f8f2;
-// Comment
-$dt-blue: #6272a4;
-
-$dt-cyan: #8be9fd;
-$dt-green: #50fa7b;
-$dt-orange: #ffb86c;
-$dt-pink: #ff79c6;
-$dt-purple: #bd93f9;
-$dt-red: #ff5555;
-$dt-yellow: #f1fa8c;
-
-//
-// Styles
-//
+// Code highlighting
+//------------------
 .highlight {
-  background: $dt-gray-dark;
-  color: $dt-gray-light;
+  background: var(--color-code-highlight-background);
+  color: var(--color-code-highlight-default);
 }
 
-.hll,
-.s,
-.sa,
-.sb,
-.sc,
-.dl,
-.sd,
-.s2,
-.se,
-.sh,
-.si,
-.sx,
-.sr,
-.s1,
-.ss {
-  color: #a5d6ff;
+// Default
+.err, .g, .l, .n, .x, .p, .ge, .gr, .gh, .gi, .gp, .gs, .gu, .gt, .ld, .no, .nd, .ni, .ne, .nn, .nx, .py, .w, .bp, .go, .gd {
+  color: var(--color-code-highlight-default);
 }
 
-.go {
-  color: $dt-gray;
+// Comments
+.c, .ch, .cm, .cpf, .c1, .cs {
+  color: var(--color-code-highlight-comment);
 }
 
-.err,
-.g,
-.l,
-.n,
-.x,
-.p,
-.ge,
-.gr,
-.gh,
-.gi,
-.gp,
-.gs,
-.gu,
-.gt,
-.ld,
-.no,
-.nd,
-.ni,
-.ne,
-.nn,
-.nx,
-.py,
-.w,
-.bp {
-  color: $dt-gray-light
+// Keywords
+.k, .o, .cp, .kc, .kn, .kp, .kr, .nt, .ow, .kd, .kt, .nb, .nl, .nv, .vc, .vg, .vi, .vm {
+  color: var(--color-code-highlight-keyword);
 }
 
-.c,
-.ch,
-.cm,
-.cpf,
-.c1,
-.cs {
-  color: #8b949e;
+// Strings
+.hll, .s, .sa, .sb, .sc, .dl, .sd, .s2, .se, .sh, .si, .sx, .sr, .s1, .ss {
+  color: var(--color-code-highlight-string);
 }
 
-.na,
-.nc,
-.nf,
-.fm {
-  color: #d2a8ff;
-}
-
-.kd,
-.kt,
-.nb,
-.nl,
-.nv,
-.vc,
-.vg,
-.vi,
-.vm {
-  color: #ff7b72;
-}
-
-.k,
-.o,
-.cp,
-.kc,
-.kn,
-.kp,
-.kr,
-.nt,
-.ow {
-  color: #ff7b72;
-}
-
-.m,
-.mb,
-.mf,
-.mh,
-.mi,
-.mo,
-.il {
+// Constants
+.m, .mb, .mf, .mh, .mi, .mo, .il {
   color: #79c0ff
 }
 
-.gd {
-  color: $dt-red
+// Functions
+.na, .nc, .nf, .fm {
+  color: #d2a8ff;
 }
 
-.gh,
-.gi,
-.gu {
+.gh, .gi, .gu {
   font-weight: bold;
 }
 
@@ -1246,13 +983,6 @@ $dt-yellow: #f1fa8c;
   font-style: italic;
 }
 
-.kd,
-.nb,
-.nl,
-.nv,
-.vc,
-.vg,
-.vi,
-.vm {
+.kd, .nb, .nl, .nv, .vc, .vg, .vi, .vm {
   font-style: italic;
 }
