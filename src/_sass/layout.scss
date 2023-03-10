@@ -1,0 +1,25 @@
+@import "variables";
+
+body {
+  display: grid;
+  grid-template-columns: $sidebar-width 1fr;
+  grid-template-rows: 1fr auto;
+  grid-template-areas:
+    "sidebar content"
+    "footer footer";
+  height: 100vh;
+}
+
+.sidebar {
+  grid-area: sidebar;
+  width: $sidebar-width;
+}
+
+.content {
+  grid-area: content;
+}
+
+.footer {
+  grid-area: footer;
+  height: $footer-height;
+}

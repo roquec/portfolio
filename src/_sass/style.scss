@@ -1,0 +1,43 @@
+@import "theme/light", "theme/dark";
+
+html {
+  --color-background-sidebar: #{$dark-mode-color-background-sidebar};
+  --color-background-navigation: #{$dark-mode-color-background-navigation};
+  --color-background-content: #{$dark-mode-color-background-content};
+  --color-background-footer: #{$dark-mode-color-background-footer};
+}
+
+html[data-theme="light"] {
+  --color-background-sidebar: #{$light-mode-color-background-sidebar};
+  --color-background-navigation: #{$light-mode-color-background-navigation};
+  --color-background-content: #{$light-mode-color-background-content};
+  --color-background-footer: #{$light-mode-color-background-footer};
+}
+
+html,
+html *,
+html *:before,
+html *:after {
+  transition: background-color 200ms ease 0s,
+  color 200ms ease 0s,
+  border-bottom-color 200ms ease 0s,
+  border-top-color 200ms ease 0s,
+  border-left-color 200ms ease 0s,
+  border-right-color 200ms ease 0s;
+}
+
+.sidebar {
+  background-color: var(--color-background-sidebar);
+}
+
+.navigation-wrapper {
+  background-color: var(--color-background-navigation);
+}
+
+.content {
+  background-color: var(--color-background-content);
+}
+
+.footer {
+  background-color: var(--color-background-footer);
+}

@@ -3,7 +3,7 @@ url: "roquec.com"
 collections_dir: content
 
 collections:
-  musings:
+  articles:
     output: true
   drawings:
     output: true
@@ -14,13 +14,12 @@ defaults:
   - scope:
       path: "content/*"
     values:
-      layout: "post"
-      author: "Roque Carrizo"
-      feature_index: 999
+      layout: "article"
+      author: "RoqueC"
   - scope:
       path: ""
     values:
-      layout: "default"
+      layout: "base"
 
 plugins:
   - jekyll-feed

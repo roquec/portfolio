@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+
+{% include head.html %}
+
+<body>
+
+<header class="sidebar">
+  {% include sidebar.html %}
+</header>
+
+<main class="content markdown-body">
+  {{ content }}
+
+  <div>
+    <input class="container_toggle" type="checkbox" id="theme-toggle" name="theme-toggle" onclick="switchTheme();">
+  </div>
+</main>
+
+<footer class="footer">
+  {% include footer.html %}
+</footer>
+
+</body>
+
+</html>
