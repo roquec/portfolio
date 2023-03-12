@@ -1,131 +1,153 @@
 @import "theme/light", "theme/dark";
 
 html {
-  --color-background-sidebar: #{$dark-mode-color-background-sidebar};
-  --color-background-navigation: #{$dark-mode-color-background-navigation};
-  --color-background-content: #{$dark-mode-color-background-content};
-  --color-background-footer: #{$dark-mode-color-background-footer};
+  --color-background-primary: #{$dark-mode-color-background-primary};
+  --color-background-secondary: #{$dark-mode-color-background-secondary};
+  --color-foreground-primary: #{$dark-mode-color-foreground-primary};
+  --color-foreground-secondary: #{$dark-mode-color-foreground-secondary};
+  --color-sidebar-background-primary: #{$dark-mode-color-sidebar-background-primary};
+  --color-sidebar-background-secondary: #{$dark-mode-color-sidebar-background-secondary};
+  --color-sidebar-foreground-primary: #{$dark-mode-color-sidebar-foreground-primary};
+  --color-sidebar-foreground-secondary: #{$dark-mode-color-sidebar-foreground-secondary};
+  --color-footer-background-primary: #{$dark-mode-color-footer-background-primary};
+  --color-footer-foreground-primary: #{$dark-mode-color-footer-foreground-primary};
 }
 
 html[data-theme="light"] {
-  --color-background-sidebar: #{$light-mode-color-background-sidebar};
-  --color-background-navigation: #{$light-mode-color-background-navigation};
-  --color-background-content: #{$light-mode-color-background-content};
-  --color-background-footer: #{$light-mode-color-background-footer};
+  --color-background-primary: #{$light-mode-color-background-primary};
+  --color-background-secondary: #{$light-mode-color-background-secondary};
+  --color-foreground-primary: #{$light-mode-color-foreground-primary};
+  --color-foreground-secondary: #{$light-mode-color-foreground-secondary};
+  --color-sidebar-background-primary: #{$light-mode-color-sidebar-background-primary};
+  --color-sidebar-background-secondary: #{$light-mode-color-sidebar-background-secondary};
+  --color-sidebar-foreground-primary: #{$light-mode-color-sidebar-foreground-primary};
+  --color-sidebar-foreground-secondary: #{$light-mode-color-sidebar-foreground-secondary};
+  --color-footer-background-primary: #{$light-mode-color-footer-background-primary};
+  --color-footer-foreground-primary: #{$light-mode-color-footer-foreground-primary};
 }
+
 
 // Sidebar
 //----------------------------
 .sidebar {
-  background-color: var(--color-background-sidebar);
-}
+  background-color: var(--color-sidebar-background-primary);
+  z-index: 1;
 
-.sidebar-menu {
-  height: 100%;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-
-  .sidebar-top {
+  .sidebar-menu {
+    height: 100%;
     display: flex;
     flex-direction: column;
-    align-items: center;
-    padding-top: 10px;
+    justify-content: space-between;
 
-    .nav-icon,
-    .search-icon {
-      font-size: 20px;
-      margin-bottom: 20px;
-      color: #fff;
-      display: block;
-      text-align: center;
-      line-height: 1.2;
-    }
-
-    .social-icons {
+    .sidebar-top,
+    .sidebar-bottom {
       display: flex;
       flex-direction: column;
+      align-items: center;
 
-      a {
-        font-size: 20px;
-        margin-bottom: 20px;
-        color: #fff;
-        display: block;
-        text-align: center;
-        line-height: 1.2;
+      .icon-wrapper {
+        height: 48px;
+        width: 48px;
+        display: flex;
+        align-items: center;
+
+        .icon {
+          display: flex;
+          height: 48px;
+          width: 48px;
+          color: var(--color-sidebar-foreground-secondary);
+          justify-content: center;
+          align-items: center;
+          font-size: 24px;
+          flex: 0 0 auto;
+
+          &:hover {
+            color: var(--color-sidebar-foreground-primary);
+          }
+        }
+
+        .icon-tooltip {
+          visibility: hidden;
+          background-color: var(--color-sidebar-background-secondary);
+          color: var(--color-sidebar-foreground-secondary);
+          border: 0.1px solid var(--color-sidebar-foreground-secondary);
+          width: auto;
+          padding: 5px 10px;
+        }
+
+        &:hover .icon-tooltip {
+          visibility: visible;
+        }
       }
 
-      i {
-        margin-right: 0;
+
+      .profile-pic {
+        img {
+          width: 32px;
+          height: 32px;
+          border-radius: 50%;
+        }
+
+        &:hover img {
+          border: 2px solid var(--color-sidebar-foreground-primary);
+        }
       }
-
-      .fab {
-        font-size: 22px;
-      }
-    }
-  }
-
-  .sidebar-bottom {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    padding-bottom: 10px;
-
-    .profile-pic {
-      width: 40px;
-      height: 40px;
-      border-radius: 50%;
-      overflow: hidden;
-      margin-bottom: 20px;
-
-      img {
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
-      }
-    }
-
-    .settings-icon {
-      font-size: 20px;
-      color: #fff;
-      display: block;
-      text-align: center;
-      line-height: 1.2;
     }
   }
 }
 
+
+// Navigation
+//----------------------------
 .navigation-wrapper {
-  background-color: var(--color-background-navigation);
+  background-color: var(--color-sidebar-background-secondary);
 }
 
+
+// Content
+//----------------------------
 .content {
-  background-color: var(--color-background-content);
+  background-color: var(--color-background-primary);
+  display: flex;
+  flex-direction: column;
+
+  .tabs-wrapper {
+    height: 35px;
+    background-color: var(--color-background-secondary);
+
+    .tab {
+      height: 35px;
+      width: 200px;
+      background-color: var(--color-background-primary);
+    }
+  }
 }
+
 
 // Footer
 //----------------------------
 .footer {
-  background-color: var(--color-background-footer);
-  color: #D4D4D4;
+  background-color: var(--color-footer-background-primary);
+  color: var(--color-footer-foreground-primary);
   font-size: 12px;
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Noto Sans", Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji";
+
+  .footer-wrapper {
+    height: 100%;
+    display: flex;
+    justify-content: space-between;
+
+    .footer-left {
+      display: flex;
+      align-items: center;
+      padding-left: 4px;
+    }
+
+    .footer-right {
+      display: flex;
+      align-items: center;
+      padding-right: 4px;
+    }
+  }
 }
 
-.footer-wrapper {
-  height: 100%;
-  display: flex;
-  justify-content: space-between;
-
-  .footer-left {
-    display: flex;
-    align-items: center;
-    padding-left: 4px;
-  }
-
-  .footer-right {
-    display: flex;
-    align-items: center;
-    padding-right: 4px;
-  }
-}

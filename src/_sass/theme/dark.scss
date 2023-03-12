@@ -2,11 +2,18 @@
 //-----------------
 
 // Base
-$dark-mode-color-background-sidebar: #333333;
-$dark-mode-color-background-navigation: #252526;
-$dark-mode-color-background-content: #1E1E1E;
-$dark-mode-color-background-footer: #007ACC;
-$dark-mode-color-foreground-default: #858585;
+$dark-mode-color-background-primary: #1E1E1E;
+$dark-mode-color-background-secondary: #252526;
+$dark-mode-color-foreground-primary: #CCCCCC;
+$dark-mode-color-foreground-secondary: #858585;
+
+$dark-mode-color-sidebar-background-primary: #333333;
+$dark-mode-color-sidebar-background-secondary: #252526;
+$dark-mode-color-sidebar-foreground-primary: #CCCCCC;
+$dark-mode-color-sidebar-foreground-secondary: #858585;
+
+$dark-mode-color-footer-background-primary: #007ACC;
+$dark-mode-color-footer-foreground-primary: #CCCCCC;
 
 // Markdown
 $dark-mode-color-fg-default: #D4D4D4; //#c9d1d9

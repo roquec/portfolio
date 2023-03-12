@@ -2,11 +2,18 @@
 // -----------------
 
 // Base
-$light-mode-color-background-sidebar: #2C2C2C;
-$light-mode-color-background-navigation: #F3F3F3;
-$light-mode-color-background-content: #FFFFFF;
-$light-mode-color-background-footer: #007ACC;
-$light-mode-color-foreground-default: #808080;
+$light-mode-color-background-primary: #FFFFFF;
+$light-mode-color-background-secondary: #F6F8FA;
+$light-mode-color-foreground-primary: #24292F;
+$light-mode-color-foreground-secondary: #57606A;
+
+$light-mode-color-sidebar-background-primary: #333333;
+$light-mode-color-sidebar-background-secondary: #252526;
+$light-mode-color-sidebar-foreground-primary: #CCCCCC;
+$light-mode-color-sidebar-foreground-secondary: #858585;
+
+$light-mode-color-footer-background-primary: #007ACC;
+$light-mode-color-footer-foreground-primary: #CCCCCC;
 
 // Markdown
 $light-mode-color-fg-default: #24292f;
