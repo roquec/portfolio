@@ -31,6 +31,14 @@ body {
   font-family: Segoe WPC, Segoe UI, sans-serif;
 }
 
+.scrollable::-webkit-scrollbar {
+  width: 14px;
+}
+
+.scrollable::-webkit-scrollbar-thumb {
+  background-color: #454545;
+}
+
 // Sidebar
 //----------------------------
 .sidebar {
