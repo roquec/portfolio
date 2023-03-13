@@ -27,6 +27,10 @@ html[data-theme="light"] {
 }
 
 
+body {
+  font-family: Segoe WPC, Segoe UI, sans-serif;
+}
+
 // Sidebar
 //----------------------------
 .sidebar {
@@ -67,19 +71,48 @@ html[data-theme="light"] {
         }
 
         .icon-tooltip {
-          visibility: hidden;
+          outline: 1px solid #454545;
+          padding: 2px 8px;
           background-color: var(--color-sidebar-background-secondary);
           color: var(--color-sidebar-foreground-secondary);
-          border: 0.1px solid var(--color-sidebar-foreground-secondary);
-          width: auto;
-          padding: 5px 10px;
+          visibility: hidden;
+          position: relative;
+          margin-left: 4px;
+          font-size: 12px;
+          line-height: 19px;
+          flex: 0 0 auto;
+          box-shadow: 0px 2px 6px 3px rgba(0, 0, 0, 0.3);
+
+
+          &:before {
+            content: '';
+            display: block;
+            position: absolute;
+            left: -10px;
+            bottom: calc(50% - 5px);
+            width: 0;
+            height: 0;
+            border: 5px solid transparent;
+            border-right-color: #454545;
+          }
+
+          &:after {
+            content: '';
+            display: block;
+            position: absolute;
+            left: -9px;
+            bottom: calc(50% - 5px);
+            width: 0;
+            height: 0;
+            border: 5px solid transparent;
+            border-right-color: var(--color-sidebar-background-secondary);
+          }
         }
 
         &:hover .icon-tooltip {
           visibility: visible;
         }
       }
-
 
       .profile-pic {
         img {
@@ -89,7 +122,7 @@ html[data-theme="light"] {
         }
 
         &:hover img {
-          border: 2px solid var(--color-sidebar-foreground-primary);
+          outline: 2px solid var(--color-sidebar-foreground-primary);
         }
       }
     }
