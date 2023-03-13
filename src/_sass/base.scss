@@ -1,3 +1,47 @@
-@charset "utf-8";
+@import "theme/light", "theme/dark";
 
-@import "reset", "codicon", "variables", "markdown", "layout", "style";
+html {
+  --color-background-primary: #{$dark-mode-color-background-primary};
+  --color-background-secondary: #{$dark-mode-color-background-secondary};
+  --color-foreground-primary: #{$dark-mode-color-foreground-primary};
+  --color-foreground-secondary: #{$dark-mode-color-foreground-secondary};
+  --color-sidebar-background-primary: #{$dark-mode-color-sidebar-background-primary};
+  --color-sidebar-background-secondary: #{$dark-mode-color-sidebar-background-secondary};
+  --color-sidebar-foreground-primary: #{$dark-mode-color-sidebar-foreground-primary};
+  --color-sidebar-foreground-secondary: #{$dark-mode-color-sidebar-foreground-secondary};
+  --color-footer-background-primary: #{$dark-mode-color-footer-background-primary};
+  --color-footer-foreground-primary: #{$dark-mode-color-footer-foreground-primary};
+}
+
+html[data-theme="light"] {
+  --color-background-primary: #{$light-mode-color-background-primary};
+  --color-background-secondary: #{$light-mode-color-background-secondary};
+  --color-foreground-primary: #{$light-mode-color-foreground-primary};
+  --color-foreground-secondary: #{$light-mode-color-foreground-secondary};
+  --color-sidebar-background-primary: #{$light-mode-color-sidebar-background-primary};
+  --color-sidebar-background-secondary: #{$light-mode-color-sidebar-background-secondary};
+  --color-sidebar-foreground-primary: #{$light-mode-color-sidebar-foreground-primary};
+  --color-sidebar-foreground-secondary: #{$light-mode-color-sidebar-foreground-secondary};
+  --color-footer-background-primary: #{$light-mode-color-footer-background-primary};
+  --color-footer-foreground-primary: #{$light-mode-color-footer-foreground-primary};
+}
+
+body {
+  background-color: var(--color-background-primary);
+  color: var(--color-foreground-primary);
+  font-family: Segoe WPC, Segoe UI, sans-serif;
+}
+
+.scrollable {
+  overflow: scroll;
+  overflow-x: hidden;
+  overflow-y: overlay;
+
+  &::-webkit-scrollbar {
+    width: 14px;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background-color: #454545;
+  }
+}

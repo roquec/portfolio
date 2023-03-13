@@ -1,0 +1,61 @@
+.tabs {
+  background-color: var(--color-background-secondary);
+  display: flex;
+
+  .tab {
+    background-color: var(--color-background-secondary);
+    color: var(--color-foreground-secondary);
+    padding-left: 10px;
+    padding-right: 10px;
+    font-size: 13px;
+    text-decoration: none;
+    position: relative;
+
+    .overlay {
+      position: absolute;
+      left: 0;
+      top: 0;
+      bottom: 0;
+      right: 0;
+    }
+
+    * {
+      line-height: 35px;
+      vertical-align: middle;
+    }
+
+    .icon {
+      font-size: 19px;
+    }
+  }
+
+
+  .current-tab {
+    background-color: var(--color-background-primary);
+    color: var(--color-foreground-primary);
+    padding-right: 5px;
+
+    span {
+      font-style: italic;
+    }
+
+    .icon-cross {
+      font-size: 16px;
+      margin-left: 2px;
+      height: 18px;
+      width: 18px;
+      line-height: 18px;
+      vertical-align: middle;
+      border-radius: 4px;
+      display: inline-block;
+      z-index: 1;
+      position: relative;
+
+      color: var(--color-foreground-primary);
+
+      &:hover {
+        background-color: var(--color-sidebar-background-primary);
+      }
+    }
+  }
+}
