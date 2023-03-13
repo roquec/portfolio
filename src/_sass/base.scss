@@ -1,6 +1,7 @@
 @import "theme/light", "theme/dark";
 
 html {
+  color-scheme: dark;
   --color-background-primary: #{$dark-mode-color-background-primary};
   --color-background-secondary: #{$dark-mode-color-background-secondary};
   --color-foreground-primary: #{$dark-mode-color-foreground-primary};
@@ -14,6 +15,7 @@ html {
 }
 
 html[data-theme="light"] {
+  color-scheme: light;
   --color-background-primary: #{$light-mode-color-background-primary};
   --color-background-secondary: #{$light-mode-color-background-secondary};
   --color-foreground-primary: #{$light-mode-color-foreground-primary};
@@ -33,15 +35,21 @@ body {
 }
 
 .scrollable {
-  overflow: scroll;
-  overflow-x: hidden;
-  overflow-y: overlay;
+  overflow-y: auto;
+}
 
-  &::-webkit-scrollbar {
-    width: 14px;
-  }
+@media only screen and (min-width: 600px) {
+  .scrollable {
+    overflow: scroll;
+    overflow-x: hidden;
+    overflow-y: overlay;
 
-  &::-webkit-scrollbar-thumb {
-    background-color: #454545;
+    &::-webkit-scrollbar {
+      width: 14px;
+    }
+
+    &::-webkit-scrollbar-thumb {
+      background-color: #454545;
+    }
   }
 }
