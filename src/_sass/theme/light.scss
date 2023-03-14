@@ -2,18 +2,28 @@
 // -----------------
 
 // Base
-$light-mode-color-background-primary: #FFFFFF;
-$light-mode-color-background-secondary: #F6F8FA;
-$light-mode-color-foreground-primary: #24292F;
-$light-mode-color-foreground-secondary: #57606A;
-
-$light-mode-color-sidebar-background-primary: #333333;
-$light-mode-color-sidebar-background-secondary: #252526;
-$light-mode-color-sidebar-foreground-primary: #CCCCCC;
-$light-mode-color-sidebar-foreground-secondary: #858585;
-
-$light-mode-color-footer-background-primary: #007ACC;
-$light-mode-color-footer-foreground-primary: #CCCCCC;
+$light-mode-sidebar-background: #2C2C2C;
+$light-mode-sidebar-foreground: #808080;
+$light-mode-sidebar-selected-foreground: #FFFFFF;
+$light-mode-tooltip-background: #F3F3F3;
+$light-mode-tooltip-foreground: #616161;
+$light-mode-tooltip-border: #C8C8C8;
+$light-mode-navigation-background: #F3F3F3;
+$light-mode-navigation-foreground: #616161;
+$light-mode-navigation-selected-background: #E4E6F1;
+$light-mode-tabs-background: #F3F3F3;
+$light-mode-tab-background: #ECECEC;
+$light-mode-tab-foreground: #6A6A6A;
+$light-mode-tab-selected-background: #FFFFFF;
+$light-mode-tab-selected-foreground: #333333;
+$light-mode-content-background: #FFFFFF;
+$light-mode-content-foreground: #333333;
+$light-mode-footer-background: #007ACC;
+$light-mode-footer-foreground: #FFFFFF;
+$light-mode-breadcrumbs-foreground: #818181;
+$light-mode-scrollbar-thumb: #C1C1C1;
+$light-mode-icon-markdown: #498BA7;
+$light-mode-icon-html: #D36F34;
 
 // Markdown
 $light-mode-color-fg-default: #24292f;

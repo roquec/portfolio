@@ -1,7 +1,15 @@
 // Content
 //----------------------------
 .content {
-  background-color: var(--color-background-primary);
+  background-color: var(--color-content-background);
   display: flex;
   flex-direction: column;
+  padding-left: 10px;
+  padding-right: 5px;
+}
+
+@media only screen and (min-width: 600px) {
+  .content {
+    padding-left: 30px;
+  }
 }

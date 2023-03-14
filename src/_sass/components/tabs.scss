@@ -1,10 +1,19 @@
 .tabs {
-  background-color: var(--color-background-secondary);
-  display: flex;
+  display: none;
+}
+
+@media only screen and (min-width: 600px) {
+  .tabs {
+    display: flex;
+  }
+}
+
+.tabs {
+  background-color: var(--color-tabs-background);
 
   .tab {
-    background-color: var(--color-background-secondary);
-    color: var(--color-foreground-secondary);
+    background-color: var(--color-tab-background);
+    color: var(--color-tab-foreground);
     padding-left: 10px;
     padding-right: 10px;
     font-size: 13px;
@@ -29,10 +38,9 @@
     }
   }
 
-
   .current-tab {
-    background-color: var(--color-background-primary);
-    color: var(--color-foreground-primary);
+    background-color: var(--color-tab-selected-background);
+    color: var(--color-tab-selected-foreground);
     padding-right: 5px;
 
     span {
@@ -51,10 +59,10 @@
       z-index: 1;
       position: relative;
 
-      color: var(--color-foreground-primary);
+      color: var(--color-tab-selected-foreground);
 
       &:hover {
-        background-color: var(--color-sidebar-background-primary);
+        background-color: var(--color-tab-background);
       }
     }
   }

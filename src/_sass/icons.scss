@@ -61,13 +61,13 @@
 .icon-html::before {
   font-family: seti, serif;
   content: '\e048';
-  color: #e37933;
+  color: var(--color-icon-html);
 }
 
 .icon-markdown::before {
   font-family: seti, serif;
   content: '\e060';
-  color: #519aba;
+  color: var(--color-icon-markdown);
 }
 
 .icon-cross::before {

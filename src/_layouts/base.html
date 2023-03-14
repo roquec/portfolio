@@ -5,19 +5,24 @@
 
 <body>
 
-<header class="sidebar">
-  {% include sidebar.html %}
-</header>
+<div class="main-wrapper">
 
-<div class="tabs">
-  {% include tabs.html %}
+  <header class="header">
+    {% include sidebar.html %}
+
+    {% include navigation.html %}
+  </header>
+
+  <main class="main">
+    {% include tabs.html %}
+
+    <div class="content scrollable">
+      <div class="markdown-body">
+        {{ content }}
+      </div>
+    </div>
+  </main>
 </div>
-
-<main class="content scrollable">
-  <div class="content-wrapper markdown-body">
-    {{ content }}
-  </div>
-</main>
 
 <footer class="footer">
   {% include footer.html %}

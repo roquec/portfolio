@@ -1,55 +1,77 @@
-@import "theme/light", "theme/dark";
+@import "theme/light", "theme/dark", "variables";
 
 html {
   color-scheme: dark;
-  --color-background-primary: #{$dark-mode-color-background-primary};
-  --color-background-secondary: #{$dark-mode-color-background-secondary};
-  --color-foreground-primary: #{$dark-mode-color-foreground-primary};
-  --color-foreground-secondary: #{$dark-mode-color-foreground-secondary};
-  --color-sidebar-background-primary: #{$dark-mode-color-sidebar-background-primary};
-  --color-sidebar-background-secondary: #{$dark-mode-color-sidebar-background-secondary};
-  --color-sidebar-foreground-primary: #{$dark-mode-color-sidebar-foreground-primary};
-  --color-sidebar-foreground-secondary: #{$dark-mode-color-sidebar-foreground-secondary};
-  --color-footer-background-primary: #{$dark-mode-color-footer-background-primary};
-  --color-footer-foreground-primary: #{$dark-mode-color-footer-foreground-primary};
+  --color-sidebar-background: #{$dark-mode-sidebar-background};
+  --color-sidebar-foreground: #{$dark-mode-sidebar-foreground};
+  --color-sidebar-selected-foreground: #{$dark-mode-sidebar-selected-foreground};
+  --color-tooltip-background: #{$dark-mode-tooltip-background};
+  --color-tooltip-foreground: #{$dark-mode-tooltip-foreground};
+  --color-tooltip-border: #{$dark-mode-tooltip-border};
+  --color-navigation-background: #{$dark-mode-navigation-background};
+  --color-navigation-foreground: #{$dark-mode-navigation-foreground};
+  --color-navigation-selected-background: #{$dark-mode-navigation-selected-background};
+  --color-tabs-background: #{$dark-mode-tabs-background};
+  --color-tab-background: #{$dark-mode-tab-background};
+  --color-tab-foreground: #{$dark-mode-tab-foreground};
+  --color-tab-selected-background: #{$dark-mode-tab-selected-background};
+  --color-tab-selected-foreground: #{$dark-mode-tab-selected-foreground};
+  --color-content-background: #{$dark-mode-content-background};
+  --color-content-foreground: #{$dark-mode-content-foreground};
+  --color-footer-background: #{$dark-mode-footer-background};
+  --color-footer-foreground: #{$dark-mode-footer-foreground};
+  --color-breadcrumbs-foreground: #{$dark-mode-breadcrumbs-foreground};
+  --color-scrollbar-thumb: #{$dark-mode-scrollbar-thumb};
+  --color-icon-markdown: #{$dark-mode-icon-markdown};
+  --color-icon-html: #{$dark-mode-icon-html};
 }
 
 html[data-theme="light"] {
   color-scheme: light;
-  --color-background-primary: #{$light-mode-color-background-primary};
-  --color-background-secondary: #{$light-mode-color-background-secondary};
-  --color-foreground-primary: #{$light-mode-color-foreground-primary};
-  --color-foreground-secondary: #{$light-mode-color-foreground-secondary};
-  --color-sidebar-background-primary: #{$light-mode-color-sidebar-background-primary};
-  --color-sidebar-background-secondary: #{$light-mode-color-sidebar-background-secondary};
-  --color-sidebar-foreground-primary: #{$light-mode-color-sidebar-foreground-primary};
-  --color-sidebar-foreground-secondary: #{$light-mode-color-sidebar-foreground-secondary};
-  --color-footer-background-primary: #{$light-mode-color-footer-background-primary};
-  --color-footer-foreground-primary: #{$light-mode-color-footer-foreground-primary};
+  --color-sidebar-background: #{$light-mode-sidebar-background};
+  --color-sidebar-foreground: #{$light-mode-sidebar-foreground};
+  --color-sidebar-selected-foreground: #{$light-mode-sidebar-selected-foreground};
+  --color-tooltip-background: #{$light-mode-tooltip-background};
+  --color-tooltip-foreground: #{$light-mode-tooltip-foreground};
+  --color-tooltip-border: #{$light-mode-tooltip-border};
+  --color-navigation-background: #{$light-mode-navigation-background};
+  --color-navigation-foreground: #{$light-mode-navigation-foreground};
+  --color-navigation-selected-background: #{$light-mode-navigation-selected-background};
+  --color-tabs-background: #{$light-mode-tabs-background};
+  --color-tab-background: #{$light-mode-tab-background};
+  --color-tab-foreground: #{$light-mode-tab-foreground};
+  --color-tab-selected-background: #{$light-mode-tab-selected-background};
+  --color-tab-selected-foreground: #{$light-mode-tab-selected-foreground};
+  --color-content-background: #{$light-mode-content-background};
+  --color-content-foreground: #{$light-mode-content-foreground};
+  --color-footer-background: #{$light-mode-footer-background};
+  --color-footer-foreground: #{$light-mode-footer-foreground};
+  --color-breadcrumbs-foreground: #{$light-mode-breadcrumbs-foreground};
+  --color-scrollbar-thumb: #{$light-mode-scrollbar-thumb};
+  --color-icon-markdown: #{$light-mode-icon-markdown};
+  --color-icon-html: #{$light-mode-icon-html};
 }
 
 body {
-  background-color: var(--color-background-primary);
-  color: var(--color-foreground-primary);
-  font-family: Segoe WPC, Segoe UI, sans-serif;
+  background-color: var(--color-content-background);
+  color: var(--color-content-foreground);
+  font-family: #{$base-font-family};
 }
 
 .scrollable {
-  overflow-y: auto;
+  overflow: auto;
 }
 
 @media only screen and (min-width: 600px) {
   .scrollable {
-    overflow: scroll;
-    overflow-x: hidden;
-    overflow-y: overlay;
+    overflow: auto;
 
     &::-webkit-scrollbar {
       width: 14px;
     }
 
     &::-webkit-scrollbar-thumb {
-      background-color: #454545;
+      background-color: var(--color-scrollbar-thumb);
     }
   }
 }

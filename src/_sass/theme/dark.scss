@@ -2,18 +2,28 @@
 //-----------------
 
 // Base
-$dark-mode-color-background-primary: #1E1E1E;
-$dark-mode-color-background-secondary: #252526;
-$dark-mode-color-foreground-primary: #CCCCCC;
-$dark-mode-color-foreground-secondary: #858585;
-
-$dark-mode-color-sidebar-background-primary: #333333;
-$dark-mode-color-sidebar-background-secondary: #252526;
-$dark-mode-color-sidebar-foreground-primary: #CCCCCC;
-$dark-mode-color-sidebar-foreground-secondary: #858585;
-
-$dark-mode-color-footer-background-primary: #007ACC;
-$dark-mode-color-footer-foreground-primary: #CCCCCC;
+$dark-mode-sidebar-background: #333333;
+$dark-mode-sidebar-foreground: #858585;
+$dark-mode-sidebar-selected-foreground: #FFFFFF;
+$dark-mode-tooltip-background: #252526;
+$dark-mode-tooltip-foreground: #CCCCCC;
+$dark-mode-tooltip-border: #454545;
+$dark-mode-navigation-background: #252526;
+$dark-mode-navigation-foreground: #CCCCCC;
+$dark-mode-navigation-selected-background: #37373D;
+$dark-mode-tabs-background: #252526;
+$dark-mode-tab-background: #2D2D2D;
+$dark-mode-tab-foreground: #969696;
+$dark-mode-tab-selected-background: #1E1E1E;
+$dark-mode-tab-selected-foreground: #FFFFFF;
+$dark-mode-content-background: #1E1E1E;
+$dark-mode-content-foreground: #FFFFFF;
+$dark-mode-footer-background: #007ACC;
+$dark-mode-footer-foreground: #FFFFFF;
+$dark-mode-breadcrumbs-foreground: #A9A9A9;
+$dark-mode-scrollbar-thumb: #424242;
+$dark-mode-icon-markdown: #519ABA;
+$dark-mode-icon-html: #DB5929;
 
 // Markdown
 $dark-mode-color-fg-default: #D4D4D4; //#c9d1d9

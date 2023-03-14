@@ -1,5 +1,16 @@
 // Navigation
 //----------------------------
-.navigation-wrapper {
-  background-color: var(--color-sidebar-background-secondary);
+.navigation {
+  display: none;
+}
+
+@media only screen and (min-width: 600px) {
+  .navigation {
+    display: flex;
+  }
+}
+
+
+.navigation {
+  background-color: var(--color-navigation-background);
 }

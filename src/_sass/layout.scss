@@ -1,33 +1,11 @@
 @import "variables";
 
-.sidebar {
+.main-wrapper {
   height: calc(100% - #{$footer-height});
-  width: $sidebar-width;
+  width: 100%;
   position: fixed;
   top: 0;
   left: 0;
-}
-
-.tabs {
-  height: #{$tabs-height};
-  width: calc(100% - #{$sidebar-width});
-  position: fixed;
-  top: 0;
-  right: 0;
-
-  .tab {
-    height: #{$tabs-height};
-    width: auto;
-    display: inline-block;
-  }
-}
-
-.content {
-  height: calc(100% - #{$footer-height} - #{$tabs-height});
-  width: calc(100% - #{$sidebar-width});
-  position: fixed;
-  top: #{$tabs-height};
-  right: 0;
 }
 
 .footer {
@@ -38,6 +16,54 @@
   left: 0;
 }
 
-.content-wrapper {
-  padding: 20px;
+.main-wrapper {
+  display: flex;
+  flex-direction: row;
+
+  .header {
+    flex-grow: 0;
+  }
+
+  .main {
+    flex-grow: 1;
+  }
+}
+
+.header {
+  display: flex;
+  flex-direction: row;
+
+  .sidebar {
+    width: $sidebar-width;
+    flex-grow: 0;
+  }
+
+  .navigation {
+    width: $navigation-width;
+    flex-grow: 1;
+  }
+}
+
+.main {
+  display: flex;
+  flex-direction: column;
+  min-width: 250px;
+
+  .tabs {
+    height: #{$tabs-height};
+
+    .tab {
+      height: #{$tabs-height};
+      width: auto;
+      display: inline-block;
+    }
+  }
+
+  .content {
+    flex-grow: 1;
+
+    .markdown-body {
+      max-width: #{$content-max-width};
+    }
+  }
 }

@@ -1,9 +1,19 @@
-function switchTheme() {
-  let themeToggle = document.getElementById('theme-toggle');
+// Set theme on load
+setTheme(getTheme());
 
-  if (themeToggle.checked) {
-    document.documentElement.setAttribute("data-theme", "light");
+function switchTheme() {
+  if (getTheme() === "dark") {
+    setTheme("light");
   } else {
-    document.documentElement.setAttribute("data-theme", "dark");
+    setTheme("dark");
   }
+}
+
+function setTheme(theme) {
+  window.localStorage.setItem("theme", theme);
+  document.documentElement.setAttribute("data-theme", theme);
+}
+
+function getTheme() {
+  return localStorage.getItem("theme") ?? "dark";
 }

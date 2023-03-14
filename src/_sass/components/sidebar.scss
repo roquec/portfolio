@@ -1,98 +1,93 @@
 // Sidebar
 //----------------------------
-
 .sidebar {
-  background-color: var(--color-sidebar-background-primary);
-  z-index: 1;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  background-color: var(--color-sidebar-background);
 
-  .sidebar-menu {
-    height: 100%;
+  .sidebar-top,
+  .sidebar-bottom {
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
+    align-items: center;
 
-    .sidebar-top,
-    .sidebar-bottom {
+    .icon-wrapper {
+      height: 48px;
+      width: 48px;
       display: flex;
-      flex-direction: column;
       align-items: center;
 
-      .icon-wrapper {
+      .icon {
+        display: flex;
         height: 48px;
         width: 48px;
-        display: flex;
+        color: var(--color-sidebar-foreground);
+        justify-content: center;
         align-items: center;
+        font-size: 24px;
+        flex: 0 0 auto;
+        text-decoration: none;
 
-        .icon {
-          display: flex;
-          height: 48px;
-          width: 48px;
-          color: var(--color-sidebar-foreground-secondary);
-          justify-content: center;
-          align-items: center;
-          font-size: 24px;
-          flex: 0 0 auto;
-          text-decoration: none;
-
-          &:hover {
-            color: var(--color-sidebar-foreground-primary);
-          }
-        }
-
-        .icon-tooltip {
-          outline: 1px solid #454545;
-          padding: 2px 8px;
-          background-color: var(--color-sidebar-background-secondary);
-          color: var(--color-sidebar-foreground-secondary);
-          visibility: hidden;
-          position: relative;
-          margin-left: 4px;
-          font-size: 12px;
-          line-height: 19px;
-          flex: 0 0 auto;
-          box-shadow: 0px 2px 6px 3px rgba(0, 0, 0, 0.3);
-
-
-          &:before {
-            content: '';
-            display: block;
-            position: absolute;
-            left: -10px;
-            bottom: calc(50% - 5px);
-            width: 0;
-            height: 0;
-            border: 5px solid transparent;
-            border-right-color: #454545;
-          }
-
-          &:after {
-            content: '';
-            display: block;
-            position: absolute;
-            left: -9px;
-            bottom: calc(50% - 5px);
-            width: 0;
-            height: 0;
-            border: 5px solid transparent;
-            border-right-color: var(--color-sidebar-background-secondary);
-          }
-        }
-
-        &:hover .icon-tooltip {
-          visibility: visible;
+        &:hover {
+          color: var(--color-sidebar-selected-foreground);
         }
       }
 
-      .profile-pic {
-        img {
-          width: 32px;
-          height: 32px;
-          border-radius: 50%;
+      .icon-tooltip {
+        outline: 1px solid var(--color-tooltip-border);
+        padding: 2px 8px;
+        background-color: var(--color-tooltip-background);
+        color: var(--color-tooltip-foreground);
+        visibility: hidden;
+        position: relative;
+        margin-left: 4px;
+        font-size: 12px;
+        line-height: 19px;
+        flex: 0 0 auto;
+        box-shadow: 0px 2px 6px 3px rgba(0, 0, 0, 0.3);
+
+
+        &:before {
+          content: '';
+          display: block;
+          position: absolute;
+          left: -10px;
+          bottom: calc(50% - 5px);
+          width: 0;
+          height: 0;
+          border: 5px solid transparent;
+          border-right-color: var(--color-tooltip-border);
         }
 
-        &:hover img {
-          outline: 2px solid var(--color-sidebar-foreground-primary);
+        &:after {
+          content: '';
+          display: block;
+          position: absolute;
+          left: -9px;
+          bottom: calc(50% - 5px);
+          width: 0;
+          height: 0;
+          border: 5px solid transparent;
+          border-right-color: var(--color-tooltip-background);
         }
+      }
+
+      &:hover .icon-tooltip {
+        visibility: visible;
+      }
+    }
+
+    .profile-pic {
+      img {
+        width: 32px;
+        height: 32px;
+        border-radius: 50%;
+      }
+
+      &:hover img {
+        outline: 2px solid var(--color-sidebar-selected-foreground);
       }
     }
   }

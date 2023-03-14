@@ -9,6 +9,12 @@ indent_size = 2
 indent_style = space
 insert_final_newline = true
 trim_trailing_whitespace = true
+ij_javascript_use_double_quotes = true
+ij_javascript_force_quote_style = true
+ij_html_quote_style = double
+ij_html_enforce_quotes = true
+ij_scss_use_double_quotes = true
+ij_scss_enforce_quotes_on_format = true
 
 [*.md]
 trim_trailing_whitespace = false
