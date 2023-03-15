@@ -39,8 +39,15 @@
   }
 
   .navigation {
-    width: $navigation-width;
     flex-grow: 1;
+
+    .files {
+      width: $navigation-width;
+    }
+    
+    .search {
+      width: $navigation-width;
+    }
   }
 }
 

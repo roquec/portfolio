@@ -1,16 +1,29 @@
 // Navigation
 //----------------------------
 .navigation {
-  display: none;
-}
+  background-color: var(--color-navigation-background);
 
-@media only screen and (min-width: 600px) {
-  .navigation {
+  .display-closed {
+    display: none;
+  }
+
+  .display-open {
     display: flex;
   }
 }
 
+.files {
+  display: none;
 
-.navigation {
-  background-color: var(--color-navigation-background);
+  @media only screen and (min-width: 992px) {
+    display: flex;
+  }
+}
+
+.search {
+  display: none;
+
+  @media only screen and (min-width: 992px) {
+    display: flex;
+  }
 }
