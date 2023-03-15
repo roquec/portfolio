@@ -36,7 +36,7 @@
           color: var(--color-sidebar-selected-foreground);
         }
 
-        &:focus {
+        &:active {
           color: var(--color-sidebar-selected-foreground);
           border-left: 2px solid var(--color-sidebar-selected-foreground);
         }
@@ -84,6 +84,7 @@
       &:hover .icon-tooltip {
         visibility: visible;
       }
+
     }
 
     .profile-pic {
