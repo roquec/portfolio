@@ -93,10 +93,6 @@
         }
       }
 
-      &:active .icon-tooltip {
-        visibility: visible;
-      }
-
       @media only screen and (min-width: #{$breakpoint-mobile}) {
         &:hover .icon-tooltip {
           visibility: visible;

@@ -30,47 +30,57 @@
 
 .icon-files::before {
   font-family: codicon, serif;
-  content: '\eaf0';
+  content: "\eaf0";
 }
 
 .icon-search::before {
   font-family: codicon, serif;
-  content: '\ea6d';
+  content: "\ea6d";
 }
 
 .icon-github::before {
   font-family: codicon, serif;
-  content: '\eba1';
+  content: "\eba1";
 }
 
 .icon-linkedin::before {
   font-family: fontawesome, serif;
-  content: '\f08c';
+  content: "\f08c";
 }
 
 .icon-email::before {
   font-family: codicon, serif;
-  content: '\eb1c';
+  content: "\eb1c";
 }
 
 .icon-settings::before {
   font-family: codicon, serif;
-  content: '\eb51';
+  content: "\eb51";
 }
 
 .icon-html::before {
   font-family: seti, serif;
-  content: '\e048';
+  content: "\e048";
   color: var(--color-icon-html);
 }
 
 .icon-markdown::before {
   font-family: seti, serif;
-  content: '\e060';
+  content: "\e060";
   color: var(--color-icon-markdown);
 }
 
 .icon-cross::before {
   font-family: codicon, serif;
-  content: '\ea76';
+  content: "\ea76";
+}
+
+.icon-chevron-down::before {
+  font-family: codicon, serif;
+  content: "\eab4";
+}
+
+.icon-chevron-right::before {
+  font-family: codicon, serif;
+  content: "\eab6";
 }

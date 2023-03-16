@@ -2,12 +2,42 @@
 //----------------------------
 .navigation {
   background-color: var(--color-navigation-background);
+  color: var(--color-navigation-foreground);
+  font-size: 11px;
 
-  :not(.open) {
+  .nav-panel:not(.open) {
     display: none;
   }
 
-  .open {
+  .nav-panel.open {
     display: flex;
+  }
+}
+
+.files {
+  flex-direction: column;
+
+  .files-header {
+    padding: 10px 15px;
+  }
+
+  .file-item.portfolio {
+    font-weight: bold;
+  }
+
+}
+
+.search {
+  flex-direction: column;
+}
+
+.file-item {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+
+  .icon {
+    font-size: 20px;
+    font-weight: normal;
   }
 }
