@@ -1,26 +1,25 @@
 <nav class="navigation">
   <div class="nav-panel files initial-state" id="files-panel">
     <div class="files-header">EXPLORER</div>
-
     {% include file-item.html class='portfolio' link='#' icon='chevron-down' name='PORTFOLIO' %}
 
     {% include file-item.html class='index' link='/main.html' icon='html' name='index' type='.html' %}
 
-    {% include file-item.html class='about-me' link='/main.html' icon='readme' name='README' type='.md' %}
+    {% include file-item.html class='about-me' link='/profile.html' icon='readme' name='README' type='.md' %}
 
-    {% include file-item.html class='config' link='/main.html' icon='config' type='.editorconfig' %}
+    {% include file-item.html class='config' link='/settings.html' icon='config' name='.editorconfig' %}
 
-    {% include file-item.html class='projects' link='#' icon='chevron-down' name='projects' %}
+    {% include file-item.html class='projects' link='/projects.html' icon='chevron-down' name='projects' %}
     {% for project in site.projects %}
     {% include file-item.html class='project' link=project.url icon='markdown' name=project.title type='.md' %}
     {% endfor %}
 
-    {% include file-item.html class='articles' link='#' icon='chevron-down' name='articles' %}
+    {% include file-item.html class='articles' link='/articles.html' icon='chevron-down' name='articles' %}
     {% for article in site.articles %}
     {% include file-item.html class='article' link=article.url icon='markdown' name=article.title type='.md' %}
     {% endfor %}
 
-    {% include file-item.html class='drawings' link='#' icon='chevron-down' name='drawings' %}
+    {% include file-item.html class='drawings' link='/drawings.html' icon='chevron-down' name='drawings' %}
     {% for drawing in site.drawings %}
     {% include file-item.html class='drawing' link=drawing.url icon='markdown' name=drawing.title type='.md' %}
     {% endfor %}

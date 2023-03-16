@@ -3,7 +3,7 @@
 .navigation {
   background-color: var(--color-navigation-background);
   color: var(--color-navigation-foreground);
-  font-size: 11px;
+  font-size: 13px;
 
   .nav-panel:not(.open) {
     display: none;
@@ -14,35 +14,85 @@
   }
 }
 
+// Files panel
+// ------------------
 .files {
   flex-direction: column;
 
   .files-header {
-    padding: 10px 15px;
+    padding: 12px 0 12px 20px;
+    font-size: 11px;
+    color: var(--color-navigation-header-foreground);
+  }
+
+  .file-item {
+    display: flex;
+    flex-direction: row;
+    position: relative;
+    height: 22px;
+    padding-left: 10px;
+
+    .overlay {
+      position: absolute;
+      left: 0;
+      top: 0;
+      bottom: 0;
+      right: 0;
+    }
+
+    .file-name {
+      height: 100%;
+      flex-grow: 1;
+      line-height: 22px;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    .icon {
+      font-size: 150%;
+      font-weight: normal;
+      line-height: 22px;
+      width: 22px;
+      height: 22px;
+      flex-grow: 0;
+      flex-shrink: 0;
+
+      &.icon-chevron-down,
+      &.icon-chevron-right {
+        font-size: 16px;
+        width: 20px;
+        font-weight: normal;
+      }
+    }
+
+    &:hover {
+      background-color: var(--color-file-item-hover-background);
+    }
+
+    &:active {
+      background-color: var(--color-file-item-active-background);
+      color: var(--color-file-item-active-foreground);
+      outline: 1px solid var(--color-file-item-active-border);
+    }
   }
 
   .file-item.portfolio {
     font-weight: bold;
+    font-size: 11px;
+    padding-left: 0;
   }
 
+  .file-item.article,
+  .file-item.project,
+  .file-item.drawing {
+    padding-left: 18px;
+  }
 }
 
+// Search panel
+// ------------------
 .search {
   flex-direction: column;
 }
 
-.file-item {
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-
-  .icon {
-    font-size: 19px;
-    font-weight: normal;
-  }
-
-  .icon.icon-chevron-down, .icon.icon-chevron-right {
-    font-size: 16px;
-    font-weight: normal;
-  }
-}
