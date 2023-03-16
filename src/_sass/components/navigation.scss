@@ -3,27 +3,11 @@
 .navigation {
   background-color: var(--color-navigation-background);
 
-  .display-closed {
+  :not(.open) {
     display: none;
   }
 
-  .display-open {
-    display: flex;
-  }
-}
-
-.files {
-  display: none;
-
-  @media only screen and (min-width: 992px) {
-    display: flex;
-  }
-}
-
-.search {
-  display: none;
-
-  @media only screen and (min-width: 992px) {
+  .open {
     display: flex;
   }
 }

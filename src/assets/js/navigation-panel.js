@@ -1,58 +1,92 @@
+const defaultStylesFilesOpen = `<style>
+  .files.initial-state{ display:flex !important; }
+  .icon-files.initial-state{ border-left: 2px solid var(--color-sidebar-selected-foreground) !important; color: var(--color-sidebar-selected-foreground) !important; }
+</style>`
+
+const defaultStylesSearchOpen = `<style>
+  .search.initial-state{ display:flex !important; }
+  .icon-search.initial-state{ border-left: 2px solid var(--color-sidebar-selected-foreground) !important; color: var(--color-sidebar-selected-foreground) !important; }
+</style>`
+
 initializePanels();
 
-function initializePanels() {
-  const filesPanelStatus = window.sessionStorage.getItem("files-panel");
-  const searchPanelStatus = window.sessionStorage.getItem("search-panel");
+window.addEventListener("load", updateNavigationElements);
 
-  if (filesPanelStatus === "open") {
-    document.write("<style>.files.display-default{display:flex;} .search.display-default{display:none;}</style>");
-  } else if (searchPanelStatus === "open") {
-    document.write("<style>.files.display-default{display:none;} .search.display-default{display:flex;}</style>");
-  } else if (filesPanelStatus === "closed" || searchPanelStatus === "closed") {
-    document.write("<style>.files.display-default{display:none;} .search.display-default{display:none;}</style>");
+function initializePanels() {
+  if (!isWideScreen()) {
+    window.sessionStorage.removeItem("navigation-panel");
+  }
+
+  const state = window.sessionStorage.getItem("navigation-panel");
+
+  if (state === "files") {
+    document.write(defaultStylesFilesOpen);
+  } else if (state === "search") {
+    document.write(defaultStylesSearchOpen);
+  } else if (state === "closed") {
+
+  } else if (isWideScreen()) {
+    window.sessionStorage.setItem("navigation-panel", "files");
+    document.write(defaultStylesFilesOpen);
   }
 }
 
 function toggleFilesPanel() {
-  const filesPanel = document.getElementById("files-panel");
-  const searchPanel = document.getElementById("search-panel");
+  const state = window.sessionStorage.getItem("navigation-panel");
 
-  const currentState = window.getComputedStyle(filesPanel, null).display;
-  console.log(currentState);
-  if (currentState === "flex") {
-    closePanel(filesPanel);
-    closePanel(searchPanel);
+  if (state === "files") {
+    window.sessionStorage.setItem("navigation-panel", "closed");
   } else {
-    openPanel(filesPanel);
-    closePanel(searchPanel);
+    window.sessionStorage.setItem("navigation-panel", "files");
   }
+
+  updateNavigationElements();
 }
 
 function toggleSearchPanel() {
+  const state = window.sessionStorage.getItem("navigation-panel");
+
+  if (state === "search") {
+    window.sessionStorage.setItem("navigation-panel", "closed");
+  } else {
+    window.sessionStorage.setItem("navigation-panel", "search");
+  }
+
+  updateNavigationElements();
+}
+
+function updateNavigationElements() {
   const filesPanel = document.getElementById("files-panel");
   const searchPanel = document.getElementById("search-panel");
+  const filesIcon = document.getElementById("icon-files");
+  const searchIcon = document.getElementById("icon-search");
 
-  const currentState = window.getComputedStyle(searchPanel, null).display;
+  const state = window.sessionStorage.getItem("navigation-panel");
 
-  if (currentState === "flex") {
-    closePanel(searchPanel);
-    closePanel(filesPanel);
+  if (state === "files") {
+    filesPanel.classList.add("open");
+    filesIcon.classList.add("open");
+    searchPanel.classList.remove("open");
+    searchIcon.classList.remove("open");
+  } else if (state === "search") {
+    searchPanel.classList.add("open");
+    searchIcon.classList.add("open");
+    filesPanel.classList.remove("open");
+    filesIcon.classList.remove("open");
   } else {
-    openPanel(searchPanel);
-    closePanel(filesPanel);
+    searchPanel.classList.remove("open");
+    searchIcon.classList.remove("open");
+    filesPanel.classList.remove("open");
+    filesIcon.classList.remove("open");
   }
+
+  // Remove initial state class
+  filesPanel.classList.remove("initial-state");
+  searchPanel.classList.remove("initial-state");
+  filesIcon.classList.remove("initial-state");
+  searchIcon.classList.remove("initial-state");
 }
 
-function openPanel(panel) {
-  panel.classList.add("display-open");
-  panel.classList.remove("display-closed");
-  panel.classList.remove("display-default");
-  window.sessionStorage.setItem(panel.id, "open");
-}
-
-function closePanel(panel) {
-  panel.classList.add("display-closed");
-  panel.classList.remove("display-open");
-  panel.classList.remove("display-default");
-  window.sessionStorage.setItem(panel.id, "closed");
+function isWideScreen() {
+  return window.matchMedia("(min-width: 992px)").matches;
 }
