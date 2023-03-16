@@ -42,11 +42,19 @@
     flex-grow: 1;
 
     .files {
-      width: $navigation-width;
+      width: calc(100vw - #{$sidebar-width});
+
+      @media only screen and (min-width: 600px) {
+        width: $navigation-width;
+      }
     }
-    
+
     .search {
-      width: $navigation-width;
+      width: calc(100vw - #{$sidebar-width});
+
+      @media only screen and (min-width: 600px) {
+        width: $navigation-width;
+      }
     }
   }
 }
