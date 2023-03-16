@@ -1,3 +1,5 @@
+@import "../variables";
+
 // Sidebar
 //----------------------------
 .sidebar {
@@ -40,8 +42,15 @@
           color: var(--color-sidebar-selected-foreground);
         }
 
-        &:hover {
+        &:active {
+          border-left: 2px solid var(--color-sidebar-selected-foreground);
           color: var(--color-sidebar-selected-foreground);
+        }
+
+        @media only screen and (min-width: #{$breakpoint-mobile}) {
+          &:hover {
+            color: var(--color-sidebar-selected-foreground);
+          }
         }
       }
 
@@ -84,10 +93,15 @@
         }
       }
 
-      &:hover .icon-tooltip {
+      &:active .icon-tooltip {
         visibility: visible;
       }
 
+      @media only screen and (min-width: #{$breakpoint-mobile}) {
+        &:hover .icon-tooltip {
+          visibility: visible;
+        }
+      }
     }
 
     .profile-pic {
@@ -98,8 +112,14 @@
         outline: 2px solid black;
       }
 
-      &:hover img {
+      &:active img {
         outline: 2px solid var(--color-sidebar-selected-foreground);
+      }
+
+      @media only screen and (min-width: #{$breakpoint-mobile}) {
+        &:hover img {
+          outline: 2px solid var(--color-sidebar-selected-foreground);
+        }
       }
     }
   }

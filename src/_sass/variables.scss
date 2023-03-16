@@ -1,5 +1,9 @@
 @charset "utf-8";
 
+// Media query breakpoints
+$breakpoint-mobile: 600px !default;
+$breakpoint-wide: 992px !default;
+
 // Layout variables
 $sidebar-width: 48px !default;
 $footer-height: 22px !default;

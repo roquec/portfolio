@@ -44,7 +44,7 @@
     .files {
       width: calc(100vw - #{$sidebar-width});
 
-      @media only screen and (min-width: 600px) {
+      @media only screen and (min-width: #{$breakpoint-mobile}) {
         width: $navigation-width;
       }
     }
@@ -52,7 +52,7 @@
     .search {
       width: calc(100vw - #{$sidebar-width});
 
-      @media only screen and (min-width: 600px) {
+      @media only screen and (min-width: #{$breakpoint-mobile}) {
         width: $navigation-width;
       }
     }
