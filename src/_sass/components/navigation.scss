@@ -37,7 +37,12 @@
   align-items: center;
 
   .icon {
-    font-size: 20px;
+    font-size: 19px;
+    font-weight: normal;
+  }
+
+  .icon.icon-chevron-down, .icon.icon-chevron-right {
+    font-size: 16px;
     font-weight: normal;
   }
 }

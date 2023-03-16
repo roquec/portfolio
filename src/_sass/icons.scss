@@ -84,3 +84,16 @@
   font-family: codicon, serif;
   content: "\eab6";
 }
+
+.icon-readme::before {
+  font-family: seti, serif;
+  content: "\e04d";
+  color: var(--color-icon-readme);
+}
+
+.icon-config::before {
+  font-family: seti, serif;
+  content: "\e019";
+  color: var(--color-icon-editorconfig);
+}
+
