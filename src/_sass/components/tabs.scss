@@ -14,11 +14,18 @@
   .tab {
     background-color: var(--color-tab-background);
     color: var(--color-tab-foreground);
-    padding-left: 10px;
-    padding-right: 10px;
+    padding-left: 8px;
+    padding-right: 12px;
     font-size: 13px;
     text-decoration: none;
     position: relative;
+    flex-shrink: 0;
+    flex-grow: 0;
+    display: flex;
+    flex-direction: row;
+    overflow: hidden;
+    align-items: center;
+    justify-content: center;
 
     .overlay {
       position: absolute;
@@ -28,12 +35,19 @@
       right: 0;
     }
 
-    * {
+    .name {
+      flex-grow: 1;
+      flex-shrink: 1;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      margin-left: 3px;
       line-height: 35px;
-      vertical-align: middle;
     }
 
     .icon {
+      width: 18px;
+      flex-basis: 18px;
       font-size: 19px;
     }
   }
@@ -42,22 +56,18 @@
     background-color: var(--color-tab-selected-background);
     color: var(--color-tab-selected-foreground);
     padding-right: 5px;
+    flex-shrink: 1;
 
-    span {
+    .name {
       font-style: italic;
     }
 
     .icon-cross {
       font-size: 16px;
-      margin-left: 2px;
-      height: 18px;
-      width: 18px;
-      line-height: 18px;
-      vertical-align: middle;
-      border-radius: 4px;
-      display: inline-block;
+      margin-left: 4px;
+      border-radius: 5px;
+      padding: 3px 2px 1px 2px;
       z-index: 1;
-      position: relative;
 
       color: var(--color-tab-selected-foreground);
 

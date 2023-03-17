@@ -29,11 +29,13 @@ $dark-mode-content-foreground: #FFFFFF;
 $dark-mode-footer-background: #007ACC;
 $dark-mode-footer-foreground: #FFFFFF;
 $dark-mode-breadcrumbs-foreground: #A9A9A9;
-$dark-mode-scrollbar-thumb: #424242;
+$dark-mode-scrollbar-thumb: rgba(255, 255, 255, 0.16);
+$dark-mode-scrollbar-thumb-hover: rgba(255, 255, 255, 0.21);
+$dark-mode-scrollbar-thumb-active: rgba(255, 255, 255, 0.28);
 $dark-mode-icon-markdown: #519ABA;
-$dark-mode-icon-html: #DB5929;
+$dark-mode-icon-html: #E37933;
 $dark-mode-icon-readme: #519ABA;
-$dark-mode-icon-editorconfig: #6d8086;
+$dark-mode-icon-editorconfig: #6D8086;
 
 // Markdown
 $dark-mode-color-fg-default: #D4D4D4; //#c9d1d9

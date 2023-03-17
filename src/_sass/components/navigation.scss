@@ -47,6 +47,7 @@
       white-space: nowrap;
       overflow: hidden;
       text-overflow: ellipsis;
+      padding-right: 2px;
     }
 
     .icon {
@@ -87,6 +88,14 @@
   .file-item.project,
   .file-item.drawing {
     padding-left: 18px;
+  }
+
+  .folder {
+    display: block;
+  }
+
+  .folder.portfolio-folder {
+    display: block;
   }
 }
 

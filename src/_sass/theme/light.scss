@@ -29,9 +29,11 @@ $light-mode-content-foreground: #333333;
 $light-mode-footer-background: #007ACC;
 $light-mode-footer-foreground: #FFFFFF;
 $light-mode-breadcrumbs-foreground: #818181;
-$light-mode-scrollbar-thumb: #C1C1C1;
+$light-mode-scrollbar-thumb: rgba(0, 0, 0, 0.16);
+$light-mode-scrollbar-thumb-hover: rgba(0, 0, 0, 0.21);
+$light-mode-scrollbar-thumb-active: rgba(0, 0, 0, 0.28);
 $light-mode-icon-markdown: #498BA7;
-$light-mode-icon-html: #D36F34;
+$light-mode-icon-html: #CC6D2E;
 $light-mode-icon-readme: #498BA7;
 $light-mode-icon-editorconfig: #627379;
 

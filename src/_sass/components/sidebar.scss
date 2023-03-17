@@ -8,6 +8,7 @@
   flex-direction: column;
   justify-content: space-between;
   background-color: var(--color-sidebar-background);
+  z-index: 1;
 
   .sidebar-top,
   .sidebar-bottom {
