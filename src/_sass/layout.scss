@@ -42,10 +42,21 @@
 
   .navigation {
     flex-grow: 1;
-    width: calc(100vw - #{$sidebar-width});
 
-    @media only screen and (min-width: #{$breakpoint-mobile}) {
-      width: $navigation-width;
+    .files {
+      width: calc(100vw - #{$sidebar-width});
+
+      @media only screen and (min-width: #{$breakpoint-mobile}) {
+        width: $navigation-width;
+      }
+    }
+
+    .search {
+      width: calc(100vw - #{$sidebar-width});
+
+      @media only screen and (min-width: #{$breakpoint-mobile}) {
+        width: $navigation-width;
+      }
     }
   }
 }
