@@ -71,10 +71,20 @@
       background-color: var(--color-file-item-hover-background);
     }
 
-    &:active {
+
+    &.open {
+      background-color: var(--color-navigation-selected-background);
+    }
+
+    &:focus-within {
       background-color: var(--color-file-item-active-background);
       color: var(--color-file-item-active-foreground);
       outline: 1px solid var(--color-file-item-active-border);
+
+      a {
+        border: none;
+        outline: none;
+      }
     }
   }
 

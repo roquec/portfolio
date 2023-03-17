@@ -1,4 +1,4 @@
-<div class="file-item {{ include.class }}">
+<div class="file-item {{ include.class }} {% if page.url == include.link %}open{% endif %}">
   <a class="overlay" href="{{ include.link }}"></a>
   <i class="icon icon-{{ include.icon }}"></i>
   <div class="file-name">{{ include.name }}{{ include.type }}</div>

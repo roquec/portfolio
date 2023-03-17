@@ -1,14 +1,17 @@
 <div class="tabs">
-  <div class="tab index-tab">
-    <a class="overlay" href="/main.html"></a>
+  <div class="tab index-tab {% if page.title == "index" %}current-tab{% endif %}">
+    {% if page.title != "index" %}
+      <a class="overlay" href="/main.html"></a>
+    {% endif %}
     <i class="icon icon-html"></i>
     <div class="name">index.html</div>
   </div>
 
-  <div class="tab current-tab">
-    <a class="overlay" href="/articles/article2/article2.html"></a>
+  {% if page.title != "index" %}
+  <div class="tab content-tab current-tab">
     <i class="icon icon-markdown"></i>
     <div class="name">{{ page.title }}.md</div>
-    <a href="/articles/article1/article1.html" class="icon icon-cross"></a>
+    <a href="/main.html" class="icon icon-cross"></a>
   </div>
+  {% endif %}
 </div>
