@@ -91,7 +91,7 @@ body {
     overflow: overlay;
 
     &::-webkit-scrollbar {
-      width: 12px;
+      width: rem(12px);
     }
 
     &::-webkit-scrollbar-thumb {

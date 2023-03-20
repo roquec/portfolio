@@ -1,21 +1,28 @@
-@charset "utf-8";
+@use "sass:math";
+
+// Rem conversion function
+@function rem($pixels) {
+  $raw-value: math.div($pixels, ($pixels * 0 + 1));
+  $rem-value: math.div($raw-value, 16);
+  @return #{$rem-value}rem;
+}
 
 // Media query breakpoints
-$breakpoint-mobile: 600px !default;
-$breakpoint-wide: 992px !default;
+$breakpoint-mobile: rem(600px) !default;
+$breakpoint-wide: rem(992px) !default;
 
 // Layout variables
-$sidebar-width: 48px !default;
-$footer-height: 22px !default;
-$tabs-height: 35px !default;
-$navigation-width: 300px !default;
-$content-max-width: 830px !default;
+$sidebar-width: rem(48px) !default;
+$footer-height: rem(22px) !default;
+$tabs-height: rem(35px) !default;
+$navigation-width: rem(300px) !default;
+$content-max-width: rem(830px) !default;
 
 // Font variables
 $base-font-family: Segoe WPC, Segoe UI, sans-serif !default;
 $code-font-family: "Menlo", "Inconsolata", "Consolas", "Roboto Mono", "Ubuntu Mono", "Liberation Mono", "Courier New", monospace !default;
-$base-font-size: 16px !default;
+$base-font-size: rem(16px) !default;
 $base-font-weight: 400 !default;
-$small-font-size: $base-font-size * 0.875 !default;
+$small-font-size: calc($base-font-size * 0.875) !default;
 $base-line-height: 1.5 !default;
 
