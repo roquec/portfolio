@@ -1,9 +1,15 @@
 @import "../variables";
 
-// Sidebar
-//----------------------------
+// Variables
+$sidebar-width: rem(48px);
+$sidebar-icon-height: rem(48px);
+$tooltip-tip-width: rem(5px);
+
+/*  ===================
+    SIDEBAR
+    =================== */
 .sidebar {
-  height: 100%;
+  width: #{$sidebar-width};
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -12,112 +18,119 @@
 
   .sidebar-top,
   .sidebar-bottom {
+    width: 100%;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
 
     .icon-wrapper {
+      width: 100%;
       display: flex;
       align-items: center;
+      position: relative;
+      color: var(--color-sidebar-foreground);
+
+      .overlay {
+        position: absolute;
+        left: 0;
+        top: 0;
+        bottom: 0;
+        right: 0;
+        z-index: 1;
+      }
+
+      .highlight {
+        width: rem(2px);
+        height: 100%;
+        position: absolute;
+        left: 0;
+        background-color: var(--color-sidebar-selected-foreground);
+        display: none;
+      }
 
       .icon {
+        height: #{$sidebar-icon-height};
+        width: 100%;
         display: flex;
-        height: 48px;
-        width: 44px;
-        justify-content: center;
         align-items: center;
-        font-size: 24px;
-        flex: 0 0 auto;
+        justify-content: center;
+        font-size: rem(24px);
         text-decoration: none;
-        border-right: 2px solid transparent;
+      }
 
-        &:not(.open) {
-          color: var(--color-sidebar-foreground);
-          border-left: 2px solid transparent;
-        }
-
-        &.open {
-          border-left: 2px solid var(--color-sidebar-selected-foreground);
-          color: var(--color-sidebar-selected-foreground);
-        }
-
-        &:active {
-          border-left: 2px solid var(--color-sidebar-selected-foreground);
-          color: var(--color-sidebar-selected-foreground);
-        }
-
-        @media only screen and (min-width: #{$breakpoint-mobile}) {
-          &:hover {
-            color: var(--color-sidebar-selected-foreground);
-          }
-        }
+      .profile-pic img {
+        width: rem(26px);
+        height: rem(26px);
+        border-radius: 50%;
       }
 
       .tooltip-wrapper {
         position: absolute;
-        left: 53px;
+        left: calc(#{$sidebar-width} + #{$tooltip-tip-width});
+
+        .icon-tooltip {
+          position: relative;
+          background-color: var(--color-tooltip-background);
+          color: var(--color-tooltip-foreground);
+          padding: rem(2px) rem(8px);
+          font-size: rem(12px);
+          line-height: rem(19px);
+          white-space: nowrap;
+          outline: rem(1px) solid var(--color-tooltip-border);
+          box-shadow: 0 rem(2px) rem(6px) rem(3px) rgba(0, 0, 0, 0.3);
+          display: none;
+
+          &:before {
+            content: "";
+            display: block;
+            position: absolute;
+            left: rem(-10px);
+            bottom: calc(50% - #{$tooltip-tip-width});
+            width: 0;
+            height: 0;
+            border: #{$tooltip-tip-width} solid transparent;
+            border-right-color: var(--color-tooltip-border);
+          }
+
+          &:after {
+            content: "";
+            display: block;
+            position: absolute;
+            left: rem(-9px);
+            bottom: calc(50% - #{$tooltip-tip-width});
+            width: 0;
+            height: 0;
+            border: #{$tooltip-tip-width} solid transparent;
+            border-right-color: var(--color-tooltip-background);
+          }
+        }
       }
 
-      .icon-tooltip {
-        position: relative;
-        background-color: var(--color-tooltip-background);
-        color: var(--color-tooltip-foreground);
-        padding: 2px 8px;
-        font-size: 12px;
-        line-height: 19px;
-        white-space: nowrap;
-        outline: 1px solid var(--color-tooltip-border);
-        box-shadow: 0 2px 6px 3px rgba(0, 0, 0, 0.3);
-        display: none;
+      &.open,
+      &:active {
+        color: var(--color-sidebar-selected-foreground);
 
-        &:before {
-          content: "";
-          display: block;
-          position: absolute;
-          left: -10px;
-          bottom: calc(50% - 5px);
-          width: 0;
-          height: 0;
-          border: 5px solid transparent;
-          border-right-color: var(--color-tooltip-border);
+        img {
+          outline: rem(2px) solid var(--color-sidebar-selected-foreground);
         }
 
-        &:after {
-          content: "";
+        .highlight {
           display: block;
-          position: absolute;
-          left: -9px;
-          bottom: calc(50% - 5px);
-          width: 0;
-          height: 0;
-          border: 5px solid transparent;
-          border-right-color: var(--color-tooltip-background);
         }
       }
 
       @media only screen and (min-width: #{$breakpoint-mobile}) {
-        &:hover .icon-tooltip {
-          display: block;
-        }
-      }
-    }
+        &:hover {
+          color: var(--color-sidebar-selected-foreground);
 
-    .profile-pic {
-      img {
-        width: 26px;
-        height: 26px;
-        border-radius: 50%;
-        outline: 2px solid black;
-      }
+          img {
+            outline: rem(2px) solid var(--color-sidebar-selected-foreground);
+          }
 
-      &:active img {
-        outline: 2px solid var(--color-sidebar-selected-foreground);
-      }
-
-      @media only screen and (min-width: #{$breakpoint-mobile}) {
-        &:hover img {
-          outline: 2px solid var(--color-sidebar-selected-foreground);
+          .icon-tooltip {
+            display: block;
+          }
         }
       }
     }

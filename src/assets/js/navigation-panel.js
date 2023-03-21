@@ -1,11 +1,13 @@
 const defaultStylesFilesOpen = `<style>
-  .files.initial-state{ display:flex !important; }
-  .icon-files.initial-state{ border-left: 2px solid var(--color-sidebar-selected-foreground) !important; color: var(--color-sidebar-selected-foreground) !important; }
+  .files-panel.initial-state{ display:flex !important; }
+  .files-icon.initial-state{ color: var(--color-sidebar-selected-foreground) !important; }
+  .files-icon.initial-state .highlight { display: block !important; }
 </style>`
 
 const defaultStylesSearchOpen = `<style>
-  .search.initial-state{ display:flex !important; }
-  .icon-search.initial-state{ border-left: 2px solid var(--color-sidebar-selected-foreground) !important; color: var(--color-sidebar-selected-foreground) !important; }
+  .search-panel.initial-state{ display:flex !important; }
+  .search-icon.initial-state{ color: var(--color-sidebar-selected-foreground) !important; }
+  .search-icon.initial-state .highlight { display: block !important; }
 </style>`
 
 initializePanels();
@@ -58,8 +60,8 @@ function toggleSearchPanel() {
 function updateNavigationElements() {
   const filesPanel = document.getElementById("files-panel");
   const searchPanel = document.getElementById("search-panel");
-  const filesIcon = document.getElementById("icon-files");
-  const searchIcon = document.getElementById("icon-search");
+  const filesIcon = document.getElementById("files-icon");
+  const searchIcon = document.getElementById("search-icon");
 
   const state = window.sessionStorage.getItem("navigation-panel");
 
@@ -88,5 +90,5 @@ function updateNavigationElements() {
 }
 
 function isWideScreen() {
-  return window.matchMedia("(min-width: 992px)").matches;
+  return window.matchMedia("(min-width: 62rem)").matches;
 }

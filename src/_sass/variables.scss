@@ -8,21 +8,20 @@
 }
 
 // Media query breakpoints
-$breakpoint-mobile: rem(600px) !default;
-$breakpoint-wide: rem(992px) !default;
+$breakpoint-mobile: rem(600px);
+$breakpoint-wide: rem(992px);
 
 // Layout variables
-$sidebar-width: rem(48px) !default;
-$footer-height: rem(22px) !default;
-$tabs-height: rem(35px) !default;
-$navigation-width: rem(300px) !default;
-$content-max-width: rem(830px) !default;
+$footer-height: rem(22px);
+$tabs-height: rem(35px);
+$navigation-width: rem(300px);
+$content-max-width: 75ch;
 
-// Font variables
-$base-font-family: Segoe WPC, Segoe UI, sans-serif !default;
-$code-font-family: "Menlo", "Inconsolata", "Consolas", "Roboto Mono", "Ubuntu Mono", "Liberation Mono", "Courier New", monospace !default;
-$base-font-size: rem(16px) !default;
-$base-font-weight: 400 !default;
-$small-font-size: calc($base-font-size * 0.875) !default;
-$base-line-height: 1.5 !default;
+// Typography
+$base-font-family: Segoe WPC, Segoe UI, sans-serif;
+$code-font-family: "Menlo", "Inconsolata", "Consolas", "Roboto Mono", "Ubuntu Mono", "Liberation Mono", "Courier New", monospace;
+$base-font-size: rem(16px);
+$base-font-weight: 400;
+$small-font-size: calc($base-font-size * 0.875);
+$base-line-height: 1.5;
 

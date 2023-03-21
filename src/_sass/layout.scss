@@ -1,19 +1,18 @@
 @import "variables";
 
+body {
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
 .main-wrapper {
-  height: calc(100% - #{$footer-height});
-  width: 100%;
-  position: fixed;
-  top: 0;
-  left: 0;
+  flex: 1;
+  overflow: hidden;
 }
 
 .footer {
-  height: $footer-height;
-  width: 100%;
-  position: fixed;
-  bottom: 0;
-  left: 0;
   z-index: 2;
 }
 
@@ -21,12 +20,8 @@
   display: flex;
   flex-direction: row;
 
-  .header {
-    flex-grow: 0;
-  }
-
   .main {
-    flex-grow: 1;
+    flex: 1;
   }
 }
 
@@ -35,48 +30,17 @@
   flex-direction: row;
   z-index: 1;
 
-  .sidebar {
-    width: $sidebar-width;
-    flex-grow: 0;
-  }
-
   .navigation {
-    flex-grow: 1;
-
-    .files {
-      width: calc(100vw - #{$sidebar-width});
-
-      @media only screen and (min-width: #{$breakpoint-mobile}) {
-        width: $navigation-width;
-      }
-    }
-
-    .search {
-      width: calc(100vw - #{$sidebar-width});
-
-      @media only screen and (min-width: #{$breakpoint-mobile}) {
-        width: $navigation-width;
-      }
-    }
+    flex: 1;
   }
 }
 
 .main {
   display: flex;
   flex-direction: column;
-  min-width: 250px;
-
-  .tabs {
-    height: #{$tabs-height};
-
-    .tab {
-      height: #{$tabs-height};
-      display: flex;
-    }
-  }
 
   .content {
-    flex-grow: 1;
+    flex: 1;
 
     .markdown-body {
       max-width: #{$content-max-width};
