@@ -1,15 +1,24 @@
 @import "../variables";
 
 // Variables
-$sidebar-width: rem(48px);
+$sidebar-width-mobile: rem(40px);
+$sidebar-width-desktop: rem(48px);
 $sidebar-icon-height: rem(48px);
 $tooltip-tip-width: rem(5px);
+
+.sidebar {
+  --sidebar-width: #{$sidebar-width-mobile};
+
+  @media only screen and (min-width: #{$breakpoint-mobile}) {
+    --sidebar-width: #{$sidebar-width-desktop};
+  }
+}
 
 /*  ===================
     SIDEBAR
     =================== */
 .sidebar {
-  width: #{$sidebar-width};
+  width: var(--sidebar-width);
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -67,7 +76,7 @@ $tooltip-tip-width: rem(5px);
 
       .tooltip-wrapper {
         position: absolute;
-        left: calc(#{$sidebar-width} + #{$tooltip-tip-width});
+        left: calc(var(--sidebar-width) + #{$tooltip-tip-width});
 
         .icon-tooltip {
           position: relative;
