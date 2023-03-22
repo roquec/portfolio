@@ -4,12 +4,12 @@
   background-color: var(--color-content-background);
   display: flex;
   flex-direction: column;
-  padding-left: 10px;
-  padding-right: 5px;
+  padding-left: 8px;
+  padding-right: 8px;
 }
 
 @media only screen and (min-width: 600px) {
   .content {
-    padding-left: 30px;
+    padding-left: 12px;
   }
 }

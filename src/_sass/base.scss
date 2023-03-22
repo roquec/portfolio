@@ -83,31 +83,31 @@ body {
 }
 
 .scrollable {
-  overflow: auto;
+  overflow: overlay;
+
+  &::-webkit-scrollbar {
+    width: rem(5px);
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background-color: transparent;
+  }
+
+  &:hover::-webkit-scrollbar-thumb {
+    background-color: var(--color-scrollbar-thumb);
+
+    &:hover {
+      background-color: var(--color-scrollbar-thumb-hover);
+    }
+
+    &:active {
+      background-color: var(--color-scrollbar-thumb-active);
+    }
+  }
 }
 
 @media only screen and (min-width: 600px) {
-  .scrollable {
-    overflow: overlay;
-
-    &::-webkit-scrollbar {
-      width: rem(12px);
-    }
-
-    &::-webkit-scrollbar-thumb {
-      background-color: transparent;
-    }
-
-    &:hover::-webkit-scrollbar-thumb {
-      background-color: var(--color-scrollbar-thumb);
-
-      &:hover {
-        background-color: var(--color-scrollbar-thumb-hover);
-      }
-
-      &:active {
-        background-color: var(--color-scrollbar-thumb-active);
-      }
-    }
+  .scrollable::-webkit-scrollbar {
+    width: rem(12px);
   }
 }
