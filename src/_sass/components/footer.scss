@@ -18,11 +18,18 @@
     .footer-left {
       display: flex;
       align-items: center;
-      padding-left: 4px;
 
-      .icon::before {
-        color: var(--color-footer-foreground);
-        transform: rotate(180deg);
+      .icon-theme {
+        height: rem(22px);
+        width: rem(22px);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+
+        &:hover {
+          background-color: rgba(255, 255, 255, 0.3);
+        }
       }
     }
 
@@ -33,3 +40,4 @@
     }
   }
 }
+

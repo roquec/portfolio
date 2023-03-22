@@ -1,19 +1,7 @@
 @font-face {
-  font-family: "codicon";
+  font-family: "roquec-portfolio";
   font-display: block;
-  src: url("../fonts/codicon.ttf") format("truetype");
-}
-
-@font-face {
-  font-family: "seti";
-  font-display: block;
-  src: url("../fonts/seti.woff") format("woff");
-}
-
-@font-face {
-  font-family: "fontawesome";
-  font-display: block;
-  src: url("../fonts/fontawesome-brands.ttf") format("truetype");
+  src: url("../fonts/roquec-portfolio.woff2") format("woff2");
 }
 
 .icon {
@@ -29,75 +17,85 @@
 }
 
 .icon-files::before {
-  font-family: codicon, serif;
-  content: "\eaf0";
+  font-family: roquec-portfolio, serif;
+  content: "\e80a";
 }
 
 .icon-search::before {
-  font-family: codicon, serif;
-  content: "\ea6d";
+  font-family: roquec-portfolio, serif;
+  content: "\e806";
 }
 
 .icon-github::before {
-  font-family: codicon, serif;
-  content: "\eba1";
+  font-family: roquec-portfolio, serif;
+  content: "\f80c";
 }
 
 .icon-linkedin::before {
-  font-family: fontawesome, serif;
-  content: "\f08c";
+  font-family: roquec-portfolio, serif;
+  content: "\f80d";
 }
 
 .icon-email::before {
-  font-family: codicon, serif;
-  content: "\eb1c";
+  font-family: roquec-portfolio, serif;
+  content: "\e80e";
 }
 
 .icon-settings::before {
-  font-family: codicon, serif;
-  content: "\eb51";
+  font-family: roquec-portfolio, serif;
+  content: "\e80b";
 }
 
 .icon-html::before {
-  font-family: seti, serif;
-  content: "\e048";
+  font-family: roquec-portfolio, serif;
+  content: "\e800";
   color: var(--color-icon-html);
 }
 
 .icon-markdown::before {
-  font-family: seti, serif;
-  content: "\e060";
+  font-family: roquec-portfolio, serif;
+  content: "\e801";
   color: var(--color-icon-markdown);
 }
 
 .icon-cross::before {
-  font-family: codicon, serif;
-  content: "\ea76";
+  font-family: roquec-portfolio, serif;
+  content: "\e807";
 }
 
 .icon-chevron-down::before {
-  font-family: codicon, serif;
-  content: "\eab4";
+  font-family: roquec-portfolio, serif;
+  content: "\e808";
 }
 
 .icon-chevron-right::before {
-  font-family: codicon, serif;
-  content: "\eab6";
+  font-family: roquec-portfolio, serif;
+  content: "\e809";
 }
 
 .icon-readme::before {
-  font-family: seti, serif;
-  content: "\e04d";
+  font-family: roquec-portfolio, serif;
+  content: "\e802";
   color: var(--color-icon-readme);
 }
 
 .icon-config::before {
-  font-family: seti, serif;
-  content: "\e019";
+  font-family: roquec-portfolio, serif;
+  content: "\e803";
   color: var(--color-icon-editorconfig);
 }
 
 .icon-theme::before {
-  font-family: codicon, serif;
-  content: "\eac6";
+  font-family: roquec-portfolio, serif;
+  content: "\e804";
+  font-size: 16px;
+  color: rgba(255, 255, 255, 1);
+}
+
+html[data-theme="light"] {
+  .icon-theme::before {
+    font-family: roquec-portfolio, serif;
+    content: "\e80f";
+    font-size: 12px;
+  }
 }
