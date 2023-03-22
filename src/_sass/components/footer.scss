@@ -1,13 +1,9 @@
 @import "../variables";
 
-// Variables
-$footer-height: rem(22px);
-
 /*  ===================
     FOOTER
     =================== */
 .footer {
-  height: #{$footer-height};
   width: 100%;
   background-color: var(--color-footer-background);
   color: var(--color-footer-foreground);

@@ -1,18 +1,21 @@
 @import "variables";
 
-body {
-  width: 100vw;
-  min-height: 100dvh;
-  display: flex;
-  flex-direction: column;
-}
+$footer-height: rem(22px);
 
 .main-wrapper {
-  flex: 1 1 auto;
-  height: 0;
+  height: calc(100% - #{$footer-height});
+  width: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
 }
 
 .footer {
+  height: $footer-height;
+  width: 100%;
+  position: fixed;
+  bottom: 0;
+  left: 0;
   z-index: 2;
 }
 
