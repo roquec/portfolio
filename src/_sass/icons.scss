@@ -97,3 +97,7 @@
   color: var(--color-icon-editorconfig);
 }
 
+.icon-theme::before {
+  font-family: codicon, serif;
+  content: "\eac6";
+}

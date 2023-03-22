@@ -139,7 +139,7 @@ $tooltip-tip-width: rem(5px);
     }
   }
 
-  @media only screen and (min-width: #{$breakpoint-mobile}) {
+  @media (hover: hover) {
     &:hover {
       color: var(--color-sidebar-selected-foreground);
 

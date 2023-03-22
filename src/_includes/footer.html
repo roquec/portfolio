@@ -1,11 +1,11 @@
 <div class="footer-wrapper">
   <div class="footer-left">
-    Theme
-    <div>
-      <input class="container_toggle" type="checkbox" id="theme-toggle" name="theme-toggle" onclick="switchTheme();">
-    </div>
+    <a class="icon icon-theme" href="#" onclick="switchTheme();"></a>
   </div>
   <div class="footer-right">
-    © Copyright 2023, Roque Carrizo
+    © Copyright&nbsp;<span id="year"></span>, Roque Carrizo
+    <script>
+      document.getElementById("year").innerHTML = new Date().getFullYear().toString();
+    </script>
   </div>
 </div>

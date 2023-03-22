@@ -4,8 +4,8 @@
     <div class="files-header">EXPLORER</div>
 
     {% include file-item.html class='portfolio' link='#' icon='chevron-down' name='PORTFOLIO' %}
-
     <div class="folder portfolio-folder">
+
       {% include file-item.html class='index' link='/main.html' icon='html' name='index' type='.html' %}
 
       {% include file-item.html class='about-me' link='/profile.html' icon='readme' name='README' type='.md' %}
@@ -32,7 +32,9 @@
         {% include file-item.html class='drawing' link=drawing.url icon='markdown' name=drawing.title type='.md' %}
         {% endfor %}
       </div>
+
     </div>
+
   </div>
 
   <div class="nav-panel search-panel initial-state" id="search-panel">
