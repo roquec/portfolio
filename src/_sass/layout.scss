@@ -25,6 +25,7 @@ $footer-height: rem(22px);
 
   .main {
     flex: 1;
+    min-width: rem(250px);
   }
 }
 

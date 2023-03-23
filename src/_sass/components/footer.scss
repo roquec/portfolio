@@ -19,9 +19,27 @@
       display: flex;
       align-items: center;
 
+      .icon-theme {
+        height: 100%;
+        padding: 0 10px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+        background-color: #16825D;
+
+        &::before {
+          font-size: rem(13px);
+        }
+
+        &:hover {
+          background-color: #329171;
+        }
+      }
+
       .icon-source-control {
+        height: 100%;
         padding: 0 8px;
-        height: rem(22px);
         display: flex;
         align-items: center;
         justify-content: center;
@@ -33,25 +51,6 @@
 
         &:hover {
           background-color: #1F8AD2;
-        }
-      }
-
-      .icon-theme {
-        height: rem(22px);
-        padding: 0 6px;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        cursor: pointer;
-        background-color: #16825D;
-
-        &::before {
-          font-size: rem(13px);
-          width: 22px;
-        }
-
-        &:hover {
-          background-color: #329171;
         }
       }
     }

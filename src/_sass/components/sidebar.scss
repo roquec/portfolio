@@ -80,6 +80,9 @@ $tooltip-tip-width: rem(5px);
       .tooltip-wrapper {
         position: absolute;
         left: calc(var(--sidebar-width) + #{$tooltip-tip-width});
+        visibility: hidden;
+        opacity: 0;
+        transition: opacity 0.2s linear 0s;
 
         .icon-tooltip {
           position: relative;
@@ -91,7 +94,6 @@ $tooltip-tip-width: rem(5px);
           white-space: nowrap;
           outline: rem(1px) solid var(--color-tooltip-border);
           box-shadow: 0 rem(2px) rem(6px) rem(3px) rgba(0, 0, 0, 0.3);
-          display: none;
 
           &:before {
             content: "";
@@ -147,8 +149,10 @@ $tooltip-tip-width: rem(5px);
         outline: rem(2px) solid var(--color-sidebar-selected-foreground);
       }
 
-      .icon-tooltip {
-        display: block !important;
+      .tooltip-wrapper {
+        visibility: visible !important;
+        opacity: 1 !important;
+        transition-delay: 0.4s;
       }
     }
   }
