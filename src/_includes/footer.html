@@ -1,9 +1,12 @@
 <div class="footer-wrapper">
   <div class="footer-left">
     <a class="icon icon-theme" onclick="switchTheme();"></a>
+    <a class="icon icon-source-control" href="https://github.com/roquec/Portfolio/tree/master" target="_blank">
+      &nbsp;master*
+    </a>
   </div>
   <div class="footer-right">
-    © Copyright&nbsp;<span id="year"></span>, Roque Carrizo
+    <i class="icon icon-copyright"></i>&nbsp;Copyright&nbsp;<span id="year"></span>, Roque Carrizo
     <script>
       document.getElementById("year").innerHTML = new Date().getFullYear().toString();
     </script>
