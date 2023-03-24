@@ -1,10 +1,12 @@
 const defaultStylesFilesOpen = `<style>
+  .navigation { display:flex !important; }
   .files-panel.initial-state{ display:flex !important; }
   .files-icon.initial-state{ color: var(--color-sidebar-selected-foreground) !important; }
   .files-icon.initial-state .highlight { display: block !important; }
 </style>`
 
 const defaultStylesSearchOpen = `<style>
+  .navigation { display:flex !important; }
   .search-panel.initial-state{ display:flex !important; }
   .search-icon.initial-state{ color: var(--color-sidebar-selected-foreground) !important; }
   .search-icon.initial-state .highlight { display: block !important; }

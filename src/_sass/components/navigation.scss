@@ -10,10 +10,16 @@ $navigation-width: rem(300px);
   background-color: var(--color-navigation-background);
   color: var(--color-navigation-foreground);
   font-size: rem(13px);
+  display: none;
+  width: #{$navigation-width};
 
   .nav-panel {
-    width: $navigation-width;
+    width: 100%;
     display: none;
+  }
+
+  &:has(> .open) {
+    display: flex;
   }
 
   .nav-panel.open {
@@ -72,6 +78,12 @@ $navigation-width: rem(300px);
         font-size: rem(16px);
         width: rem(20px);
         font-weight: normal;
+        z-index: 1;
+        color: var(--color-navigation-foreground);
+
+        &:hover {
+          color: var(--color-file-item-active-foreground);
+        }
       }
     }
 
@@ -113,6 +125,10 @@ $navigation-width: rem(300px);
 
   .folder.portfolio-folder {
     display: block;
+  }
+
+  .folder.collapsed {
+    display: none;
   }
 }
 
