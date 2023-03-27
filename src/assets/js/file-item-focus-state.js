@@ -4,7 +4,6 @@ window.addEventListener("load", updateFocus);
 window.addEventListener("beforeunload", saveFocus);
 
 function saveFocus() {
-  console.log("ttest");
   const focusedElement = document.activeElement.parentElement;
   if (focusedElement.classList.contains("file-item")) {
     window.sessionStorage.setItem("file-item-focus", focusedElement.id);
