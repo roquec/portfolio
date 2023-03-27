@@ -1,6 +1,6 @@
 initializePanels();
 
-window.addEventListener("load", updateNavigationElements);
+window.addEventListener("DOMContentLoaded", updateNavigationElements);
 
 function initializePanels() {
   if (!isWideScreen()) {

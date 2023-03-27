@@ -1,6 +1,6 @@
 initializeFocus();
 
-window.addEventListener("load", updateFocus);
+window.addEventListener("DOMContentLoaded", updateFocus);
 window.addEventListener("beforeunload", saveFocus);
 
 function saveFocus() {

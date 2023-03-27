@@ -1,6 +1,6 @@
 initializeFolders();
 
-window.addEventListener("load", updateFolders);
+window.addEventListener("DOMContentLoaded", updateFolders);
 
 function initializeFolders() {
   if (!window.sessionStorage.getItem("collapsed-folders")) {
