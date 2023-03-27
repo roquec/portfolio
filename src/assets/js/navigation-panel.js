@@ -73,9 +73,6 @@ function updateNavigationElements() {
     filesIcon.classList.remove("open");
     navWrapper.classList.remove("open");
   }
-
-  // Remove initial state class
-  document.body.classList.remove("initial-state");
 }
 
 function setInitialNavigationPanelStyles(panelId) {
