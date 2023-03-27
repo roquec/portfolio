@@ -1,5 +1,7 @@
 <div class="file-item {{ include.class }} {% if page.url == include.link %}open{% endif %}">
-  <a class="overlay" href="{{ include.link }}"></a>
-  <a class="icon icon-{{ include.icon }}" {% if include.onclick %} onclick="{{ include.onclick }}" {% endif %}></a>
+  <a class="overlay"
+     {% if include.link %} href="{{ include.link }}" {% endif %}
+     {% if include.onclick %} onclick="{{ include.onclick }}" {% endif %}></a>
+  <i class="icon icon-{{ include.icon }}"></i>
   <div class="file-name">{{ include.name }}{{ include.type }}</div>
 </div>

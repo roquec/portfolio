@@ -1,37 +1,45 @@
-<nav class="navigation scrollable">
-  <div class="nav-panel files-panel initial-state" id="files-panel">
+<nav class="navigation-wrapper scrollable" id="navigation-wrapper">
+  <div class="nav-panel files-panel" id="files-panel">
 
     <div class="files-header">EXPLORER</div>
 
-    {% include file-item.html class='portfolio' link='#' icon='chevron-down' name='PORTFOLIO'
+    {% include file-item.html class='portfolio' icon='chevron-down' name='PORTFOLIO' link='#'
     onclick="toggleFolder('portfolio-folder')" %}
     <div class="folder portfolio-folder" id="portfolio-folder">
+      {% include file-item.html class='index' icon='html' name='index' type='.html' link='/main.html' %}
 
-      {% include file-item.html class='index' link='/main.html' icon='html' name='index' type='.html' %}
+      {% include file-item.html class='about-me' icon='readme' name='README' type='.md' link='/profile.html' %}
 
-      {% include file-item.html class='about-me' link='/profile.html' icon='readme' name='README' type='.md' %}
+      {% include file-item.html class='config' icon='config' name='.editorconfig' link='/settings.html' %}
 
-      {% include file-item.html class='config' link='/settings.html' icon='config' name='.editorconfig' %}
-
-      {% include file-item.html class='projects' link='/projects.html' icon='chevron-right' name='projects'
+      {% include file-item.html class='projects' icon='chevron-right' name='projects' link='#'
       onclick="toggleFolder('projects-folder')" %}
       <div class="folder projects-folder" id="projects-folder">
+        {% include file-item.html class='projects-menu' icon='html' name='projects' type='.html' link='/projects.html'
+        %}
+
         {% for project in site.projects %}
-        {% include file-item.html class='project' link=project.url icon='markdown' name=project.title type='.md' %}
+        {% include file-item.html class='project' icon='markdown' name=project.title type='.md' link=project.url %}
         {% endfor %}
       </div>
 
-      {% include file-item.html class='articles' link='/articles.html' icon='chevron-right' name='articles'
+      {% include file-item.html class='articles' icon='chevron-right' name='articles' link='#'
       onclick="toggleFolder('articles-folder')" %}
       <div class="folder articles-folder" id="articles-folder">
+        {% include file-item.html class='articles-menu' icon='html' name='articles' type='.html' link='/articles.html'
+        %}
+
         {% for article in site.articles %}
         {% include file-item.html class='article' link=article.url icon='markdown' name=article.title type='.md' %}
         {% endfor %}
       </div>
 
-      {% include file-item.html class='drawings' link='/drawings.html' icon='chevron-right' name='drawings'
+      {% include file-item.html class='drawings' icon='chevron-right' name='drawings' link='#'
       onclick="toggleFolder('drawings-folder')" %}
       <div class="folder drawings-folder" id="drawings-folder">
+        {% include file-item.html class='drawings-menu' icon='html' name='drawings' type='.html' link='/drawings.html'
+        %}
+
         {% for drawing in site.drawings %}
         {% include file-item.html class='drawing' link=drawing.url icon='markdown' name=drawing.title type='.md' %}
         {% endfor %}
@@ -41,7 +49,7 @@
 
   </div>
 
-  <div class="nav-panel search-panel initial-state" id="search-panel">
+  <div class="nav-panel search-panel" id="search-panel">
     <input type="text" placeholder="search"/>
   </div>
 </nav>

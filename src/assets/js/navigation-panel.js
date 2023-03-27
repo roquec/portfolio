@@ -1,17 +1,3 @@
-const defaultStylesFilesOpen = `<style>
-  .navigation { display:flex !important; }
-  .files-panel.initial-state{ display:flex !important; }
-  .files-icon.initial-state{ color: var(--color-sidebar-selected-foreground) !important; }
-  .files-icon.initial-state .highlight { display: block !important; }
-</style>`
-
-const defaultStylesSearchOpen = `<style>
-  .navigation { display:flex !important; }
-  .search-panel.initial-state{ display:flex !important; }
-  .search-icon.initial-state{ color: var(--color-sidebar-selected-foreground) !important; }
-  .search-icon.initial-state .highlight { display: block !important; }
-</style>`
-
 initializePanels();
 
 window.addEventListener("load", updateNavigationElements);
@@ -24,14 +10,14 @@ function initializePanels() {
   const state = window.sessionStorage.getItem("navigation-panel");
 
   if (state === "files") {
-    document.write(defaultStylesFilesOpen);
+    setInitialNavigationPanelStyles("files");
   } else if (state === "search") {
-    document.write(defaultStylesSearchOpen);
+    setInitialNavigationPanelStyles("search");
   } else if (state === "closed") {
 
   } else if (isWideScreen()) {
     window.sessionStorage.setItem("navigation-panel", "files");
-    document.write(defaultStylesFilesOpen);
+    setInitialNavigationPanelStyles("files");
   }
 }
 
@@ -64,15 +50,18 @@ function updateNavigationElements() {
   const searchPanel = document.getElementById("search-panel");
   const filesIcon = document.getElementById("files-icon");
   const searchIcon = document.getElementById("search-icon");
+  const navWrapper = document.getElementById("navigation-wrapper");
 
   const state = window.sessionStorage.getItem("navigation-panel");
 
   if (state === "files") {
+    navWrapper.classList.add("open");
     filesPanel.classList.add("open");
     filesIcon.classList.add("open");
     searchPanel.classList.remove("open");
     searchIcon.classList.remove("open");
   } else if (state === "search") {
+    navWrapper.classList.add("open");
     searchPanel.classList.add("open");
     searchIcon.classList.add("open");
     filesPanel.classList.remove("open");
@@ -82,13 +71,20 @@ function updateNavigationElements() {
     searchIcon.classList.remove("open");
     filesPanel.classList.remove("open");
     filesIcon.classList.remove("open");
+    navWrapper.classList.remove("open");
   }
 
   // Remove initial state class
-  filesPanel.classList.remove("initial-state");
-  searchPanel.classList.remove("initial-state");
-  filesIcon.classList.remove("initial-state");
-  searchIcon.classList.remove("initial-state");
+  document.body.classList.remove("initial-state");
+}
+
+function setInitialNavigationPanelStyles(panelId) {
+  document.write(`<style>
+    .initial-state .navigation-wrapper { display:flex !important; }
+    .initial-state #${panelId}-panel { display:flex !important; }
+    .initial-state #${panelId}-icon { color: var(--color-sidebar-selected-foreground) !important; }
+    .initial-state #${panelId}-icon .highlight { display: block !important; }
+  </style>`);
 }
 
 function isWideScreen() {
