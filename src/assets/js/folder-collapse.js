@@ -44,9 +44,6 @@ function updateFolders() {
   for (let i = 0; i < collapsedFolders.length; i++) {
     collapseFolder(collapsedFolders[i]);
   }
-
-  // Remove initial state class
-  document.body.classList.remove("initial-state");
 }
 
 function collapseFolder(folderId) {
