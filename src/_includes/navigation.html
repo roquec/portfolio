@@ -3,18 +3,24 @@
 
     <div class="files-header">EXPLORER</div>
 
-    {% include file-item.html class='portfolio' icon='chevron-down' name='PORTFOLIO' link='#'
-    onclick="toggleFolder('portfolio-folder')" %}
-    <div class="folder portfolio-folder" id="portfolio-folder">
+    <div class="file-item folder-item portfolio" id="portfolio-folder">
+      <a class="overlay" href="#" onclick="toggleFolder('portfolio-folder')"></a>
+      <i class="icon icon-chevron-down"></i><i class="icon icon-chevron-right"></i>
+      <div class="file-name">PORTFOLIO</div>
+    </div>
+    <div class="folder portfolio-folder">
       {% include file-item.html class='index' icon='html' name='index' type='.html' link='/main.html' %}
 
       {% include file-item.html class='about-me' icon='readme' name='README' type='.md' link='/profile.html' %}
 
       {% include file-item.html class='config' icon='config' name='.editorconfig' link='/settings.html' %}
 
-      {% include file-item.html class='projects' icon='chevron-right' name='projects' link='#'
-      onclick="toggleFolder('projects-folder')" %}
-      <div class="folder projects-folder" id="projects-folder">
+      <div class="file-item folder-item projects" id="projects-folder">
+        <a class="overlay" href="#" onclick="toggleFolder('projects-folder')"></a>
+        <i class="icon icon-chevron-down"></i><i class="icon icon-chevron-right"></i>
+        <div class="file-name">projects</div>
+      </div>
+      <div class="folder projects-folder">
         {% include file-item.html class='projects-menu' icon='html' name='projects' type='.html' link='/projects.html'
         %}
 
@@ -23,9 +29,12 @@
         {% endfor %}
       </div>
 
-      {% include file-item.html class='articles' icon='chevron-right' name='articles' link='#'
-      onclick="toggleFolder('articles-folder')" %}
-      <div class="folder articles-folder" id="articles-folder">
+      <div class="file-item folder-item articles" id="articles-folder">
+        <a class="overlay" href="#" onclick="toggleFolder('articles-folder')"></a>
+        <i class="icon icon-chevron-down"></i><i class="icon icon-chevron-right"></i>
+        <div class="file-name">articles</div>
+      </div>
+      <div class="folder articles-folder">
         {% include file-item.html class='articles-menu' icon='html' name='articles' type='.html' link='/articles.html'
         %}
 
@@ -34,9 +43,12 @@
         {% endfor %}
       </div>
 
-      {% include file-item.html class='drawings' icon='chevron-right' name='drawings' link='#'
-      onclick="toggleFolder('drawings-folder')" %}
-      <div class="folder drawings-folder" id="drawings-folder">
+      <div class="file-item folder-item drawings" id="drawings-folder">
+        <a class="overlay" href="#" onclick="toggleFolder('drawings-folder')"></a>
+        <i class="icon icon-chevron-down"></i><i class="icon icon-chevron-right"></i>
+        <div class="file-name">drawings</div>
+      </div>
+      <div class="folder drawings-folder">
         {% include file-item.html class='drawings-menu' icon='html' name='drawings' type='.html' link='/drawings.html'
         %}
 

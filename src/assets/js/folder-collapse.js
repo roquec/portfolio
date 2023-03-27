@@ -9,11 +9,11 @@ function initializeFolders() {
 
   const collapsedFolders = getCollapsedFolders();
 
-  if (window.location.href.includes("/projects/")) {
+  if (window.location.href.includes("/projects/") && collapsedFolders.indexOf("projects-folder") > -1) {
     collapsedFolders.splice(collapsedFolders.indexOf("projects-folder"), 1);
-  } else if (window.location.href.includes("/articles/")) {
+  } else if (window.location.href.includes("/articles/") && collapsedFolders.indexOf("articles-folder") > -1) {
     collapsedFolders.splice(collapsedFolders.indexOf("articles-folder"), 1);
-  } else if (window.location.href.includes("/drawings/")) {
+  } else if (window.location.href.includes("/drawings/") && collapsedFolders.indexOf("drawings-folder") > -1) {
     collapsedFolders.splice(collapsedFolders.indexOf("drawings-folder"), 1);
   }
 
@@ -44,6 +44,9 @@ function updateFolders() {
   for (let i = 0; i < collapsedFolders.length; i++) {
     collapseFolder(collapsedFolders[i]);
   }
+
+  // Remove initial state class
+  document.body.classList.remove("initial-state");
 }
 
 function collapseFolder(folderId) {
@@ -57,12 +60,29 @@ function openFolder(folderId) {
 function setInitialFolderStyles(folderIds) {
   let style = "<style>";
   for (let i = 0; i < folderIds.length; i++) {
-    style = style + `.initial-state #${folderIds[i]}`;
+    style = style + `.initial-state #${folderIds[i]} .icon-chevron-down`;
     if (i < folderIds.length - 1) {
       style = style + ", ";
     }
   }
-  style = style + " { display: none; } </style>";
+  style = style + " { display: none !important; } "
+
+  for (let i = 0; i < folderIds.length; i++) {
+    style = style + `.initial-state #${folderIds[i]} .icon-chevron-right`;
+    if (i < folderIds.length - 1) {
+      style = style + ", ";
+    }
+  }
+  style = style + " { display: block !important; } "
+
+  for (let i = 0; i < folderIds.length; i++) {
+    style = style + `.initial-state #${folderIds[i]} + .folder`;
+    if (i < folderIds.length - 1) {
+      style = style + ", ";
+    }
+  }
+  style = style + " { display: none !important; } "
+  style = style + "</style>";
   document.write(style);
 }
 

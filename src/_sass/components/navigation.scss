@@ -98,6 +98,7 @@ $navigation-width: rem(300px);
       background-color: var(--color-file-item-active-background);
       color: var(--color-file-item-active-foreground);
       outline: rem(1px) solid var(--color-file-item-active-border);
+      outline-offset: rem(-1px);
 
       a {
         border: none;
@@ -120,8 +121,29 @@ $navigation-width: rem(300px);
     display: block;
   }
 
-  .folder.collapsed {
+  .collapsed + .folder {
     display: none;
+  }
+
+  .folder-item {
+    .icon-chevron-right {
+      display: none;
+    }
+
+    .icon-chevron-down {
+      display: block;
+    }
+
+    &.collapsed {
+      .icon-chevron-right {
+        display: block;
+      }
+
+      .icon-chevron-down {
+        display: none;
+      }
+
+    }
   }
 }
 
@@ -131,4 +153,3 @@ $navigation-width: rem(300px);
 .search-panel {
   flex-direction: column;
 }
-
