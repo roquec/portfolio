@@ -9,11 +9,11 @@
       <div class="file-name">PORTFOLIO</div>
     </div>
     <div class="folder portfolio-folder">
-      {% include file-item.html class='index' icon='html' name='index' type='.html' link='/main.html' %}
+      {% include file-item.html id='index-file' icon='html' name='index' type='.html' link='/main.html' %}
 
-      {% include file-item.html class='about-me' icon='readme' name='README' type='.md' link='/profile.html' %}
+      {% include file-item.html id='about-me-file' icon='readme' name='README' type='.md' link='/profile.html' %}
 
-      {% include file-item.html class='config' icon='config' name='.editorconfig' link='/settings.html' %}
+      {% include file-item.html id='config-file' icon='config' name='.editorconfig' link='/settings.html' %}
 
       <div class="file-item folder-item projects" id="projects-folder">
         <a class="overlay" href="#" onclick="toggleFolder('projects-folder')"></a>
@@ -21,11 +21,11 @@
         <div class="file-name">projects</div>
       </div>
       <div class="folder projects-folder">
-        {% include file-item.html class='projects-menu' icon='html' name='projects' type='.html' link='/projects.html'
-        %}
+        {% include file-item.html id='projects-file' icon='html' name='projects' type='.html' link='/projects.html' %}
 
         {% for project in site.projects %}
-        {% include file-item.html class='project' icon='markdown' name=project.title type='.md' link=project.url %}
+        {% capture project_id %}project-file-{{forloop.index}}{% endcapture %}
+        {% include file-item.html id=project_id link=project.url icon='markdown' name=project.title type='.md' %}
         {% endfor %}
       </div>
 
@@ -35,11 +35,11 @@
         <div class="file-name">articles</div>
       </div>
       <div class="folder articles-folder">
-        {% include file-item.html class='articles-menu' icon='html' name='articles' type='.html' link='/articles.html'
-        %}
+        {% include file-item.html id='articles-file' icon='html' name='articles' type='.html' link='/articles.html' %}
 
         {% for article in site.articles %}
-        {% include file-item.html class='article' link=article.url icon='markdown' name=article.title type='.md' %}
+        {% capture article_id %}article-file-{{forloop.index}}{% endcapture %}
+        {% include file-item.html id=article_id link=article.url icon='markdown' name=article.title type='.md' %}
         {% endfor %}
       </div>
 
@@ -49,11 +49,11 @@
         <div class="file-name">drawings</div>
       </div>
       <div class="folder drawings-folder">
-        {% include file-item.html class='drawings-menu' icon='html' name='drawings' type='.html' link='/drawings.html'
-        %}
+        {% include file-item.html id='drawings-file' icon='html' name='drawings' type='.html' link='/drawings.html' %}
 
         {% for drawing in site.drawings %}
-        {% include file-item.html class='drawing' link=drawing.url icon='markdown' name=drawing.title type='.md' %}
+        {% capture drawing_id %}drawing-file-{{forloop.index}}{% endcapture %}
+        {% include file-item.html id=drawing_id link=drawing.url icon='markdown' name=drawing.title type='.md' %}
         {% endfor %}
       </div>
 

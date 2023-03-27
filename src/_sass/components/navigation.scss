@@ -46,6 +46,7 @@ $navigation-width: rem(300px);
     position: relative;
     height: rem(22px);
     padding-left: rem(10px);
+    outline-offset: rem(-1px);
 
     .overlay {
       position: absolute;
@@ -53,6 +54,8 @@ $navigation-width: rem(300px);
       top: 0;
       bottom: 0;
       right: 0;
+      border: none;
+      outline: none;
     }
 
     .file-name {
@@ -98,12 +101,6 @@ $navigation-width: rem(300px);
       background-color: var(--color-file-item-active-background);
       color: var(--color-file-item-active-foreground);
       outline: rem(1px) solid var(--color-file-item-active-border);
-      outline-offset: rem(-1px);
-
-      a {
-        border: none;
-        outline: none;
-      }
     }
   }
 
