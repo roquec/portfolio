@@ -3,7 +3,7 @@ $version = $env:GITHUB_REF_NAME
 $commit = $env:GITHUB_SHA
 
 # Set the path to the JSON file to be updated
-$jsonFilePath = "../src/version.json"
+$jsonFilePath = "./src/version.json"
 
 # Read the contents of the JSON file
 $jsonContent = Get-Content $jsonFilePath -Raw | ConvertFrom-Json
