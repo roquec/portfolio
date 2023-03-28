@@ -29,10 +29,6 @@ function initializeFocus() {
       background-color: var(--color-file-item-active-background) !important;
       color: var(--color-file-item-active-foreground) !important;
       outline: 0.0625rem solid var(--color-file-item-active-border) !important;
-    }
-    .initial-state #${focusItemId} .overlay {
-      width: 0 !important;
-    }</style>
-  `);
+    }</style>`);
   }
 }
