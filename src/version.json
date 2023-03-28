@@ -1,0 +1,4 @@
+{
+  "version": "__VERSION__",
+  "commit": "__COMMIT__"
+}
