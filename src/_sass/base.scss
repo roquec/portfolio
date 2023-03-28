@@ -36,6 +36,7 @@ html {
   --color-icon-html: #{$dark-mode-icon-html};
   --color-icon-readme: #{$dark-mode-icon-readme};
   --color-icon-editorconfig: #{$dark-mode-icon-editorconfig};
+  --color-icon-json: #{$dark-mode-icon-json};
 }
 
 html[data-theme="light"] {
@@ -74,6 +75,7 @@ html[data-theme="light"] {
   --color-icon-html: #{$light-mode-icon-html};
   --color-icon-readme: #{$light-mode-icon-readme};
   --color-icon-editorconfig: #{$light-mode-icon-editorconfig};
+  --color-icon-json: #{$light-mode-icon-json};
 }
 
 body {
