@@ -1,4 +1,6 @@
 {
-  "version": "__VERSION__",
-  "commit": "__COMMIT__"
+  "timestamp": "__TIME__",
+  "branch": "__BRANCH__",
+  "commit": "__COMMIT__",
+  "build": "__BUILD__"
 }
