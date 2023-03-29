@@ -19,6 +19,7 @@ html {
   --color-search-bar-background: #{$dark-mode-search-bar-background};
   --color-search-bar-foreground: #{$dark-mode-search-bar-foreground};
   --color-search-bar-active-border: #{$dark-mode-search-bar-active-border};
+  --color-search-bar-placeholder: #{$dark-mode-search-bar-placeholder};
   --color-tabs-background: #{$dark-mode-tabs-background};
   --color-tab-background: #{$dark-mode-tab-background};
   --color-tab-foreground: #{$dark-mode-tab-foreground};
@@ -58,6 +59,7 @@ html[data-theme="light"] {
   --color-search-bar-background: #{$light-mode-search-bar-background};
   --color-search-bar-foreground: #{$light-mode-search-bar-foreground};
   --color-search-bar-active-border: #{$light-mode-search-bar-active-border};
+  --color-search-bar-placeholder: #{$light-mode-search-bar-placeholder};
   --color-tabs-background: #{$light-mode-tabs-background};
   --color-tab-background: #{$light-mode-tab-background};
   --color-tab-foreground: #{$light-mode-tab-foreground};

@@ -25,6 +25,13 @@ $navigation-width: rem(300px);
   .nav-panel.open {
     display: flex;
   }
+
+
+  .nav-header {
+    padding: rem(12px) 0 rem(12px) rem(20px);
+    font-size: rem(11px);
+    color: var(--color-navigation-header-foreground);
+  }
 }
 
 
@@ -33,12 +40,6 @@ $navigation-width: rem(300px);
     =================== */
 .files-panel {
   flex-direction: column;
-
-  .files-header {
-    padding: rem(12px) 0 rem(12px) rem(20px);
-    font-size: rem(11px);
-    color: var(--color-navigation-header-foreground);
-  }
 
   .file-item {
     display: flex;
@@ -149,4 +150,38 @@ $navigation-width: rem(300px);
     =================== */
 .search-panel {
   flex-direction: column;
+
+  .search-box-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: rem(5px);
+
+    i {
+      font-size: rem(16px);
+      width: rem(20px);
+    }
+
+    #search-box {
+      flex: 1;
+      margin: rem(1px) rem(12px) 0 0;
+      padding: rem(4px) rem(7px);
+      outline: none;
+      border: none;
+      border-radius: rem(2px);
+      color: var(--color-search-bar-foreground);
+      background-color: var(--color-search-bar-background);
+      font: inherit;
+
+      &::placeholder {
+        color: var(--color-search-bar-placeholder);
+        opacity: 1;
+      }
+
+      &:focus {
+        outline: 1px solid var(--color-search-bar-active-border);
+        outline-offset: -1px;
+      }
+    }
+  }
 }

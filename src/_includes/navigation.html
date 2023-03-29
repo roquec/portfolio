@@ -1,7 +1,7 @@
 <nav class="navigation-wrapper scrollable" id="navigation-wrapper">
   <div class="nav-panel files-panel" id="files-panel">
 
-    <div class="files-header">EXPLORER</div>
+    <div class="nav-header">EXPLORER</div>
 
     <div class="file-item folder-item portfolio" id="portfolio-folder">
       <a class="overlay" href="#" onclick="toggleFolder('portfolio-folder')"></a>
@@ -63,6 +63,10 @@
   </div>
 
   <div class="nav-panel search-panel" id="search-panel">
-    <input type="text" placeholder="search"/>
+    <label class="nav-header" for="search-box">SEARCH</label>
+    <div class="search-box-wrapper">
+      <i class="icon icon-chevron-right"></i>
+      <input type="text" spellcheck="false" autocapitalize="off" title="Search" placeholder="Search" id="search-box"/>
+    </div>
   </div>
 </nav>
