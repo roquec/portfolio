@@ -53,12 +53,12 @@ $tooltip-tip-width: rem(5px);
       }
 
       .highlight {
-        width: rem(2px);
+        width: 0;
         height: 100%;
         position: absolute;
         left: 0;
-        background-color: var(--color-sidebar-selected-foreground);
         display: none;
+        border-left: rem(2px) solid var(--color-sidebar-selected-foreground);
       }
 
       .icon {

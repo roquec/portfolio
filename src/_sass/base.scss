@@ -12,6 +12,7 @@ html {
   --color-navigation-foreground: #{$dark-mode-navigation-foreground};
   --color-navigation-selected-background: #{$dark-mode-navigation-selected-background};
   --color-navigation-header-foreground: #{$dark-mode-navigation-header-foreground};
+  --color-panel-resizer: #{$dark-mode-panel-resizer};
   --color-file-item-hover-background: #{$dark-mode-file-item-hover-background};
   --color-file-item-active-background: #{$dark-mode-file-item-active-background};
   --color-file-item-active-foreground: #{$dark-mode-file-item-active-foreground};
@@ -52,6 +53,7 @@ html[data-theme="light"] {
   --color-navigation-foreground: #{$light-mode-navigation-foreground};
   --color-navigation-selected-background: #{$light-mode-navigation-selected-background};
   --color-navigation-header-foreground: #{$light-mode-navigation-header-foreground};
+  --color-panel-resizer: #{$light-mode-panel-resizer};
   --color-file-item-hover-background: #{$light-mode-file-item-hover-background};
   --color-file-item-active-background: #{$light-mode-file-item-active-background};
   --color-file-item-active-foreground: #{$light-mode-file-item-active-foreground};
