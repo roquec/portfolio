@@ -1,7 +1,7 @@
 initializeFocus();
 
 window.addEventListener("DOMContentLoaded", updateFocus);
-window.addEventListener("beforeunload", saveFocus);
+window.addEventListener("unload", saveFocus);
 
 function saveFocus() {
   const focusedElement = document.activeElement.parentElement;
