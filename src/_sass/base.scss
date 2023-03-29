@@ -88,11 +88,6 @@ body {
   overflow: auto;
 }
 
-
-.initial-state .overlay {
-  opacity: 0 !important;
-}
-
 @media (hover: hover) {
   .scrollable {
     overflow: overlay;
