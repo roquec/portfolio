@@ -10,12 +10,6 @@ function saveFocus() {
   } else {
     window.sessionStorage.removeItem("file-item-focus");
   }
-  document.write(`<style>
-    #${focusedElement.id} {
-      background-color: var(--color-file-item-active-background) !important;
-      color: var(--color-file-item-active-foreground) !important;
-      outline: 0.0625rem solid var(--color-file-item-active-border) !important;
-    }</style>`);
 }
 
 function updateFocus() {
