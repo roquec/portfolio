@@ -33,8 +33,10 @@
           width: rem(20px);
         }
 
-        &:hover {
-          background-color: #329171;
+        @media (hover: hover) {
+          &:hover {
+            background-color: #329171;
+          }
         }
       }
 
@@ -50,8 +52,10 @@
           font-size: rem(14px);
         }
 
-        &:hover {
-          background-color: #1F8AD2;
+        @media (hover: hover) {
+          &:hover {
+            background-color: #1F8AD2;
+          }
         }
       }
     }
@@ -64,3 +68,11 @@
   }
 }
 
+/*  ===================
+    MOBILE STYLES
+    =================== */
+@media only screen and (max-width: 600px) {
+  .footer .footer-wrapper .footer-left .icon-theme::before {
+    width: rem(14px);
+  }
+}

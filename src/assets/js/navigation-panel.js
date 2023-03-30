@@ -45,6 +45,11 @@ function toggleSearchPanel() {
   updateNavigationElements();
 }
 
+function closeNavigationPanel() {
+  window.sessionStorage.setItem("navigation-panel", "closed");
+  updateNavigationElements();
+}
+
 function updateNavigationElements() {
   const filesPanel = document.getElementById("files-panel");
   const searchPanel = document.getElementById("search-panel");

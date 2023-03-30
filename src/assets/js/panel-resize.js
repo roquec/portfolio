@@ -1,28 +1,32 @@
 window.addEventListener("DOMContentLoaded", setResizer);
 
-let container = null;
-let isResizing = false;
+let resizerContainer = null;
+let resizerElement = null;
 
 function setResizer() {
-  container = document.getElementById("navigation-wrapper");
-
-  document.getElementById("resizer").addEventListener("mousedown", function (e) {
-    isResizing = true;
-    pauseEvent(e);
-  });
+  resizerContainer = document.getElementById("navigation-wrapper");
+  resizerElement = document.getElementById("resizer");
+  resizerElement.addEventListener("mousedown", onResizerClick);
 }
 
-document.addEventListener("mousemove", function (e) {
-  if (!isResizing) return;
-
-  const sidebarWidth = e.clientX - container.offsetLeft;
-  container.style.width = sidebarWidth + "px";
+function onResizerClick(e) {
+  document.addEventListener("mouseup", onResizerRelease);
+  document.addEventListener("mousemove", onResizerDrag);
+  resizerElement.style.opacity = "1";
   pauseEvent(e);
-});
+}
 
-document.addEventListener("mouseup", function (e) {
-  isResizing = false;
-});
+function onResizerDrag(e) {
+  const sidebarWidth = e.clientX - resizerContainer.offsetLeft;
+  resizerContainer.style.width = sidebarWidth + "px";
+  pauseEvent(e);
+}
+
+function onResizerRelease(e) {
+  document.removeEventListener("mousemove", onResizerDrag);
+  document.removeEventListener("mouseup", onResizerRelease);
+  resizerElement.style.opacity = null;
+}
 
 function pauseEvent(e) {
   if (e.stopPropagation) e.stopPropagation();
