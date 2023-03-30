@@ -1,11 +1,28 @@
+initializeResizer();
+
 window.addEventListener("DOMContentLoaded", setResizer);
 
 let resizerContainer = null;
 let resizerElement = null;
 
+function initializeResizer() {
+  const storedWidth = window.localStorage.getItem("sidebar-width");
+  if (storedWidth) {
+    document.write(`<style>
+        .initial-state #navigation-wrapper { width:${storedWidth}px !important; }
+    </style>`);
+  }
+}
+
 function setResizer() {
   resizerContainer = document.getElementById("navigation-wrapper");
   resizerElement = document.getElementById("resizer");
+
+  const storedWidth = window.localStorage.getItem("sidebar-width");
+  if (storedWidth) {
+    resizerContainer.style.width = storedWidth + "px";
+  }
+
   resizerElement.addEventListener("mousedown", onResizerClick);
 }
 
@@ -26,6 +43,8 @@ function onResizerRelease(e) {
   document.removeEventListener("mousemove", onResizerDrag);
   document.removeEventListener("mouseup", onResizerRelease);
   resizerElement.style.opacity = null;
+
+  window.localStorage.setItem("sidebar-width", resizerContainer.offsetWidth.toString());
 }
 
 function pauseEvent(e) {
