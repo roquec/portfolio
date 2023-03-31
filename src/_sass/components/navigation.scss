@@ -83,6 +83,8 @@ $navigation-width: rem(300px);
       right: 0;
       border: none;
       outline: none;
+      opacity: 0;
+      cursor: pointer;
     }
 
     .file-name {

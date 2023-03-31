@@ -4,9 +4,9 @@
     <div class="nav-header">EXPLORER</div>
 
     <div class="file-item folder-item portfolio" id="portfolio-folder">
-      <a class="overlay" href="#" onclick="toggleFolder('portfolio-folder')"></a>
+      <button class="overlay" onclick="toggleFolder('portfolio-folder')"></button>
       <i class="icon icon-chevron-down"></i><i class="icon icon-chevron-right"></i>
-      <div class="file-name">PORTFOLIO</div>
+      <div class="file-name">ROQUEC</div>
     </div>
     <div class="folder portfolio-folder">
       {% include file-item.html id='index-file' icon='html' name='index' type='.html' link='/main.html' %}
@@ -16,7 +16,7 @@
       {% include file-item.html id='config-file' icon='config' name='.editorconfig' link='/settings.html' %}
 
       <div class="file-item folder-item projects" id="projects-folder">
-        <a class="overlay" href="#" onclick="toggleFolder('projects-folder')"></a>
+        <button class="overlay" onclick="toggleFolder('projects-folder')"></button>
         <i class="icon icon-chevron-down"></i><i class="icon icon-chevron-right"></i>
         <div class="file-name">projects</div>
       </div>
@@ -25,12 +25,12 @@
 
         {% for project in site.projects %}
         {% capture project_id %}project-file-{{forloop.index}}{% endcapture %}
-        {% include file-item.html id=project_id link=project.url icon='markdown' name=project.title type='.md' %}
+        {% include file-item.html id=project_id link=project.url icon='markdown' name=project.slug type='.md' %}
         {% endfor %}
       </div>
 
       <div class="file-item folder-item articles" id="articles-folder">
-        <a class="overlay" href="#" onclick="toggleFolder('articles-folder')"></a>
+        <button class="overlay" onclick="toggleFolder('articles-folder')"></button>
         <i class="icon icon-chevron-down"></i><i class="icon icon-chevron-right"></i>
         <div class="file-name">articles</div>
       </div>
@@ -44,7 +44,7 @@
       </div>
 
       <div class="file-item folder-item drawings" id="drawings-folder">
-        <a class="overlay" href="#" onclick="toggleFolder('drawings-folder')"></a>
+        <button class="overlay" onclick="toggleFolder('drawings-folder')"></button>
         <i class="icon icon-chevron-down"></i><i class="icon icon-chevron-right"></i>
         <div class="file-name">drawings</div>
       </div>

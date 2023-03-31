@@ -5,10 +5,13 @@ collections_dir: content
 collections:
   articles:
     output: true
+    permalink: /:collection/:name
   drawings:
     output: true
+    permalink: /:collection/:name
   projects:
     output: true
+    permalink: /:collection/:name
 
 defaults:
   - scope:
