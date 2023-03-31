@@ -96,18 +96,16 @@
 }
 
 // Footer icons
-.icon-theme::before {
+.icon-light-theme::before {
   font-family: roquec-portfolio, serif;
   content: "\e80e";
   scale: 1.3;
 }
 
-html[data-theme="light"] {
-  .icon-theme::before {
-    font-family: roquec-portfolio, serif;
-    content: "\e80f";
-    scale: 1;
-  }
+.icon-dark-theme::before {
+  font-family: roquec-portfolio, serif;
+  content: "\e80f";
+  scale: 1;
 }
 
 .icon-source-control::before {
