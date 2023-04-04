@@ -68,6 +68,14 @@
       <i class="icon icon-chevron-right"></i>
       <input type="text" spellcheck="false" autocapitalize="off" title="Search" placeholder="Search" id="search-box"/>
     </div>
+    <div class="nav-header">TAGS</div>
+    <div class="tags-wrapper">
+      {% assign posts = site.projects | concat: site.articles | concat: site.drawings %}
+      {% assign grouptag = posts | map: 'tags' | join: ',' | split: ',' | group_by_exp: "item", "item" | sort: 'name' %}
+      {% for tag in grouptag %}
+      <div class="tag-item tag-size-{{ tag.size }}">{{ tag.name }} {{ tag.size }}</div>
+      {% endfor %}
+    </div>
   </div>
 
   <a id="resizer"></a>

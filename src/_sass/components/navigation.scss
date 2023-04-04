@@ -74,6 +74,8 @@ $navigation-width: rem(300px);
     height: rem(22px);
     padding-left: rem(10px);
     outline-offset: rem(-1px);
+    align-items: center;
+    justify-content: center;
 
     .overlay {
       position: absolute;
@@ -88,7 +90,7 @@ $navigation-width: rem(300px);
     }
 
     .file-name {
-      height: 100%;
+      //height: 100%;
       flex: 1;
       line-height: rem(22px);
       white-space: nowrap;
@@ -216,6 +218,45 @@ $navigation-width: rem(300px);
       }
     }
   }
+
+  .tags-wrapper {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    padding: 10px 12px 0 14px;
+
+    .tag-item {
+      padding: 5px 10px;
+      background-color: rgba(255, 255, 255, 0.05);
+      margin-left: 5px;
+      margin-bottom: 5px;
+      border-radius: 12px;
+      transition: all 0.4s;
+      flex-grow: 1;
+
+      &.tag-size-2 {
+        background-color: rgba(255, 255, 255, 0.1);
+        //font-size: 1rem;
+      }
+
+      &.tag-size-3 {
+        background-color: rgba(255, 255, 255, 0.15);
+        //font-size: 1.2rem;
+      }
+
+      &.tag-size-4 {
+        background-color: rgba(255, 255, 255, 0.2);
+        //font-size: 1.4rem;
+      }
+
+      &:hover {
+        outline: 1px solid white;
+        cursor: pointer;
+        background-color: red;
+        flex-grow: 100;
+      }
+    }
+  }
 }
 
 
@@ -241,6 +282,10 @@ $navigation-width: rem(300px);
       right: rem(-40px);
       background: rgba(0, 0, 0, 0.5);
       cursor: pointer;
+    }
+
+    .files-panel .file-item {
+      height: rem(28px);
     }
   }
 }

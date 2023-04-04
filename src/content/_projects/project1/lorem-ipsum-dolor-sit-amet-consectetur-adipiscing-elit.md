@@ -1,6 +1,7 @@
 ---
 feature_index: 1
 date: 07/03/2023
+tags: [ vestibulum, eu, urna, fringilla, fermentum, malesuada, iaculis, in, consectetur ]
 ---
 
 ## Project 1
