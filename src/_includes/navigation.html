@@ -65,16 +65,19 @@
   <div class="nav-panel search-panel scrollable" id="search-panel">
     <label class="nav-header" for="search-box">SEARCH</label>
     <div class="search-box-wrapper">
-      <i class="icon icon-chevron-right"></i>
+      <i class="icon icon-chevron-down"></i>
       <input type="text" spellcheck="false" autocapitalize="off" title="Search" placeholder="Search" id="search-box"/>
     </div>
-    <div class="nav-header">TAGS</div>
     <div class="tags-wrapper">
       {% assign posts = site.projects | concat: site.articles | concat: site.drawings %}
       {% assign grouptag = posts | map: 'tags' | join: ',' | split: ',' | group_by_exp: "item", "item" | sort: 'name' %}
       {% for tag in grouptag %}
-      <div class="tag-item tag-size-{{ tag.size }}">{{ tag.name }} {{ tag.size }}</div>
+      <button class="tag-item tag-size-{{ tag.size }}">
+        <span class="tag-name">{{ tag.name }}</span>
+        <span class="tag-number">{{ tag.size }}</span>
+      </button>
       {% endfor %}
+      <div class="tag-item dummy-tag"></div>
     </div>
   </div>
 
