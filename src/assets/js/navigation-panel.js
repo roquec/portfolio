@@ -43,6 +43,8 @@ function toggleSearchPanel() {
   }
 
   updateNavigationElements();
+
+  document.getElementById("search-box").select();
 }
 
 function closeNavigationPanel() {

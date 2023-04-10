@@ -184,6 +184,7 @@ $navigation-width: rem(300px);
     =================== */
 .search-panel {
   flex-direction: column;
+  overflow-x: hidden;
 
   .search-box-wrapper {
     display: flex;
@@ -223,56 +224,100 @@ $navigation-width: rem(300px);
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
-    padding: 18px 12px 0 7px;
+    padding: 20px 12px 0 7px;
+
+    &::after {
+      content: "";
+      flex-grow: 200;
+    }
 
     .tag-item {
-      padding: 5px 10px;
+      padding: 0 10px;
       background-color: rgba(255, 255, 255, 0.05);
       margin-left: 5px;
-      margin-bottom: 5px;
-      border-radius: 20px;
+      margin-bottom: 6px;
       flex-grow: 1;
-      transition: flex-grow 0.4s;
+      transition: flex-grow 0.1s, outline-width 0.1s, background-color 0.1s, color 0.1s;
       border: none;
+      color: var(--color-search-bar-placeholder);
+      overflow: hidden;
+      user-select: none;
+      border-radius: 20px;
+      outline-offset: -1px;
+      outline: 1px solid transparent;
+      font-family: #{$base-font-family};
+
+
       display: flex;
       align-items: center;
       justify-content: center;
-      color: var(--color-search-bar-placeholder);
+      height: 26px;
 
+
+      &.tag-size-1 {
+        background-color: rgba(128, 128, 128, 0.08);
+      }
 
       &.tag-size-2 {
-        background-color: rgba(255, 255, 255, 0.075);
-        //font-size: 1rem;
+        background-color: rgba(128, 128, 128, 0.10);
       }
 
       &.tag-size-3 {
-        background-color: rgba(255, 255, 255, 0.1);
-        //font-size: 1.2rem;
+        background-color: rgba(128, 128, 128, 0.12);
       }
 
       &.tag-size-4 {
-        background-color: rgba(255, 255, 255, 0.125);
-        //font-size: 1.4rem;
+        background-color: rgba(128, 128, 128, 0.14);
       }
 
-      &.dummy-tag {
-        flex-grow: 1.5;
-        visibility: hidden;
+      &.tag-size-5 {
+        background-color: rgba(128, 128, 128, 0.16);
       }
 
-      &:hover {
-        outline: 1px solid var(--color-search-bar-foreground);
+      &.tag-size-6 {
+        background-color: rgba(128, 128, 128, 0.18);
+      }
+
+      &.tag-size-7 {
+        background-color: rgba(128, 128, 128, 0.20);
+      }
+
+      &.tag-size-8 {
+        background-color: rgba(128, 128, 128, 0.22);
+      }
+
+      &.tag-size-9 {
+        background-color: rgba(128, 128, 128, 0.24);
+      }
+
+      &.tag-size-10 {
+        background-color: rgba(128, 128, 128, 0.26);
+      }
+
+      &.tag-size-11 {
+        background-color: rgba(128, 128, 128, 0.28);
+      }
+
+      &.tag-size-12 {
+        background-color: rgba(128, 128, 128, 0.30);
+      }
+
+      &:hover, &:focus-visible {
         cursor: pointer;
         flex-grow: 100;
-        background-color: var(--color-search-bar-background);
-        color: var(--color-search-bar-foreground);
-        outline-offset: -1px;
+        outline-color: var(--color-file-item-active-border);
+        background-color: var(--color-file-item-active-background);
+        color: var(--color-file-item-active-foreground);
+      }
+
+      .tag-name {
+        font-size: 12px;
       }
 
       .tag-number {
-        border-radius: 50%;
-        margin-left: 3px;
-        color: rgba(255, 255, 255, 0.3);
+        margin-left: 5px;
+        color: rgba(128, 128, 128, 0.5);
+        font-size: 12px;
       }
     }
   }
