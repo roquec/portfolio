@@ -233,7 +233,6 @@ $navigation-width: rem(300px);
 
     .tag-item {
       padding: 0 10px;
-      background-color: rgba(255, 255, 255, 0.05);
       margin-left: 5px;
       margin-bottom: 6px;
       flex-grow: 1;
@@ -255,19 +254,19 @@ $navigation-width: rem(300px);
 
 
       &.tag-size-1 {
-        background-color: rgba(128, 128, 128, 0.08);
-      }
-
-      &.tag-size-2 {
         background-color: rgba(128, 128, 128, 0.10);
       }
 
+      &.tag-size-2 {
+        background-color: rgba(128, 128, 128, 0.115);
+      }
+
       &.tag-size-3 {
-        background-color: rgba(128, 128, 128, 0.12);
+        background-color: rgba(128, 128, 128, 0.13);
       }
 
       &.tag-size-4 {
-        background-color: rgba(128, 128, 128, 0.14);
+        background-color: rgba(128, 128, 128, 0.145);
       }
 
       &.tag-size-5 {
@@ -275,31 +274,23 @@ $navigation-width: rem(300px);
       }
 
       &.tag-size-6 {
-        background-color: rgba(128, 128, 128, 0.18);
+        background-color: rgba(128, 128, 128, 0.175);
       }
 
       &.tag-size-7 {
-        background-color: rgba(128, 128, 128, 0.20);
+        background-color: rgba(128, 128, 128, 0.19);
       }
 
       &.tag-size-8 {
-        background-color: rgba(128, 128, 128, 0.22);
+        background-color: rgba(128, 128, 128, 0.205);
       }
 
       &.tag-size-9 {
-        background-color: rgba(128, 128, 128, 0.24);
+        background-color: rgba(128, 128, 128, 0.22);
       }
 
       &.tag-size-10 {
-        background-color: rgba(128, 128, 128, 0.26);
-      }
-
-      &.tag-size-11 {
-        background-color: rgba(128, 128, 128, 0.28);
-      }
-
-      &.tag-size-12 {
-        background-color: rgba(128, 128, 128, 0.30);
+        background-color: rgba(128, 128, 128, 0.235);
       }
 
       &:hover, &:focus-visible {

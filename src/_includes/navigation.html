@@ -74,9 +74,15 @@
       {% assign posts = site.projects | concat: site.articles | concat: site.drawings %}
       {% assign grouptag = posts | map: 'tags' | join: ',' | downcase | split: ',' | group_by_exp: "item", "item" |
       sort: 'name' %}
-      {% assign maxSize = grouptag | sort: 'size' | last | size %}
+
+      {% assign biggestTag = grouptag | sort: 'size' | last %}
+      {% assign smallestTag = grouptag | sort: 'size' | first %}
+      {% assign minSize = smallestTag.size %}
+      {% assign maxScale = biggestTag.size | minus: minSize %}
+      {% assign step = 9 | divided_by: maxScale %}
+
       {% for tag in grouptag %}
-      {% assign scale = 12.0 | divided_by: maxSize.size | times: tag.size | round %}
+      {% assign scale = tag.size | minus: minSize | times: step | plus: 1.0 | round %}
       <button class="tag-item tag-size-{{ scale }}" onclick="searchTag('{{ tag.name }}')">
         <span class="tag-name">{{ tag.name }}</span>
         <span class="tag-number">{{ tag.size }}</span>
