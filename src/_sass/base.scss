@@ -89,13 +89,12 @@ body {
 }
 
 .scrollable {
-  overflow: auto;
+  overflow-y: auto;
+  overflow-x: hidden;
 }
 
 @media (hover: hover) {
   .scrollable {
-    overflow: overlay;
-
     &::-webkit-scrollbar {
       width: rem(5px);
     }

@@ -4,56 +4,14 @@
   background-color: var(--color-content-background);
   display: flex;
   flex-direction: column;
+  padding-top: 4px;
   padding-left: 8px;
   padding-right: 8px;
-  margin-left: 40px;
-}
-
-.title-wrapper {
-  display: flex;
-  flex-flow: row;
-  font-weight: 400;
-  font-size: 30px;
-  align-items: center;
-  padding-top: 25px;
-}
-
-.main-title-1 {
-  flex-grow: 1;
-  padding: 20px;
-  text-align: right;
-  margin-top: -46px;
-
-  .hello {
-    margin-right: -10px;
-  }
-}
-
-.main-title-2 {
-  flex-grow: 1;
-  padding: 20px;
-  text-align: left;
-  margin-top: 46px;
-
-  .engineer {
-    margin-left: -10px;
-  }
-}
-
-.main-title-name {
-  font-weight: 600;
-  color: #e31b6d;
-}
-
-.pic {
-  border-radius: 50%;
-  flex-grow: 0;
-  height: 180px;
-  width: 180px;
 }
 
 @media only screen and (min-width: 600px) {
   .content {
-    padding-left: 12px;
+    padding-top: 12px;
+    padding-left: 24px;
   }
 }
