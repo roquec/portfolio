@@ -1,45 +1,58 @@
 .index-page {
-  .title-wrapper {
+  .welcome-wrapper {
     display: flex;
-    flex-flow: row;
+    flex-flow: column;
+    align-items: center;
+
+    margin: 24px 12px 24px 12px;
+
     font-weight: 400;
     font-size: 30px;
-    align-items: center;
-    padding-top: 25px;
     font-family: "Courier New", monospace;
   }
 
-  .main-title-1 {
+  .welcome-first {
     flex-grow: 1;
-    padding: 20px;
-    text-align: right;
-    margin-top: -46px;
+    text-align: center;
 
-    .hello {
-      margin-right: -10px;
+    .welcome-name {
+      font-weight: 800;
+      color: #e31b6d;
     }
   }
 
-  .main-title-2 {
-    flex-grow: 1;
-    padding: 20px;
-    text-align: left;
-    margin-top: 46px;
-
-    .engineer {
-      margin-left: -10px;
-    }
-  }
-
-  .main-title-name {
-    font-weight: 600;
-    color: #e31b6d;
-  }
-
-  .pic {
+  .welcome-pic {
     border-radius: 50%;
     flex-grow: 0;
     height: 180px;
     width: 180px;
+
+    margin: 24px 12px 24px 12px;
+  }
+
+  .welcome-second {
+    flex-grow: 1;
+
+    text-align: center;
+  }
+
+  @media only screen and (min-width: 600px) {
+    .welcome-wrapper {
+      flex-flow: row;
+
+      margin: 40px 0 24px 0;
+
+      .welcome-first {
+        align-self: start;
+      }
+
+      .welcome-pic {
+        margin: 0 12px 0 12px;
+      }
+
+      .welcome-second {
+        align-self: end;
+      }
+    }
   }
 }

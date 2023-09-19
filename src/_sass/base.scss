@@ -123,6 +123,32 @@ body {
   }
 }
 
+@media print {
+
+  .header, .footer, .tabs {
+    visibility: hidden !important;
+  }
+
+  body, .main-wrapper, .main, .content.scrollable, .markdown-body {
+    visibility: visible !important;
+    position: static;
+    overflow: initial;
+  }
+
+  .content.scrollable {
+    position: absolute !important;
+    left: 0 !important;
+    top: 0 !important;
+    width: auto !important;
+    height: auto !important;
+    overflow: visible !important;
+
+    h1, h2, h3, h4, h5, h6, p, li {
+      color: black !important;
+    }
+  }
+}
+
 
 
 
