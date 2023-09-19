@@ -1,5 +1,5 @@
 ---
-title: curriculum
+title: profile
 ---
 
 # Alberto Roque Carrizo Fernández
@@ -59,7 +59,7 @@ the graphics were designed with Paint.net.
 
 _2011-2016_ ǀ **Software Engineering Degree** “Grado en ingeniería informática del software” Universidad de Oviedo.
 
-### Merits
+## Merits
 
 _2019_ ǀ **Microsoft Exam AZ-400** Designing and Implementing Microsoft DevOps
 Solutions. [https://learn.microsoft.com/en-us/credentials/certifications/exams/az-400/](https://learn.microsoft.com/en-us/credentials/certifications/exams/az-400/)
