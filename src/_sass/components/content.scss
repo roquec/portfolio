@@ -4,9 +4,7 @@
   background-color: var(--color-content-background);
   display: flex;
   flex-direction: column;
-  padding-top: 4px;
-  padding-left: 8px;
-  padding-right: 8px;
+  padding: 4px 8px 8px;
 }
 
 @media only screen and (min-width: 600px) {

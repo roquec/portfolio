@@ -17,9 +17,9 @@ I am an experienced software engineer with a pragmatic problem-solving approach,
 situations. I'm eager to tackle intriguing challenges and deliver value to clients. I thrive on self-learning and am
 ready for new projects.
 
-## Work experience
+## Experience
 
-`2018-2022` Senior Backend Engineer at __NEOCLES__ using `.NET` `Azure` `Elasticsearch` `SQL` to:
+_2018-2022_ | **Senior Backend Engineer** at NEOCLES
 
 * Collaborated with product managers to build high-performance APIs for core e-commerce functions, handling concurrent
   users in the thousands.
@@ -44,30 +44,22 @@ product models.
 
 ## Projects
 
-`Alpha`
-__Iconeec__ Icon hosting web application aimed to make any icon or emoji uploaded by a user instantly available to be
-rendered by anyone. Right now its a proof of concept limited to rendering the icons on the browser with a extension. I
-developed a Opentype file parser in C# to be able to dynamically create font files for the icons and then enable the
-browser to render them. Back-end built with NET core and SQL server, front-end with Vue.js and Bulma and published with
-Azure. [[See project](https://bitbucket.org/roquecarrizof/iconeec)]
+`Portfolio Website`
 
-`V2.2`
-__Rock Slide__ Game for Android devices developed with Unity3D and integrated with Google Play Services. All the
+`Vessel Navigation App` WinUI 3
+
+`AR Puzzle Game`
+
+`Rock Slide Game` Game for Android devices developed with Unity3D and integrated with Google Play Services. All the
 graphics were designed with
-Paint.net. [[See project](https://play.google.com/store/apps/details?id=com.roque.rockslide.android&hl=en)]
+Paint.net.
 
 ## Education
 
 `2011-16`
 __Software Engineering__ “Grado en ingeniería informática del software” Universidad de Oviedo.
 
-## Courses
-
-`2013`
-__Android game development course__ “Diseño y desarrollo de videojuegos y material de
-entretenimiento para teléfonos móviles Android” University of Oviedo, 45h.
-
-## Other merits
+### Other merits
 
 `2019` __Exam AZ-400__ Designing and Implementing Microsoft DevOps
 Solutions. [https://learn.microsoft.com/en-us/credentials/certifications/exams/az-400/](https://learn.microsoft.com/en-us/credentials/certifications/exams/az-400/)
