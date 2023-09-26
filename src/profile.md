@@ -24,7 +24,7 @@ _2018-2022_ ǀ **Senior Backend Engineer** at NEOCLES _(.NET, C#, SQL, ES, Azure
 * Designed and built high-performance APIs for core e-commerce functions, handling concurrent users in the thousands.
 * Managed releases and maintenance for 5 segregated client production environments.
 * Worked directly with clients conducting fit-gap analyses to integrate new services.
-* Developed backend services receiving 10M+ of import messages daily from external systems.
+* Developed backend services receiving 10M + of import messages daily from external systems.
 * Led upgrade and configuration of 30+ Elasticsearch servers housing hundreds of millions of documents saving
   thousands of euros monthly.
 

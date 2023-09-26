@@ -27,7 +27,9 @@
 
         {% for project in site.projects %}
         {% capture project_id %}project-file-{{forloop.index}}{% endcapture %}
-        {% include file-item.html id=project_id link=project.url icon='markdown' name=project.slug type='.md' %}
+        {% assign file_name = {{project.title | slugify}} %}
+        {% assign file_link = {{project.url | remove: "/index.html"}} %}
+        {% include file-item.html id=project_id link=file_link icon='markdown' name=file_name type='.md' %}
         {% endfor %}
       </div>
 
@@ -41,7 +43,9 @@
 
         {% for article in site.articles %}
         {% capture article_id %}article-file-{{forloop.index}}{% endcapture %}
-        {% include file-item.html id=article_id link=article.url icon='markdown' name=article.title type='.md' %}
+        {% assign file_name = {{article.title | slugify}} %}
+        {% assign file_link = {{article.url | remove: "/index.html"}} %}
+        {% include file-item.html id=article_id link=file_link icon='markdown' name=file_name type='.md' %}
         {% endfor %}
       </div>
 
@@ -55,7 +59,9 @@
 
         {% for drawing in site.drawings %}
         {% capture drawing_id %}drawing-file-{{forloop.index}}{% endcapture %}
-        {% include file-item.html id=drawing_id link=drawing.url icon='markdown' name=drawing.title type='.md' %}
+        {% assign file_name = {{drawing.title | slugify}} %}
+        {% assign file_link = {{drawing.url | remove: "/index.html"}} %}
+        {% include file-item.html id=drawing_id link=file_link icon='markdown' name=file_name type='.md' %}
         {% endfor %}
       </div>
 

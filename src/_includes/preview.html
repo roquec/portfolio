@@ -1,9 +1,9 @@
-<div>
-    <a href="{{ include.url }}">{{ include.name }}</a>
-    <div>
-        {% assign preview_posts = include.posts | sort: "feature_index" | limit: 3 %}
-        {% for preview_post in preview_posts %}
-        {% include card.html post=preview_post %}
-        {% endfor %}
-    </div>
+<div class="preview-wrapper">
+  <a href="{{ include.url }}">{{ include.name }}</a>
+  <div class="card-grid">
+    {% assign preview_posts = include.posts | sort: "feature_index" %}
+    {% for preview_post in preview_posts | limit: 3 %}
+    {% include card.html post=preview_post %}
+    {% endfor %}
+  </div>
 </div>
