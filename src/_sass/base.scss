@@ -1,3 +1,4 @@
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500&display=swap");
 @import "theme/light", "theme/dark", "variables";
 
 html {
@@ -39,6 +40,12 @@ html {
   --color-icon-readme: #{$dark-mode-icon-readme};
   --color-icon-editorconfig: #{$dark-mode-icon-editorconfig};
   --color-icon-json: #{$dark-mode-icon-json};
+  --color-index-welcome-accent: #{$dark-mode-index-welcome-accent};
+  --color-index-options: #{$dark-mode-index-options};
+  --color-index-link-projects-hover: #{$dark-mode-index-link-projects-hover};
+  --color-index-link-drawings-hover: #{$dark-mode-index-link-drawings-hover};
+  --color-index-link-articles-hover: #{$dark-mode-index-link-articles-hover};
+  --color-index-link-about-hover: #{$dark-mode-index-link-about-hover};
 }
 
 html[data-theme="light"] {
@@ -80,6 +87,12 @@ html[data-theme="light"] {
   --color-icon-readme: #{$light-mode-icon-readme};
   --color-icon-editorconfig: #{$light-mode-icon-editorconfig};
   --color-icon-json: #{$light-mode-icon-json};
+  --color-index-welcome-accent: #{$light-mode-index-welcome-accent};
+  --color-index-options: #{$light-mode-index-options};
+  --color-index-link-projects-hover: #{$light-mode-index-link-projects-hover};
+  --color-index-link-drawings-hover: #{$light-mode-index-link-drawings-hover};
+  --color-index-link-articles-hover: #{$light-mode-index-link-articles-hover};
+  --color-index-link-about-hover: #{$light-mode-index-link-about-hover};
 }
 
 body {

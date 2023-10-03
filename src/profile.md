@@ -1,5 +1,6 @@
 ---
-title: profile
+title: Profile
+layout: markdown
 ---
 
 # Alberto Roque Carrizo Fernández

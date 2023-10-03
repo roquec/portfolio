@@ -8,7 +8,7 @@
 }
 
 // Media query breakpoints
-$breakpoint-mobile: rem(600px);
+$breakpoint-mobile: 600px;
 $breakpoint-wide: rem(992px);
 
 // Layout variables
@@ -23,4 +23,5 @@ $base-font-size: rem(16px);
 $base-font-weight: 400;
 $small-font-size: calc($base-font-size * 0.875);
 $base-line-height: 1.5;
+$content-font-family: "Roboto", sans-serif;
 

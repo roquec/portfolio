@@ -1,22 +1,56 @@
 ---
-title: index
+title: Index
 ---
 <div class="index-page">
 
-  <div class="welcome-wrapper">
-    <div class="welcome-first">
-      Hello, I'm <span class="welcome-name">Roque Carrizo</span>.
+  <div class="index-page-top">
+
+    <div class="welcome-wrapper">
+
+      <div class="welcome-name">
+        <div class="welcome-name-first">Hello, I'm</div>
+        <div class="welcome-name-second"><span class="welcome-accent">Roque Carrizo</span>.</div>
+      </div>
+
+      <img class="welcome-pic" src="/assets/images/roque_profile.png" loading="lazy" alt="Profile picture">
+
+      <div class="welcome-occupation">
+        <div class="welcome-occupation-first">I'm a</div>
+        <div class="welcome-occupation-second">software engineer.</div>
+      </div>
+
     </div>
 
-    <img class="welcome-pic" src="https://roquec.com/assets/images/roque_profile.png">
-
-    <div class="welcome-second">I'm a software engineer.</div>
   </div>
 
-  <div>
-    {% include preview.html posts=site.projects url="/projects.html" name="Projects" %}
-    {% include preview.html posts=site.articles url="/articles.html" name="Articles" %}
-    {% include preview.html posts=site.drawings url="/drawings.html" name="Drawings" %}
+  <div class="index-page-bottom">
+    <div class="links-wrapper">
+
+      <div class="link projects-link">
+        <a class="link-overlay" href="/projects"></a>
+        <i class="icon link-icon icon-wrench"></i>
+        <div class="link-title">PROJECTS</div>
+      </div>
+
+      <div class="link drawings-link">
+        <a class="link-overlay" href="/drawings"></a>
+        <i class="icon link-icon icon-palette"></i>
+        <div class="link-title">DRAWINGS</div>
+      </div>
+
+      <div class="link articles-link">
+        <a class="link-overlay" href="/articles"></a>
+        <i class="icon link-icon icon-article"></i>
+        <div class="link-title">ARTICLES</div>
+      </div>
+
+      <div class="link about-link">
+        <a class="link-overlay" href="/profile"></a>
+        <i class="icon link-icon icon-user"></i>
+        <div class="link-title">ABOUT ME</div>
+      </div>
+
+    </div>
   </div>
 
 </div>

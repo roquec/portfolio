@@ -45,9 +45,5 @@ $footer-height: rem(22px);
 
   .content {
     flex: 1;
-
-    .markdown-body {
-      max-width: #{$content-max-width};
-    }
   }
 }

@@ -1,0 +1,17 @@
+@import "../variables";
+
+.collection-page {
+  padding: rem(20px);
+
+  .collection-title {
+    font-size: rem(32px);
+    font-weight: 300;
+    margin-bottom: rem(30px);
+  }
+  
+  .card-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: rem(10px);
+  }
+}

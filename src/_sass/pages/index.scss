@@ -1,57 +1,181 @@
+@import "../variables";
+
+// Mobile
 .index-page {
-  .welcome-wrapper {
+  padding-top: rem(40px);
+  padding-bottom: rem(60px);
+  min-height: 100%;
+
+  display: flex;
+  flex-direction: column;
+  gap: rem(60px);
+
+  .index-page-top {
+    flex-grow: 0;
     display: flex;
-    flex-flow: column;
     align-items: center;
 
-    margin: 24px 12px 24px 12px;
-
-    font-weight: 400;
-    font-size: 30px;
-    font-family: "Courier New", monospace;
-  }
-
-  .welcome-first {
-    flex-grow: 1;
-    text-align: center;
-
-    .welcome-name {
-      font-weight: 800;
-      color: #e31b6d;
-    }
-  }
-
-  .welcome-pic {
-    border-radius: 50%;
-    flex-grow: 0;
-    height: 180px;
-    width: 180px;
-
-    margin: 24px 12px 24px 12px;
-  }
-
-  .welcome-second {
-    flex-grow: 1;
-
-    text-align: center;
-  }
-
-  @media only screen and (min-width: 600px) {
     .welcome-wrapper {
-      flex-flow: row;
+      flex-grow: 1;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: rem(30px);
 
-      margin: 40px 0 24px 0;
+      font-weight: 100;
+      font-size: rem(38px);
 
-      .welcome-first {
-        align-self: start;
+      .welcome-name, .welcome-occupation {
+        flex: 0;
+        display: flex;
+        flex-flow: column;
+        align-items: center;
+        text-align: center;
+
+        .welcome-accent {
+          color: var(--color-index-welcome-accent);
+          font-size: rem(45px);
+          font-weight: 300;
+          letter-spacing: 1px;
+        }
       }
 
       .welcome-pic {
-        margin: 0 12px 0 12px;
+        flex: 0;
+        height: rem(220px);
+        width: rem(220px);
+        border-radius: 50%;
+      }
+    }
+  }
+
+  .index-page-bottom {
+    flex-grow: 0;
+
+    .links-wrapper {
+      flex-grow: 1;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: rem(40px);
+
+      .link {
+        position: relative;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        gap: rem(20px);
+
+        font-weight: 200;
+        color: var(--color-index-options);
+
+        .link-overlay {
+          position: absolute;
+          left: 0;
+          top: 0;
+          bottom: 0;
+          right: 0;
+          z-index: 1;
+
+          &:focus-visible {
+            outline: none;
+          }
+        }
+
+        .link-icon {
+          flex-grow: 1;
+          font-size: rem(30px);
+        }
+
+        .link-title {
+          flex-grow: 1;
+          font-size: rem(28px);
+        }
+      }
+    }
+  }
+}
+
+// Desktop
+@container content (min-width: #{$breakpoint-mobile}) {
+  .index-page {
+    padding-top: 0;
+    padding-bottom: 0;
+    gap: 0;
+
+    .index-page-top {
+      flex-grow: 1;
+
+      .welcome-wrapper {
+        flex-direction: row;
+        gap: 0;
+
+        .welcome-name {
+          flex: 1;
+          align-items: end;
+          align-self: start;
+          text-align: end;
+
+          .welcome-name-second {
+            padding-right: rem(20px);
+          }
+        }
+
+        .welcome-occupation {
+          flex: 1;
+          align-items: start;
+          align-self: end;
+          text-align: start;
+
+          .welcome-occupation-first {
+            padding-left: rem(20px);
+          }
+        }
+      }
+    }
+
+    .index-page-bottom {
+      .links-wrapper {
+        flex-direction: row;
+        width: 100%;
+        gap: 0;
+
+        .link {
+          padding-top: rem(40px);
+          padding-bottom: rem(40px);
+          flex-grow: 1;
+          flex-direction: column;
+          gap: rem(10px);
+
+          .link-icon {
+            font-size: rem(40px);
+          }
+        }
+      }
+    }
+  }
+}
+
+// Hover effects
+@media (hover: hover) {
+  .index-page .link {
+    &:hover, &:focus-within {
+      font-weight: 300;
+
+      &.projects-link {
+        color: var(--color-index-link-projects-hover);
       }
 
-      .welcome-second {
-        align-self: end;
+      &.drawings-link {
+        color: var(--color-index-link-drawings-hover);
+      }
+
+      &.articles-link {
+        color: var(--color-index-link-articles-hover);
+      }
+
+      &.about-link {
+        color: var(--color-index-link-about-hover);
       }
     }
   }

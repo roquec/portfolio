@@ -5,8 +5,6 @@ date: 07/03/2023
 tags: [ vestibulum, eu, urna, fringilla, fermentum, malesuada, iaculis, in, consectetur, test ]
 ---
 
-## Project 1
-
 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris orci odio, porta id erat malesuada, vulputate lacinia
 eros. Curabitur ut sem vitae odio facilisis scelerisque in ut magna. Suspendisse interdum metus id metus ultricies,
 vitae vestibulum leo commodo. Pellentesque fringilla lacus sed purus iaculis, non sagittis lorem tristique. Fusce

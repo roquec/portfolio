@@ -1,5 +1,6 @@
-<div class="grid">
-    {% for grid_post in include.posts %}
-    {% include card.html post=grid_post %}
-    {% endfor %}
+<div class="card-grid">
+  {% assign cards = include.posts | sort: "feature_index" %}
+  {% for card in cards %}
+  {% include card.html post=card %}
+  {% endfor %}
 </div>
