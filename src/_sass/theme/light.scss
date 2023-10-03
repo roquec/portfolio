@@ -26,8 +26,6 @@ $light-mode-tab-background: #ECECEC;
 $light-mode-tab-foreground: #6A6A6A;
 $light-mode-tab-selected-background: #FFFFFF;
 $light-mode-tab-selected-foreground: #333333;
-$light-mode-content-background: #FFFFFF;
-$light-mode-content-foreground: #1E1E1E;
 $light-mode-footer-background: #007ACC;
 $light-mode-footer-foreground: #FFFFFF;
 $light-mode-breadcrumbs-foreground: #818181;
@@ -39,6 +37,9 @@ $light-mode-icon-html: #CC6D2E;
 $light-mode-icon-readme: #498BA7;
 $light-mode-icon-editorconfig: #627379;
 $light-mode-icon-json: #B7B73B;
+$light-mode-content-background: #FFFFFF;
+$light-mode-content-foreground: #24292f;
+$light-mode-content-foreground-muted: #CCCCCC;
 
 // Markdown
 $light-mode-color-fg-default: #24292f;
@@ -65,8 +66,13 @@ $light-mode-color-code-highlight-function: #d2a8ff;
 
 // Index Page
 $light-mode-index-welcome-accent: #E31B6D;
-$light-mode-index-options: #B0B0B0;
+$light-mode-index-options: #AAAAAA;
 $light-mode-index-link-projects-hover: #B7B73B;
 $light-mode-index-link-drawings-hover: #CC6D2E;
 $light-mode-index-link-articles-hover: #498BA7;
 $light-mode-index-link-about-hover: #D2A8FF;
+
+// Card
+$light-mode-card-foreground: #24292f; //#D4D4D4;
+$light-mode-card-background: #FFFFFFBB; //#000000DD;
+$light-mode-card-outline: #24292f;
