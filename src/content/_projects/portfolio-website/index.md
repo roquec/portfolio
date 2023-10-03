@@ -1,8 +1,8 @@
 ---
-title: Lorem Ipsum Dolor Sit Amet Consectetur Adipiscing Elit
+title: Portfolio Website
 feature_index: 1
-date: 07/03/2023
-tags: [ vestibulum, eu, urna, fringilla, fermentum, malesuada, iaculis, in, consectetur, test ]
+date: 10/03/2023
+tags: [ css, html, markdown, github ]
 ---
 
 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris orci odio, porta id erat malesuada, vulputate lacinia
@@ -12,6 +12,8 @@ tristique diam et dui egestas faucibus. In fermentum pretium dapibus. Etiam nequ
 interdum vel tortor. Morbi vitae odio auctor, tristique quam eu, fermentum elit. Fusce ac magna dolor. Nunc eget ligula
 sem. Proin nunc augue, tempus ac mauris at, ultricies mattis urna. Integer ac nisi at dolor pretium ornare vel in justo.
 Nam id lectus non metus vehicula ultricies.
+
+![Portfolio Website Image](thumbnail.webp)
 
 Ut volutpat ut orci ut fringilla. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.
 Fusce eu odio vel arcu venenatis vulputate eget sodales lorem. Ut eget turpis elit. Mauris tincidunt orci elit, a varius

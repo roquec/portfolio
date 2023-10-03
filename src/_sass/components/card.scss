@@ -19,7 +19,7 @@ html[data-theme="light"] .card {
   overflow: hidden;
   border-top-left-radius: rem(8px);
   border-top-right-radius: rem(8px);
-  outline: 0 solid transparent;
+  outline: 2px solid var(--color-content-foreground-muted);
   transition: outline-color 0.1s ease-in-out, outline-width 0.1s ease-in-out;
 
   .card-content {
