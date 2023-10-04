@@ -1,17 +1,25 @@
 <div class="tabs">
-  <div class="tab index-tab {% if page.title == 'Index' %}current-tab{% endif %}">
-    {% if page.title != "Index" %}
+  <div class="tab index-tab {% if page.file == 'index' %}current-tab{% endif %}">
+    {% if page.file != "index" %}
     <a class="overlay" href="/main.html"></a>
     {% endif %}
     <i class="icon icon-html"></i>
     <div class="name">index.html</div>
   </div>
 
-  {% if page.title != "Index" %}
+  {% if page.file != "index" %}
+
+  {% if page.file %}
+  {% assign file = page.file | append: '.' | append: page.type %}
+  {% else %}
+  {% assign file = page.title | slugify | append: '.' | append: page.type %}
+  {% endif %}
+
   <div class="tab content-tab current-tab">
-    <i class="icon icon-markdown"></i>
-    <div class="name">{{ page.title }}.md</div>
+    <i class="icon icon-{{ page.icon }}"></i>
+    <div class="name">{{ file }}</div>
     <a href="/main.html" class="icon icon-cross"></a>
   </div>
+  
   {% endif %}
 </div>

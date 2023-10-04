@@ -21,7 +21,8 @@ defaults:
       path: ""
     values:
       layout: "base"
-
+      type: "md"
+      icon: "markdown"
 plugins:
   - jekyll-feed
   - jekyll-sitemap

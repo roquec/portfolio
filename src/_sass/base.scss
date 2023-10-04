@@ -105,6 +105,10 @@ body {
   overflow-x: hidden;
 }
 
+.no-transition * {
+  transition: none !important;
+}
+
 @media (hover: hover) {
   .scrollable {
     &::-webkit-scrollbar {

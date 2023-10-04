@@ -1,6 +1,9 @@
 ---
 title: README
 layout: markdown
+file: README
+icon: readme
+type: md
 ---
 
 # Portfolio

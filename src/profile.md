@@ -1,6 +1,9 @@
 ---
 title: Profile
 layout: markdown
+file: profile
+icon: markdown
+type: md
 ---
 
 # Alberto Roque Carrizo Fernández

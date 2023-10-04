@@ -1,7 +1,33 @@
-<div class="file-item {{ include.class }} {% if page.url == include.link %}open{% endif %}" id="{{include.id}}">
-  <a class="overlay" title="roquec/projects/{{ include.name }}{{ include.type }}"
-     {% if include.link %} href="{{ include.link }}" {% endif %}
-     {% if include.onclick %} onclick="{{ include.onclick }}" {% endif %}></a>
-  <i class="icon icon-{{ include.icon }}"></i>
-  <div class="file-name">{{ include.name }}{{ include.type }}</div>
+{% if include.page %}
+{% assign item = include.page %}
+{% elsif include.id %}
+{% assign item = site.pages | where: "path", include.id | first %}
+{% endif %}
+
+{% if item %}
+
+{% if item.file %}
+{% assign file = item.file | append: '.' | append: item.type %}
+{% else %}
+{% assign file = item.title | slugify | append: '.' | append: item.type %}
+{% endif %}
+
+{% if item.collection %}
+{% assign title = "roquec" | append: '/' | append: item.collection | append: '/'  | append: file %}
+{% else %}
+{% assign title = "roquec" | append: '/' | append: file %}
+{% endif %}
+
+{% assign link = item.url | remove: "/index.html" | remove: ".html" %}
+
+<div class="file-item {% if page.url == item.url %}open{% endif %}">
+
+  <a class="overlay" title="{{ title }}" href="{{ link }}"></a>
+
+  <i class="icon icon-{{ item.icon }}"></i>
+
+  <div class="file-name">{{ file }}</div>
+
 </div>
+
+{% endif %}

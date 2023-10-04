@@ -9,27 +9,25 @@
       <div class="file-name">ROQUEC</div>
     </div>
     <div class="folder portfolio-folder">
-      {% include file-item.html id='index-file' icon='html' name='index' type='.html' link='/main.html' %}
+      {% include file-item.html id='main.html' %}
 
-      {% include file-item.html id='profile' icon='markdown' name='profile' type='.md' link='/profile' %}
+      {% include file-item.html id='profile.md' %}
 
-      {% include file-item.html id='about-me-file' icon='readme' name='README' type='.md' link='/readme' %}
+      {% include file-item.html id='README.md' %}
 
-      {% include file-item.html id='config-file' icon='config' name='.editorconfig' link='/settings.html' %}
+      {% include file-item.html id='config.html' %}
 
       <div class="file-item folder-item projects" id="projects-folder">
         <button class="overlay" onclick="toggleFolder('projects-folder')"></button>
         <i class="icon icon-chevron-down"></i><i class="icon icon-chevron-right"></i>
         <div class="file-name">projects</div>
       </div>
+
       <div class="folder projects-folder">
-        {% include file-item.html id='projects-file' icon='html' name='projects' type='.html' link='/projects.html' %}
+        {% include file-item.html id='projects.html' %}
 
         {% for project in site.projects %}
-        {% capture project_id %}project-file-{{forloop.index}}{% endcapture %}
-        {% assign file_name = {{project.title | slugify}} %}
-        {% assign file_link = {{project.url | remove: "/index.html"}} %}
-        {% include file-item.html id=project_id link=file_link icon='markdown' name=file_name type='.md' %}
+        {% include file-item.html page=project %}
         {% endfor %}
       </div>
 
@@ -39,13 +37,10 @@
         <div class="file-name">articles</div>
       </div>
       <div class="folder articles-folder">
-        {% include file-item.html id='articles-file' icon='html' name='articles' type='.html' link='/articles.html' %}
+        {% include file-item.html id='articles.html' %}
 
         {% for article in site.articles %}
-        {% capture article_id %}article-file-{{forloop.index}}{% endcapture %}
-        {% assign file_name = {{article.title | slugify}} %}
-        {% assign file_link = {{article.url | remove: "/index.html"}} %}
-        {% include file-item.html id=article_id link=file_link icon='markdown' name=file_name type='.md' %}
+        {% include file-item.html page=article %}
         {% endfor %}
       </div>
 
@@ -55,25 +50,24 @@
         <div class="file-name">drawings</div>
       </div>
       <div class="folder drawings-folder">
-        {% include file-item.html id='drawings-file' icon='html' name='drawings' type='.html' link='/drawings.html' %}
+        {% include file-item.html id='drawings.html' %}
 
         {% for drawing in site.drawings %}
-        {% capture drawing_id %}drawing-file-{{forloop.index}}{% endcapture %}
-        {% assign file_name = {{drawing.title | slugify}} %}
-        {% assign file_link = {{drawing.url | remove: "/index.html"}} %}
-        {% include file-item.html id=drawing_id link=file_link icon='markdown' name=file_name type='.md' %}
+        {% include file-item.html page=drawing %}
         {% endfor %}
       </div>
 
-      {% include file-item.html id='version-file' icon='json' name='version' type='.json' link='/version.json' %}
+      {% include file-item.html id='version.html' %}
 
-      {% include file-item.html id='404-file' icon='html' name='404' type='.html' link='/404.html' %}
+      {% include file-item.html id='404.html' %}
     </div>
 
   </div>
 
-  <div class="nav-panel search-panel scrollable" id="search-panel">
+  <div class="nav-panel search-panel scrollable files-panel" id="search-panel">
+
     <label class="nav-header" for="search-box">SEARCH</label>
+
     <div class="search-box-wrapper">
       <i class="icon icon-chevron-right"></i>
       <input type="text" autocomplete="off" spellcheck="false" autocapitalize="off" title="Search" placeholder="Search"
@@ -99,6 +93,42 @@
       </button>
       {% endfor %}
     </div>
+
+    <div class="search-results folder">
+
+      <div class="file-item folder-item projects">
+        <i class="icon icon-chevron-down"></i><i class="icon icon-chevron-right"></i>
+        <div class="file-name">projects</div>
+      </div>
+
+      <div class="folder projects-folder open">
+        {% for project in site.projects %}
+        {% include file-item.html page=project %}
+        {% endfor %}
+      </div>
+
+      <div class="file-item folder-item articles">
+        <i class="icon icon-chevron-down"></i><i class="icon icon-chevron-right"></i>
+        <div class="file-name">articles</div>
+      </div>
+      <div class="folder articles-folder open">
+        {% for article in site.articles %}
+        {% include file-item.html page=article %}
+        {% endfor %}
+      </div>
+
+      <div class="file-item folder-item drawings">
+        <i class="icon icon-chevron-down"></i><i class="icon icon-chevron-right"></i>
+        <div class="file-name">drawings</div>
+      </div>
+      <div class="folder drawings-folder open">
+        {% for drawing in site.drawings %}
+        {% include file-item.html page=drawing %}
+        {% endfor %}
+      </div>
+
+    </div>
+
   </div>
 
   <a id="resizer"></a>

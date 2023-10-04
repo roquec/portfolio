@@ -2,44 +2,28 @@
 
 // Mobile
 .collection-page {
-  padding: rem(12px) rem(8px) rem(12px) rem(8px);
+  padding: rem(20px);
 
   .collection-title {
     font-size: rem(32px);
     font-weight: 300;
     padding-bottom: rem(8px);
-    margin-bottom: rem(12px);
+    margin-bottom: rem(20px);
     border-bottom: rem(1px) solid var(--color-content-foreground-muted);
   }
 
   .collection-posts {
     display: grid;
     grid-template-columns: 1fr;
-    gap: rem(12px);
-
-    .card {
-      height: rem(180px);
-    }
+    gap: rem(20px);
   }
 }
 
 // Desktop
 @container content (min-width: #{$breakpoint-mobile}) {
   .collection-page {
-    padding: rem(16px) rem(16px) rem(16px) rem(16px);
-
-    .collection-title {
-      padding-bottom: rem(12px);
-      margin-bottom: rem(20px);
-    }
-
     .collection-posts {
-      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-      gap: rem(16px);
-
-      .card {
-        height: rem(300px);
-      }
+      grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
     }
   }
 }
