@@ -4,17 +4,17 @@ $branch = $env:GITHUB_REF_NAME
 $commit = $env:GITHUB_SHA
 $build = $env:GITHUB_RUN_ID
 
-# Set the path to the JSON file to be updated
-$jsonFilePath = "./src/version.json"
+# Set the path to the version file to be updated
+$versionFilePath = "./src/version.html"
 
-# Read the contents of the JSON file
-$jsonContent = Get-Content $jsonFilePath -Raw | ConvertFrom-Json
+# Read the contents of the version file
+$versionFileContent = Get-Content $versionFilePath -Raw
 
 # Replace the placeholders with the actual values
-$jsonContent.timestamp = $jsonContent.timestamp -replace "__TIME__", $time
-$jsonContent.branch = $jsonContent.branch -replace "__BRANCH__", $branch
-$jsonContent.commit = $jsonContent.commit -replace "__COMMIT__", $commit
-$jsonContent.build = $jsonContent.build -replace "__BUILD__", $build
+$versionFileContent = $versionFileContent -replace "__TIME__", $time
+$versionFileContent = $versionFileContent -replace "__BRANCH__", $branch
+$versionFileContent = $versionFileContent -replace "__COMMIT__", $commit
+$versionFileContent = $versionFileContent -replace "__BUILD__", $build
 
-# Write the updated JSON content back to the file
-$jsonContent | ConvertTo-Json -Depth 100 | Set-Content $jsonFilePath
+# Write the updated version content back to the file
+$versionFileContent | Set-Content $versionFilePath
