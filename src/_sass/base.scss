@@ -97,6 +97,10 @@ body {
   top: 0;
   bottom: 0;
   right: 0;
+  border: none;
+  outline: none;
+  opacity: 0;
+  cursor: pointer;
   z-index: 999;
 }
 

@@ -20,9 +20,15 @@
 
 {% assign link = item.url | remove: "/index.html" | remove: ".html" %}
 
-<div class="file-item {% if page.url == item.url %}open{% endif %}">
+{% if include.scope %}
+{% assign id = include.scope | append: '-' | append: item.path | slugify %}
+{% else %}
+{% assign id = item.path | slugify %}
+{% endif %}
 
-  <a class="overlay" title="{{ title }}" href="{{ link }}"></a>
+<div class="file-item {% if page.url == item.url %}open{% endif %}" id="{{ id }}">
+
+  <a class="link-overlay" title="{{ title }}" href="{{ link }}"></a>
 
   <i class="icon icon-{{ item.icon }}"></i>
 

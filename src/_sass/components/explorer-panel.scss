@@ -1,0 +1,14 @@
+@import "../variables";
+
+/*  ===================
+    BASE STYLES
+    =================== */
+.explorer-panel {
+  flex-direction: column;
+
+  .file-item.portfolio {
+    font-weight: bold;
+    font-size: rem(11px);
+    padding-left: 0;
+  }
+}

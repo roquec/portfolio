@@ -1,6 +1,8 @@
 @import "../theme/light", "../theme/dark", "../variables";
 
-// Colors
+/*  ===================
+    COLORS
+    =================== */
 html .card {
   --color-card-foreground: #{$dark-mode-card-foreground};
   --color-card-outline: #{$dark-mode-card-outline};
@@ -13,7 +15,9 @@ html[data-theme="light"] .card {
   --color-card-background: #{$light-mode-card-background};
 }
 
-// Mobile
+/*  ===================
+    BASE STYLES
+    =================== */
 .card {
   position: relative;
   height: rem(180px);
@@ -59,7 +63,9 @@ html[data-theme="light"] .card {
   }
 }
 
-// Desktop
+/*  ===================
+    DESKTOP
+    =================== */
 @container content (min-width: #{$breakpoint-mobile}) {
   .card {
     height: rem(260px);
@@ -73,7 +79,9 @@ html[data-theme="light"] .card {
   }
 }
 
-// Hover effects
+/*  ===================
+    HOVER EFFECTS
+    =================== */
 @media (hover: hover) {
   .card {
     &:hover, &:focus-within {

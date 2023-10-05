@@ -1,6 +1,8 @@
 @import "../theme/light", "../theme/dark", "../variables";
 
-// Colors
+/*  ===================
+    COLORS
+    =================== */
 html .index-page {
   --color-index-welcome-accent: #{$dark-mode-index-welcome-accent};
   --color-index-options: #{$dark-mode-index-options};
@@ -19,7 +21,9 @@ html[data-theme="light"] .markdown-body {
   --color-index-link-about-hover: #{$light-mode-index-link-about-hover};
 }
 
-// Mobile
+/*  ===================
+    BASE STYLES
+    =================== */
 .index-page {
   padding-top: rem(40px);
   padding-bottom: rem(60px);
@@ -115,7 +119,9 @@ html[data-theme="light"] .markdown-body {
   }
 }
 
-// Desktop
+/*  ===================
+    DESKTOP
+    =================== */
 @container content (min-width: #{$breakpoint-mobile}) {
   .index-page {
     padding-top: 0;
@@ -175,7 +181,9 @@ html[data-theme="light"] .markdown-body {
   }
 }
 
-// Hover effects
+/*  ===================
+    HOVER EFFECTS
+    =================== */
 @media (hover: hover) {
   .index-page .link {
     &:hover, &:focus-within {

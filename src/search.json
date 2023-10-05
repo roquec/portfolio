@@ -5,10 +5,9 @@ layout: null
 [
 {%- for post in posts %}
   {
+    "id" : "{{ post.path | slugify }}",
     "title" : "{{ post.title | replace: '"', ' ' | replace: '\', ' '}}",
-    "url" : "{{ post.url }}",
-    "date" : "{{ post.date | date: "%b %d, %Y" }}",
-    "tags" : [{% for tag in post.tags %}"{{ tag }}"{% if forloop.last %}{% else %},{% endif %}{% endfor %}],
+    "tags" : [{% for tag in post.tags %}"{{ tag | downcase }}"{% if forloop.last %}{% else %},{% endif %}{% endfor %}],
     "content" : "{{ post.content | strip | strip_html | strip_newlines | replace: '"', ' ' | replace: '\', ' '}}"
   }
   {%- if forloop.last -%}{%- else -%},{%- endif -%}
