@@ -15,6 +15,7 @@ $navigation-width: rem(300px);
   position: relative;
   min-width: rem(150px);
   max-width: calc(100vw - 350px);
+  padding-top: rem(12px);
 
   &.open {
     display: flex;
@@ -23,6 +24,7 @@ $navigation-width: rem(300px);
   .nav-panel {
     width: 100%;
     display: none;
+    gap: 17px;
   }
 
   .nav-panel.open {
@@ -30,7 +32,7 @@ $navigation-width: rem(300px);
   }
 
   .nav-header {
-    padding: rem(12px) 0 rem(12px) rem(20px);
+    padding: 0 rem(20px);
     font-size: rem(11px);
     color: var(--color-navigation-header-foreground);
   }

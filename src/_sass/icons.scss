@@ -1,7 +1,7 @@
 @font-face {
   font-family: "roquec-portfolio";
   font-display: block;
-  src: url("../fonts/roquec-portfolio.woff2?v=123456") format("woff2");
+  src: url("../fonts/roquec-portfolio.woff2?v=10-05-2023") format("woff2");
 }
 
 .icon {
@@ -88,6 +88,11 @@
 .icon-chevron-right::before {
   font-family: roquec-portfolio, serif;
   content: "\e80c";
+}
+
+.icon-tag::before {
+  font-family: roquec-portfolio, serif;
+  content: "\e816";
 }
 
 // Tab icons

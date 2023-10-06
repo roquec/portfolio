@@ -5,12 +5,14 @@
   <div class="search-box-wrapper" id="search-box-wrapper">
     <i class="icon icon-chevron-right"></i>
     <input type="text" autocomplete="off" spellcheck="false" autocapitalize="off" title="Search" placeholder="Search"
-           id="search-box" oninput="searchText()"/>
+           id="search-box" oninput="onSearchInput()"/>
+    <span></span>
   </div>
 
   <div class="tags-wrapper" id="tags-wrapper">
+    <i class="icon icon-tag"></i>
     {% assign posts = site.projects | concat: site.articles | concat: site.drawings %}
-    {% assign grouptag = posts | map: 'tags' | join: ',' | downcase | split: ',' | group_by_exp: "item", "item" |
+    {% assign grouptag = posts | map: 'tags' | join: ',' | split: ',' | group_by_exp: "item", "item" |
     sort: 'name' %}
 
     {% assign biggestTag = grouptag | sort: 'size' | last %}
@@ -21,14 +23,17 @@
 
     {% for tag in grouptag %}
     {% assign scale = tag.size | minus: minSize | times: step | plus: 1.0 | round %}
-    <button class="tag-item tag-size-{{ scale }}" onclick="searchTag('{{ tag.name }}', this)">
+    <button class="tag-item tag-size-{{ scale }}" id="tag-{{tag.name}}" onclick="onTagClick('{{ tag.name }}')">
       <span class="tag-name">{{ tag.name }}</span>
       <span class="tag-number">{{ tag.size }}</span>
+      <i class="icon icon-cross"></i>
     </button>
     {% endfor %}
   </div>
 
   <div class="search-results" id="search-results">
+
+    <div>5 results in 2 files</div>
 
     <div class="file-item folder-item projects">
       <i class="icon icon-chevron-down"></i><i class="icon icon-chevron-right"></i>

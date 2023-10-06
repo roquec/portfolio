@@ -11,7 +11,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    margin-top: rem(5px);
+    position: relative;
 
     i {
       font-size: rem(16px);
@@ -32,7 +32,6 @@
 
       &::placeholder {
         color: var(--color-search-bar-placeholder);
-        opacity: 1;
       }
 
       &:focus {
@@ -44,13 +43,32 @@
     &.hidden {
       display: none;
     }
+
+    span::after {
+      content: "";
+      display: none;
+      z-index: 999;
+      position: absolute;
+      left: rem(27px);
+      top: rem(7px);
+      font: inherit;
+      color: var(--color-search-bar-foreground);
+    }
   }
 
   .tags-wrapper {
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
-    padding: 20px 12px 0 7px;
+    padding: 0 12px 0 12px;
+    align-items: center;
+    gap: 6px;
+
+    i {
+      font-size: rem(16px);
+      width: rem(20px);
+      margin-left: -6px;
+    }
 
     &::after {
       content: "";
@@ -59,10 +77,8 @@
 
     .tag-item {
       padding: 0 10px;
-      margin-left: 5px;
-      margin-bottom: 6px;
       flex-grow: 1;
-      transition: flex-grow 0.1s, outline-width 0.1s, background-color 0.1s, color 0.1s;
+      transition: flex-grow 0.1s, outline-width 0.1s, outline-color 0.1s, background-color 0.1s, color 0.1s;
       border: none;
       color: var(--color-search-bar-placeholder);
       overflow: hidden;
@@ -137,17 +153,37 @@
         font-size: 12px;
       }
 
+      .icon-cross {
+        padding-left: 15px;
+        display: none;
+      }
+
       &.selected {
-        cursor: pointer;
-        flex-grow: 100;
-        outline-color: var(--color-file-item-active-border);
-        background-color: var(--color-file-item-active-background);
+        flex-grow: 1;
         color: var(--color-file-item-active-foreground);
+        padding: 0 rem(20px);
+
+        .tag-name {
+          font-size: 14px;
+        }
+
+        .tag-number {
+          display: none;
+        }
+
+        .icon-cross {
+          display: block;
+        }
+
+        &:hover {
+          outline-color: #ff4f4f;
+          background-color: #831c1c;
+          color: var(--color-file-item-active-foreground);
+        }
       }
     }
 
     &.selected {
-      padding-top: 0;
 
       .tag-item:not(.selected) {
         display: none;
@@ -161,7 +197,7 @@
 
 
   .search-results {
-    .file-item {
+    .file-item:not(.folder-item) {
       display: none;
 
       &.result {

@@ -1,122 +1,186 @@
-window.addEventListener("DOMContentLoaded", initializeSearch);
+initializeSearchStyles();
 
+window.addEventListener("DOMContentLoaded", loadSearch);
+
+let searchBoxWrapperElement;
+let tagsWrapperElement;
+let searchResultsWrapperElement;
+let searchBoxElement;
 let posts = [];
 
-initializeSearchData();
-
-function initializeSearch() {
+function initializeSearchStyles() {
+  // Get search panel state
   let searchText = window.sessionStorage.getItem("search-text");
-  let searchBox = document.getElementById("search-box");
-  if (searchBox && searchText) {
-    searchBox.value = searchText;
-  }
-}
+  let selectedTag = window.sessionStorage.getItem("selected-tag");
+  let searchResults = window.sessionStorage.getItem("search-results");
 
-function searchText() {
-  let searchBox = document.getElementById("search-box");
-  let searchInput = searchBox?.value ?? null;
+  let style = "<style>";
 
-  if (!searchInput) {
-    clearSearch();
-    return;
-  }
-
-  let searchWrapper = document.getElementById("search-box-wrapper");
-  let tagsWrapper = document.getElementById("tags-wrapper");
-  let results = document.getElementById("search-results");
-
-  window.sessionStorage.setItem("search-text", searchBox.value);
-  doSearch(searchBox.value);
-
-  searchWrapper.classList.remove("hidden");
-  tagsWrapper.classList.add("hidden");
-  results.classList.remove("hidden");
-}
-
-function searchTag(tag, element) {
-  if (element.classList.contains("selected")) {
-    clearSearch();
-    return;
+  // Set visibility
+  if (searchText) {
+    style = style + ".initial-state #tags-wrapper { display: none !important; } ";
+  } else if (selectedTag) {
+    style = style + ".initial-state #search-box-wrapper { display: none !important; } ";
+  } else {
+    style = style + ".initial-state #search-results { display: none !important; } ";
   }
 
-  window.sessionStorage.setItem("selected-tag", tag);
+  // Search
+  if (searchText) {
+    style = style + `.initial-state #search-box-wrapper span::after { content: "${searchText}" !important; display: block !important; } `;
+    style = style + `.initial-state #search-box::placeholder { visibility: hidden !important; } `;
+  }
 
-  let searchWrapper = document.getElementById("search-box-wrapper");
-  let tagsWrapper = document.getElementById("tags-wrapper");
-  let results = document.getElementById("search-results");
+  // Tags
+  if (selectedTag) {
+    style = style + `.initial-state .tag-item { display: none !important; } `;
+    style = style + `
+    .initial-state #tag-${CSS.escape(selectedTag)} {
+      display: flex !important;
+      flex-grow: 1 !important;
+      color: var(--color-file-item-active-foreground) !important;
+      padding: 0 rem(20px) !important;
+    }
+    .initial-state #tag-${CSS.escape(selectedTag)}:hover {
+      outline-color: #ff4f4f !important;
+      background-color: #831c1c !important;
+      color: var(--color-file-item-active-foreground) !important;
+    }
+    .initial-state #tag-${CSS.escape(selectedTag)} .tag-name { font-size: 14px !important; }
+    .initial-state #tag-${CSS.escape(selectedTag)} .tag-number { display: none !important; }
+    .initial-state #tag-${CSS.escape(selectedTag)} .icon-cross { display: block !important; }
+    `;
+  }
 
-  element.parentNode.classList.add("selected");
-  element.classList.add("selected");
-
-  for (let post of posts) {
-    let match = post.tags.includes(tag);
-
-    let fileItem = document.getElementById("search-panel-" + post.id);
-
-    if (match) {
-      fileItem.classList.add("result");
-    } else {
-      fileItem.classList.remove("result");
+  // Results
+  if (searchResults) {
+    style = style + `.initial-state #search-results .file-item:not(.folder-item) { display: none !important; } `;
+    for (let searchResult of JSON.parse(searchResults)) {
+      style = style + `.initial-state #search-results #${CSS.escape(searchResult)} { display: flex !important; } `;
     }
   }
 
-  searchWrapper.classList.add("hidden");
-  tagsWrapper.classList.remove("hidden");
-  results.classList.remove("hidden");
+  style = style + "</style>";
+  document.write(style);
 }
 
+function loadSearch() {
+  searchBoxWrapperElement = document.getElementById("search-box-wrapper");
+  tagsWrapperElement = document.getElementById("tags-wrapper");
+  searchResultsWrapperElement = document.getElementById("search-results");
+  searchBoxElement = document.getElementById("search-box");
 
-function doSearch(searchText) {
-  for (let post of posts) {
-
-    let match = false;
-    if (post.title.includes(searchText)) {
-      match = true;
-    }
-    if (post.tags.includes(searchText)) {
-      match = true;
-    }
-    if (post.content.includes(searchText)) {
-      match = true;
-    }
-
-    let fileItem = document.getElementById("search-panel-" + post.id);
-
-    if (match) {
-      fileItem.classList.add("result");
-    } else {
-      fileItem.classList.remove("result");
-    }
-  }
-}
-
-function clearSearch() {
-  window.sessionStorage.removeItem("search-text");
-  window.sessionStorage.removeItem("selected-tag");
-
-  let searchBox = document.getElementById("search-box");
-  searchBox.value = "";
-
-  let tags = document.getElementsByClassName("selected");
-  for (let tag of tags) {
-    tag.classList.remove("selected");
-  }
-
-  let results = document.getElementsByClassName("result");
-  for (let result of results) {
-    result.classList.remove("result");
-  }
-
-  let searchWrapper = document.getElementById("search-box-wrapper");
-  let tagsWrapper = document.getElementById("tags-wrapper");
-  let resultsWrapper = document.getElementById("search-results");
-  searchWrapper.classList.remove("hidden");
-  tagsWrapper.classList.remove("hidden");
-  resultsWrapper.classList.add("hidden");
-}
-
-function initializeSearchData() {
   if (posts.length === 0) {
     fetch("/search.json").then(response => response.json().then(json => posts = json));
+  }
+
+  applySearchState();
+}
+
+function applySearchState() {
+  console.log("apply");
+  console.log(posts);
+
+  // Get search panel state
+  let searchText = window.sessionStorage.getItem("search-text");
+  let selectedTag = window.sessionStorage.getItem("selected-tag");
+  let searchResults = window.sessionStorage.getItem("search-results");
+
+  // Apply search box state
+  searchBoxElement.value = searchText ?? "";
+
+  // Apply tags state
+  let selectedTagElement = document.getElementById("tag-" + selectedTag);
+  let tags = document.getElementsByClassName("selected");
+  while (tags.length > 0) {
+    tags[0].classList.remove("selected");
+  }
+  if (selectedTagElement) {
+    tagsWrapperElement.classList.add("selected");
+    selectedTagElement.classList.add("selected");
+  } else {
+    tagsWrapperElement.classList.remove("selected");
+  }
+
+  // Apply results state
+  let resultItems = document.getElementsByClassName("result");
+  while (resultItems.length > 0) {
+    resultItems[0].classList.remove("result");
+  }
+  if (searchResults) {
+    for (let searchResult of JSON.parse(searchResults)) {
+      let fileItem = document.getElementById(searchResult);
+      fileItem.classList.add("result");
+    }
+  }
+
+  // Set visibility
+  if (searchText) {
+    searchBoxWrapperElement.classList.remove("hidden");
+    tagsWrapperElement.classList.add("hidden");
+    searchResultsWrapperElement.classList.remove("hidden");
+  } else if (selectedTag) {
+    searchBoxWrapperElement.classList.add("hidden");
+    tagsWrapperElement.classList.remove("hidden");
+    searchResultsWrapperElement.classList.remove("hidden");
+  } else {
+    searchBoxWrapperElement.classList.remove("hidden");
+    tagsWrapperElement.classList.remove("hidden");
+    searchResultsWrapperElement.classList.add("hidden");
+  }
+}
+
+function onSearchInput() {
+  let searchText = searchBoxElement.value;
+  if (searchText) {
+    window.sessionStorage.setItem("search-text", searchBoxElement.value);
+  } else {
+    window.sessionStorage.removeItem("search-text");
+  }
+  executeSearch();
+  applySearchState();
+}
+
+function onTagClick(tag) {
+  let selectedTag = window.sessionStorage.getItem("selected-tag");
+
+  if (tag && tag !== selectedTag) {
+    window.sessionStorage.setItem("selected-tag", tag);
+  } else {
+    window.sessionStorage.removeItem("selected-tag");
+  }
+  executeSearch();
+  applySearchState();
+}
+
+function executeSearch() {
+  let searchText = window.sessionStorage.getItem("search-text");
+  let selectedTag = window.sessionStorage.getItem("selected-tag");
+  let results = [];
+
+  for (let post of posts) {
+    let match = false;
+
+    if (searchText) {
+      let searchTextClean = searchText.toLowerCase();
+      match = post.title.includes(searchTextClean) || post.tags.includes(searchTextClean) || post.content.includes(searchTextClean);
+    }
+
+    if (selectedTag) {
+      let selectedTagClean = selectedTag.toLowerCase();
+      match = post.tags.includes(selectedTagClean);
+    }
+
+    let fileItem = document.getElementById("search-panel-" + post.id);
+
+    if (match) {
+      results.push("search-panel-" + post.id);
+    }
+  }
+
+  if (results.length > 0) {
+    window.sessionStorage.setItem("search-results", JSON.stringify(results));
+  } else {
+    window.sessionStorage.removeItem("search-results");
   }
 }
