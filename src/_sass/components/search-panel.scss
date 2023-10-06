@@ -4,8 +4,18 @@
     BASE STYLES
     =================== */
 .search-panel {
+  width: 100%;
+  display: flex;
   flex-direction: column;
   overflow-x: hidden;
+  padding-top: rem(12px);
+  gap: rem(17px);
+
+  .nav-header {
+    padding: 0 rem(20px);
+    font-size: rem(11px);
+    color: var(--color-navigation-header-foreground);
+  }
 
   .search-box-wrapper {
     display: flex;
@@ -195,8 +205,23 @@
     }
   }
 
+  #search-results {
 
-  .search-results {
+    #search-results-label {
+      margin-left: rem(22px);
+      margin-bottom: rem(10px);
+      color: var(--color-sidebar-foreground);
+      font-weight: 400;
+
+      #search-results-count::after {
+        content: attr(data-value);
+      }
+    }
+
+    #search-results-items {
+      padding-left: rem(8px);
+    }
+
     .file-item:not(.folder-item) {
       display: none;
 

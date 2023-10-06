@@ -7,7 +7,7 @@
   display: flex;
   flex-direction: row;
   position: relative;
-  height: rem(22px);
+  height: rem(28px);
   outline-offset: rem(-1px);
   align-items: center;
   justify-content: center;
@@ -80,11 +80,15 @@
   display: block;
 
   .file-item {
-    padding-left: rem(10px);
+    padding-left: rem(13px);
   }
 
   .folder .file-item {
     padding-left: rem(18px);
+  }
+
+  .folder .folder .file-item {
+    padding-left: rem(23px);
   }
 }
 
@@ -100,3 +104,11 @@
   }
 }
 
+/*  ===================
+    DESKTOP STYLES
+    =================== */
+@media (min-width: #{$breakpoint-mobile}) {
+  .file-item {
+    height: rem(22px);
+  }
+}

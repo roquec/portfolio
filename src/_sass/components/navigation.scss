@@ -7,15 +7,14 @@ $navigation-width: rem(300px);
     NAVIGATION
     =================== */
 .navigation-wrapper {
-  width: #{$navigation-width};
-  background-color: var(--color-navigation-background);
-  color: var(--color-navigation-foreground);
-  font-size: rem(13px);
   display: none;
   position: relative;
   min-width: rem(150px);
   max-width: calc(100vw - 350px);
-  padding-top: rem(12px);
+  width: #{$navigation-width};
+  background-color: var(--color-navigation-background);
+  color: var(--color-navigation-foreground);
+  font-size: rem(13px);
 
   &.open {
     display: flex;
@@ -24,17 +23,10 @@ $navigation-width: rem(300px);
   .nav-panel {
     width: 100%;
     display: none;
-    gap: 17px;
-  }
 
-  .nav-panel.open {
-    display: flex;
-  }
-
-  .nav-header {
-    padding: 0 rem(20px);
-    font-size: rem(11px);
-    color: var(--color-navigation-header-foreground);
+    &.open {
+      display: flex;
+    }
   }
 
   #resizer {
@@ -66,7 +58,7 @@ $navigation-width: rem(300px);
 /*  ===================
     MOBILE STYLES
     =================== */
-@media only screen and (max-width: 600px) {
+@media (max-width: #{$breakpoint-mobile}) {
   .navigation-wrapper {
     width: calc(100vw - 80px) !important;
     max-width: unset;
@@ -85,10 +77,6 @@ $navigation-width: rem(300px);
       right: rem(-40px);
       background: rgba(0, 0, 0, 0.5);
       cursor: pointer;
-    }
-
-    .files-panel .file-item {
-      height: rem(28px);
     }
   }
 }

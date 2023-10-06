@@ -1,4 +1,4 @@
-<div class="nav-panel search-panel scrollable" id="search-panel">
+<div class="search-panel scrollable">
 
   <label class="nav-header" for="search-box">SEARCH</label>
 
@@ -33,39 +33,41 @@
 
   <div class="search-results" id="search-results">
 
-    <div>5 results in 2 files</div>
+    <div id="search-results-label"><span id="search-results-count"></span> files found</div>
 
-    <div class="file-item folder-item projects">
-      <i class="icon icon-chevron-down"></i><i class="icon icon-chevron-right"></i>
-      <div class="file-name">projects</div>
-    </div>
+    <div id="search-results-items">
 
-    <div class="folder projects-folder open">
-      {% for project in site.projects %}
-      {% include file-item.html page=project scope="search-panel" %}
-      {% endfor %}
-    </div>
+      <div class="file-item folder-item projects">
+        <i class="icon icon-chevron-down"></i><i class="icon icon-chevron-right"></i>
+        <div class="file-name">projects</div>
+      </div>
 
-    <div class="file-item folder-item articles">
-      <i class="icon icon-chevron-down"></i><i class="icon icon-chevron-right"></i>
-      <div class="file-name">articles</div>
-    </div>
-    <div class="folder articles-folder open">
-      {% for article in site.articles %}
-      {% include file-item.html page=article scope="search-panel" %}
-      {% endfor %}
-    </div>
+      <div class="folder projects-folder open">
+        {% for project in site.projects %}
+        {% include file-item.html page=project scope="search-panel" %}
+        {% endfor %}
+      </div>
 
-    <div class="file-item folder-item drawings">
-      <i class="icon icon-chevron-down"></i><i class="icon icon-chevron-right"></i>
-      <div class="file-name">drawings</div>
-    </div>
-    <div class="folder drawings-folder open">
-      {% for drawing in site.drawings %}
-      {% include file-item.html page=drawing scope="search-panel" %}
-      {% endfor %}
-    </div>
+      <div class="file-item folder-item articles">
+        <i class="icon icon-chevron-down"></i><i class="icon icon-chevron-right"></i>
+        <div class="file-name">articles</div>
+      </div>
+      <div class="folder articles-folder open">
+        {% for article in site.articles %}
+        {% include file-item.html page=article scope="search-panel" %}
+        {% endfor %}
+      </div>
 
+      <div class="file-item folder-item drawings">
+        <i class="icon icon-chevron-down"></i><i class="icon icon-chevron-right"></i>
+        <div class="file-name">drawings</div>
+      </div>
+      <div class="folder drawings-folder open">
+        {% for drawing in site.drawings %}
+        {% include file-item.html page=drawing scope="search-panel" %}
+        {% endfor %}
+      </div>
+
+    </div>
   </div>
-
 </div>

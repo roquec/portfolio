@@ -54,10 +54,12 @@ function initializeSearchStyles() {
 
   // Results
   if (searchResults) {
+    let resultsArray = JSON.parse(searchResults);
     style = style + `.initial-state #search-results .file-item:not(.folder-item) { display: none !important; } `;
-    for (let searchResult of JSON.parse(searchResults)) {
+    for (let searchResult of resultsArray) {
       style = style + `.initial-state #search-results #${CSS.escape(searchResult)} { display: flex !important; } `;
     }
+    style = style + `.initial-state #search-results-count::after { content: "${resultsArray.length}" !important; } `;
   }
 
   style = style + "</style>";
@@ -108,10 +110,14 @@ function applySearchState() {
     resultItems[0].classList.remove("result");
   }
   if (searchResults) {
-    for (let searchResult of JSON.parse(searchResults)) {
+    let resultsArray = JSON.parse(searchResults);
+
+    for (let searchResult of resultsArray) {
       let fileItem = document.getElementById(searchResult);
       fileItem.classList.add("result");
     }
+    let countElement = document.getElementById("search-results-count");
+    countElement.setAttribute("data-value", resultsArray.length);
   }
 
   // Set visibility
