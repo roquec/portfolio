@@ -1,8 +1,8 @@
 # Get lighthouse report values
-$performance = ${{ fromJSON(steps.lighthouse.outputs.manifest)[0].summary.performance }}
-$accessibility = ${{ fromJSON(steps.lighthouse.outputs.manifest)[0].summary.accessibility }}
-$bestPractices = ${{ fromJSON(steps.lighthouse.outputs.manifest)[0].summary.best-practices }}
-$seo = ${{ fromJSON(steps.lighthouse.outputs.manifest)[0].summary.seo  }}
+$performance = '${{ fromJSON(steps.lighthouse.outputs.manifest)[0].summary.performance }}'
+$accessibility = '${{ fromJSON(steps.lighthouse.outputs.manifest)[0].summary.accessibility }}'
+$bestPractices = '${{ fromJSON(steps.lighthouse.outputs.manifest)[0].summary.best-practices }}'
+$seo = '${{ fromJSON(steps.lighthouse.outputs.manifest)[0].summary.seo  }}'
 
 # Format summary
 $summary = @'
