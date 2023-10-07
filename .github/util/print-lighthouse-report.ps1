@@ -1,11 +1,6 @@
 # Get lighthouse report outputs
-$links = $Env:STEPS_LIGHTHOUSE_OUTPUTS_LINKS;
-
-# Write to environment file
-$links >> $env:GITHUB_STEP_SUMMARY
-
-$links = $links | ConvertFrom-Json;
-$manifest = $Env:STEPS_LIGHTHOUSE_OUTPUTS_MANIFEST | ConvertFrom-Json
+$links = $env:LIGHTHOUSE_LINKS | ConvertFrom-Json;
+$manifest = $env:LIGHTHOUSE_MANIFEST | ConvertFrom-Json
 
 # Get data for summary
 $performance = $manifest[0].summary.performance;

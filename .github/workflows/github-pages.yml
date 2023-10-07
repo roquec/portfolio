@@ -31,6 +31,12 @@ jobs:
       - name: Debug Environment Variables
         run: |
           env
+      - name: Print Lighthouse report
+        shell: pwsh
+        env:
+          LIGHTHOUSE_MANIFEST: ${{steps.lighthouse.outputs.manifest}}
+          LIGHTHOUSE_LINKS: ${{steps.lighthouse.outputs.links}}
+        run: .\.github\util\print-lighthouse-report.ps1
       - name: Upload website artifact
         uses: actions/upload-pages-artifact@v2
   deploy:
