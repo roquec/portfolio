@@ -34,16 +34,12 @@ jobs:
           LIGHTHOUSE_MANIFEST: ${{steps.lighthouse.outputs.manifest}}
           LIGHTHOUSE_LINKS: ${{steps.lighthouse.outputs.links}}
         run: .\.github\util\print-lighthouse-report.ps1
-      - name: Update Lighthouse JSON
-        uses: actions/checkout@v4
-        run: |
-          git clone https://gist.github.com/3f8ee5d85053832ea374a05b301f57aa.git gist
-          git -C ./gist config user.name 'Portfolio GitHub Actions'
-          git -C ./gist config user.email '<>'
-          echo '{"performance":${{ fromJSON(steps.lighthouse.outputs.manifest)[0].summary.performance }},"accessibility":${{ fromJSON(steps.lighthouse.outputs.manifest)[0].summary.accessibility  }},"bestPractices":${{ fromJSON(steps.lighthouse.outputs.manifest)[0].summary.best-practices }},"seo":${{ fromJSON(steps.lighthouse.outputs.manifest)[0].summary.seo }}}' >> ./gist/roquec-lighthouse.json
-          git -C ./gist add .
-          git -C ./gist commit -m "update data"
-          git -C ./gist push
+      - name: Generate Lighthouse JSON
+        run: echo '{"performance":${{ fromJSON(steps.lighthouse.outputs.manifest)[0].summary.performance }},"accessibility":${{ fromJSON(steps.lighthouse.outputs.manifest)[0].summary.accessibility  }},"bestPractices":${{ fromJSON(steps.lighthouse.outputs.manifest)[0].summary.best-practices }},"seo":${{ fromJSON(steps.lighthouse.outputs.manifest)[0].summary.seo }}}' >> ./gist/roquec-lighthouse.json
+      - uses: actions/upload-artifact@v3
+        with:
+          name: lighthouse
+          path: ./gist/roquec-lighthouse.json
       - name: Upload website artifact
         uses: actions/upload-pages-artifact@v2
   deploy:
@@ -53,6 +49,25 @@ jobs:
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v2
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+  gist:
+    runs-on: ubuntu-latest
+    needs: build
+    steps:
+      - name: Checkout gist
+        uses: actions/checkout@v4
+        with:
+          repository: 'https://gist.github.com/3f8ee5d85053832ea374a05b301f57aa.git'
+      - name: Update gist
+        run: |
+          git config user.name 'Portfolio GitHub Actions'
+          git config user.email '<>'
+          echo '{"performance":${{ fromJSON(steps.lighthouse.outputs.manifest)[0].summary.performance }},"accessibility":${{ fromJSON(steps.lighthouse.outputs.manifest)[0].summary.accessibility  }},"bestPractices":${{ fromJSON(steps.lighthouse.outputs.manifest)[0].summary.best-practices }},"seo":${{ fromJSON(steps.lighthouse.outputs.manifest)[0].summary.seo }}}' >> ./gist/roquec-lighthouse.json
+          git add .
+          git commit -m "update data"
+          git push
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
