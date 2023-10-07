@@ -63,7 +63,7 @@ function initializeSearchStyles() {
   }
 
   style = style + "</style>";
-  
+
   document.head.insertAdjacentHTML("beforeend", style)
 }
 
@@ -81,9 +81,6 @@ function loadSearch() {
 }
 
 function applySearchState() {
-  console.log("apply");
-  console.log(posts);
-
   // Get search panel state
   let searchText = window.sessionStorage.getItem("search-text");
   let selectedTag = window.sessionStorage.getItem("selected-tag");

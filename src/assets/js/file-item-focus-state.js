@@ -1,7 +1,7 @@
 initializeFocus();
 
 window.addEventListener("DOMContentLoaded", updateFocus);
-window.addEventListener("unload", saveFocus);
+window.addEventListener("pagehide", saveFocus);
 
 function saveFocus() {
   const focusedElement = document.activeElement.parentElement;

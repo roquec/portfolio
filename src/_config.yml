@@ -1,5 +1,3 @@
-url: "roquec.com"
-
 collections_dir: content
 
 collections:
@@ -23,6 +21,7 @@ defaults:
       layout: "base"
       type: "md"
       icon: "markdown"
+      
 plugins:
   - jekyll-feed
   - jekyll-sitemap
