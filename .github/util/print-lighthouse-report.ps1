@@ -35,30 +35,47 @@ $summary >> $env:GITHUB_STEP_SUMMARY
 # Get correct color depending on the score
 function GetScoreColor ([float] $score)
 {
-  if($score -ge 90) { return '3DC13C'; }
-  if($score -ge 70){ return 'F3BB1B'; }
-  return 'F13637';
+  if($score -ge 90) { return '#3DC13C'; }
+  if($score -ge 70){ return '#F3BB1B'; }
+  return '#F13637';
 }
 
 $json = @"
 {
-  "performance": {
-    "score": $($performance),
-    "color": "$(GetScoreColor($performance))"
-  },
-  "accessibility": {
-    "score": $($accessibility),
-    "color": "$(GetScoreColor($accessibility))"
-  },
-  "bestPractices": {
-    "score": $($bestPractices),
-    "color": "$(GetScoreColor($bestPractices))"
-  },
-  "seo": {
-    "score": $($seo),
-    "color": "$(GetScoreColor($seo))"
-  }
+  "schemaVersion": 1,
+  "label": "Performance",
+  "message": "$($performance)",
+  "color": "$(GetScoreColor($performance))"
 }
 "@
+new-item -force -path .\gist\performance.json -value $json -type file
 
-$json | Out-File .\roquec-lighthouse.json
+$json = @"
+{
+  "schemaVersion": 1,
+  "label": "Accessibility",
+  "message": "$($accessibility)",
+  "color": "$(GetScoreColor($accessibility))"
+}
+"@
+new-item -force -path .\gist\accessibility.json -value $json -type file
+
+$json = @"
+{
+  "schemaVersion": 1,
+  "label": "Best-practices",
+  "message": "$($bestPractices)",
+  "color": "$(GetScoreColor($bestPractices))"
+}
+"@
+new-item -force -path .\gist\bestPractices.json -value $json -type file
+
+$json = @"
+{
+  "schemaVersion": 1,
+  "label": "SEO",
+  "message": "$($seo)",
+  "color": "$(GetScoreColor($seo))"
+}
+"@
+new-item -force -path .\gist\seo.json -value $json -type file

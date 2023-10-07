@@ -37,7 +37,7 @@ jobs:
       - uses: actions/upload-artifact@v3
         with:
           name: lighthouse
-          path: roquec-lighthouse.json
+          path: gist
       - name: Upload website artifact
         uses: actions/upload-pages-artifact@v2
   deploy:
@@ -62,4 +62,4 @@ jobs:
         with:
           token: ${{ secrets.GISTS_ACCESS_TOKEN }}
           gist_id: 3f8ee5d85053832ea374a05b301f57aa
-          file_path: roquec-lighthouse.json
+          file_path: .
