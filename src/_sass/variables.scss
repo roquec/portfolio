@@ -1,9 +1,7 @@
-@use "sass:math";
-
 // Rem conversion function
 @function rem($pixels) {
-  $raw-value: math.div($pixels, ($pixels * 0 + 1));
-  $rem-value: math.div($raw-value, 16);
+  $raw-value: $pixels / ($pixels * 0 + 1);
+  $rem-value: $raw-value / 16;
   @return #{$rem-value}rem;
 }
 
