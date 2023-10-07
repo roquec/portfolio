@@ -56,22 +56,12 @@ jobs:
     runs-on: ubuntu-latest
     needs: build
     steps:
-      - name: Checkout gist
-        uses: actions/checkout@v4
-        with:
-          repository: roquec/3f8ee5d85053832ea374a05b301f57aa
-          path: gist
       - uses: actions/download-artifact@master
         with:
           name: lighthouse
-          path: ./gist
-      - name: Update gist
-        run: |
-          git -C ./gist config user.name 'Portfolio GitHub Actions'
-          git -C ./gist config user.email '<>'
-          git -C ./gist add .
-          git -C ./gist commit -m "update data"
-          git -C ./gist push
-    environment:
-      name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}
+      - name: Deploy
+        uses: exuanbo/actions-deploy-gist@v1
+        with:
+          token: ${{ secrets.GISTS_ACCESS_TOKEN }}
+          gist_id: 3f8ee5d85053832ea374a05b301f57aa
+          file_path: roquec-lighthouse.json
