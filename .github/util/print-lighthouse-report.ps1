@@ -3,17 +3,17 @@ $links = $env:LIGHTHOUSE_LINKS | ConvertFrom-Json;
 $manifest = $env:LIGHTHOUSE_MANIFEST | ConvertFrom-Json
 
 # Get data for summary
-$performance = $manifest[0].summary.performance;
-$accessibility = $manifest[0].summary.accessibility;
-$bestPractices = $manifest[0].summary.'best-practices';
-$seo = $manifest[0].summary.seo;
+$performance = $manifest[0].summary.performance * 100;
+$accessibility = $manifest[0].summary.accessibility * 100;
+$bestPractices = $manifest[0].summary.'best-practices' * 100;
+$seo = $manifest[0].summary.seo * 100;
 $reportUrl = ($links[0].PSObject.Properties | select -First 1).value;
 
 # Get correct color depending on the score
 function GetScoreEmoji ([float] $score)
 {
-  if($score -ge 0.9) { return '🟢'; }
-  if($score -ge 0.5){ return '🟡'; }
+  if($score -ge 90) { return '🟢'; }
+  if($score -ge 70){ return '🟡'; }
   return '🔴';
 }
 
