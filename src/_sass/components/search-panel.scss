@@ -75,9 +75,10 @@
     gap: 6px;
 
     i {
-      font-size: rem(16px);
-      width: rem(20px);
-      margin-left: -6px;
+      font-size: rem(14px);
+      width: rem(14px);
+      margin-left: -5px;
+      color: var(--color-navigation-header-foreground);
     }
 
     &::after {
