@@ -36,9 +36,9 @@ jobs:
         run: .\.github\util\print-lighthouse-report.ps1
       - name: Update Lighthouse JSON
         run: |
-          git config user.name 'Portfolio GitHub Actions'
-          git config user.email '<>'
           git clone https://gist.github.com/3f8ee5d85053832ea374a05b301f57aa.git gist
+          git -C ./gist config user.name 'Portfolio GitHub Actions'
+          git -C ./gist config user.email '<>'
           echo '{"performance":${{ fromJSON(steps.lighthouse.outputs.manifest)[0].summary.performance }},"accessibility":${{ fromJSON(steps.lighthouse.outputs.manifest)[0].summary.accessibility  }},"bestPractices":${{ fromJSON(steps.lighthouse.outputs.manifest)[0].summary.best-practices }},"seo":${{ fromJSON(steps.lighthouse.outputs.manifest)[0].summary.seo }}}' >> ./gist/roquec-lighthouse.json
           git -C ./gist add .
           git -C ./gist commit -m "update data"
