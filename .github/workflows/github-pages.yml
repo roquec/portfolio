@@ -23,10 +23,16 @@ jobs:
         with:
           source: "./src"
       - name: Run Lighthouse CI
+        id: lighthouse
         uses: treosh/lighthouse-ci-action@v10
         with:
           configPath: './.github/workflows/lighthouserc.json'
-      - name: Upload artifact
+      - name: Upload Lighthouse results
+        uses: actions/upload-artifact@v3
+        with:
+          name: lighthouse
+          path: ${{ steps.lighthouse.outputs.resultsPath + '/manifest.json' }}
+      - name: Upload website artifact
         uses: actions/upload-pages-artifact@v2
   deploy:
     runs-on: ubuntu-latest
