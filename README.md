@@ -1,4 +1,4 @@
-[![CI/CD](https://github.com/roquec/Portfolio/actions/workflows/github-pages.yml/badge.svg)](https://github.com/roquec/Portfolio/actions/workflows/github-pages.yml)
+[![CI/CD](https://github.com/roquec/Portfolio/actions/workflows/ci-cd.yml/badge.svg)](https://github.com/roquec/Portfolio/actions/workflows/ci-cd.yml)
 
 # Portfolio
 
