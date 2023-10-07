@@ -17,4 +17,4 @@ See full report [here](${reportUrl}). Here's the summary:
 '@
 
 # Write to environment file
-echo $summary >> $GITHUB_STEP_SUMMARY
+$summary >> $env:GITHUB_STEP_SUMMARY
