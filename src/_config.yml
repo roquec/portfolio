@@ -26,9 +26,6 @@ defaults:
       type: "md"
       icon: "markdown"
 
-sass:
-  style: compressed
-  sass_dir: _sass
 
 plugins:
   - jekyll-feed
