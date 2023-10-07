@@ -1,4 +1,6 @@
 ---
 ---
 
+$icon-font-url: "/assets/fonts/roquec-portfolio.woff2?v={{ 'now' | date: '%Y%m%d%H%M%S' }}";
+
 @import "reset", "icons", "variables", "layout", "base", "markdown", "components", "pages";

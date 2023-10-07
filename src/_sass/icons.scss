@@ -1,7 +1,7 @@
 @font-face {
   font-family: "roquec-portfolio";
   font-display: block;
-  src: url("/assets/fonts/roquec-portfolio.woff2?family=roquec-portfolio") format("woff2");
+  src: url(#{$icon-font-url}) format("woff2");
 }
 
 .icon {

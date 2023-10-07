@@ -1,5 +1,7 @@
 url: "https://roquec.com"
 
+includes_dir: .
+
 collections_dir: content
 
 collections:

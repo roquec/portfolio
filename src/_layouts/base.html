@@ -1,20 +1,20 @@
 <!DOCTYPE html>
 <html lang="en">
 
-{% include head.html %}
+{% include _includes/head.html %}
 
 <body class="initial-state">
 
 <div class="main-wrapper">
 
   <header class="header">
-    {% include sidebar.html %}
+    {% include _includes/sidebar.html %}
 
-    {% include navigation.html %}
+    {% include _includes/navigation.html %}
   </header>
 
   <main class="main">
-    {% include tabs.html %}
+    {% include _includes/tabs.html %}
 
     <div class="content scrollable">
       {{ content }}
@@ -23,7 +23,7 @@
 </div>
 
 <footer class="footer">
-  {% include footer.html %}
+  {% include _includes/footer.html %}
 </footer>
 
 </body>

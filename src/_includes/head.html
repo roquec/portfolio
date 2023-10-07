@@ -3,6 +3,11 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>RoqueC - {{ page.title }}</title>
 
+  <link rel="apple-touch-icon" sizes="180x180" href="/assets/images/favicon/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/assets/images/favicon/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/assets/images/favicon/favicon-16x16.png">
+  <link rel="manifest" href="/assets/images/favicon/site.webmanifest">
+
   <link rel="preconnect" href="https://fonts.gstatic.com"/>
   <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500&display=swap"
         rel="preload"
@@ -13,10 +18,12 @@
         type="font/woff2" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500&display=swap" rel="stylesheet">
 
-  <link href="/assets/fonts/roquec-portfolio.woff2?family=roquec-portfolio" rel="preload" as="font"
+  <link href="/assets/fonts/roquec-portfolio.woff2?v={{ 'now' | date: '%Y%m%d%H%M%S' }}" rel="preload" as="font"
         type="font/woff2" crossorigin>
+
   <link href="/assets/css/styles.css?v={{ 'now' | date: '%Y%m%d%H%M%S' }}" rel="stylesheet">
-  {% include scripts.html %}
+
+  <script type="text/javascript" src="/assets/js/scripts.js?v={{ 'now' | date: '%Y%m%d%H%M%S' }}"></script>
 
   {% seo %}
   {% feed_meta %}
