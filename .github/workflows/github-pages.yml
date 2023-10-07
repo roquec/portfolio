@@ -30,14 +30,14 @@ jobs:
           temporaryPublicStorage: true
       - name: Job successful feedback
         run: |
-          echo '## ⚡️🏠 Lighthouse report' >> $GITHUB_STEP_SUMMARY
-          echo 'See full report [here](${reportUrl}). Here's the summary:' >> $GITHUB_STEP_SUMMARY
-          echo '| Category | Score |' >> $GITHUB_STEP_SUMMARY
-          echo '| -------- | ----- |' >> $GITHUB_STEP_SUMMARY
-          echo '| Performance | ${{ fromJSON(steps.lighthouse.outputs.manifest)[0].summary.performance }} |' >> $GITHUB_STEP_SUMMARY
-          echo '| Accessibility | ${{ fromJSON(steps.lighthouse.outputs.manifest)[0].summary.accessibility }} |' >> $GITHUB_STEP_SUMMARY
-          echo '| Best-practices | ${{ fromJSON(steps.lighthouse.outputs.manifest)[0].summary.best-practices }} |' >> $GITHUB_STEP_SUMMARY
-          echo '| SEO | ${{ fromJSON(steps.lighthouse.outputs.manifest)[0].summary.seo  }} |' >> $GITHUB_STEP_SUMMARY
+          echo "## ⚡️🏠 Lighthouse report" >> $GITHUB_STEP_SUMMARY
+          echo "See full report [here](${reportUrl}). Here's the summary:" >> $GITHUB_STEP_SUMMARY
+          echo "| Category | Score |" >> $GITHUB_STEP_SUMMARY
+          echo "| -------- | ----- |" >> $GITHUB_STEP_SUMMARY
+          echo "| Performance | ${{ fromJSON(steps.lighthouse.outputs.manifest)[0].summary.performance }} |" >> $GITHUB_STEP_SUMMARY
+          echo "| Accessibility | ${{ fromJSON(steps.lighthouse.outputs.manifest)[0].summary.accessibility }} |" >> $GITHUB_STEP_SUMMARY
+          echo "| Best-practices | ${{ fromJSON(steps.lighthouse.outputs.manifest)[0].summary.best-practices }} |" >> $GITHUB_STEP_SUMMARY
+          echo "| SEO | ${{ fromJSON(steps.lighthouse.outputs.manifest)[0].summary.seo  }} |" >> $GITHUB_STEP_SUMMARY
       - name: Upload website artifact
         uses: actions/upload-pages-artifact@v2
   deploy:
