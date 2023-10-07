@@ -31,7 +31,7 @@ jobs:
         uses: actions/upload-artifact@v3
         with:
           name: lighthouse
-          path: ${{ steps.lighthouse.outputs.resultsPath + '/manifest.json' }}
+          path: ${{ format('{0}/{1}', steps.lighthouse.outputs.resultsPath, 'manifest.json') }}
       - name: Upload website artifact
         uses: actions/upload-pages-artifact@v2
   deploy:
