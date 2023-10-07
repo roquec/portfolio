@@ -2,7 +2,7 @@
   "ci": {
     "collect": {
       "url": [
-        "http://localhost/articles.html"
+        "http://localhost/main.html"
       ],
       "staticDistDir": "./_site"
     }
