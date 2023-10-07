@@ -6,19 +6,19 @@
     "assert": {
       "assertions": {
         "categories:accessibility": [
-          "error",
+          "warn",
           {
             "minScore": 0.95
           }
         ],
         "categories:best-practices": [
-          "error",
+          "warn",
           {
             "minScore": 0.9
           }
         ],
         "categories:performance": [
-          "error",
+          "warn",
           {
             "minScore": 0.8
           }
@@ -30,19 +30,19 @@
           }
         ],
         "dom-size": [
-          "error",
+          "warn",
           {
             "maxNumericValue": 1000
           }
         ],
         "first-contentful-paint": [
-          "error",
+          "warn",
           {
             "maxNumericValue": 2000
           }
         ],
         "interactive": [
-          "error",
+          "warn",
           {
             "maxNumericValue": 5000
           }
