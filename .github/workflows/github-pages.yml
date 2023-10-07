@@ -28,9 +28,6 @@ jobs:
         with:
           configPath: './.github/util/lighthouserc.json'
           temporaryPublicStorage: true
-      - name: Debug Environment Variables
-        run: |
-          env
       - name: Print Lighthouse report
         shell: pwsh
         env:

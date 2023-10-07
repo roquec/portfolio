@@ -22,7 +22,7 @@ $summary = @"
 ## ⚡️🏠 Lighthouse report
 See full report [here]($($reportUrl)). Here's the summary:
 || Category | Score |
-|| -------- | ----- |
+|-----|-----|-----|
 |$(GetScoreEmoji($performance))| Performance | $($performance) |
 |$(GetScoreEmoji($accessibility))| Accessibility | $($accessibility) |
 |$(GetScoreEmoji($bestPractices))| Best-practices | $($bestPractices) |
