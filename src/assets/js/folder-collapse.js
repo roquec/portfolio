@@ -80,7 +80,8 @@ function setInitialFolderStyles(folderIds) {
   }
   style = style + " { display: none !important; } "
   style = style + "</style>";
-  document.write(style);
+
+  document.head.insertAdjacentHTML("beforeend", style)
 }
 
 function getCollapsedFolders() {

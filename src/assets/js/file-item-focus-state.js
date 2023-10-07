@@ -24,11 +24,13 @@ function updateFocus() {
 function initializeFocus() {
   const focusItemId = window.sessionStorage.getItem("file-item-focus");
   if (focusItemId) {
-    document.write(`<style>
+    let style = `<style>
     .initial-state #${focusItemId} {
       background-color: var(--color-file-item-active-background) !important;
       color: var(--color-file-item-active-foreground) !important;
       outline: 0.0625rem solid var(--color-file-item-active-border) !important;
-    }</style>`);
+    }</style>`;
+
+    document.head.insertAdjacentHTML("beforeend", style)
   }
 }

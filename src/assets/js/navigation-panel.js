@@ -83,12 +83,14 @@ function updateNavigationElements() {
 }
 
 function setInitialNavigationPanelStyles(panelId) {
-  document.write(`<style>
+  let style = `<style>
     .initial-state #navigation-wrapper { display:flex !important; }
     .initial-state #${panelId}-panel { display:flex !important; }
     .initial-state #${panelId}-icon { color: var(--color-sidebar-selected-foreground) !important; }
     .initial-state #${panelId}-icon .highlight { display: block !important; }
-  </style>`);
+  </style>`;
+
+  document.head.insertAdjacentHTML("beforeend", style)
 }
 
 function isWideScreen() {

@@ -8,9 +8,10 @@ let resizerElement = null;
 function initializeResizer() {
   const storedWidth = window.localStorage.getItem("sidebar-width");
   if (storedWidth) {
-    document.write(`<style>
+    let style = `<style>
         .initial-state #navigation-wrapper { width:${storedWidth}px !important; }
-    </style>`);
+    </style>`;
+    document.head.insertAdjacentHTML("beforeend", style)
   }
 }
 
