@@ -27,7 +27,6 @@ jobs:
         uses: treosh/lighthouse-ci-action@v10
         with:
           configPath: './.github/workflows/lighthouserc.json'
-          temporaryPublicStorage: true
       - name: Upload website artifact
         uses: actions/upload-pages-artifact@v2
   deploy:
