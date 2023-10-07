@@ -35,6 +35,7 @@ jobs:
           LIGHTHOUSE_LINKS: ${{steps.lighthouse.outputs.links}}
         run: .\.github\util\print-lighthouse-report.ps1
       - name: Update Lighthouse JSON
+        uses: actions/checkout@v4
         run: |
           git clone https://gist.github.com/3f8ee5d85053832ea374a05b301f57aa.git gist
           git -C ./gist config user.name 'Portfolio GitHub Actions'
@@ -43,11 +44,6 @@ jobs:
           git -C ./gist add .
           git -C ./gist commit -m "update data"
           git -C ./gist push
-      - name: Checkout
-        uses: actions/checkout@v4
-        with:
-          repository: foo-user/bar-repo
-          path: './gist'
       - name: Upload website artifact
         uses: actions/upload-pages-artifact@v2
   deploy:
