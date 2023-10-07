@@ -28,9 +28,9 @@ jobs:
         with:
           configPath: './.github/util/lighthouserc.json'
           temporaryPublicStorage: true
-      - name: Print Lighthouse report
-        shell: pwsh
-        run: .\.github\util\print-lighthouse-report.ps1
+      - name: Debug Environment Variables
+        run: |
+          env
       - name: Upload website artifact
         uses: actions/upload-pages-artifact@v2
   deploy:
