@@ -1,6 +1,6 @@
 # Get lighthouse report outputs
-$manifest = '${{ steps.lighthouse.outputs.manifest }}' | ConvertFrom-Json
-$links = '${{ steps.lighthouse.outputs.links }}' | ConvertFrom-Json
+$manifest = $env:STEPS_LIGHTHOUSE_OUTPUTS_MANIFEST | ConvertFrom-Json
+$links = $env:STEPS_LIGHTHOUSE_OUTPUTS_LINKS | ConvertFrom-Json
 
 # Get data for summary
 $performance = $manifest[0].summary.performance;
