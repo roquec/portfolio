@@ -34,8 +34,6 @@ jobs:
           LIGHTHOUSE_MANIFEST: ${{steps.lighthouse.outputs.manifest}}
           LIGHTHOUSE_LINKS: ${{steps.lighthouse.outputs.links}}
         run: .\.github\util\print-lighthouse-report.ps1
-      - name: Generate Lighthouse JSON
-        run: echo '{"performance":${{ fromJSON(steps.lighthouse.outputs.manifest)[0].summary.performance * 100 }},"accessibility":${{ fromJSON(steps.lighthouse.outputs.manifest)[0].summary.accessibility * 100 }},"bestPractices":${{ fromJSON(steps.lighthouse.outputs.manifest)[0].summary.best-practices * 100 }},"seo":${{ fromJSON(steps.lighthouse.outputs.manifest)[0].summary.seo * 100 }}}' >> roquec-lighthouse.json
       - uses: actions/upload-artifact@v3
         with:
           name: lighthouse

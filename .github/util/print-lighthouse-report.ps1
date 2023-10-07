@@ -9,7 +9,7 @@ $bestPractices = $manifest[0].summary.'best-practices' * 100;
 $seo = $manifest[0].summary.seo * 100;
 $reportUrl = ($links[0].PSObject.Properties | select -First 1).value;
 
-# Get correct color depending on the score
+# Get correct emoji depending on the score
 function GetScoreEmoji ([float] $score)
 {
   if($score -ge 90) { return '🟢'; }
@@ -31,3 +31,34 @@ See full report [here]($($reportUrl)). Here's the summary:
 
 # Write to environment file
 $summary >> $env:GITHUB_STEP_SUMMARY
+
+# Get correct color depending on the score
+function GetScoreColor ([float] $score)
+{
+  if($score -ge 90) { return '3DC13C'; }
+  if($score -ge 70){ return 'F3BB1B'; }
+  return 'F13637';
+}
+
+$json = @"
+{
+  "performance": {
+    "score": $($performance),
+    "color": "$(GetScoreEmoji($performance))"
+  },
+  "accessibility": {
+    "score": $($accessibility),
+    "color": "$(GetScoreEmoji($accessibility))"
+  },
+  "bestPractices": {
+    "score": $($bestPractices),
+    "color": "$(GetScoreEmoji($bestPractices))"
+  },
+  "seo": {
+    "score": $($seo),
+    "color": "$(GetScoreEmoji($seo))"
+  }
+}
+"@
+
+$json | Out-File .\roquec-lighthouse.json
