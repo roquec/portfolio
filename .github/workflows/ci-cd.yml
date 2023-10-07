@@ -34,14 +34,20 @@ jobs:
           LIGHTHOUSE_MANIFEST: ${{steps.lighthouse.outputs.manifest}}
           LIGHTHOUSE_LINKS: ${{steps.lighthouse.outputs.links}}
         run: .\.github\util\print-lighthouse-report.ps1
-      - name: Log Lighthouse JSON
+      - name: Update Lighthouse JSON
         run: |
-          echo "{" >> $GITHUB_STEP_SUMMARY
-          echo ' "Performance": ${{ fromJSON(steps.lighthouse.outputs.manifest)[0].summary.performance }},' >> $GITHUB_STEP_SUMMARY
-          echo ' "Accessibility": ${{ fromJSON(steps.lighthouse.outputs.manifest)[0].summary.accessibility  }},' >> $GITHUB_STEP_SUMMARY
-          echo ' "BestPractices": ${{ fromJSON(steps.lighthouse.outputs.manifest)[0].summary.best-practices }},' >> $GITHUB_STEP_SUMMARY
-          echo ' "SEO": ${{ fromJSON(steps.lighthouse.outputs.manifest)[0].summary.seo }}' >> $GITHUB_STEP_SUMMARY
-          echo "}" >> $GITHUB_STEP_SUMMARY
+          git config user.name 'Portfolio GitHub Actions'
+          git config user.email '<>'
+          git clone https://gist.github.com/3f8ee5d85053832ea374a05b301f57aa.git gist
+          '{"performance":${{ fromJSON(steps.lighthouse.outputs.manifest)[0].summary.performance }},"accessibility":${{ fromJSON(steps.lighthouse.outputs.manifest)[0].summary.accessibility  }},"bestPractices":${{ fromJSON(steps.lighthouse.outputs.manifest)[0].summary.best-practices }},"seo":${{ fromJSON(steps.lighthouse.outputs.manifest)[0].summary.seo }}}' > .\gist\roquec-lighthouse.json
+          git -C .\gist add .
+          git -C .\gist commit -m "update data"
+          git -C .\gist push
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          repository: foo-user/bar-repo
+          path: './gist'
       - name: Upload website artifact
         uses: actions/upload-pages-artifact@v2
   deploy:
