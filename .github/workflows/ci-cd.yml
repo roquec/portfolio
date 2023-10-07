@@ -28,7 +28,7 @@ jobs:
         with:
           configPath: './.github/util/lighthouserc.json'
           temporaryPublicStorage: true
-      - name: Print Lighthouse report
+      - name: Lighthouse report
         shell: pwsh
         env:
           LIGHTHOUSE_MANIFEST: ${{steps.lighthouse.outputs.manifest}}

@@ -44,19 +44,19 @@ $json = @"
 {
   "performance": {
     "score": $($performance),
-    "color": "$(GetScoreEmoji($performance))"
+    "color": "$(GetScoreColor($performance))"
   },
   "accessibility": {
     "score": $($accessibility),
-    "color": "$(GetScoreEmoji($accessibility))"
+    "color": "$(GetScoreColor($accessibility))"
   },
   "bestPractices": {
     "score": $($bestPractices),
-    "color": "$(GetScoreEmoji($bestPractices))"
+    "color": "$(GetScoreColor($bestPractices))"
   },
   "seo": {
     "score": $($seo),
-    "color": "$(GetScoreEmoji($seo))"
+    "color": "$(GetScoreColor($seo))"
   }
 }
 "@
