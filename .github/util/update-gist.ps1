@@ -30,7 +30,7 @@ foreach ($file in $source_files) {
 Write-Host "Found $($source_files.Count) readable files from source: $($source_files)"
 
 # Define gist git
-$gist_git_url = "https://gist.github.com/$($gist_id).git"
+$gist_git_url = "https://$($token)@gist.github.com/$($gist_id).git"
 $gist_git_dir = "gist-clones\$($gist_id)"
 
 # Reset working directory
@@ -101,5 +101,5 @@ try {
     Write-Host "Pushed changes to Gist repo."
 }
 catch {
-    Handle-Error "Unable to work with gist git"
+    Handle-Error Get-Error
 }
