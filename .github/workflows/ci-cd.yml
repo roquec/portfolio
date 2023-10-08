@@ -15,7 +15,7 @@ jobs:
         uses: actions/checkout@v4
       - name: Set version data
         shell: pwsh
-        run: .\.github\actions\set-version.ps1
+        run: .\.github\actions\set-placeholders.ps1
       - name: Setup GitHub Pages
         uses: actions/configure-pages@v3
       - name: Build Jekyll

@@ -1,6 +1,7 @@
 initializeFocus();
 
 window.addEventListener("DOMContentLoaded", updateFocus);
+window.addEventListener("focusin", (e) => saveFocus(e.target.parentElement));
 
 function saveFocus(element) {
   if (element.classList.contains("file-item")) {

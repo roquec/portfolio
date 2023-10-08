@@ -18,3 +18,10 @@ $versionFileContent = $versionFileContent -replace "__BUILD__", $build
 
 # Write the updated version content back to the file
 $versionFileContent | Set-Content $versionFilePath
+
+# Copy README from root to the jekyll file
+$readmeFilePath = "./src/README.md"
+$readmePlaceholder = Get-Content $readmeFilePath -Raw
+$readmeContent = Get-Content "./README.md" -Raw
+$readmeContent = $readmePlaceholder -replace "__README__", $readmeContent
+$readmeContent | Set-Content $readmeFilePath
