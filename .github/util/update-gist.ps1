@@ -85,6 +85,10 @@ try {
         git rm --ignore-unmatch $removed_files
     }
 
+
+    $files_list = Get-ChildItem -Path $gist_git_dir
+    Write-Host "Files in gist: $($files_list)"
+
     if ($source_files.Count -gt 0) {
         git add $source_files
     }
@@ -101,7 +105,7 @@ try {
 
     Write-Host "Changes commited going to push"
 
-    git push origin master
+    git push
 
     Write-Host "Pushed changes to Gist repo."
 }
