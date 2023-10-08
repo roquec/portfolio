@@ -1,5 +1,4 @@
 # Get lighthouse report outputs
-$links = $env:LIGHTHOUSE_LINKS | ConvertFrom-Json;
 $manifest = $env:LIGHTHOUSE_MANIFEST | ConvertFrom-Json
 
 # Get data for summary
@@ -19,27 +18,12 @@ $accessibility = [Math]::floor($accessibility / $manifest.length);
 $bestPractices = [Math]::floor($bestPractices / $manifest.length);
 $seo = [Math]::floor($seo / $manifest.length);
 
-$report_links = @()
-$links.PSObject.Properties | ForEach-Object {
-  $link_object = New-Object -Type PSObject -Property @{
-      'target' = $_.Name -replace '\?v=.*',''
-      'url' = $_.Value
-  }
-  $report_links += $link_object
-}
-
 # Get correct emoji depending on the score
 function GetScoreEmoji ([float] $score)
 {
   if($score -ge 95) { return '🟢'; }
   if($score -ge 75){ return '🟡'; }
   return '🔴';
-}
-
-# Format summary
-$links_formatted = ""
-foreach($link in $report_links){
-  $links_formatted += "| [Link]($($link.url)) | [$($link.target.replace('https://',''))]($($link.target)) |`r`n"
 }
 
 $summary = @"
@@ -63,10 +47,9 @@ $summary = @"
 
 | Report | Test target |
 |-----|-----|
-$($links_formatted)
+| [Link](https://htmlpreview.github.io/?https://gist.githubusercontent.com/roquec/3f8ee5d85053832ea374a05b301f57aa/raw/report.html) | [roquec.com](https://roquec.com) |
 
 </details>
-
 <br />
 "@
 

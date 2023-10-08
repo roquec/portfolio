@@ -53,7 +53,6 @@ jobs:
         shell: pwsh
         env:
           LIGHTHOUSE_MANIFEST: ${{steps.lighthouse.outputs.manifest}}
-          LIGHTHOUSE_LINKS: ${{steps.lighthouse.outputs.links}}
         run: .\.github\actions\lighthouse-report.ps1
       - name: Publish to Gist
         shell: pwsh
