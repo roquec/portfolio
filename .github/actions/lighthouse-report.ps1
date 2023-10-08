@@ -22,7 +22,7 @@ $seo = [Math]::Round($seo / $manifest.length, 0);
 $report_links = @()
 $links.PSObject.Properties | ForEach-Object {
   $link_object = New-Object -Type PSObject -Property @{
-      'target'   = $_.Name.replace('https://','').replace('\?v=.*','')
+      'target' = $_.Name.replace('https://','') -replace '\?v=.*',''
       'url' = $_.Value
   }
   $report_links += $link_object
@@ -39,27 +39,29 @@ function GetScoreEmoji ([float] $score)
 # Format summary
 $links_formatted = ""
 foreach($link in $report_links){
-  $links_formatted += "  | $($link.target) | [Report]($($link.url)) |`r`n"
+  $links_formatted += "  | [Link]($($link.url)) | [$($link.target)]($($link.target)) |`r`n"
 }
 
 $summary = @"
 ## ⚡️🏠 Lighthouse report
 
-Executed $($manifest.length) runs of testing. Results summary:
+<br />
 
-|| Category | Score |
+Results summary:
+
+| Category | Score | |
 |-----|-----|-----|
-|$(GetScoreEmoji($performance))| Performance | $($performance) |
-|$(GetScoreEmoji($accessibility))| Accessibility | $($accessibility) |
-|$(GetScoreEmoji($bestPractices))| Best-practices | $($bestPractices) |
-|$(GetScoreEmoji($seo))| SEO | $($seo) |
+| Performance | $($performance) |$(GetScoreEmoji($performance))|
+| Accessibility | $($accessibility) |$(GetScoreEmoji($accessibility))|
+| Best-practices | $($bestPractices) |$(GetScoreEmoji($bestPractices))|
+| SEO | $($seo) |$(GetScoreEmoji($seo))|
 
 <br />
 
 <details>
   <summary>Full reports</summary>
 
-  | Target | Report |
+  | Report | Test target |
   |-----|-----|
 $($links_formatted)
 
@@ -72,8 +74,8 @@ $summary >> $env:GITHUB_STEP_SUMMARY
 # Get correct color depending on the score
 function GetScoreColor ([float] $score)
 {
-  if($score -ge 90) { return '#3DC13C'; }
-  if($score -ge 70){ return '#F3BB1B'; }
+  if($score -ge 95) { return '#3DC13C'; }
+  if($score -ge 75){ return '#F3BB1B'; }
   return '#F13637';
 }
 
