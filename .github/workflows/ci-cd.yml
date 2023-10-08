@@ -45,8 +45,8 @@ jobs:
       - uses: actions/setup-node@v3
         with:
           node-version: 18
-      - name: Install NPM and LHCI
-        run: npm install && npm install -g @lhci/cli@0.12.x
+      - name: Install Lighthouse CI
+        run: npm install -g @lhci/cli@0.12.x
       - name: Run Lighthouse
         run: |
           lhci autorun --collect.numberOfRuns=5 --collect.url=https://roquec.com/main --collect.headful=false --upload.target=filesystem --upload.outputDir=./reports/mobile
