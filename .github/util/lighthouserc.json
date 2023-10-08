@@ -3,12 +3,11 @@
     "collect": {
       "numberOfRuns": 3,
       "url": [
-        "http://localhost/main.html",
-        "http://localhost/profile.html",
-        "http://localhost/projects.html",
-        "http://localhost/projects/portfolio-website/index.html"
-      ],
-      "staticDistDir": "./_site"
+        "https://roquec.com/main",
+        "https://roquec.com/profile",
+        "https://roquec.com/projects",
+        "https://roquec.com/projects/portfolio-website/"
+      ]
     }
   }
 }

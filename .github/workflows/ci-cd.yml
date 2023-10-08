@@ -41,7 +41,7 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
         with:
-          sparse-checkout: '.github/util/*.ps1'
+          sparse-checkout: '.github/util'
       - name: Run Lighthouse CI
         id: lighthouse
         uses: treosh/lighthouse-ci-action@v10
