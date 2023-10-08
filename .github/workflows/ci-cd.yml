@@ -15,7 +15,7 @@ jobs:
         uses: actions/checkout@v4
       - name: Set version data
         shell: pwsh
-        run: .\.github\util\set-version.ps1
+        run: .\.github\actions\set-version.ps1
       - name: Setup GitHub Pages
         uses: actions/configure-pages@v3
       - name: Build Jekyll
@@ -41,8 +41,9 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
         with:
-          sparse-checkout: '.github/util'
+          sparse-checkout: '.github/actions'
       - name: Run Lighthouse CI
+        id: lighthouse
         uses: treosh/lighthouse-ci-action@v10
         with:
           runs: 3
@@ -57,11 +58,11 @@ jobs:
         env:
           LIGHTHOUSE_MANIFEST: ${{steps.lighthouse.outputs.manifest}}
           LIGHTHOUSE_LINKS: ${{steps.lighthouse.outputs.links}}
-        run: .\.github\util\print-lighthouse-report.ps1
+        run: .\.github\actions\lighthouse-report.ps1
       - name: Publish to Gist
         shell: pwsh
         env:
           UPDATE_GIST_TOKEN: ${{ secrets.GISTS_ACCESS_TOKEN }}
           UPDATE_GIST_ID: 3f8ee5d85053832ea374a05b301f57aa
           UPDATE_GIST_PATH: report
-        run: .\.github\util\update-gist.ps1
+        run: .\.github\actions\update-gist.ps1

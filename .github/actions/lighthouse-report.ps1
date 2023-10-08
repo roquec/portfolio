@@ -44,7 +44,7 @@ foreach($link in $report_links){
 
 $summary = @"
 ## ⚡️🏠 Lighthouse report
-See full report [here]($($reportUrl)). Here's the summary:
+Summary of $($$manifest.length) runs:
 || Category | Score |
 |-----|-----|-----|
 |$(GetScoreEmoji($performance))| Performance | $($performance) |
@@ -62,9 +62,6 @@ $($links_formatted)
 
 # Write to environment file
 $summary >> $env:GITHUB_STEP_SUMMARY
-
-$manifest >> $env:GITHUB_STEP_SUMMARY
-$links >> $env:GITHUB_STEP_SUMMARY
 
 # Get correct color depending on the score
 function GetScoreColor ([float] $score)
