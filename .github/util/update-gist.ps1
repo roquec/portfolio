@@ -101,5 +101,5 @@ try {
     Write-Host "Pushed changes to Gist repo."
 }
 catch {
-    Handle-Error Get-Error
+    Handle-Error $Error[0].Exception.Message
 }
