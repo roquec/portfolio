@@ -22,7 +22,7 @@ $seo = [Math]::Round($seo / $manifest.length, 0);
 $report_links = @()
 $links.PSObject.Properties | ForEach-Object {
   $link_object = New-Object -Type PSObject -Property @{
-      'target'   = $_.Name
+      'target'   = $_.Name.replace('https://','').replace('\?v=.*','')
       'url' = $_.Value
   }
   $report_links += $link_object
@@ -39,24 +39,30 @@ function GetScoreEmoji ([float] $score)
 # Format summary
 $links_formatted = ""
 foreach($link in $report_links){
-  $links_formatted += "  | $($link.target) | [$($link.url)]($($link.url)) |`n"
+  $links_formatted += "  | $($link.target) | [Report]($($link.url)) |`r`n"
 }
 
 $summary = @"
 ## ⚡️🏠 Lighthouse report
+
 Executed $($manifest.length) runs of testing. Results summary:
+
 || Category | Score |
 |-----|-----|-----|
 |$(GetScoreEmoji($performance))| Performance | $($performance) |
 |$(GetScoreEmoji($accessibility))| Accessibility | $($accessibility) |
 |$(GetScoreEmoji($bestPractices))| Best-practices | $($bestPractices) |
 |$(GetScoreEmoji($seo))| SEO | $($seo) |
+
 <br />
+
 <details>
   <summary>Full reports</summary>
+
   | Target | Report |
   |-----|-----|
 $($links_formatted)
+
 </details>
 "@
 
