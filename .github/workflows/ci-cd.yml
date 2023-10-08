@@ -47,10 +47,10 @@ jobs:
         with:
           runs: 3
           urls: |
-            ${{ format('{0}?v={1}', https://roquec.com/main, github.run_id) }}
-            ${{ format('{0}?v={1}', https://roquec.com/profile, github.run_id) }}
-            ${{ format('{0}?v={1}', https://roquec.com/projects, github.run_id) }}
-            ${{ format('{0}?v={1}', https://roquec.com/projects/portfolio-website/, github.run_id) }}
+            ${{ format('{0}?v={1}', 'https://roquec.com/main', github.run_id) }}
+            ${{ format('{0}?v={1}', 'https://roquec.com/profile', github.run_id) }}
+            ${{ format('{0}?v={1}', 'https://roquec.com/projects', github.run_id) }}
+            ${{ format('{0}?v={1}', 'https://roquec.com/projects/portfolio-website/', github.run_id) }}
           temporaryPublicStorage: true
       - name: Lighthouse report
         shell: pwsh
