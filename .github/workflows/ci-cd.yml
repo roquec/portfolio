@@ -57,9 +57,9 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
         with:
-          sparse-checkout: '.github\util\update-gist.ps1'
+          sparse-checkout: '.github/util/update-gist.ps1'
       - name: Lighthouse report
-        run: echo "$(<.github\util\update-gist.ps1 )"
+        run: echo "$(<.github/util/update-gist.ps1 )"
       - uses: actions/download-artifact@master
         with:
           name: lighthouse
