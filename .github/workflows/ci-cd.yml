@@ -28,7 +28,6 @@ jobs:
         with:
           configPath: './.github/util/lighthouserc.json'
           temporaryPublicStorage: true
-          uploadArtifacts: true
       - name: Lighthouse report
         shell: pwsh
         env:
@@ -38,7 +37,7 @@ jobs:
       - uses: actions/upload-artifact@v3
         with:
           name: lighthouse
-          path: gist
+          path: report
       - name: Upload website artifact
         uses: actions/upload-pages-artifact@v2
   deploy:

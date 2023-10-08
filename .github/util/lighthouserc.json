@@ -1,6 +1,7 @@
 {
   "ci": {
     "collect": {
+      "numberOfRuns": 3,
       "url": [
         "http://localhost/main.html",
         "http://localhost/profile.html",

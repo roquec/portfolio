@@ -32,6 +32,8 @@ See full report [here]($($reportUrl)). Here's the summary:
 # Write to environment file
 $summary >> $env:GITHUB_STEP_SUMMARY
 
+$env:LIGHTHOUSE_MANIFEST >> $env:GITHUB_STEP_SUMMARY
+
 # Get correct color depending on the score
 function GetScoreColor ([float] $score)
 {
