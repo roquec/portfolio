@@ -1,5 +1,5 @@
-<h1 align="center" style="font-size: 60px; font-weight: lighter; letter-spacing: 8px;">Portfolio</h1>
-<p align="center">Repo for my portfolio website <code><a href="https://roquec.com/">roquec.com</a></code></p>
+<h1 align="center">Portfolio</h1>
+<p align="center">Repo for my portfolio website: <code><a href="https://roquec.com/">roquec.com</a></code></p>
 <p align="center">
   <a href="https://github.com/roquec/Portfolio/actions">
     <img alt="CI/CD Workflow" src="https://img.shields.io/github/actions/workflow/status/roquec/Portfolio/ci-cd.yml?logo=github&labelColor=333333&cacheSeconds=300">
