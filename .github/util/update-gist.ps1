@@ -2,7 +2,6 @@ $gist_id = $env:UPDATE_GIST_ID
 $path = $env:UPDATE_GIST_PATH
 $token = $env:UPDATE_GIST_TOKEN
 $github_actor = $env:GITHUB_ACTOR
-$github_ref = $env:GITHUB_REF
 
 # Error handling function
 function Handle-Error {
@@ -102,7 +101,7 @@ try {
     Write-Host "Added all changes to index"
 
     # Git commit
-    git commit -m "Sync from repo by $($github_actor), ref: $($github-ref)."
+    git commit -m "Sync from Portfolio repo by GitHub Actions."
     Write-Host "Commited changes ready to push"
 
     git push
