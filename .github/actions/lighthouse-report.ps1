@@ -44,7 +44,7 @@ foreach($link in $report_links){
 
 $summary = @"
 ## ⚡️🏠 Lighthouse report
-Summary of $($$manifest.length) runs:
+Summary of $($manifest.length) runs:
 || Category | Score |
 |-----|-----|-----|
 |$(GetScoreEmoji($performance))| Performance | $($performance) |
