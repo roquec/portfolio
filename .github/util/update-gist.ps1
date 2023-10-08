@@ -45,7 +45,9 @@ try {
     # Start cloning gist
     # Can't use API, as API only limits to 300 files in list, and more importantly can't add new file
     # https://docs.github.com/en/rest/gists/gists?apiVersion=2022-11-28#about-gists
-    git clone $gist_git_url $gist_git_dir --depth 1
+    git clone $gist_git_url $gist_git_dir
+
+    git -C $gist_git_dir pull
 
     $target_files = Get-ChildItem -Path $gist_git_dir
     # Since it's Git, skip .git directory
@@ -95,13 +97,15 @@ try {
         exit 0
     }
 
+    git status
     Write-Host "Changes added going to commit"
 
     git commit -m "Sync from repo by $($env:GITHUB_ACTOR), ref: $($env:GITHUB_REF)."
 
+    git status
     Write-Host "Changes commited going to push"
-    git remote -v 
-    git push $gist_git_url
+    git remote -v
+    git push $gist_git_url master
 
     Write-Host "Pushed changes to Gist repo."
 }
