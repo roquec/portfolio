@@ -86,7 +86,7 @@ try {
     }
 
     if ($source_files.Count -gt 0) {
-        git add $source_files
+        git add .
     }
 
     # No changes detected, exit with "success-ish"
@@ -95,7 +95,12 @@ try {
         exit 0
     }
 
+    Write-Host "Changes added going to commit"
+
     git commit -m "Sync from repo by $($env:GITHUB_ACTOR), ref: $($env:GITHUB_REF)."
+
+    Write-Host "Changes commited going to push"
+
     git push
 
     Write-Host "Pushed changes to Gist repo."
