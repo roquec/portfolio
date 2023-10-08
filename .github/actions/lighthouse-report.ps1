@@ -22,7 +22,7 @@ $seo = [Math]::Round($seo / $manifest.length, 0);
 $report_links = @()
 $links.PSObject.Properties | ForEach-Object {
   $link_object = New-Object -Type PSObject -Property @{
-      'target' = $_.Name.replace('https://','') -replace '\?v=.*',''
+      'target' = $_.Name -replace '\?v=.*',''
       'url' = $_.Value
   }
   $report_links += $link_object
@@ -39,7 +39,7 @@ function GetScoreEmoji ([float] $score)
 # Format summary
 $links_formatted = ""
 foreach($link in $report_links){
-  $links_formatted += "  | [Link]($($link.url)) | [$($link.target)]($($link.target)) |`r`n"
+  $links_formatted += "| [Link]($($link.url)) | [$($link.target.replace('https://',''))]($($link.target)) |`r`n"
 }
 
 $summary = @"
@@ -61,8 +61,10 @@ Results summary:
 <details>
   <summary>Full reports</summary>
 
-  | Report | Test target |
-  |-----|-----|
+  <br />
+
+| Report | Test target |
+|-----|-----|
 $($links_formatted)
 
 </details>
