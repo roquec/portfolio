@@ -31,7 +31,7 @@ Write-Host "Found $($source_files.Count) readable files from source: $($source_f
 
 # Define gist git
 $gist_git_url = "https://$($token)@gist.github.com/$($gist_id).git"
-$gist_git_dir = "gist-clones\$($gist_id)"
+$gist_git_dir = "gist-clones-$($gist_id)"
 
 # Reset working directory
 if (Test-Path -Path $gist_git_dir -PathType Container) {
@@ -101,5 +101,5 @@ try {
     Write-Host "Pushed changes to Gist repo."
 }
 catch {
-    Handle-Error $Error[0].Exception.Message
+    Handle-Error $_
 }
