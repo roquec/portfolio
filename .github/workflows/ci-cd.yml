@@ -62,4 +62,4 @@ jobs:
         with:
           token: ${{ secrets.GISTS_ACCESS_TOKEN }}
           gist_id: 3f8ee5d85053832ea374a05b301f57aa
-          file_path: .
+          file_path: performance.json
