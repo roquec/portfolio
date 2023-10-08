@@ -4,20 +4,23 @@ $manifest = $env:LIGHTHOUSE_MANIFEST | ConvertFrom-Json
 
 # Get data for summary
 $reportUrl = ($links[0].PSObject.Properties | select -First 1).value;
-$performance = 0;
-$accessibility = 0;
-$bestPractices = 0;
-$seo = 0;
+$performance = 0.0;
+$accessibility = 0.0;
+$bestPractices = 0.0;
+$seo = 0.0;
 foreach($run in $manifest){
   $performance += $manifest[0].summary.performance * 100;
   $accessibility += $manifest[0].summary.accessibility * 100;
   $bestPractices += $manifest[0].summary.'best-practices' * 100;
   $seo += $manifest[0].summary.seo * 100;
 }
-$performance = $performance / $manifest.length;
-$accessibility = $accessibility / $manifest.length;
-$bestPractices = $bestPractices / $manifest.length;
-$seo = $seo / $manifest.length;
+
+$env:LIGHTHOUSE_MANIFEST >> "Total performance: $($performance)"
+
+$performance = [Math]::Round($performance / $manifest.length, 0);
+$accessibility = [Math]::Round($accessibility / $manifest.length, 0);
+$bestPractices = [Math]::Round($bestPractices / $manifest.length, 0);
+$seo = [Math]::Round($seo / $manifest.length, 0);
 
 # Get correct emoji depending on the score
 function GetScoreEmoji ([float] $score)
@@ -37,6 +40,15 @@ See full report [here]($($reportUrl)). Here's the summary:
 |$(GetScoreEmoji($accessibility))| Accessibility | $($accessibility) |
 |$(GetScoreEmoji($bestPractices))| Best-practices | $($bestPractices) |
 |$(GetScoreEmoji($seo))| SEO | $($seo) |
+<details>
+  <summary>Full reports</summary>
+  | Target | Report |
+  |-----|-----|
+  |http://localhost:44399/main.html| $($links."http://localhost:44399/main.html") |
+  |http://localhost:44399/profile.html| $($links."http://localhost:44399/profile.html") |
+  |http://localhost:44399/projects.html| $($links."http://localhost:44399/projects.html") |
+  |http://localhost:44399/projects/portfolio-website/index.html| $($links."http://localhost:44399/projects/portfolio-website/index.html") |
+</details>
 "@
 
 # Write to environment file
