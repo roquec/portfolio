@@ -58,13 +58,12 @@ jobs:
         uses: actions/checkout@v4
         with:
           sparse-checkout: '.github/util/update-gist.ps1'
-      - name: Lighthouse report
-        run: echo "$(<.github/util/update-gist.ps1 )"
-      - uses: actions/download-artifact@master
+      - name: Download report artifact
+        uses: actions/download-artifact@master
         with:
           name: lighthouse
           path: gist
-      - name: Lighthouse report
+      - name: Publish to Gist
         shell: pwsh
         env:
           UPDATE_GIST_TOKEN: ${{ secrets.GISTS_ACCESS_TOKEN }}

@@ -1,12 +1,12 @@
 [![CI/CD  Badge](https://github.com/roquec/Portfolio/actions/workflows/ci-cd.yml/badge.svg)](https://github.com/roquec/Portfolio/actions/workflows/ci-cd.yml)
 
-![Performance Badge](https://img.shields.io/badge/dynamic/json?url=https%3A%2F%2Fgist.githubusercontent.com%2Froquec%2F3f8ee5d85053832ea374a05b301f57aa%2Fraw%2Froquec-lighthouse.json&query=%24.performance.score&label=Performance&color=%24.performance.color)
+![Performance Badge](https://img.shields.io/endpoint?url=https%3A%2F%2Fgist.githubusercontent.com%2Froquec%2F3f8ee5d85053832ea374a05b301f57aa%2Fraw%2Fperformance.json)
 
-![Accessibility Badge](https://img.shields.io/badge/dynamic/json?url=https%3A%2F%2Fgist.githubusercontent.com%2Froquec%2F3f8ee5d85053832ea374a05b301f57aa%2Fraw%2Froquec-lighthouse.json&query=%24.accessibility.score&label=Accessibility&color=%24.accessibility.color)
+![Accessibility Badge](https://img.shields.io/endpoint?url=https%3A%2F%2Fgist.githubusercontent.com%2Froquec%2F3f8ee5d85053832ea374a05b301f57aa%2Fraw%2Faccessibility.json)
 
-![Best-practices Badge](https://img.shields.io/badge/dynamic/json?url=https%3A%2F%2Fgist.githubusercontent.com%2Froquec%2F3f8ee5d85053832ea374a05b301f57aa%2Fraw%2Froquec-lighthouse.json&query=%24.bestPractices.score&label=Best-practices&color=%24.bestPractices.color)
+![Best-practices Badge](https://img.shields.io/endpoint?url=https%3A%2F%2Fgist.githubusercontent.com%2Froquec%2F3f8ee5d85053832ea374a05b301f57aa%2Fraw%2FbestPractices.json)
 
-![SEO Badge](https://img.shields.io/badge/dynamic/json?url=https%3A%2F%2Fgist.githubusercontent.com%2Froquec%2F3f8ee5d85053832ea374a05b301f57aa%2Fraw%2Froquec-lighthouse.json&query=%24.seo.score&label=SEO&color=%24.seo.color)
+![SEO Badge](https://img.shields.io/endpoint?url=https%3A%2F%2Fgist.githubusercontent.com%2Froquec%2F3f8ee5d85053832ea374a05b301f57aa%2Fraw%2Fseo.json)
 
 # Portfolio
 
