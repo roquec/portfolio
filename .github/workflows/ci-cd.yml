@@ -22,22 +22,6 @@ jobs:
         uses: actions/jekyll-build-pages@v1
         with:
           source: "./src"
-      - name: Run Lighthouse CI
-        id: lighthouse
-        uses: treosh/lighthouse-ci-action@v10
-        with:
-          configPath: './.github/util/lighthouserc.json'
-          temporaryPublicStorage: true
-      - name: Lighthouse report
-        shell: pwsh
-        env:
-          LIGHTHOUSE_MANIFEST: ${{steps.lighthouse.outputs.manifest}}
-          LIGHTHOUSE_LINKS: ${{steps.lighthouse.outputs.links}}
-        run: .\.github\util\print-lighthouse-report.ps1
-      - uses: actions/upload-artifact@v3
-        with:
-          name: lighthouse
-          path: report
       - name: Upload website artifact
         uses: actions/upload-pages-artifact@v2
   deploy:
@@ -50,23 +34,30 @@ jobs:
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
-  gist:
+  lighthouse:
     runs-on: ubuntu-latest
-    needs: build
+    needs: deploy
     steps:
       - name: Checkout
         uses: actions/checkout@v4
         with:
-          sparse-checkout: '.github/util/update-gist.ps1'
-      - name: Download report artifact
-        uses: actions/download-artifact@master
+          sparse-checkout: '.github/util/*.ps1'
+      - name: Run Lighthouse CI
+        id: lighthouse
+        uses: treosh/lighthouse-ci-action@v10
         with:
-          name: lighthouse
-          path: gist
+          configPath: './.github/util/lighthouserc.json'
+          temporaryPublicStorage: true
+      - name: Lighthouse report
+        shell: pwsh
+        env:
+          LIGHTHOUSE_MANIFEST: ${{steps.lighthouse.outputs.manifest}}
+          LIGHTHOUSE_LINKS: ${{steps.lighthouse.outputs.links}}
+        run: .\.github\util\print-lighthouse-report.ps1
       - name: Publish to Gist
         shell: pwsh
         env:
           UPDATE_GIST_TOKEN: ${{ secrets.GISTS_ACCESS_TOKEN }}
           UPDATE_GIST_ID: 3f8ee5d85053832ea374a05b301f57aa
-          UPDATE_GIST_PATH: gist
+          UPDATE_GIST_PATH: report
         run: .\.github\util\update-gist.ps1

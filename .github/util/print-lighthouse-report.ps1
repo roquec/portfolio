@@ -15,8 +15,6 @@ foreach($run in $manifest){
   $seo += $manifest[0].summary.seo * 100;
 }
 
-"Total performance: $($performance)" >> $env:GITHUB_STEP_SUMMARY
-
 $performance = [Math]::Round($performance / $manifest.length, 0);
 $accessibility = [Math]::Round($accessibility / $manifest.length, 0);
 $bestPractices = [Math]::Round($bestPractices / $manifest.length, 0);
@@ -40,22 +38,20 @@ See full report [here]($($reportUrl)). Here's the summary:
 |$(GetScoreEmoji($accessibility))| Accessibility | $($accessibility) |
 |$(GetScoreEmoji($bestPractices))| Best-practices | $($bestPractices) |
 |$(GetScoreEmoji($seo))| SEO | $($seo) |
+<br />
 <details>
   <summary>Full reports</summary>
   | Target | Report |
   |-----|-----|
-  |http://localhost:44399/main.html| $($links."http://localhost:44399/main.html") |
-  |http://localhost:44399/profile.html| $($links."http://localhost:44399/profile.html") |
-  |http://localhost:44399/projects.html| $($links."http://localhost:44399/projects.html") |
-  |http://localhost:44399/projects/portfolio-website/index.html| $($links."http://localhost:44399/projects/portfolio-website/index.html") |
+  | http://localhost:44399/main.html | $($links.'http://localhost:44399/main.html') |
+  | http://localhost:44399/profile.html | $($links.'http://localhost:44399/profile.html') |
+  | http://localhost:44399/projects.html | $($links.'http://localhost:44399/projects.html') |
+  | http://localhost:44399/projects/portfolio-website/index.html | $($links.'http://localhost:44399/projects/portfolio-website/index.html') |
 </details>
 "@
 
 # Write to environment file
 $summary >> $env:GITHUB_STEP_SUMMARY
-
-$env:LIGHTHOUSE_MANIFEST >> $env:GITHUB_STEP_SUMMARY
-$env:LIGHTHOUSE_LINKS >> $env:GITHUB_STEP_SUMMARY
 
 # Get correct color depending on the score
 function GetScoreColor ([float] $score)
