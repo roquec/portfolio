@@ -76,18 +76,14 @@ try {
         Write-Host "Copied $file"
     }
 
+    $files_list = Get-ChildItem -Path $gist_git_dir
+    Write-Host "Files in gist: $($files_list)"
+
     # Configure Git user information
     Set-Location -Path $gist_git_dir
     git config user.email "$($env:GITHUB_ACTOR)@users.noreply.github.com"
     git config user.name $env:GITHUB_ACTOR
 
-    if ($removed_files.Count -gt 0) {
-        git rm --ignore-unmatch $removed_files
-    }
-
-
-    $files_list = Get-ChildItem -Path $gist_git_dir
-    Write-Host "Files in gist: $($files_list)"
 
     if ($source_files.Count -gt 0) {
         git add $source_files
