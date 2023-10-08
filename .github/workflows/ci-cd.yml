@@ -38,26 +38,30 @@ jobs:
     runs-on: ubuntu-latest
     needs: deploy
     steps:
-      - name: Checkout
+      - name: Download action scripts
         uses: actions/checkout@v4
         with:
           sparse-checkout: '.github/actions'
-      - name: Run Lighthouse CI
-        id: lighthouse
-        uses: treosh/lighthouse-ci-action@v10
+      - uses: actions/setup-node@v3
         with:
-          runs: 5
-          urls: |
-            ${{ format('{0}?v={1}', 'https://roquec.com/main', github.run_id) }}
-      - name: Lighthouse report
+          node-version: 18
+      - name: Install NPM and LHCI
+        run: npm install && npm install -g @lhci/cli@0.12.x
+      - name: Run Lighthouse
+        run: |
+          lhci autorun --collect.numberOfRuns=5 --collect.url=https://roquec.com/main --collect.headful=false --upload.target=filesystem --upload.outputDir=./reports/mobile
+          lhci autorun --collect.numberOfRuns=5 --collect.url=https://roquec.com/main --collect.headful=false --upload.target=filesystem --upload.outputDir=./reports/desktop --collect.settings.preset=desktop
+      - name: Generate report
         shell: pwsh
-        env:
-          LIGHTHOUSE_MANIFEST: ${{steps.lighthouse.outputs.manifest}}
         run: .\.github\actions\lighthouse-report.ps1
+        env:
+          LIGHTHOUSE_PATH_MOBILE: ./reports/mobile
+          LIGHTHOUSE_PATH_DESKTOP: ./reports/desktop
+          LIGHTHOUSE_REPORT_OUTPUT_DIR: ./summary
       - name: Publish to Gist
         shell: pwsh
         env:
           UPDATE_GIST_TOKEN: ${{ secrets.GISTS_ACCESS_TOKEN }}
           UPDATE_GIST_ID: 3f8ee5d85053832ea374a05b301f57aa
-          UPDATE_GIST_PATH: report
+          UPDATE_GIST_PATH: summary
         run: .\.github\actions\update-gist.ps1
