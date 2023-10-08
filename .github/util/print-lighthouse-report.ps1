@@ -12,8 +12,8 @@ $reportUrl = ($links[0].PSObject.Properties | select -First 1).value;
 # Get correct emoji depending on the score
 function GetScoreEmoji ([float] $score)
 {
-  if($score -ge 90) { return '🟢'; }
-  if($score -ge 70){ return '🟡'; }
+  if($score -ge 95) { return '🟢'; }
+  if($score -ge 75){ return '🟡'; }
   return '🔴';
 }
 
@@ -48,7 +48,7 @@ $json = @"
   "color": "$(GetScoreColor($performance))"
 }
 "@
-new-item -force -path .\gist\performance.json -value $json -type file
+new-item -force -path .\report\performance.json -value $json -type file
 
 $json = @"
 {
@@ -58,7 +58,7 @@ $json = @"
   "color": "$(GetScoreColor($accessibility))"
 }
 "@
-new-item -force -path .\gist\accessibility.json -value $json -type file
+new-item -force -path .\report\accessibility.json -value $json -type file
 
 $json = @"
 {
@@ -68,7 +68,7 @@ $json = @"
   "color": "$(GetScoreColor($bestPractices))"
 }
 "@
-new-item -force -path .\gist\bestPractices.json -value $json -type file
+new-item -force -path .\report\bestPractices.json -value $json -type file
 
 $json = @"
 {
@@ -78,4 +78,4 @@ $json = @"
   "color": "$(GetScoreColor($seo))"
 }
 "@
-new-item -force -path .\gist\seo.json -value $json -type file
+new-item -force -path .\report\seo.json -value $json -type file
