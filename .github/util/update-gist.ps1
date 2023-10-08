@@ -47,6 +47,8 @@ try {
     # https://docs.github.com/en/rest/gists/gists?apiVersion=2022-11-28#about-gists
     git clone $gist_git_url $gist_git_dir
 
+    git -C $gist_git_dir remote set-url origin $gist_git_url
+
     git -C $gist_git_dir pull
 
     $target_files = Get-ChildItem -Path $gist_git_dir
@@ -96,7 +98,7 @@ try {
         Write-Host "No changes detected in Gist repo."
         exit 0
     }
-
+    git branch
     git status
     Write-Host "Changes added going to commit"
 
@@ -105,7 +107,7 @@ try {
     git status
     Write-Host "Changes commited going to push"
     git remote -v
-    git push $gist_git_url master
+    git push
 
     Write-Host "Pushed changes to Gist repo."
 }
