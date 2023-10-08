@@ -57,27 +57,8 @@ jobs:
       - uses: actions/download-artifact@master
         with:
           name: lighthouse
-      - name: Post performance
-        uses: exuanbo/actions-deploy-gist@v1
+      - name: Update Gist
+        uses: pentatonicfunk/action-gist-repo-sync@v1
         with:
-          token: ${{ secrets.GISTS_ACCESS_TOKEN }}
+          gist_token: ${{ secrets.GISTS_ACCESS_TOKEN }}
           gist_id: 3f8ee5d85053832ea374a05b301f57aa
-          file_path: performance.json
-      - name: Post accessibility
-        uses: exuanbo/actions-deploy-gist@v1
-        with:
-          token: ${{ secrets.GISTS_ACCESS_TOKEN }}
-          gist_id: 3f8ee5d85053832ea374a05b301f57aa
-          file_path: accessibility.json
-      - name: Post best-practices
-        uses: exuanbo/actions-deploy-gist@v1
-        with:
-          token: ${{ secrets.GISTS_ACCESS_TOKEN }}
-          gist_id: 3f8ee5d85053832ea374a05b301f57aa
-          file_path: bestPractices.json
-      - name: Post seo
-        uses: exuanbo/actions-deploy-gist@v1
-        with:
-          token: ${{ secrets.GISTS_ACCESS_TOKEN }}
-          gist_id: 3f8ee5d85053832ea374a05b301f57aa
-          file_path: seo.json
