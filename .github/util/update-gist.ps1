@@ -2,36 +2,35 @@ $gist_id = $env:UPDATE_GIST_ID
 $path = $env:UPDATE_GIST_PATH
 $token = $env:UPDATE_GIST_TOKEN
 
+# Error handling function
+function Handle-Error {
+    param (
+        [string]$message
+    )
+    Write-Host "Error: $message"
+    exit 1
+}
+
 # Checking source
 if (-not (Test-Path -Path $path -PathType Container)) {
-    throw "Invalid source path. $path is not a directory."
+    Handle-Error "Invalid source path. $path is not a directory."
 }
 
 # List files on source
-$source_list = Get-ChildItem -Path $path
-$source_files = @()
-
-foreach ($file in $source_list) {
-  if (-not($file.PSIsContainer)) {
-    $source_files.Add($file.Name)
-  }
-}
+$source_files = Get-ChildItem -Path $path -File | ForEach-Object { $_.Name }
 
 # Prepare files content
 foreach ($file in $source_files) {
-    try {
-        # Read file content with UTF-8 encoding to avoid binary files
-        $content = Get-Content -Path (Join-Path -Path $path -ChildPath $file) -Raw -Encoding UTF8
-    }
-    catch {
-        $source_files.Remove($file)
+    $content = Get-Content -Path (Join-Path -Path $path -ChildPath $file) -Raw -Encoding Default
+    if ($content -eq $null) {
+        Handle-Error "Failed to read file: $file"
     }
 }
 
 Write-Host "Found $($source_files.Count) readable files from source: $($source_files)"
 
 # Define gist git
-$gist_git_url = "https://$($token)@gist.github.com/$($gist_id).git"
+$gist_git_url = "https://gist.github.com/$($gist_id).git"
 $gist_git_dir = "gist-clones\$($gist_id)"
 
 # Reset working directory
@@ -77,30 +76,30 @@ try {
         Write-Host "Copied $file"
     }
 
-    $gist_repo = Get-GitRepository -Repository $gist_git_dir
-
-    Set-GitConfig -Repository $gist_repo -Name "user.email" -Value $env:GITHUB_ACTOR
-    Set-GitConfig -Repository $gist_repo -Name "user.name" -Value "$($env:GITHUB_ACTOR)@users.noreply.github.com"
+    # Configure Git user information
+    Set-Location -Path $gist_git_dir
+    git config user.email "$($env:GITHUB_ACTOR)@users.noreply.github.com"
+    git config user.name $env:GITHUB_ACTOR
 
     if ($removed_files.Count -gt 0) {
-        Remove-GitIndex -Repository $gist_repo -Path $removed_files
+        git rm --ignore-unmatch $removed_files
     }
 
     if ($source_files.Count -gt 0) {
-        Add-GitIndex -Repository $gist_repo -Path $source_files
+        git add $source_files
     }
 
     # No changes detected, exit with "success-ish"
-    if (-not $gist_repo.IsDirty) {
+    if (git diff-index --quiet HEAD) {
         Write-Host "No changes detected in Gist repo."
         exit 0
     }
 
-    $gist_repo.Commit("Sync from repo by $($env:GITHUB_ACTOR), ref: $($env:GITHUB_REF).")
-    $gist_repo.Remote.Push()
+    git commit -m "Sync from repo by $($env:GITHUB_ACTOR), ref: $($env:GITHUB_REF)."
+    git push
 
     Write-Host "Pushed changes to Gist repo."
 }
 catch {
-    throw "Unable to work with gist git"
+    Handle-Error "Unable to work with gist git"
 }
