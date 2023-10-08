@@ -98,13 +98,11 @@ try {
         Write-Host "No changes detected in Gist repo."
         exit 0
     }
-    git branch
-    git status
+    
     Write-Host "Changes added going to commit"
 
     git commit -m "Sync from repo by $($env:GITHUB_ACTOR), ref: $($env:GITHUB_REF)."
 
-    git status
     Write-Host "Changes commited going to push"
     git remote -v
     git push
