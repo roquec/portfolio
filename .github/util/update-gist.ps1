@@ -100,8 +100,8 @@ try {
     git commit -m "Sync from repo by $($env:GITHUB_ACTOR), ref: $($env:GITHUB_REF)."
 
     Write-Host "Changes commited going to push"
-
-    git push
+    git remote -v 
+    git push $gist_git_url
 
     Write-Host "Pushed changes to Gist repo."
 }
