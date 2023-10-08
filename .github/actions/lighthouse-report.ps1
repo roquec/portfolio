@@ -14,10 +14,10 @@ foreach($run in $manifest){
   $seo += $manifest[0].summary.seo * 100;
 }
 
-$performance = [Math]::Round($performance / $manifest.length, 0);
-$accessibility = [Math]::Round($accessibility / $manifest.length, 0);
-$bestPractices = [Math]::Round($bestPractices / $manifest.length, 0);
-$seo = [Math]::Round($seo / $manifest.length, 0);
+$performance = [Math]::floor($performance / $manifest.length, 0);
+$accessibility = [Math]::floor($accessibility / $manifest.length, 0);
+$bestPractices = [Math]::floor($bestPractices / $manifest.length, 0);
+$seo = [Math]::floor($seo / $manifest.length, 0);
 
 $report_links = @()
 $links.PSObject.Properties | ForEach-Object {
@@ -47,8 +47,6 @@ $summary = @"
 
 <br />
 
-Results summary:
-
 | Category | Score | |
 |-----|-----|-----|
 | Performance | $($performance) |$(GetScoreEmoji($performance))|
@@ -68,6 +66,8 @@ Results summary:
 $($links_formatted)
 
 </details>
+
+<br />
 "@
 
 # Write to environment file
