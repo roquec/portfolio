@@ -115,7 +115,8 @@ try {
   <br />");
 
   # Write summary to output
-  $summary >> $output
+  $summary >> $summary_output
+  $summary >> (Join-Path -Path $output_dir -ChildPath "_summary.md")
 }
 catch {
     Handle-Error $_
