@@ -86,7 +86,7 @@ try {
     }
 
     if ($source_files.Count -gt 0) {
-        git add .
+        git add $source_files
     }
 
     # No changes detected, exit with "success-ish"
@@ -101,7 +101,7 @@ try {
 
     Write-Host "Changes commited going to push"
 
-    git push
+    git push origin master
 
     Write-Host "Pushed changes to Gist repo."
 }
