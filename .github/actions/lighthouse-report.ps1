@@ -14,10 +14,10 @@ foreach($run in $manifest){
   $seo += $manifest[0].summary.seo * 100;
 }
 
-$performance = [Math]::floor($performance / $manifest.length, 0);
-$accessibility = [Math]::floor($accessibility / $manifest.length, 0);
-$bestPractices = [Math]::floor($bestPractices / $manifest.length, 0);
-$seo = [Math]::floor($seo / $manifest.length, 0);
+$performance = [Math]::floor($performance / $manifest.length);
+$accessibility = [Math]::floor($accessibility / $manifest.length);
+$bestPractices = [Math]::floor($bestPractices / $manifest.length);
+$seo = [Math]::floor($seo / $manifest.length);
 
 $report_links = @()
 $links.PSObject.Properties | ForEach-Object {
