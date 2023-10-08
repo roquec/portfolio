@@ -15,7 +15,7 @@ foreach($run in $manifest){
   $seo += $manifest[0].summary.seo * 100;
 }
 
-$env:LIGHTHOUSE_MANIFEST >> "Total performance: $($performance)"
+"Total performance: $($performance)" >> $env:GITHUB_STEP_SUMMARY
 
 $performance = [Math]::Round($performance / $manifest.length, 0);
 $accessibility = [Math]::Round($accessibility / $manifest.length, 0);
