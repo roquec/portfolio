@@ -22,8 +22,8 @@ $seo = [Math]::Round($seo / $manifest.length, 0);
 $report_links = @()
 $links.PSObject.Properties | ForEach-Object {
   $link_object = New-Object -Type PSObject -Property @{
-      'target'   = $SiteCollection.Url
-      'url' = $email
+      'target'   = $_.Name
+      'url' = $_.Value
   }
   $report_links += $link_object
 }
