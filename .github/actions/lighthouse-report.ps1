@@ -120,3 +120,5 @@ $json = @"
 }
 "@
 new-item -force -path .\report\seo.json -value $json -type file
+
+Copy-Item -Path $manifest[0].htmlPath -Destination .\report\report.html -Force
