@@ -1,12 +1,10 @@
 initializeFocus();
 
 window.addEventListener("DOMContentLoaded", updateFocus);
-window.addEventListener("pagehide", saveFocus);
 
-function saveFocus() {
-  const focusedElement = document.activeElement.parentElement;
-  if (focusedElement.classList.contains("file-item")) {
-    window.sessionStorage.setItem("file-item-focus", focusedElement.id);
+function saveFocus(element) {
+  if (element.classList.contains("file-item")) {
+    window.sessionStorage.setItem("file-item-focus", element.id);
   } else {
     window.sessionStorage.removeItem("file-item-focus");
   }
