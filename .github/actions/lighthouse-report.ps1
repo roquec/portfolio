@@ -39,12 +39,12 @@ function GetScoreEmoji ([float] $score)
 # Format summary
 $links_formatted = ""
 foreach($link in $report_links){
-  $links_formatted += "  |$(GetScoreEmoji($performance))| Performance | $($performance) |`n"
+  $links_formatted += "  | $($link.target) | [$($link.url)]($($link.url)) |`n"
 }
 
 $summary = @"
 ## ⚡️🏠 Lighthouse report
-Summary of $($manifest.length) runs:
+Executed $($manifest.length) runs of testing. Results summary:
 || Category | Score |
 |-----|-----|-----|
 |$(GetScoreEmoji($performance))| Performance | $($performance) |
