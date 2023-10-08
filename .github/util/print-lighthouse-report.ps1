@@ -37,7 +37,7 @@ function GetScoreEmoji ([float] $score)
 }
 
 # Format summary
-$links_formatted =
+$links_formatted = ""
 foreach($link in $report_links){
   $links_formatted += "  |$(GetScoreEmoji($performance))| Performance | $($performance) |`n"
 }
@@ -62,6 +62,9 @@ $($links_formatted)
 
 # Write to environment file
 $summary >> $env:GITHUB_STEP_SUMMARY
+
+$manifest >> $env:GITHUB_STEP_SUMMARY
+$links >> $env:GITHUB_STEP_SUMMARY
 
 # Get correct color depending on the score
 function GetScoreColor ([float] $score)
