@@ -37,6 +37,11 @@ function GetScoreEmoji ([float] $score)
 }
 
 # Format summary
+$links_formatted =
+foreach($link in $report_links){
+  $links_formatted += "  |$(GetScoreEmoji($performance))| Performance | $($performance) |`n"
+}
+
 $summary = @"
 ## ⚡️🏠 Lighthouse report
 See full report [here]($($reportUrl)). Here's the summary:
@@ -51,10 +56,7 @@ See full report [here]($($reportUrl)). Here's the summary:
   <summary>Full reports</summary>
   | Target | Report |
   |-----|-----|
-  | $($$report_links[0].target) | $($$report_links[0].url) |
-  | $($$report_links[1].target) | $($$report_links[1].url) |
-  | $($$report_links[2].target) | $($$report_links[2].url) |
-  | $($$report_links[3].target) | $($$report_links[3].url) |
+$($links_formatted)
 </details>
 "@
 
