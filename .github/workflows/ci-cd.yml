@@ -46,13 +46,9 @@ jobs:
         id: lighthouse
         uses: treosh/lighthouse-ci-action@v10
         with:
-          runs: 3
+          runs: 5
           urls: |
             ${{ format('{0}?v={1}', 'https://roquec.com/main', github.run_id) }}
-            ${{ format('{0}?v={1}', 'https://roquec.com/profile', github.run_id) }}
-            ${{ format('{0}?v={1}', 'https://roquec.com/projects', github.run_id) }}
-            ${{ format('{0}?v={1}', 'https://roquec.com/projects/portfolio-website/', github.run_id) }}
-          temporaryPublicStorage: true
       - name: Lighthouse report
         shell: pwsh
         env:

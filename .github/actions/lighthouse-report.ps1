@@ -8,10 +8,10 @@ $accessibility = 0.0;
 $bestPractices = 0.0;
 $seo = 0.0;
 foreach($run in $manifest){
-  $performance += $manifest[0].summary.performance * 100;
-  $accessibility += $manifest[0].summary.accessibility * 100;
-  $bestPractices += $manifest[0].summary.'best-practices' * 100;
-  $seo += $manifest[0].summary.seo * 100;
+  $performance += $run.summary.performance * 100;
+  $accessibility += $run.summary.accessibility * 100;
+  $bestPractices += $run.summary.'best-practices' * 100;
+  $seo += $run.summary.seo * 100;
 }
 
 $performance = [Math]::floor($performance / $manifest.length);
