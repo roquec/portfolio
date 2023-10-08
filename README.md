@@ -1,22 +1,24 @@
-<a href="https://github.com/roquec/Portfolio/actions">
-<img alt="CI/CD Workflow" src="https://img.shields.io/github/actions/workflow/status/roquec/Portfolio/ci-cd.yml?logo=github&labelColor=333333">
-</a>
+<p align="center">
+  <a href="https://github.com/roquec/Portfolio/actions">
+    <img alt="CI/CD Workflow" src="https://img.shields.io/github/actions/workflow/status/roquec/Portfolio/ci-cd.yml?logo=github&labelColor=333333&cacheSeconds=300">
+  </a>
 
-<a href="https://htmlpreview.github.io/?https://gist.githubusercontent.com/roquec/3f8ee5d85053832ea374a05b301f57aa/raw/report.html">
-<img alt="Lighthouse performance badge" src="https://img.shields.io/endpoint?url=https%3A%2F%2Fgist.githubusercontent.com%2Froquec%2F3f8ee5d85053832ea374a05b301f57aa%2Fraw%2Fc3d9392d1ca5bbfb208022e2e8a19d7aee33694e%2Fperformance.json&logo=lighthouse&logoColor=F56541&labelColor=333333&link=https%3A%2F%2Fgithub.com%2Froquec%2FPortfolio%2Factions">
-</a>
+  <a href="https://htmlpreview.github.io/?https://gist.githubusercontent.com/roquec/3f8ee5d85053832ea374a05b301f57aa/raw/report.html" target="_blank">
+    <img alt="Lighthouse performance badge" src="https://img.shields.io/endpoint?url=https%3A%2F%2Fgist.githubusercontent.com%2Froquec%2F3f8ee5d85053832ea374a05b301f57aa%2Fraw%2Fperformance.json&logo=lighthouse&label=Performance&labelColor=333333&cacheSeconds=300">
+  </a>
 
-<a href="https://htmlpreview.github.io/?https://gist.githubusercontent.com/roquec/3f8ee5d85053832ea374a05b301f57aa/raw/report.html">
-<img alt="Lighthouse accessibility badge" src="https://img.shields.io/endpoint?url=https%3A%2F%2Fgist.githubusercontent.com%2Froquec%2F3f8ee5d85053832ea374a05b301f57aa%2Fraw%2Fc3d9392d1ca5bbfb208022e2e8a19d7aee33694e%2Faccessibility.json&logo=lighthouse&logoColor=F56541&labelColor=333333&link=https%3A%2F%2Fgithub.com%2Froquec%2FPortfolio%2Factions">
-</a>
+  <a href="https://htmlpreview.github.io/?https://gist.githubusercontent.com/roquec/3f8ee5d85053832ea374a05b301f57aa/raw/report.html" target="_blank">
+    <img alt="Lighthouse accessibility badge" src="https://img.shields.io/endpoint?url=https%3A%2F%2Fgist.githubusercontent.com%2Froquec%2F3f8ee5d85053832ea374a05b301f57aa%2Fraw%2Faccessibility.json&logo=lighthouse&label=Accessibility&labelColor=333333&cacheSeconds=300">
+  </a>
 
-<a href="https://htmlpreview.github.io/?https://gist.githubusercontent.com/roquec/3f8ee5d85053832ea374a05b301f57aa/raw/report.html">
-<img alt="Lighthouse best-practices badge" src="https://img.shields.io/endpoint?url=https%3A%2F%2Fgist.githubusercontent.com%2Froquec%2F3f8ee5d85053832ea374a05b301f57aa%2Fraw%2Fc3d9392d1ca5bbfb208022e2e8a19d7aee33694e%2FbestPractices.json&logo=lighthouse&logoColor=F56541&labelColor=333333&link=https%3A%2F%2Fgithub.com%2Froquec%2FPortfolio%2Factions">
-</a>
+  <a href="https://htmlpreview.github.io/?https://gist.githubusercontent.com/roquec/3f8ee5d85053832ea374a05b301f57aa/raw/report.html" target="_blank">
+    <img alt="Lighthouse best-practices badge" src="https://img.shields.io/endpoint?url=https%3A%2F%2Fgist.githubusercontent.com%2Froquec%2F3f8ee5d85053832ea374a05b301f57aa%2Fraw%2Fbest_practices.json&logo=lighthouse&label=Best-practices&labelColor=333333&cacheSeconds=300">
+  </a>
 
-<a href="https://htmlpreview.github.io/?https://gist.githubusercontent.com/roquec/3f8ee5d85053832ea374a05b301f57aa/raw/report.html">
-<img alt="Lighthouse SEO badge" src="https://img.shields.io/endpoint?url=https%3A%2F%2Fgist.githubusercontent.com%2Froquec%2F3f8ee5d85053832ea374a05b301f57aa%2Fraw%2Fc3d9392d1ca5bbfb208022e2e8a19d7aee33694e%2Fseo.json&logo=lighthouse&logoColor=F56541&labelColor=333333&link=https%3A%2F%2Fgithub.com%2Froquec%2FPortfolio%2Factions">
-</a>
+  <a href="https://htmlpreview.github.io/?https://gist.githubusercontent.com/roquec/3f8ee5d85053832ea374a05b301f57aa/raw/report.html" target="_blank">
+    <img alt="Lighthouse SEO badge" src="https://img.shields.io/endpoint?url=https%3A%2F%2Fgist.githubusercontent.com%2Froquec%2F3f8ee5d85053832ea374a05b301f57aa%2Fraw%2Fseo.json&logo=lighthouse&label=SEO&labelColor=333333&cacheSeconds=300">
+  </a>
+</p>
 
 # Portfolio
 

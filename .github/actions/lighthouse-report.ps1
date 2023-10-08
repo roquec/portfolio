@@ -56,9 +56,9 @@ try {
   # Get correct color depending on the score
   function GetScoreColor ([float] $score, [bool] $emoji)
   {
-    if($score -ge 90) { return $emoji ? '🟢' : '#3DC13C'; }
-    if($score -ge 50){ return $emoji ? '🟡' : '#F3BB1B'; }
-    return $emoji ? '🔴' : '#F13637';
+    if($score -ge 90) { return $emoji ? '🟢' : 'limegreen'; }
+    if($score -ge 50){ return $emoji ? '🟡' : 'yellow'; }
+    return $emoji ? '🔴' : 'red';
   }
 
   # Creates a JSON badge file for shields.io
