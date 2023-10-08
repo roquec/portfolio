@@ -3,7 +3,6 @@ $links = $env:LIGHTHOUSE_LINKS | ConvertFrom-Json;
 $manifest = $env:LIGHTHOUSE_MANIFEST | ConvertFrom-Json
 
 # Get data for summary
-$reportUrl = ($links[0].PSObject.Properties | select -First 1).value;
 $performance = 0.0;
 $accessibility = 0.0;
 $bestPractices = 0.0;
@@ -19,6 +18,15 @@ $performance = [Math]::Round($performance / $manifest.length, 0);
 $accessibility = [Math]::Round($accessibility / $manifest.length, 0);
 $bestPractices = [Math]::Round($bestPractices / $manifest.length, 0);
 $seo = [Math]::Round($seo / $manifest.length, 0);
+
+$report_links = @()
+$links.PSObject.Properties | ForEach-Object {
+  $link_object = New-Object -Type PSObject -Property @{
+      'target'   = $SiteCollection.Url
+      'url' = $email
+  }
+  $report_links += $link_object
+}
 
 # Get correct emoji depending on the score
 function GetScoreEmoji ([float] $score)
@@ -43,10 +51,10 @@ See full report [here]($($reportUrl)). Here's the summary:
   <summary>Full reports</summary>
   | Target | Report |
   |-----|-----|
-  | http://localhost:44399/main.html | $($links.'http://localhost:44399/main.html') |
-  | http://localhost:44399/profile.html | $($links.'http://localhost:44399/profile.html') |
-  | http://localhost:44399/projects.html | $($links.'http://localhost:44399/projects.html') |
-  | http://localhost:44399/projects/portfolio-website/index.html | $($links.'http://localhost:44399/projects/portfolio-website/index.html') |
+  | $($$report_links[0].target) | $($$report_links[0].url) |
+  | $($$report_links[1].target) | $($$report_links[1].url) |
+  | $($$report_links[2].target) | $($$report_links[2].url) |
+  | $($$report_links[3].target) | $($$report_links[3].url) |
 </details>
 "@
 
