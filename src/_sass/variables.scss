@@ -1,8 +1,9 @@
 // Rem conversion function
 @function rem($pixels) {
   $pxValue: calc($pixels / 16);
-  $rawValue: str-slice(#{$pxValue}, 0, str-length(#{$pxValue}) - 2);
-  @return #{$rawValue}rem;
+  $textPxValue: unquote(#{$pxValue});
+  $rawValue: str-slice($textPxValue, 0, str-length($textPxValue) - 2);
+  @return unquote(str-insert("rem", $rawValue, 0));
 }
 
 // Media query breakpoints
