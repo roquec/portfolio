@@ -32,6 +32,8 @@ $navigation-width: rem(300px);
   #resizer {
     display: block;
     position: absolute;
+    border: 0;
+    outline: 0;
     z-index: 2;
     background-color: var(--color-panel-resizer);
     width: rem(4px);
@@ -77,6 +79,10 @@ $navigation-width: rem(300px);
       right: rem(-40px);
       background: rgba(0, 0, 0, 0.5);
       cursor: pointer;
+      border: 0;
+      outline: 0;
+      padding: 0;
+      margin: 0;
     }
   }
 }
