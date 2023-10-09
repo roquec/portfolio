@@ -1,9 +1,10 @@
+@use "sass:math";
+
 // Rem conversion function
 @function rem($pixels) {
-  $pxValue: calc($pixels / 16);
-  $textPxValue: unquote(#{$pxValue});
-  $rawValue: str-slice($textPxValue, 0, str-length($textPxValue) - 2);
-  @return unquote(str-insert("rem", $rawValue, 0));
+  $raw-value: math.div($pixels, ($pixels * 0 + 1));
+  $rem-value: math.div($raw-value, 16);
+  @return #{$rem-value}rem;
 }
 
 // Media query breakpoints
