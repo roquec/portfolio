@@ -1,65 +1,106 @@
 name: CI/CD
+
 on:
   push:
     branches:
       - main
+
 permissions:
   contents: read
   pages: write
   id-token: write
+
 jobs:
+
+  # Generate the site artifact and makes it available for future jobs
   build:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout
+      # Download latest version of https://github.com/roquec/Portfolio
+      - name: Checkout portfolio repository
         uses: actions/checkout@v4
-      - name: Set version data
+      # Execute script to make last changes to site source before Jekyll build
+      #   - Sets data on version page (commit, build...)
+      #   - Copies project README into the site's README page
+      - name: Run pre-build custom scripts
         shell: pwsh
         run: .\.github\actions\set-placeholders.ps1
-      - uses: ruby/setup-ruby@v1
+      # Set up Ruby and installs bundler and needed gems from project's Gemfile
+      - name: Install Ruby v3.2 and gems
+        uses: ruby/setup-ruby@v1
         with:
           ruby-version: '3.2'
           bundler-cache: true
-      - run: bundle exec jekyll build --source src
+      # Execute Jekyll build command to generate the final site
+      #   - Uses source directory ./src
+      #   - The output directory is ./_site
+      - name: Run Jekyll build
+        run: bundle exec jekyll build --source src
+      # Upload generated site as an artifact so the following jobs can access it
+      #   - Takes content from ./_site by default
+      #   - The output artifact is called "github-pages"
       - name: Upload website artifact
         uses: actions/upload-pages-artifact@v2
+
+  # Downloads site artifact and publishes it to GitHub Pages
   deploy:
     runs-on: ubuntu-latest
     needs: build
     steps:
+      # Configure and enable GitHub Pages
       - name: Configure GitHub Pages
         uses: actions/configure-pages@v3
+      # Publish website content from github-pages artifact to our GitHub Pages environment
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v2
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
+
+  # Runs Lighthouse tests on live website and publishes results
   lighthouse:
     runs-on: ubuntu-latest
     needs: deploy
     steps:
+      # Checkout only needed scripts from repository
+      #   - Downloads only files from .github/actions
       - name: Download action scripts
         uses: actions/checkout@v4
         with:
           sparse-checkout: '.github/actions'
-      - uses: actions/setup-node@v3
+      # Install Node to be able to use npm later
+      - name: Install Node.js v18
+        uses: actions/setup-node@v3
         with:
           node-version: 18
+      # Install Lighthouse CI via npm
       - name: Install Lighthouse CI
         run: npm install -g @lhci/cli@0.12.x
+      # Execute Lighthouse CI for both mobile and desktop
+      #   - Runs target only the main url https://roquec.com/
+      #   - Executes 5 runs to get a reliable score
+      #   - Results from mobile run are stored in ./reports/mobile
+      #   - Results from mobile run are stored in ./reports/desktop
       - name: Run Lighthouse
         run: |
           lhci autorun --collect.numberOfRuns=5 --collect.url=https://roquec.com/main?v=${{github.run_id}} --upload.target=filesystem --upload.outputDir=./reports/mobile
           lhci autorun --collect.numberOfRuns=5 --collect.url=https://roquec.com/main?v=${{github.run_id}} --upload.target=filesystem --upload.outputDir=./reports/desktop --collect.settings.preset=desktop
-      - name: Generate report
+      # Use custom script to generate needed reports from Lighthouse results
+      #   - Generates outputs in ./summary
+      #     - Shield.io badge JSON files according to https://shields.io/badges/endpoint-badge
+      #     - Copy of HTML report for representative runs
+      #     - Markdown summary report
+      #   - Prints markdown summary report to GITHUB_STEP_SUMMARY
+      - name: Generate Lighthouse report
         shell: pwsh
         run: .\.github\actions\lighthouse-report.ps1
         env:
           LIGHTHOUSE_PATH_MOBILE: ./reports/mobile
           LIGHTHOUSE_PATH_DESKTOP: ./reports/desktop
           LIGHTHOUSE_REPORT_OUTPUT_DIR: ./summary
-      - name: Publish to Gist
+      # Make all Lighthouse report outputs available in a specified gist
+      - name: Publish reports to gist
         shell: pwsh
         env:
           UPDATE_GIST_TOKEN: ${{ secrets.GISTS_ACCESS_TOKEN }}
