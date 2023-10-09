@@ -2,11 +2,10 @@
 source 'https://rubygems.org'
 
 gem 'wdm', '~> 0.1.1'
-gem 'jekyll', '4.3.2'
+gem 'jekyll', '~> 4.3', '>= 4.3.2'
 
 group :jekyll_plugins do
-    gem 'jekyll-sitemap'
-    gem 'jekyll-feed'
-    gem 'jekyll-seo-tag'
-    gem 'jekyll-sass-converter', '3.0.0'
+    gem 'jekyll-sitemap', '~> 1.4'
+    gem 'jekyll-feed', '~> 0.17.0'
+    gem 'jekyll-seo-tag', '~> 2.8'
 end
