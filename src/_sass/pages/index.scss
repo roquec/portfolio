@@ -5,16 +5,16 @@
     =================== */
 html .index-page {
   --color-index-welcome-accent: #{$dark-mode-index-welcome-accent};
-  --color-index-options: #{$dark-mode-index-options};
+  --color-index-links: #{$dark-mode-index-links};
   --color-index-link-projects-hover: #{$dark-mode-index-link-projects-hover};
   --color-index-link-drawings-hover: #{$dark-mode-index-link-drawings-hover};
   --color-index-link-articles-hover: #{$dark-mode-index-link-articles-hover};
   --color-index-link-about-hover: #{$dark-mode-index-link-about-hover};
 }
 
-html[data-theme="light"] .markdown-body {
+html[data-theme="light"] .index-page {
   --color-index-welcome-accent: #{$light-mode-index-welcome-accent};
-  --color-index-options: #{$light-mode-index-options};
+  --color-index-links: #{$light-mode-index-links};
   --color-index-link-projects-hover: #{$light-mode-index-link-projects-hover};
   --color-index-link-drawings-hover: #{$light-mode-index-link-drawings-hover};
   --color-index-link-articles-hover: #{$light-mode-index-link-articles-hover};
@@ -90,7 +90,7 @@ html[data-theme="light"] .markdown-body {
         gap: rem(20px);
 
         font-weight: 300;
-        color: var(--color-index-options);
+        color: var(--color-index-links);
 
         .link-overlay {
           position: absolute;

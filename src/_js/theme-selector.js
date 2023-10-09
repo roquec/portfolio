@@ -1,7 +1,7 @@
 // Set theme on load
 setTheme(getTheme());
 
-function switchTheme(e) {
+function switchTheme() {
   // Disable transitions to avoid delayed color changes
   document.body.classList.add("no-transition");
 
