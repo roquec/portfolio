@@ -26,8 +26,6 @@ defaults:
       type: "md"
       icon: "markdown"
 
-
 plugins:
-  - jekyll-feed
   - jekyll-sitemap
   - jekyll-seo-tag
