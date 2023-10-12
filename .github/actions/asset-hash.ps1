@@ -12,7 +12,7 @@ function Handle-Error
 
 try
 {
-  if ($reports_mobile -eq $null)
+  if ($site_dir -eq $null)
   {
     $path = "./_site"
   }
