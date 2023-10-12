@@ -18,11 +18,11 @@ class Focus {
 
   #onDomReady() {
     window.addEventListener("focusin", (event) => this.#onFocus(event));
+    this.#applyState();
     let initialStyles = document.getElementById("focus-initial-state-styles");
     if (initialStyles) {
       initialStyles.remove();
     }
-    this.#applyState();
   }
 
   #applyState() {
