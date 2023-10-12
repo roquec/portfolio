@@ -36,6 +36,10 @@ jobs:
       #   - The output directory is ./_site
       - name: Run Jekyll build
         run: bundle exec jekyll build --source src
+      # Execute script to add a content hash to all asset links in generated site
+      - name: Generate asset hashes for links
+        shell: pwsh
+        run: .\.github\actions\asset-hash.ps1
       # Upload generated site as an artifact so the following jobs can access it
       #   - Takes content from ./_site by default
       #   - The output artifact is called "github-pages"

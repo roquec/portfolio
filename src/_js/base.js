@@ -1,4 +1,3 @@
-// Run JS modules
 const focus = new Focus().init();
 const resizer = new Resizer().init();
 const contentScroll = new Scroll("content-scroll").init();
