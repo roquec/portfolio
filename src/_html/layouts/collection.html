@@ -1,0 +1,20 @@
+---
+layout: base
+---
+
+<div class="collection-page">
+
+  <div class="collection-title">
+    {{ page.title | upcase }}
+  </div>
+
+  <div class="collection-posts">
+    {% assign posts = site[page.collection] %}
+    {% for post in posts %}
+    {% include _html/components/card.html post=post %}
+    {% endfor %}
+  </div>
+
+</div>
+
+

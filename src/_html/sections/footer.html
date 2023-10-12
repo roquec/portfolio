@@ -1,0 +1,33 @@
+<div id="footer">
+
+  <div id="footer-left">
+
+    <button id="theme-button" title="Change theme" onclick="theme.toggle()">
+      <i class="icon icon-dark-theme"></i>
+      <i class="icon icon-light-theme"></i>
+    </button>
+
+    <div id="source-control">
+      <a class="link-overlay"
+         title="Portfolio (Git) - main"
+         href="https://github.com/roquec/Portfolio"
+         target="_blank"></a>
+      <i class="icon icon-source-control"></i>
+      <span>main</span>
+    </div>
+
+  </div>
+
+  <div id="footer-right">
+
+    <span id="copyright">
+      <i class="icon icon-copyright"></i> Copyright <span id="year"></span>, Roque Carrizo
+    </span>
+
+    <script>
+      document.getElementById("year").innerHTML = new Date().getFullYear().toString();
+    </script>
+
+  </div>
+
+</div>

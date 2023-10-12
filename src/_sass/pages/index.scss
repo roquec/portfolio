@@ -1,65 +1,89 @@
-@import "../theme/light", "../theme/dark", "../variables";
+@use "../shared/util" as *;
+@use "../shared/vars" as *;
+@use "../themes/colors" as colors;
 
-/*  ===================
-    COLORS
-    =================== */
+/*=========================
+   COLORS
+==========================*/
 html .index-page {
-  --color-index-welcome-accent: #{$dark-mode-index-welcome-accent};
-  --color-index-links: #{$dark-mode-index-links};
-  --color-index-link-projects-hover: #{$dark-mode-index-link-projects-hover};
-  --color-index-link-drawings-hover: #{$dark-mode-index-link-drawings-hover};
-  --color-index-link-articles-hover: #{$dark-mode-index-link-articles-hover};
-  --color-index-link-about-hover: #{$dark-mode-index-link-about-hover};
+  --color-index-welcome-accent: #{colors.$dark-mode-index-welcome-accent};
+  --color-index-links: #{colors.$dark-mode-index-links};
+  --color-index-link-projects-hover: #{colors.$dark-mode-index-link-projects-hover};
+  --color-index-link-drawings-hover: #{colors.$dark-mode-index-link-drawings-hover};
+  --color-index-link-articles-hover: #{colors.$dark-mode-index-link-articles-hover};
+  --color-index-link-about-hover: #{colors.$dark-mode-index-link-about-hover};
 }
 
 html[data-theme="light"] .index-page {
-  --color-index-welcome-accent: #{$light-mode-index-welcome-accent};
-  --color-index-links: #{$light-mode-index-links};
-  --color-index-link-projects-hover: #{$light-mode-index-link-projects-hover};
-  --color-index-link-drawings-hover: #{$light-mode-index-link-drawings-hover};
-  --color-index-link-articles-hover: #{$light-mode-index-link-articles-hover};
-  --color-index-link-about-hover: #{$light-mode-index-link-about-hover};
+  --color-index-welcome-accent: #{colors.$light-mode-index-welcome-accent};
+  --color-index-links: #{colors.$light-mode-index-links};
+  --color-index-link-projects-hover: #{colors.$light-mode-index-link-projects-hover};
+  --color-index-link-drawings-hover: #{colors.$light-mode-index-link-drawings-hover};
+  --color-index-link-articles-hover: #{colors.$light-mode-index-link-articles-hover};
+  --color-index-link-about-hover: #{colors.$light-mode-index-link-about-hover};
 }
 
-/*  ===================
-    BASE STYLES
-    =================== */
+/*=========================
+   STYLES
+==========================*/
 .index-page {
-  padding-top: rem(40px);
-  padding-bottom: rem(60px);
   min-height: 100%;
-
   display: flex;
   flex-direction: column;
-  gap: rem(60px);
+  padding-top: 0;
+  padding-bottom: 0;
+  gap: 0;
 
   .index-page-top {
-    flex-grow: 0;
+    flex-grow: 1;
     display: flex;
     align-items: center;
 
     .welcome-wrapper {
+      flex-direction: row;
+      gap: 0;
       flex-grow: 1;
       display: flex;
-      flex-direction: column;
       align-items: center;
-      gap: rem(30px);
 
       font-weight: 300;
       font-size: rem(38px);
 
       .welcome-name, .welcome-occupation {
         flex: 0;
-        display: flex;
         flex-flow: column;
         align-items: center;
         text-align: center;
+      }
+
+      .welcome-name {
+        display: flex;
+        flex: 1;
+        align-items: end;
+        align-self: start;
+        text-align: end;
 
         .welcome-accent {
           color: var(--color-index-welcome-accent);
           font-size: rem(45px);
           font-weight: 400;
           letter-spacing: 1px;
+        }
+
+        .welcome-name-second {
+          padding-right: rem(20px);
+        }
+      }
+
+      .welcome-occupation {
+        display: flex;
+        flex: 1;
+        align-items: start;
+        align-self: end;
+        text-align: start;
+
+        .welcome-occupation-first {
+          padding-left: rem(20px);
         }
       }
 
@@ -78,19 +102,25 @@ html[data-theme="light"] .index-page {
     .links-wrapper {
       flex-grow: 1;
       display: flex;
-      flex-direction: column;
       align-items: center;
-      gap: rem(40px);
+
+      flex-direction: row;
+      width: 100%;
+      gap: 0;
 
       .link {
         position: relative;
         display: flex;
-        flex-direction: row;
         align-items: center;
-        gap: rem(20px);
 
         font-weight: 300;
         color: var(--color-index-links);
+
+        padding-top: rem(40px);
+        padding-bottom: rem(40px);
+        flex-grow: 1;
+        flex-direction: column;
+        gap: rem(10px);
 
         .link-overlay {
           position: absolute;
@@ -107,7 +137,7 @@ html[data-theme="light"] .index-page {
 
         .link-icon {
           flex-grow: 1;
-          font-size: rem(30px);
+          font-size: rem(40px);
         }
 
         .link-title {
@@ -119,41 +149,35 @@ html[data-theme="light"] .index-page {
   }
 }
 
-/*  ===================
-    DESKTOP
-    =================== */
-@container content (min-width: #{$breakpoint-mobile}) {
+/*=========================
+   MOBILE STYLES
+==========================*/
+@container content (max-width: #{$breakpoint-mobile}) {
   .index-page {
-    padding-top: 0;
-    padding-bottom: 0;
-    gap: 0;
+    padding-top: rem(40px);
+    padding-bottom: rem(60px);
+    gap: rem(60px);
 
     .index-page-top {
-      flex-grow: 1;
+      flex-grow: 0;
 
       .welcome-wrapper {
-        flex-direction: row;
-        gap: 0;
+        flex-direction: column;
+        gap: rem(30px);
 
-        .welcome-name {
-          flex: 1;
-          align-items: end;
-          align-self: start;
-          text-align: end;
+        .welcome-name, .welcome-occupation {
+          flex: 0;
+          flex-flow: column;
+          align-items: center;
+          text-align: center;
+          align-self: center;
 
           .welcome-name-second {
-            padding-right: rem(20px);
+            padding-right: 0;
           }
-        }
-
-        .welcome-occupation {
-          flex: 1;
-          align-items: start;
-          align-self: end;
-          text-align: start;
 
           .welcome-occupation-first {
-            padding-left: rem(20px);
+            padding-left: 0;
           }
         }
       }
@@ -161,19 +185,17 @@ html[data-theme="light"] .index-page {
 
     .index-page-bottom {
       .links-wrapper {
-        flex-direction: row;
-        width: 100%;
-        gap: 0;
+        flex-direction: column;
+        gap: rem(40px);
 
         .link {
-          padding-top: rem(40px);
-          padding-bottom: rem(40px);
-          flex-grow: 1;
-          flex-direction: column;
-          gap: rem(10px);
+          flex-direction: row;
+          gap: rem(20px);
+          padding-top: 0;
+          padding-bottom: 0;
 
           .link-icon {
-            font-size: rem(40px);
+            font-size: rem(30px);
           }
         }
       }
@@ -181,9 +203,9 @@ html[data-theme="light"] .index-page {
   }
 }
 
-/*  ===================
-    HOVER EFFECTS
-    =================== */
+/*=========================
+   HOVER STYLES
+==========================*/
 @media (hover: hover) {
   .index-page .link {
     &:hover, &:focus-within {

@@ -1,0 +1,111 @@
+@use "../shared/util" as *;
+@use "../shared/vars" as *;
+@use "../themes/colors" as colors;
+
+/*=========================
+   COLORS
+==========================*/
+html {
+  --color-tabs-background: #{colors.$dark-mode-tabs-background};
+  --color-tab-background: #{colors.$dark-mode-tab-background};
+  --color-tab-foreground: #{colors.$dark-mode-tab-foreground};
+  --color-tab-selected-background: #{colors.$dark-mode-tab-selected-background};
+  --color-tab-selected-foreground: #{colors.$dark-mode-tab-selected-foreground};
+
+  &[data-theme="light"] {
+    --color-tabs-background: #{colors.$light-mode-tabs-background};
+    --color-tab-background: #{colors.$light-mode-tab-background};
+    --color-tab-foreground: #{colors.$light-mode-tab-foreground};
+    --color-tab-selected-background: #{colors.$light-mode-tab-selected-background};
+    --color-tab-selected-foreground: #{colors.$light-mode-tab-selected-foreground};
+  }
+}
+
+/*=========================
+   STYLES
+==========================*/
+#tabs {
+  display: flex;
+  flex-direction: row;
+  background-color: var(--color-tabs-background);
+
+  .tab {
+    position: relative;
+    padding-left: rem(11px);
+    font-size: rem(13px);
+    background-color: var(--color-tab-background);
+    color: var(--color-tab-foreground);
+
+    display: flex;
+    flex-direction: row;
+    height: 100%;
+    align-items: center;
+    justify-content: center;
+
+    overflow: hidden;
+
+    .icon {
+      width: rem(18px);
+      font-size: 150%;
+    }
+
+    .name {
+      flex-grow: 1;
+      flex-shrink: 1;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      margin-left: 3px;
+      line-height: 35px;
+    }
+
+    &.index-tab {
+      flex-shrink: 0;
+      padding-right: 22px;
+    }
+
+    &.content-tab {
+      padding-right: 4px;
+
+      .name {
+        font-style: italic;
+      }
+
+      .icon-cross {
+        font-size: 16px;
+        margin-left: 8px;
+        border-radius: 5px;
+        width: rem(21px);
+        padding: 2px 0;
+        color: var(--color-tab-selected-foreground);
+        outline: none;
+      }
+    }
+
+    &.current-tab {
+      background-color: var(--color-tab-selected-background);
+      color: var(--color-tab-selected-foreground);
+    }
+  }
+}
+
+/*=========================
+   MOBILE STYLES
+==========================*/
+@media (max-width: #{$breakpoint-mobile}) {
+  #tabs {
+    display: none;
+  }
+}
+
+/*=========================
+   HOVER STYLES
+==========================*/
+@media (hover: hover) {
+  #tabs .content-tab {
+    .icon-cross:hover,
+    .icon-cross:focus {
+      background-color: var(--color-tab-background);
+    }
+  }
+}

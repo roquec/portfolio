@@ -1,0 +1,191 @@
+@use "../shared/util" as *;
+@use "../shared/vars" as *;
+@use "../themes/colors" as colors;
+
+/*=========================
+   COLORS
+==========================*/
+html {
+  --color-actions-background: #{colors.$dark-mode-actions-background};
+  --color-actions-foreground: #{colors.$dark-mode-actions-foreground};
+  --color-actions-selected-foreground: #{colors.$dark-mode-actions-selected-foreground};
+  --color-actions-tooltip-background: #{colors.$dark-mode-actions-tooltip-background};
+  --color-actions-tooltip-foreground: #{colors.$dark-mode-actions-tooltip-foreground};
+  --color-actions-tooltip-border: #{colors.$dark-mode-actions-tooltip-border};
+}
+
+html[data-theme="light"] {
+  --color-actions-background: #{colors.$light-mode-actions-background};
+  --color-actions-foreground: #{colors.$light-mode-actions-foreground};
+  --color-actions-selected-foreground: #{colors.$light-mode-actions-selected-foreground};
+  --color-actions-tooltip-background: #{colors.$light-mode-actions-tooltip-background};
+  --color-actions-tooltip-foreground: #{colors.$light-mode-actions-tooltip-foreground};
+  --color-actions-tooltip-border: #{colors.$light-mode-actions-tooltip-border};
+}
+
+/*=========================
+   VARIABLES
+==========================*/
+$tooltip-tip-width: rem(5px);
+
+/*=========================
+   STYLES
+==========================*/
+#sidebar {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  background-color: var(--color-actions-background);
+  color: var(--color-actions-foreground);
+  z-index: 1;
+
+  #actions-top,
+  #actions-bottom {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    .icon-wrapper {
+      width: 100%;
+      display: flex;
+      align-items: center;
+      position: relative;
+
+      .highlight {
+        width: 0;
+        height: 100%;
+        position: absolute;
+        left: 0;
+        display: none;
+        border-left: rem(2px) solid var(--color-actions-selected-foreground);
+      }
+
+      .icon {
+        width: 100%;
+        aspect-ratio: 1 / 1;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: rem(24px);
+        text-decoration: none;
+      }
+
+      .profile-pic img {
+        width: rem(26px);
+        height: rem(26px);
+        border-radius: 50%;
+      }
+
+      .tooltip-wrapper {
+        position: absolute;
+        left: calc(100% + $tooltip-tip-width);
+        visibility: hidden;
+        opacity: 0;
+        transition: opacity 0.2s linear 0s;
+
+        .icon-tooltip {
+          position: relative;
+          background-color: var(--color-actions-tooltip-background);
+          color: var(--color-actions-tooltip-foreground);
+          padding: rem(2px) rem(8px);
+          font-size: rem(12px);
+          line-height: rem(19px);
+          white-space: nowrap;
+          outline: rem(1px) solid var(--color-actions-tooltip-border);
+          box-shadow: 0 rem(2px) rem(6px) rem(3px) rgba(0, 0, 0, 0.3);
+
+          &:before {
+            content: "";
+            display: block;
+            position: absolute;
+            left: rem(-10px);
+            bottom: calc(50% - #{$tooltip-tip-width});
+            width: 0;
+            height: 0;
+            border: #{$tooltip-tip-width} solid transparent;
+            border-right-color: var(--color-actions-tooltip-border);
+          }
+
+          &:after {
+            content: "";
+            display: block;
+            position: absolute;
+            left: rem(-9px);
+            bottom: calc(50% - #{$tooltip-tip-width});
+            width: 0;
+            height: 0;
+            border: #{$tooltip-tip-width} solid transparent;
+            border-right-color: var(--color-actions-tooltip-background);
+          }
+        }
+      }
+
+      &.open {
+        color: var(--color-actions-selected-foreground);
+
+        .highlight {
+          display: block;
+        }
+      }
+
+      .link-overlay:focus-visible {
+        outline: none;
+
+        + .highlight {
+          display: block;
+        }
+      }
+    }
+  }
+}
+
+/*=========================
+   HOVER STYLES
+==========================*/
+@media (hover: hover) {
+  #sidebar {
+    #actions-top,
+    #actions-bottom {
+      .icon-wrapper {
+        &:hover {
+          color: var(--color-actions-selected-foreground);
+
+          img {
+            outline: rem(2px) solid var(--color-actions-selected-foreground);
+          }
+
+          .tooltip-wrapper {
+            visibility: visible !important;
+            opacity: 1 !important;
+            transition-delay: 0.4s;
+          }
+        }
+      }
+    }
+  }
+}
+
+/*=========================
+   STATE STYLES
+==========================*/
+html[data-menu="explorer"] #sidebar #actions-top {
+  #explorer-icon {
+    color: var(--color-actions-selected-foreground);
+
+    .highlight {
+      display: block;
+    }
+  }
+}
+
+html[data-menu="search"] #sidebar #actions-top {
+  #search-icon {
+    color: var(--color-actions-selected-foreground);
+
+    .highlight {
+      display: block;
+    }
+  }
+}

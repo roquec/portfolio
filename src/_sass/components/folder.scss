@@ -1,0 +1,105 @@
+@use "../shared/util" as *;
+@use "../shared/vars" as *;
+
+/*=========================
+   STYLES
+==========================*/
+.folder-item {
+  display: flex;
+  flex-direction: row;
+  position: relative;
+  height: rem(22px);
+  outline-offset: rem(-1px);
+  align-items: center;
+  justify-content: center;
+
+  .folder-name {
+    flex: 1;
+    font-size: rem(13px);
+    line-height: rem(20px);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    padding-left: rem(1px);
+  }
+
+  .icon {
+    font-size: rem(16px);
+    font-weight: normal;
+    width: rem(20px);
+    flex-grow: 0;
+    flex-shrink: 0;
+  }
+
+  .icon-chevron-right {
+    display: inline-flex;
+  }
+
+  .icon-chevron-down {
+    display: none;
+  }
+
+  &:focus-within {
+    background-color: var(--color-file-active-background);
+    color: var(--color-file-active-foreground);
+    outline: rem(1px) solid var(--color-file-active-border);
+  }
+}
+
+/*=========================
+   FOLDER CONTENTS STYLES
+==========================*/
+.folder-contents {
+  display: none;
+  flex-direction: column;
+
+  & .file-item,
+  & .folder-item {
+    padding-left: rem(13px);
+  }
+
+  .folder-contents .file-item,
+  .folder-contents .folder-item, {
+    padding-left: rem(21px);
+  }
+}
+
+/*=========================
+   MOBILE STYLES
+==========================*/
+@media (max-width: #{$breakpoint-mobile}) {
+  .folder-item {
+    height: rem(28px);
+  }
+}
+
+/*=========================
+   HOVER STYLES
+==========================*/
+@media (hover: hover) {
+  .folder-item {
+    &:hover:not(.open):not(:focus-within) {
+      background-color: var(--color-file-hover-background);
+    }
+  }
+}
+
+/*=========================
+   STATE STYLES
+==========================*/
+$folders: "portfolio-folder", "projects-folder", "drawings-folder", "articles-folder", "search-results", "search-results-projects", "search-results-drawings", "search-results-articles";
+@each $folder in $folders {
+  html[data-folders~="#{$folder}"] ##{$folder} {
+    .icon-chevron-right {
+      display: none;
+    }
+
+    .icon-chevron-down {
+      display: inline-flex;
+    }
+
+    + .folder-contents {
+      display: flex;
+    }
+  }
+}

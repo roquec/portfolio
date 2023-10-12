@@ -1,5 +1,6 @@
 url: "https://roquec.com"
 
+layouts_dir: ./_html/layouts
 includes_dir: .
 
 collections_dir: content

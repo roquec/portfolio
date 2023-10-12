@@ -1,0 +1,67 @@
+<div id="search">
+
+  <label class="nav-header" for="search-box">SEARCH</label>
+
+  {% capture search_content %}
+  <div class="search-box-wrapper" id="search-box-wrapper">
+    <i class="icon icon-chevron-right"></i>
+    <input type="text" autocomplete="off" spellcheck="false" autocapitalize="off" title="Search" placeholder="Search"
+           id="search-box" oninput="search.onSearch()"/>
+    <span></span>
+  </div>
+
+  <div class="tags-wrapper" id="tags-wrapper">
+    <i class="icon icon-tag"></i>
+    {% assign posts = site.projects | concat: site.articles | concat: site.drawings %}
+    {% assign grouptag = posts | map: 'tags' | join: ',' | split: ',' | group_by_exp: "item", "item" |
+    sort: 'name' %}
+
+    {% assign biggestTag = grouptag | sort: 'size' | last %}
+    {% assign smallestTag = grouptag | sort: 'size' | first %}
+    {% assign minSize = smallestTag.size %}
+    {% assign maxScale = biggestTag.size | minus: minSize %}
+    {% assign step = 9 | divided_by: maxScale %}
+
+    {% for tag in grouptag %}
+    {% assign scale = tag.size | minus: minSize | times: step | plus: 1.0 | round %}
+    <button class="tag-item tag-size-{{ scale }}" id="tag-{{tag.name}}" onclick="search.tagToggle('{{ tag.name }}')">
+      <span class="tag-name">{{ tag.name }}</span>
+      <span class="tag-number">{{ tag.size }}</span>
+      <i class="icon icon-cross"></i>
+    </button>
+    {% endfor %}
+  </div>
+
+  <div class="search-results" id="search-results">
+
+    <div id="search-results-label"><span id="search-results-count"></span> files found</div>
+
+    <div id="search-results-items" class="folder-contents">
+
+      {% include _html/components/folder.html id='search-results-projects' title='roquec/projects' name='projects' %}
+      <div class="folder-contents">
+        {% for project in site.projects %}
+        {% include _html/components/file.html page=project scope="search-panel" %}
+        {% endfor %}
+      </div>
+
+      {% include _html/components/folder.html id='search-results-articles' title='roquec/articles' name='articles' %}
+      <div class="folder-contents">
+        {% for article in site.articles %}
+        {% include _html/components/file.html page=article scope="search-panel" %}
+        {% endfor %}
+      </div>
+
+      {% include _html/components/folder.html id='search-results-drawings' title='roquec/drawings' name='drawings' %}
+      <div class="folder-contents">
+        {% for drawing in site.drawings %}
+        {% include _html/components/file.html page=drawing scope="search-panel" %}
+        {% endfor %}
+      </div>
+
+    </div>
+  </div>
+  {% endcapture %}
+
+  {% include _html/components/scroll.html content=search_content id="search-scroll" %}
+</div>

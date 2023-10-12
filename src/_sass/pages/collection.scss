@@ -1,4 +1,6 @@
-@import "../variables";
+@use "../shared/util" as *;
+@use "../shared/vars" as *;
+@use "../themes/colors" as colors;
 
 /*  ===================
     MOBILE
@@ -11,7 +13,7 @@
     font-weight: 300;
     padding-bottom: rem(8px);
     margin-bottom: rem(20px);
-    border-bottom: rem(1px) solid var(--color-content-foreground-muted);
+    border-bottom: rem(1px) solid var(--color-base-foreground-muted);
   }
 
   .collection-posts {

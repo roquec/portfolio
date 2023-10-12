@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+
+{% include _html/components/head.html %}
+
+<body class="initial-state">
+
+<div id="workbench">
+
+  {% include _html/sections/sidebar.html %}
+
+  {% include _html/sections/menu.html %}
+
+  <div id="document">
+    {% include _html/sections/tabs.html %}
+
+    <main id="content">
+      {% include _html/components/scroll.html content=content id="content-scroll" %}
+    </main>
+  </div>
+
+</div>
+
+{% include _html/sections/footer.html %}
+
+</body>
+
+</html>

@@ -1,0 +1,258 @@
+@use "../shared/util" as *;
+@use "../shared/vars" as *;
+@use "../themes/colors" as colors;
+
+/*=========================
+   COLORS
+==========================*/
+html {
+  --color-search-bar-background: #{colors.$dark-mode-search-bar-background};
+  --color-search-bar-foreground: #{colors.$dark-mode-search-bar-foreground};
+  --color-search-bar-active-border: #{colors.$dark-mode-search-bar-active-border};
+  --color-search-bar-placeholder: #{colors.$dark-mode-search-bar-placeholder};
+  --color-search-tag-foreground: #{colors.$dark-mode-search-tag-foreground};
+  --color-search-tag-background: #{colors.$dark-mode-search-tag-background};
+  --color-search-tag-hover-background: #{colors.$dark-mode-search-tag-hover-background};
+  --color-search-tag-hover-foreground: #{colors.$dark-mode-search-tag-hover-foreground};
+  --color-search-tag-hover-border: #{colors.$dark-mode-search-tag-hover-border};
+  --color-search-tag-selected-background: #{colors.$dark-mode-search-tag-selected-background};
+  --color-search-tag-selected-foreground: #{colors.$dark-mode-search-tag-selected-foreground};
+  --color-search-tag-selected-border: #{colors.$dark-mode-search-tag-selected-border};
+  --color-search-tag-selected-hover-background: #{colors.$dark-mode-search-tag-selected-hover-background};
+  --color-search-tag-selected-hover-foreground: #{colors.$dark-mode-search-tag-selected-hover-foreground};
+  --color-search-tag-selected-hover-border: #{colors.$dark-mode-search-tag-selected-hover-border};
+  --color-search-results-label: #{colors.$dark-mode-search-results-label};
+
+  &[data-theme="light"] {
+    --color-search-bar-background: #{colors.$light-mode-search-bar-background};
+    --color-search-bar-foreground: #{colors.$light-mode-search-bar-foreground};
+    --color-search-bar-active-border: #{colors.$light-mode-search-bar-active-border};
+    --color-search-bar-placeholder: #{colors.$light-mode-search-bar-placeholder};
+    --color-search-tag-background: #{colors.$light-mode-search-tag-background};
+    --color-search-tag-hover-background: #{colors.$light-mode-search-tag-hover-background};
+    --color-search-tag-hover-foreground: #{colors.$light-mode-search-tag-hover-foreground};
+    --color-search-tag-hover-border: #{colors.$light-mode-search-tag-hover-border};
+    --color-search-tag-selected-background: #{colors.$light-mode-search-tag-selected-background};
+    --color-search-tag-selected-foreground: #{colors.$light-mode-search-tag-selected-foreground};
+    --color-search-tag-selected-border: #{colors.$light-mode-search-tag-selected-border};
+    --color-search-tag-selected-hover-background: #{colors.$light-mode-search-tag-selected-hover-background};
+    --color-search-tag-selected-hover-foreground: #{colors.$light-mode-search-tag-selected-hover-foreground};
+    --color-search-tag-selected-hover-border: #{colors.$light-mode-search-tag-selected-hover-border};
+    --color-search-results-label: #{colors.$light-mode-search-results-label};
+  }
+}
+
+/*=========================
+   STYLES
+==========================*/
+#search {
+  height: 100%;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  overflow-x: hidden;
+  padding-top: rem(12px);
+
+  #search-box-wrapper {
+    margin-top: rem(5px);
+    margin-bottom: rem(12px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+
+    i {
+      font-size: rem(16px);
+      width: rem(20px);
+    }
+
+    #search-box {
+      flex: 1;
+      font-size: rem(13px);
+      margin: rem(1px) rem(12px) 0 0;
+      padding: rem(4px) rem(7px);
+      outline: none;
+      border: none;
+      border-radius: rem(2px);
+      color: var(--color-search-bar-foreground);
+      background-color: var(--color-search-bar-background);
+      min-width: 50px;
+
+      &::placeholder {
+        color: var(--color-search-bar-placeholder);
+      }
+
+      &:focus {
+        outline: 1px solid var(--color-search-bar-active-border);
+        outline-offset: -1px;
+      }
+    }
+
+    span::after {
+      content: "";
+      display: none;
+      z-index: 999;
+      position: absolute;
+      left: rem(27px);
+      top: rem(7px);
+      font: inherit;
+      color: var(--color-search-bar-foreground);
+    }
+
+    &.hidden {
+      display: none;
+    }
+  }
+
+  #tags-wrapper {
+    margin-top: rem(5px);
+    margin-bottom: rem(12px);
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    padding: 0 12px 0 12px;
+    align-items: center;
+    gap: 6px;
+
+    i {
+      font-size: rem(14px);
+      width: rem(14px);
+      margin-left: -5px;
+    }
+
+    &::after {
+      content: "";
+      flex-grow: 200;
+    }
+
+    .tag-item {
+      padding: 0 10px;
+      flex-grow: 1;
+      transition: flex-grow 0.1s, outline-width 0.1s, outline-color 0.1s, background-color 0.1s, color 0.1s;
+      border: none;
+      color: var(--color-search-tag-foreground);
+      overflow: hidden;
+      user-select: none;
+      border-radius: 20px;
+      outline-offset: -1px;
+      outline: 1px solid transparent;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 26px;
+
+      $min: 0.1;
+      $max: 0.25;
+      $steps: 10;
+      @for $i from 1 through $steps {
+        &.tag-size-#{$i} {
+          background-color: rgba(var(--color-search-tag-background), calc(($max - $min) / ($steps - 1)) * ($i - 1) + $min);
+        }
+      }
+
+      .tag-name {
+        font-size: 12px;
+      }
+
+      .tag-number {
+        margin-left: 5px;
+        color: rgba(128, 128, 128, 0.5);
+        font-size: 12px;
+      }
+
+      .icon-cross {
+        padding-left: 15px;
+        display: none;
+      }
+
+      &.selected {
+        flex-grow: 1;
+        padding: 0 rem(20px);
+        color: var(--color-search-tag-selected-foreground);
+        background-color: var(--color-search-tag-selected-background);
+        outline-color: var(--color-search-tag-selected-border);
+
+        .tag-name {
+          font-size: 14px;
+        }
+
+        .tag-number {
+          display: none;
+        }
+
+        .icon-cross {
+          display: block;
+        }
+      }
+    }
+
+    &.selected {
+      .tag-item:not(.selected) {
+        display: none;
+      }
+    }
+
+    &.hidden {
+      display: none;
+    }
+  }
+
+  #search-results {
+    margin-top: rem(5px);
+
+    #search-results-label {
+      margin-left: rem(22px);
+      margin-bottom: rem(10px);
+      color: var(--color-search-results-label);
+      font-weight: 400;
+
+      #search-results-count::after {
+        content: attr(data-value);
+      }
+    }
+
+    #search-results-items {
+      display: block;
+    }
+
+    .file-item, .folder-item {
+      display: none;
+
+      &.result {
+        display: flex;
+      }
+    }
+
+    &.hidden {
+      display: none;
+    }
+  }
+}
+
+/*=========================
+   MOBILE STYLES
+==========================*/
+@media (max-width: #{$breakpoint-mobile}) {
+
+}
+
+/*=========================
+   HOVER STYLES
+==========================*/
+@media (hover: hover) {
+  #search #tags-wrapper .tag-item {
+    &:hover, &:focus-visible {
+      cursor: pointer;
+      flex-grow: 100;
+      outline-color: var(--color-search-tag-hover-border);
+      background-color: var(--color-search-tag-hover-background);
+      color: var(--color-search-tag-hover-foreground);
+    }
+
+    &.selected:hover {
+      outline-color: var(--color-search-tag-selected-hover-border);
+      background-color: var(--color-search-tag-selected-hover-background);
+      color: var(--color-search-tag-selected-hover-foreground);
+    }
+  }
+}

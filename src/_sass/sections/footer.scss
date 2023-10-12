@@ -1,0 +1,119 @@
+@use "../shared/util" as *;
+@use "../shared/vars" as *;
+@use "../themes/colors" as colors;
+
+/*=========================
+   COLORS
+==========================*/
+html #footer {
+  --color-footer-background: #{colors.$dark-mode-footer-background};
+  --color-footer-foreground: #{colors.$dark-mode-footer-foreground};
+  --color-footer-theme-button: #{colors.$dark-mode-footer-theme-button};
+  --color-footer-theme-button-hover: #{colors.$dark-mode-footer-theme-button-hover};
+  --color-footer-source-control-hover: #{colors.$dark-mode-footer-source-control-hover};
+}
+
+html[data-theme="light"] #footer {
+  --color-footer-background: #{colors.$light-mode-footer-background};
+  --color-footer-foreground: #{colors.$light-mode-footer-foreground};
+  --color-footer-theme-button: #{colors.$light-mode-footer-theme-button};
+  --color-footer-theme-button-hover: #{colors.$light-mode-footer-theme-button-hover};
+  --color-footer-source-control-hover: #{colors.$light-mode-footer-source-control-hover};
+}
+
+/*=========================
+   STYLES
+==========================*/
+#footer {
+  height: 100%;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  background-color: var(--color-footer-background);
+  color: var(--color-footer-foreground);
+  font-size: rem(12px);
+
+  #footer-left {
+    display: flex;
+    align-items: center;
+
+    #theme-button {
+      height: 100%;
+      width: rem(36px);
+      margin: 0;
+      background-color: var(--color-footer-theme-button);
+      outline: none;
+      border: none;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: rem(13px);
+      color: var(--color-footer-foreground);
+    }
+
+    #source-control {
+      position: relative;
+      height: 100%;
+      padding: 0 rem(8px);
+      display: flex;
+      align-items: center;
+      color: var(--color-footer-foreground);
+
+      .icon {
+        font-size: rem(14px);
+        margin-right: rem(4px);
+      }
+    }
+  }
+
+  #footer-right {
+    display: flex;
+    align-items: center;
+    padding-right: rem(4px);
+
+    #copyright {
+      .icon {
+        font-size: rem(14px);
+        margin-right: rem(2px);
+      }
+    }
+  }
+}
+
+/*=========================
+   THEME BUTTON
+==========================*/
+html {
+  &[data-theme="dark"] .icon-dark-theme {
+    display: none;
+  }
+
+  &[data-theme="light"] .icon-light-theme {
+    display: none;
+  }
+}
+
+/*=========================
+   MOBILE STYLES
+==========================*/
+@media (max-width: #{$breakpoint-mobile}) {
+  #footer #footer-left #theme-button {
+    padding: 0 rem(4px);
+  }
+}
+
+/*=========================
+   HOVER STYLES
+==========================*/
+@media (hover: hover) {
+  #footer #footer-left {
+    #theme-button:hover {
+      background-color: var(--color-footer-theme-button-hover);
+    }
+
+    #source-control:hover {
+      background-color: var(--color-footer-source-control-hover);
+    }
+  }
+}

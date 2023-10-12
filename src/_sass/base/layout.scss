@@ -1,0 +1,97 @@
+@use "shared/util" as *;
+@use "shared/vars" as *;
+@use "themes/colors" as colors;
+
+/*=========================
+   VARIABLES
+==========================*/
+$menu-panel-initial-width: 300px;
+$menu-panel-min-width: rem(150px);
+$sidebar-width: rem(48px);
+$content-min-width: rem(300px);
+$tabs-height: rem(35px);
+$footer-height: rem(22px);
+$mobile-sidebar-width: rem(40px);
+
+/*=========================
+   STYLES
+==========================*/
+html {
+  height: 100%;
+  padding: 0;
+  margin: 0;
+  --menu-panel-width: #{$menu-panel-initial-width};
+
+  body {
+    height: 100%;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+
+    #workbench {
+      flex: 1;
+      height: 0;
+      display: flex;
+      flex-direction: row;
+      overflow-x: hidden;
+
+      #sidebar {
+        min-width: $sidebar-width;
+        overflow: hidden;
+      }
+
+      #menu {
+        width: var(--menu-panel-width);
+        min-width: $menu-panel-min-width;
+      }
+
+      #document {
+        flex: 1;
+        width: 0;
+        min-width: $content-min-width;
+        display: flex;
+        flex-direction: column;
+
+        #tabs {
+          min-height: $tabs-height;
+          height: $tabs-height;
+        }
+
+        #content {
+          flex: 1;
+          height: 0;
+          container-type: size;
+          container-name: content;
+        }
+      }
+    }
+
+    #footer {
+      height: $footer-height;
+      z-index: 2;
+    }
+  }
+}
+
+/*=========================
+   MOBILE STYLES
+==========================*/
+@media (max-width: #{$breakpoint-mobile}) {
+  html body #workbench {
+    #sidebar {
+      min-width: $mobile-sidebar-width;
+    }
+
+    #menu {
+      min-width: calc(100vw - $mobile-sidebar-width - $mobile-sidebar-width);
+      max-width: unset;
+    }
+
+    #document {
+      #tabs {
+        display: none;
+      }
+    }
+  }
+}

@@ -1,0 +1,52 @@
+<div id="explorer">
+
+  <div class="nav-header">EXPLORER</div>
+
+  {% include _html/components/folder.html id='portfolio-folder' title='roquec' name='ROQUEC' %}
+
+  {% capture explorer_content %}
+  {% include _html/components/file.html id='main.html' %}
+
+  {% include _html/components/file.html id='profile.md' %}
+
+  {% include _html/components/file.html id='README.md' %}
+
+  {% include _html/components/file.html id='config.html' %}
+
+  {% include _html/components/folder.html id='projects-folder' title='roquec/projects' name='projects' %}
+  <div class="folder-contents">
+    {% include _html/components/file.html id='projects.html' %}
+
+    {% for project in site.projects %}
+    {% include _html/components/file.html page=project %}
+    {% endfor %}
+  </div>
+
+  {% include _html/components/folder.html id='articles-folder' title='roquec/articles' name='articles' %}
+  <div class="folder-contents">
+    {% include _html/components/file.html id='articles.html' %}
+
+    {% for article in site.articles %}
+    {% include _html/components/file.html page=article %}
+    {% endfor %}
+  </div>
+
+  {% include _html/components/folder.html id='drawings-folder' title='roquec/drawings' name='drawings' %}
+  <div class="folder-contents">
+    {% include _html/components/file.html id='drawings.html' %}
+
+    {% for drawing in site.drawings %}
+    {% include _html/components/file.html page=drawing %}
+    {% endfor %}
+  </div>
+
+  {% include _html/components/file.html id='version.html' %}
+
+  {% include _html/components/file.html id='404.html' %}
+  {% endcapture %}
+
+  <div class="folder-contents">
+    {% include _html/components/scroll.html content=explorer_content id="explorer-scroll" %}
+  </div>
+
+</div>

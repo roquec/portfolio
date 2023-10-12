@@ -1,0 +1,33 @@
+@use "../shared/util" as *;
+@use "../shared/vars" as *;
+@use "../themes/colors" as colors;
+
+/*=========================
+   STYLES
+==========================*/
+#explorer {
+  height: 100%;
+  width: 100%;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  padding-top: rem(12px);
+  background-color: var(--color-explorer-background);
+  color: var(--color-explorer-foreground);
+  font-size: rem(13px);
+
+  #portfolio-folder {
+    padding-left: 0;
+
+    .folder-name {
+      font-weight: bold;
+      font-size: rem(11px);
+      padding-left: 0;
+    }
+  }
+
+  & > .folder-contents {
+    flex: 1;
+    height: 0;
+  }
+}

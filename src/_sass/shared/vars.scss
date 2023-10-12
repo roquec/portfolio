@@ -1,0 +1,23 @@
+@use "util" as *;
+
+// Media query breakpoints
+$breakpoint-mobile: rem(600px);
+$breakpoint-wide: rem(992px);
+html {
+  --breakpoint-mobile: #{$breakpoint-mobile};
+  --breakpoint-wide: #{$breakpoint-wide};
+}
+
+// Layout variables
+$tabs-height: rem(35px);
+$navigation-width: rem(300px);
+$content-max-width: 95ch;
+
+// Typography
+$base-font-family: Segoe WPC, Segoe UI, sans-serif;
+$code-font-family: "Menlo", "Inconsolata", "Consolas", "Roboto Mono", "Ubuntu Mono", "Liberation Mono", "Courier New", monospace;
+$base-font-size: rem(16px);
+$base-font-weight: 400;
+$small-font-size: calc($base-font-size * 0.875);
+$base-line-height: 1.5;
+$content-font-family: "Roboto", sans-serif;

@@ -1,0 +1,110 @@
+// Dark mode colors
+//-----------------
+
+// Footer
+$footer-background: #007ACC;
+$footer-foreground: #FFFFFF;
+$footer-theme-button: #16825D;
+$footer-theme-button-hover: #329171;
+$footer-source-control-hover: #1F8AD2;
+
+// Actions
+$actions-background: #333333;
+$actions-foreground: #858585;
+$actions-selected-foreground: #FFFFFF;
+$actions-tooltip-background: #252526;
+$actions-tooltip-foreground: #CCCCCC;
+$actions-tooltip-border: #454545;
+
+
+// File
+$file-selected-background: #37373D;
+$file-hover-background: #2A2D2E;
+$file-active-background: #04395E;
+$file-active-foreground: #FFFFFF;
+$file-active-border: #007FD4;
+
+// Scroll
+$scrollbar-thumb: rgba(255, 255, 255, 0.16);
+$scrollbar-thumb-hover: rgba(255, 255, 255, 0.21);
+$scrollbar-thumb-active: rgba(255, 255, 255, 0.28);
+
+// Menu
+$menu-background: #252526;
+$menu-foreground: #CCCCCC;
+$menu-header-foreground: #BBBBBB;
+$menu-resizer: #007ACC;
+$menu-mobile-overlay: rgba(0, 0, 0, 0.5);
+
+// Search
+$search-bar-background: #3C3C3C;
+$search-bar-foreground: #CCCCCC;
+$search-bar-active-border: #007FD4;
+$search-bar-placeholder: #A6A6A6;
+$search-tag-foreground: #A6A6A6;
+$search-tag-background: 128, 128, 128;
+$search-tag-hover-background: #04395E;
+$search-tag-hover-foreground: #FFFFFF;
+$search-tag-hover-border: #007FD4;
+$search-tag-selected-background: #831c1c;
+$search-tag-selected-foreground: #FFFFFF;
+$search-tag-selected-border: #ff4f4f;
+$search-tag-selected-hover-background: #831c1c;
+$search-tag-selected-hover-foreground: #FFFFFF;
+$search-tag-selected-hover-border: #ff4f4f;
+$search-results-label: #929292;
+
+// Tabs
+$tabs-background: #252526;
+$tab-background: #2D2D2D;
+$tab-foreground: #969696;
+$tab-selected-background: #1E1E1E;
+$tab-selected-foreground: #FFFFFF;
+
+// Index Page
+$index-welcome-accent: #E31B6D;
+$index-links: #696969;
+$index-link-projects-hover: #CBCB41;
+$index-link-drawings-hover: #E37933;
+$index-link-articles-hover: #519ABA;
+$index-link-about-hover: #D2A8FF;
+
+// Markdown
+$markdown-fg-default: #D4D4D4; //#c9d1d9
+$markdown-fg-muted: #8b949e;
+$markdown-fg-subtle: #6e7681;
+$markdown-canvas-default: #1E1E1E; //#0d1117
+$markdown-canvas-subtle: #252526; //#161b22
+$markdown-border-default: #30363d;
+$markdown-border-muted: #21262d;
+$markdown-neutral-muted: #333333; //rgba(110, 118, 129, 0.4)
+$markdown-accent-fg: #58a6ff;
+$markdown-accent-emphasis: #1f6feb;
+$markdown-attention-subtle: rgba(187, 128, 9, 0.15);
+$markdown-danger-fg: #f85149;
+
+// Code highlighting
+$markdown-code-highlight-background: #1E1E1E;
+$markdown-code-highlight-default: #D4D4D4;
+$markdown-code-highlight-comment: #8b949e;
+$markdown-code-highlight-keyword: #ff7b72;
+$markdown-code-highlight-string: #a5d6ff;
+$markdown-code-highlight-constant: #79c0ff;
+$markdown-code-highlight-function: #d2a8ff;
+
+// Card
+$card-foreground: #D4D4D4;
+$card-background: #444444DD;
+$card-outline: #D4D4D4;
+
+// Icons
+$icon-markdown: #519ABA;
+$icon-html: #E37933;
+$icon-readme: #519ABA;
+$icon-editorconfig: #6D8086;
+$icon-json: #CBCB41;
+
+// Base
+$base-background: #1E1E1E;
+$base-foreground: #D4D4D4;
+$base-foreground-muted: #444444;

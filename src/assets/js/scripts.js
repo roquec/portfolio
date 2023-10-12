@@ -2,10 +2,12 @@
 layout: none
 ---
 
-{% include _js/theme-selector.js %}
-{% include _js/folder-collapse.js %}
-{% include _js/file-item-focus-state.js %}
-{% include _js/navigation-panel.js %}
-{% include _js/panel-resize.js %}
-{% include _js/initial-state.js %}
-{% include _js/search-function.js %}
+{% include _js/shared/util.js %}
+{% include _js/modules/resizer.js %}
+{% include _js/modules/scroll.js %}
+{% include _js/modules/theme.js %}
+{% include _js/modules/menu.js %}
+{% include _js/modules/folders.js %}
+{% include _js/modules/focus.js %}
+{% include _js/modules/search.js %}
+{% include _js/base.js %}
