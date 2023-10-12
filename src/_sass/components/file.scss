@@ -11,14 +11,14 @@ html {
   --color-file-active-background: #{colors.$dark-mode-file-active-background};
   --color-file-active-foreground: #{colors.$dark-mode-file-active-foreground};
   --color-file-active-border: #{colors.$dark-mode-file-active-border};
-}
 
-html[data-theme="light"] {
-  --color-file-selected-background: #{colors.$light-mode-file-selected-background};
-  --color-file-hover-background: #{colors.$light-mode-file-hover-background};
-  --color-file-active-background: #{colors.$light-mode-file-active-background};
-  --color-file-active-foreground: #{colors.$light-mode-file-active-foreground};
-  --color-file-active-border: #{colors.$light-mode-file-active-border};
+  &[data-theme="light"] {
+    --color-file-selected-background: #{colors.$light-mode-file-selected-background};
+    --color-file-hover-background: #{colors.$light-mode-file-hover-background};
+    --color-file-active-background: #{colors.$light-mode-file-active-background};
+    --color-file-active-foreground: #{colors.$light-mode-file-active-foreground};
+    --color-file-active-border: #{colors.$light-mode-file-active-border};
+  }
 }
 
 /*=========================

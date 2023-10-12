@@ -33,6 +33,7 @@ class Focus {
     const focusItemId = window.sessionStorage.getItem(Focus.FOCUS_STORAGE_KEY);
     if (focusItemId) {
       document.getElementById(focusItemId).children[0].focus();
+      document.body.offsetHeight;
     }
   }
 
