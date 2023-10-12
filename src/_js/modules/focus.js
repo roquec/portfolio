@@ -38,7 +38,7 @@ class Focus {
   #setInitialStateStyles(focusItemId) {
     let style = `
     <style>
-      html[data-state="loading"] #${focusItemId} {
+      html[data-state="loading"] #${CSS.escape(focusItemId)} {
         background-color: var(--color-file-active-background) !important;
         color: var(--color-file-active-foreground) !important;
         outline: 0.0625rem solid var(--color-file-active-border) !important;
