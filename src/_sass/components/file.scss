@@ -72,7 +72,7 @@ html {
    HOVER STYLES
 ==========================*/
 @media (hover: hover) {
-  .file-item {
+  body:not(.initial-state) .file-item {
     &:hover:not(.open):not(:focus-within) {
       background-color: var(--color-file-hover-background);
     }
