@@ -22,7 +22,7 @@ try
   $fileHashDictionary = @{ }
 
   # Create a dictionary of file paths to assets and their hash
-  Get-ChildItem -Path $site_dir -File -Recurse | Where-Object { $_.DirectoryName -like "*\assets\*" -or $_.Extension -eq ".webp" } | ForEach-Object {
+  Get-ChildItem -Path $site_dir -File -Recurse | Where-Object { $_.DirectoryName -like "*assets*" -or $_.Extension -eq ".webp" } | ForEach-Object {
     $filePath = $_.FullName
     $fileHash = (Get-FileHash -Path $filePath -Algorithm SHA256).Hash
     $key = $filePath -replace "\\", "/" -replace ".*\/_site\/", ""
@@ -43,7 +43,7 @@ try
     }
     Set-Content -Path $_.FullName -Value $fileContent
   }
-  
+
   Write-Host "All done!"
 }
 catch
