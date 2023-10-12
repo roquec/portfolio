@@ -1,0 +1,28 @@
+@use "util" as *;
+
+$icon-font-url: "/assets/fonts/roquec-portfolio.woff2";
+
+@font-face {
+  font-family: "roquec-portfolio";
+  font-display: block;
+  src: url($icon-font-url) format("woff2");
+}
+
+$base-font-size: rem(13px);
+$base-font-weight: 400;
+$base-font-style: normal;
+$base-font-family: Segoe WPC, Segoe UI, sans-serif;
+$code-font-family: "Menlo", "Inconsolata", "Consolas", "Roboto Mono", "Ubuntu Mono", "Liberation Mono", "Courier New", monospace;
+$content-font-family: "Roboto", sans-serif;
+$icon-font-family: roquec-portfolio, serif;
+
+// Layout
+$layout-font: $base-font-style $base-font-weight $base-font-size $base-font-family;
+// Icons
+$icon-font: $base-font-style $base-font-weight $base-font-size $icon-font-family;
+// Content
+$content-font: $base-font-style $base-font-weight $base-font-size $content-font-family;
+// Markdown pages
+$markdown-font: $base-font-style $base-font-weight $base-font-size $base-font-family;
+// Code blocks
+$code-font: $base-font-style $base-font-weight $base-font-size $code-font-family;

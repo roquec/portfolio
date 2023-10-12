@@ -1,10 +1,5 @@
+@use "../shared/fonts" as *;
 @use "../themes/colors" as colors;
-
-@font-face {
-  font-family: "roquec-portfolio";
-  font-display: block;
-  src: url(#{$icon-font-url}) format("woff2");
-}
 
 /*=========================
    COLORS
@@ -25,6 +20,9 @@ html {
   }
 }
 
+/*=========================
+   STYLES
+==========================*/
 .icon {
   display: inline-flex;
   align-items: center;
@@ -38,132 +36,110 @@ html {
   -webkit-user-select: none;
   -ms-user-select: none;
   font-style: normal;
+  font: $icon-font;
 }
 
 // Sidebar icons
 .icon-files::before {
-  font-family: roquec-portfolio, serif;
   content: "\e800";
 }
 
 .icon-search::before {
-  font-family: roquec-portfolio, serif;
   content: "\e801";
 }
 
 .icon-github::before {
-  font-family: roquec-portfolio, serif;
   content: "\e802";
 }
 
 .icon-linkedin::before {
-  font-family: roquec-portfolio, serif;
   content: "\e803";
 }
 
 .icon-email::before {
-  font-family: roquec-portfolio, serif;
   content: "\e804";
 }
 
 .icon-settings::before {
-  font-family: roquec-portfolio, serif;
   content: "\e805";
 }
 
 // File icons
 .icon-html::before {
-  font-family: roquec-portfolio, serif;
   content: "\e806";
   color: var(--color-icon-html);
 }
 
 .icon-readme::before {
-  font-family: roquec-portfolio, serif;
   content: "\e807";
   color: var(--color-icon-readme);
 }
 
 .icon-markdown::before {
-  font-family: roquec-portfolio, serif;
   content: "\e808";
   color: var(--color-icon-markdown);
 }
 
 .icon-config::before {
-  font-family: roquec-portfolio, serif;
   content: "\e809";
   color: var(--color-icon-editorconfig);
 }
 
 .icon-json::before {
-  font-family: roquec-portfolio, serif;
   content: "\e80a";
   color: var(--color-icon-json);
 }
 
 // Folder icons
 .icon-chevron-down::before {
-  font-family: roquec-portfolio, serif;
   content: "\e80b";
 }
 
 .icon-chevron-right::before {
-  font-family: roquec-portfolio, serif;
   content: "\e80c";
 }
 
 .icon-tag::before {
-  font-family: roquec-portfolio, serif;
   content: "\e816";
 }
 
 // Tab icons
 .icon-cross::before {
-  font-family: roquec-portfolio, serif;
   content: "\e80d";
 }
 
 // Footer icons
 .icon-light-theme::before {
-  font-family: roquec-portfolio, serif;
   content: "\e80e";
   scale: 1.3;
 }
 
 .icon-dark-theme::before {
-  font-family: roquec-portfolio, serif;
   content: "\e80f";
   scale: 1;
 }
 
 .icon-source-control::before {
-  font-family: roquec-portfolio, serif;
   content: "\e810";
 }
 
 .icon-copyright::before {
-  font-family: roquec-portfolio, serif;
   content: "\e811";
 }
 
 // Index icons
 .icon-wrench::before {
-  font-family: roquec-portfolio, serif;
   content: "\e814";
 }
 
 .icon-palette::before {
-  font-family: roquec-portfolio, serif;
   content: "\e812";
 }
 
 .icon-user::before {
-  font-family: roquec-portfolio, serif;
   content: "\e813";
 }
 
 .icon-article::before {
-  font-family: roquec-portfolio, serif;
   content: "\e815";
 }

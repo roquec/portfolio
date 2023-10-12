@@ -1,6 +1,6 @@
 ---
 title: README
-layout: markdown
+layout: layouts/markdown
 file: README
 icon: readme
 type: md

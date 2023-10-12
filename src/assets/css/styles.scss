@@ -1,9 +1,4 @@
 ---
 ---
 
-$icon-font-url: "/assets/fonts/roquec-portfolio.woff2?v={{ 'now' | date: '%Y%m%d%H%M%S' }}";
-
-@import "base/reset", "base/icons", "base/styles", "base/layout";
-@import "components/file", "components/folder", "components/scroll", "components/card";
-@import "sections/footer", "sections/sidebar", "sections/menu", "sections/explorer", "sections/search", "sections/tabs";
-@import "pages/index", "pages/markdown", "pages/collection";
+@use "base";

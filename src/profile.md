@@ -1,6 +1,6 @@
 ---
 title: Profile
-layout: markdown
+layout: layouts/markdown
 file: profile
 icon: markdown
 type: md

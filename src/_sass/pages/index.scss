@@ -1,5 +1,6 @@
 @use "../shared/util" as *;
 @use "../shared/vars" as *;
+@use "../shared/fonts" as *;
 @use "../themes/colors" as colors;
 
 /*=========================
@@ -33,6 +34,7 @@ html[data-theme="light"] .index-page {
   padding-top: 0;
   padding-bottom: 0;
   gap: 0;
+  font: $content-font;
 
   .index-page-top {
     flex-grow: 1;

@@ -1,6 +1,6 @@
 url: "https://roquec.com"
 
-layouts_dir: ./_html/layouts
+layouts_dir: ./_html
 includes_dir: .
 
 collections_dir: content
@@ -17,7 +17,7 @@ defaults:
   - scope:
       path: "content/*"
     values:
-      layout: "article"
+      layout: "layouts/article"
       author: "RoqueC"
       feature_index: 999
   - scope:
