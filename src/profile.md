@@ -12,7 +12,7 @@ type: md
   <a href="https://roquec.com/">roquec.com</a>
   | <a href="https://github.com/roquec">GitHub</a>
   | <a href="https://www.linkedin.com/in/roque-carrizo-fernandez/">LinkedIn</a>
-  | <a href="mailto:roquecarrizof@gmail.com" target="_top">roquecarrizof@gmail.com</a>
+  | <a href="{{ site.obfuscated_mailto }}"  target="_top">{{ site.obfuscated_email }}</a>
 </div>
 
 ## Introduction

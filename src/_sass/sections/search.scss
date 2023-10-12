@@ -96,7 +96,7 @@ html {
     span::after {
       content: "";
       display: none;
-      z-index: 999;
+      z-index: 1;
       position: absolute;
       left: rem(27px);
       top: rem(7px);

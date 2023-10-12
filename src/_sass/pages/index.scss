@@ -124,19 +124,6 @@ html[data-theme="light"] .index-page {
         flex-direction: column;
         gap: rem(10px);
 
-        .link-overlay {
-          position: absolute;
-          left: 0;
-          top: 0;
-          bottom: 0;
-          right: 0;
-          z-index: 1;
-
-          &:focus-visible {
-            outline: none;
-          }
-        }
-
         .link-icon {
           flex-grow: 1;
           font-size: rem(40px);
