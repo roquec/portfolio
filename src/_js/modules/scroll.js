@@ -46,7 +46,7 @@ class Scroll {
     this.#contentScrollListener = () => this.#applyState();
     this.#content.addEventListener("scroll", this.#contentScrollListener);
     this.#thumbWheelListener = (event) => this.#onThumbWheel(event);
-    this.#thumb.addEventListener("wheel", this.#thumbWheelListener);
+    this.#thumb.addEventListener("wheel", this.#thumbWheelListener, {passive: true});
   }
 
   stop() {

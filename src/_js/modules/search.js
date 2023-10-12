@@ -22,7 +22,7 @@ class Search {
 
   init() {
     Util.onDomLoaded(() => this.#onDomReady());
-    fetch("/search.json").then(response => response.json().then(json => this.#posts = json));
+    fetch("/assets/search.json").then(response => response.json().then(json => this.#posts = json));
     this.#setInitialStateStyles();
     return this;
   }
