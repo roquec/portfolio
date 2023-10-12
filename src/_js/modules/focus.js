@@ -15,13 +15,13 @@ class Focus {
 
     Util.onDomLoaded(() => this.#onDomReady());
     Util.onPageReady(() => this.#onPageReady());
-    window.addEventListener("focusin", (event) => this.#onFocus(event));
 
     return this;
   }
 
   #onDomReady() {
     this.#applyState();
+    window.addEventListener("focusin", (event) => this.#onFocus(event));
   }
 
   #onPageReady() {
