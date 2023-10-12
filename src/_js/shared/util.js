@@ -18,11 +18,13 @@ class Util {
    * Method to run provided function as soon as the DOM is loaded
    */
   static onPageReady(callback) {
-    if (document.readyState === "complete") {
-      callback();
-    } else {
-      window.addEventListener("load", () => callback());
-    }
+    setTimeout(function () {
+      if (document.readyState === "complete") {
+        callback();
+      } else {
+        window.addEventListener("load", () => callback());
+      }
+    }, 500)
   }
 
   /**
