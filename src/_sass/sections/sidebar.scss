@@ -12,15 +12,15 @@ html {
   --color-actions-tooltip-background: #{colors.$dark-mode-actions-tooltip-background};
   --color-actions-tooltip-foreground: #{colors.$dark-mode-actions-tooltip-foreground};
   --color-actions-tooltip-border: #{colors.$dark-mode-actions-tooltip-border};
-}
 
-html[data-theme="light"] {
-  --color-actions-background: #{colors.$light-mode-actions-background};
-  --color-actions-foreground: #{colors.$light-mode-actions-foreground};
-  --color-actions-selected-foreground: #{colors.$light-mode-actions-selected-foreground};
-  --color-actions-tooltip-background: #{colors.$light-mode-actions-tooltip-background};
-  --color-actions-tooltip-foreground: #{colors.$light-mode-actions-tooltip-foreground};
-  --color-actions-tooltip-border: #{colors.$light-mode-actions-tooltip-border};
+  &[data-theme="light"] {
+    --color-actions-background: #{colors.$light-mode-actions-background};
+    --color-actions-foreground: #{colors.$light-mode-actions-foreground};
+    --color-actions-selected-foreground: #{colors.$light-mode-actions-selected-foreground};
+    --color-actions-tooltip-background: #{colors.$light-mode-actions-tooltip-background};
+    --color-actions-tooltip-foreground: #{colors.$light-mode-actions-tooltip-foreground};
+    --color-actions-tooltip-border: #{colors.$light-mode-actions-tooltip-border};
+  }
 }
 
 /*=========================
@@ -37,7 +37,6 @@ $tooltip-tip-width: rem(5px);
   justify-content: space-between;
   background-color: var(--color-actions-background);
   color: var(--color-actions-foreground);
-  z-index: 1;
 
   #actions-top,
   #actions-bottom {
@@ -84,6 +83,7 @@ $tooltip-tip-width: rem(5px);
         visibility: hidden;
         opacity: 0;
         transition: opacity 0.2s linear 0s;
+        z-index: 1;
 
         .icon-tooltip {
           position: relative;

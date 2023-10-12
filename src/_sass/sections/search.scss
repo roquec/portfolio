@@ -53,6 +53,11 @@ html {
   overflow-x: hidden;
   padding-top: rem(12px);
 
+  .search-contents {
+    flex: 1;
+    height: 0;
+  }
+
   #search-box-wrapper {
     margin-top: rem(5px);
     margin-bottom: rem(12px);
