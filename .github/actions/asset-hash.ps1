@@ -17,6 +17,8 @@ try
     $site_dir = "./_site"
   }
 
+  Write-Host "Looking for assets in: $site_dir"
+
   $fileHashDictionary = @{ }
 
   # Create a dictionary of file paths to assets and their hash
@@ -25,8 +27,12 @@ try
     $fileHash = (Get-FileHash -Path $filePath -Algorithm SHA256).Hash
     $key = $filePath -replace ".*\\_site\\", "" -replace "\\", "/"
     $fileHashDictionary[$key] = $fileHash
+
+    Write-Host "Generated hash for [$key] => $fileHash"
   }
 
+  Write-Host "Replacing asset links in: $site_dir"
+  
   # Perform find and replace in HTML, CSS, and JS files
   Get-ChildItem -Path $site_dir -File -Recurse | Where-Object { $_.Extension -in ".html", ".css", ".js" } | ForEach-Object {
     $fileContent = Get-Content $_.FullName -Raw
@@ -36,6 +42,9 @@ try
       $fileContent = $fileContent.Replace($key, $key + "?v=" + $value)
     }
     Set-Content -Path $_.FullName -Value $fileContent
+
+    $file = $_.FullName -replace ".*\\_site\\", "" -replace "\\", "/"
+    Write-Host "Adding hashes to links in file $file"
   }
 }
 catch
