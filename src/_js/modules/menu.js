@@ -16,12 +16,14 @@ class Menu {
 
   init() {
     let menuStatus = window.sessionStorage.getItem(Menu.MENU_STORAGE_KEY);
+
+    // Always start closed if not wide screen
+    if (!Util.isWideScreen()) {
+      menuStatus = Menu.MENU_CLOSED_STATUS;
+    }
+    
     if (!menuStatus) {
-      if (Util.isWideScreen()) {
-        menuStatus = Menu.DEFAULT_STATUS;
-      } else {
-        menuStatus = Menu.MENU_CLOSED_STATUS;
-      }
+      menuStatus = Menu.DEFAULT_STATUS;
     }
     window.sessionStorage.setItem(Menu.MENU_STORAGE_KEY, menuStatus);
     this.#applyState();
