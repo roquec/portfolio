@@ -14,7 +14,7 @@ class Focus {
     }
 
     Util.onDomLoaded(() => this.#onDomReady());
-    Util.onAfterLoad(() => this.#onAfterLoad());
+    Util.onPageReady(() => this.#onPageReady());
     window.addEventListener("focusin", (event) => this.#onFocus(event));
 
     return this;
@@ -24,7 +24,7 @@ class Focus {
     this.#applyState();
   }
 
-  #onAfterLoad() {
+  #onPageReady() {
     document.body.classList.remove("initial-state");
   }
 

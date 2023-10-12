@@ -17,14 +17,12 @@ class Util {
   /**
    * Method to run provided function as soon as the DOM is loaded
    */
-  static onAfterLoad(callback) {
-    setTimeout(function () {
-      if (document.readyState === "complete") {
-        callback();
-      } else {
-        window.addEventListener("load", () => callback());
-      }
-    }, 2000)
+  static onPageReady(callback) {
+    if (document.readyState === "complete") {
+      callback();
+    } else {
+      window.addEventListener("load", () => callback());
+    }
   }
 
   /**
