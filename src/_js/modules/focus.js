@@ -8,32 +8,30 @@ class Focus {
   }
 
   init() {
-    Util.onDomLoaded(() => this.#onDomReady());
-    Util.onAfterLoad(() => this.#onAfterLoad());
     const focusItemId = window.sessionStorage.getItem(Focus.FOCUS_STORAGE_KEY);
     if (focusItemId) {
       this.#setInitialStateStyles(focusItemId);
     }
+    
+    Util.onDomLoaded(() => this.#onDomReady());
+    window.addEventListener("focusin", (event) => this.#onFocus(event));
+
     return this;
   }
 
   #onDomReady() {
     this.#applyState();
-    window.addEventListener("focusin", (event) => this.#onFocus(event));
-  }
-
-  #onAfterLoad() {
-    let initialStyles = document.getElementById("focus-initial-state-styles");
-    if (initialStyles) {
-      initialStyles.remove();
-    }
   }
 
   #applyState() {
     const focusItemId = window.sessionStorage.getItem(Focus.FOCUS_STORAGE_KEY);
     if (focusItemId) {
       document.getElementById(focusItemId).children[0].focus();
-      document.body.offsetHeight;
+    }
+    document.body.offsetHeight;
+    let initialStyles = document.getElementById("focus-initial-state-styles");
+    if (initialStyles) {
+      initialStyles.remove();
     }
   }
 
