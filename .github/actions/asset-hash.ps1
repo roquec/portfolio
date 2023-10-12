@@ -25,14 +25,14 @@ try
   Get-ChildItem -Path $site_dir -File -Recurse | Where-Object { $_.DirectoryName -like "*\assets\*" -or $_.Extension -eq ".webp" } | ForEach-Object {
     $filePath = $_.FullName
     $fileHash = (Get-FileHash -Path $filePath -Algorithm SHA256).Hash
-    $key = $filePath -replace ".*\\_site\\", "" -replace "\\", "/"
+    $key = $filePath -replace "\\", "/" -replace ".*\/_site\/", ""
     $fileHashDictionary[$key] = $fileHash
 
-    Write-Host "Generated hash for [$key] => $fileHash"
+    Write-Host "Generated hash for [$key]"
   }
 
   Write-Host "Replacing asset links in: $site_dir"
-  
+
   # Perform find and replace in HTML, CSS, and JS files
   Get-ChildItem -Path $site_dir -File -Recurse | Where-Object { $_.Extension -in ".html", ".css", ".js" } | ForEach-Object {
     $fileContent = Get-Content $_.FullName -Raw
@@ -42,10 +42,9 @@ try
       $fileContent = $fileContent.Replace($key, $key + "?v=" + $value)
     }
     Set-Content -Path $_.FullName -Value $fileContent
-
-    $file = $_.FullName -replace ".*\\_site\\", "" -replace "\\", "/"
-    Write-Host "Adding hashes to links in file $file"
   }
+  
+  Write-Host "All done!"
 }
 catch
 {
