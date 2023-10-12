@@ -14,6 +14,7 @@ class Focus {
     }
 
     Util.onDomLoaded(() => this.#onDomReady());
+    Util.onAfterLoad(() => this.#onAfterLoad());
     window.addEventListener("focusin", (event) => this.#onFocus(event));
 
     return this;
@@ -23,15 +24,15 @@ class Focus {
     this.#applyState();
   }
 
+  #onAfterLoad() {
+    document.documentElement.setAttribute("data-state", "loaded");
+  }
+
   #applyState() {
     const focusItemId = window.sessionStorage.getItem(Focus.FOCUS_STORAGE_KEY);
     if (focusItemId) {
       document.getElementById(focusItemId).children[0].focus();
     }
-
-    document.body.offsetHeight;
-
-    document.documentElement.setAttribute("data-state", "loaded");
   }
 
   #setInitialStateStyles(focusItemId) {
