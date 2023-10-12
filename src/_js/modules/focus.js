@@ -12,7 +12,7 @@ class Focus {
     if (focusItemId) {
       this.#setInitialStateStyles(focusItemId);
     }
-    
+
     Util.onDomLoaded(() => this.#onDomReady());
     window.addEventListener("focusin", (event) => this.#onFocus(event));
 
@@ -45,6 +45,7 @@ class Focus {
       }
     </style>`;
     document.head.insertAdjacentHTML("beforeend", style);
+    document.body.offsetHeight;
   }
 
   #onFocus(event) {
