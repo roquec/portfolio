@@ -23,13 +23,17 @@ html[data-theme="light"] {
 .scroll-container {
   position: relative;
   height: 100%;
+  outline: 0;
+  border: 0;
 
   .scroll-content {
     overflow-y: auto;
     height: 100%;
+    outline: 0;
+    border: 0;
+    
     scrollbar-width: none; /* Firefox */
     -ms-overflow-style: none; /* Internet Explorer 10+ */
-
     &::-webkit-scrollbar { /* WebKit */
       width: 0;
       height: 0;
