@@ -22,7 +22,6 @@ class Search {
 
   init() {
     Util.onDomLoaded(() => this.#onDomReady());
-    Util.onAfterLoad(() => this.#onAfterLoad());
     fetch("/search.json").then(response => response.json().then(json => this.#posts = json));
     this.#setInitialStateStyles();
     return this;
@@ -34,13 +33,6 @@ class Search {
     this.#searchResultsWrapperElement = document.getElementById(Search.SEARCH_RESULTS_WRAPPER_ID);
     this.#searchBoxElement = document.getElementById(Search.SEARCH_BOX_INPUT_ID);
     this.#applyState();
-  }
-
-  #onAfterLoad() {
-    let initialStyles = document.getElementById("search-initial-state-styles");
-    if (initialStyles) {
-      initialStyles.remove();
-    }
   }
 
   #applyState() {
@@ -104,7 +96,7 @@ class Search {
     let selectedTag = window.sessionStorage.getItem(Search.SEARCH_TAG);
     let searchResults = window.sessionStorage.getItem(Search.SEARCH_RESULTS);
 
-    let style = "<style id='search-initial-state-styles'>";
+    let style = "<style>";
 
     // Set visibility
     if (searchText) {

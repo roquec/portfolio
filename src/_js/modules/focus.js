@@ -25,7 +25,7 @@ class Focus {
   }
 
   #onAfterLoad() {
-    document.documentElement.setAttribute("data-state", "loaded");
+    document.body.classList.remove("initial-state");
   }
 
   #applyState() {
@@ -38,7 +38,7 @@ class Focus {
   #setInitialStateStyles(focusItemId) {
     let style = `
     <style>
-      html[data-state="loading"] #${CSS.escape(focusItemId)} {
+      .initial-state #${CSS.escape(focusItemId)} {
         background-color: var(--color-file-active-background) !important;
         color: var(--color-file-active-foreground) !important;
         outline: 0.0625rem solid var(--color-file-active-border) !important;
