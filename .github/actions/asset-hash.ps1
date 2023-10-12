@@ -14,7 +14,7 @@ try
 {
   if ($site_dir -eq $null)
   {
-    $path = "./_site"
+    $site_dir = "./_site"
   }
 
   $fileHashDictionary = @{ }
