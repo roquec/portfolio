@@ -28,24 +28,22 @@ class Focus {
     if (focusItemId) {
       document.getElementById(focusItemId).children[0].focus();
     }
+
     document.body.offsetHeight;
-    let initialStyles = document.getElementById("focus-initial-state-styles");
-    if (initialStyles) {
-      initialStyles.remove();
-    }
+
+    document.documentElement.setAttribute("data-state", "loaded");
   }
 
   #setInitialStateStyles(focusItemId) {
     let style = `
-    <style id="focus-initial-state-styles">
-      #${focusItemId} {
+    <style>
+      html[data-state="loading"] #${focusItemId} {
         background-color: var(--color-file-active-background) !important;
         color: var(--color-file-active-foreground) !important;
         outline: 0.0625rem solid var(--color-file-active-border) !important;
       }
     </style>`;
     document.head.insertAdjacentHTML("beforeend", style);
-    document.body.offsetHeight;
   }
 
   #onFocus(event) {
