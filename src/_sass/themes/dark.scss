@@ -1,5 +1,11 @@
-// Dark mode colors
-//-----------------
+/*=========================
+   DARK MODE THEME
+==========================*/
+
+// Base
+$base-background: #1E1E1E;
+$base-foreground: #D4D4D4;
+$base-foreground-muted: #444444;
 
 // Footer
 $footer-background: #007ACC;
@@ -15,19 +21,6 @@ $actions-selected-foreground: #FFFFFF;
 $actions-tooltip-background: #252526;
 $actions-tooltip-foreground: #CCCCCC;
 $actions-tooltip-border: #454545;
-
-
-// File
-$file-selected-background: #37373D;
-$file-hover-background: #2A2D2E;
-$file-active-background: #04395E;
-$file-active-foreground: #FFFFFF;
-$file-active-border: #007FD4;
-
-// Scroll
-$scrollbar-thumb: rgba(255, 255, 255, 0.16);
-$scrollbar-thumb-hover: rgba(255, 255, 255, 0.21);
-$scrollbar-thumb-active: rgba(255, 255, 255, 0.28);
 
 // Menu
 $menu-background: #252526;
@@ -61,13 +54,29 @@ $tab-foreground: #969696;
 $tab-selected-background: #1E1E1E;
 $tab-selected-foreground: #FFFFFF;
 
-// Index Page
-$index-welcome-accent: #E31B6D;
-$index-links: #696969;
-$index-link-projects-hover: #CBCB41;
-$index-link-drawings-hover: #E37933;
-$index-link-articles-hover: #519ABA;
-$index-link-about-hover: #D2A8FF;
+// File
+$file-selected-background: #37373D;
+$file-hover-background: #2A2D2E;
+$file-active-background: #04395E;
+$file-active-foreground: #FFFFFF;
+$file-active-border: #007FD4;
+
+// Card
+$card-foreground: #D4D4D4;
+$card-background: #444444DD;
+$card-outline: #D4D4D4;
+
+// Scroll
+$scrollbar-thumb: rgba(255, 255, 255, 0.16);
+$scrollbar-thumb-hover: rgba(255, 255, 255, 0.21);
+$scrollbar-thumb-active: rgba(255, 255, 255, 0.28);
+
+// Icons
+$icon-markdown: #519ABA;
+$icon-html: #E37933;
+$icon-readme: #519ABA;
+$icon-editorconfig: #6D8086;
+$icon-json: #CBCB41;
 
 // Markdown
 $markdown-fg-default: #D4D4D4; //#c9d1d9
@@ -92,19 +101,10 @@ $markdown-code-highlight-string: #a5d6ff;
 $markdown-code-highlight-constant: #79c0ff;
 $markdown-code-highlight-function: #d2a8ff;
 
-// Card
-$card-foreground: #D4D4D4;
-$card-background: #444444DD;
-$card-outline: #D4D4D4;
-
-// Icons
-$icon-markdown: #519ABA;
-$icon-html: #E37933;
-$icon-readme: #519ABA;
-$icon-editorconfig: #6D8086;
-$icon-json: #CBCB41;
-
-// Base
-$base-background: #1E1E1E;
-$base-foreground: #D4D4D4;
-$base-foreground-muted: #444444;
+// Index Page
+$index-welcome-accent: #E31B6D;
+$index-links: #696969;
+$index-link-projects-hover: #CBCB41;
+$index-link-drawings-hover: #E37933;
+$index-link-articles-hover: #519ABA;
+$index-link-about-hover: #D2A8FF;
