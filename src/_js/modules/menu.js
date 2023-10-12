@@ -21,7 +21,7 @@ class Menu {
     if (!Util.isWideScreen()) {
       menuStatus = Menu.MENU_CLOSED_STATUS;
     }
-    
+
     if (!menuStatus) {
       menuStatus = Menu.DEFAULT_STATUS;
     }
@@ -42,7 +42,6 @@ class Menu {
     } else {
       menuStatus = id;
     }
-    console.log(menuStatus);
     window.sessionStorage.setItem(Menu.MENU_STORAGE_KEY, menuStatus);
     this.#applyState();
   }

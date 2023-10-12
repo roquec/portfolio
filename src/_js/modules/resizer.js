@@ -28,7 +28,6 @@ class Resizer {
     if (!storedWidth) {
       // Get the initial width if not stored.
       const currentWidth = getComputedStyle(document.documentElement).getPropertyValue(Resizer.MENU_WIDTH_PROPERTY).slice(0, -2);
-      console.log("menu width: " + currentWidth);
       window.localStorage.setItem(Resizer.WIDTH_STORAGE_KEY, currentWidth);
     }
 

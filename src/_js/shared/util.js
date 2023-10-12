@@ -15,6 +15,17 @@ class Util {
   }
 
   /**
+   * Method to run provided function as soon as the DOM is loaded
+   */
+  static onAfterLoad(callback) {
+    if (document.readyState === "complete") {
+      callback();
+    } else {
+      window.addEventListener("load", () => callback());
+    }
+  }
+
+  /**
    * Method to prevent default behavior for mouse events.
    */
   static pauseEvent(event) {
@@ -30,7 +41,6 @@ class Util {
    */
   static isWideScreen() {
     const breakpoint = getComputedStyle(document.documentElement).getPropertyValue(this.WIDE_BREAKPOINT_KEY);
-    console.log(breakpoint);
     return window.matchMedia(`(min-width: ${breakpoint})`).matches;
   }
 
