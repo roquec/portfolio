@@ -50,16 +50,18 @@ class Focus {
   #applyState() {
     const focusItemId = window.sessionStorage.getItem(Focus.FOCUS_STORAGE_KEY);
     if (focusItemId) {
-      document.getElementById(focusItemId).classList.add("focused");
-      //document.getElementById(focusItemId).children[0].focus();
-      //window.sessionStorage.removeItem(Focus.FOCUS_STORAGE_KEY);
+      this.focusedElement = document.getElementById(focusItemId);
+      this.focusedElement.classList.add("focused");
+      this.focusedElement.children[0].focus();
+      window.sessionStorage.removeItem(Focus.FOCUS_STORAGE_KEY);
     }
   }
 
 
   #onItemMouseUp(event) {
-    const focusItemId = window.sessionStorage.getItem(Focus.FOCUS_STORAGE_KEY);
-    document.getElementById(focusItemId).classList.remove("focused");
+    if (event.target.parentElement.id !== this.focusedElement.id) {
+      this.focusedElement.classList.remove("focused");
+    }
 
     if (event.target.parentElement.classList.contains("file-item")) {
       window.sessionStorage.setItem(Focus.FOCUS_STORAGE_KEY, event.target.parentElement.id);
