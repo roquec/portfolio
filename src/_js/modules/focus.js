@@ -8,8 +8,6 @@ class Focus {
   }
 
   init() {
-    console.log(new Date().toISOString() + " - INIT");
-
     const focusItemId = window.sessionStorage.getItem(Focus.FOCUS_STORAGE_KEY);
     if (focusItemId) {
       this.#setInitialStateStyles(focusItemId);
@@ -22,13 +20,16 @@ class Focus {
   }
 
   #onDomReady() {
-    console.log(new Date().toISOString() + " - DOM READY");
     this.#applyState();
     window.addEventListener("focusin", (event) => this.#onFocus(event));
+    document.addEventListener("mouseup", (event) => this.#onItemMouseUp(event));
   }
 
   #onPageReady() {
-    console.log(new Date().toISOString() + " - PAGE READY");
+    const focusItemId = window.sessionStorage.getItem(Focus.FOCUS_STORAGE_KEY);
+    if (focusItemId) {
+      document.getElementById(focusItemId).children[0].focus();
+    }
     document.body.classList.remove("initial-state");
   }
 
@@ -36,9 +37,7 @@ class Focus {
   #applyState() {
     const focusItemId = window.sessionStorage.getItem(Focus.FOCUS_STORAGE_KEY);
     if (focusItemId) {
-      this.element = document.getElementById(focusItemId);
-      this.element.classList.add("focused");
-      this.element.children[0].focus();
+      document.getElementById(focusItemId).classList.add("focused");
     }
   }
 
@@ -59,15 +58,17 @@ class Focus {
     document.head.insertAdjacentHTML("beforeend", style);
   }
 
-  #onFocus(event) {
-    this.element?.classList.remove("focused");
-    console.log(new Date().toISOString() + " - FOCUS EVENT " + event.target.parentElement.id);
-    let element = event.target.parentElement;
-    const tracked = Focus.TRACKED_ELEMENTS.filter(c => element.classList.contains(c)).length > 0;
-    if (element.id && tracked) {
-      window.sessionStorage.setItem(Focus.FOCUS_STORAGE_KEY, element.id);
-    } else {
-      window.sessionStorage.removeItem(Focus.FOCUS_STORAGE_KEY);
+  #onItemMouseUp(event) {
+    if (event.target.parentElement.classList.contains("file-item")) {
+      window.sessionStorage.setItem(Focus.FOCUS_STORAGE_KEY, event.target.parentElement.id);
     }
+  }
+
+  #onFocus(event) {
+    console.log("FOCUS");
+
+    //if (event.target.parentElement.id !== this.focusedElement.id) {
+    //  this.focusedElement?.classList.remove("focused");
+    //}
   }
 }
