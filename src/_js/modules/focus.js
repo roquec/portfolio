@@ -53,7 +53,7 @@ class Focus {
   }
 
   #onFocus(event) {
-    this.element.classList.remove("focused");
+    this.element?.classList.remove("focused");
     console.log(new Date().toISOString() + " - FOCUS EVENT " + event.target.parentElement.id);
     let element = event.target.parentElement;
     const tracked = Focus.TRACKED_ELEMENTS.filter(c => element.classList.contains(c)).length > 0;

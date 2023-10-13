@@ -7,10 +7,10 @@ class Util {
    * Method to run provided function as soon as the DOM is loaded
    */
   static onDomLoaded(callback) {
-    if (document.readyState === "loading") {
-      window.addEventListener("DOMContentLoaded", () => callback());
-    } else {
+    if (document.readyState !== "loading") {
       callback();
+    } else {
+      window.addEventListener("DOMContentLoaded", () => callback());
     }
   }
 
@@ -19,12 +19,12 @@ class Util {
    */
   static onPageReady(callback) {
     setTimeout(function () {
-      if (document.readyState === "complete") {
+      if (document.readyState !== "loading") {
         callback();
       } else {
         window.addEventListener("load", () => callback());
       }
-    }, 500)
+    }, 100)
   }
 
   /**
