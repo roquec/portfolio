@@ -79,6 +79,7 @@ html {
 @media (max-width: #{$breakpoint-mobile}) {
   html body #workbench {
     #sidebar {
+      width: $mobile-sidebar-width;
       min-width: $mobile-sidebar-width;
     }
 
