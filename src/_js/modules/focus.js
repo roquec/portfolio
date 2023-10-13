@@ -42,6 +42,7 @@ class Focus {
 
   #applyState() {
     const focusItemId = window.sessionStorage.getItem(Focus.FOCUS_STORAGE_KEY);
+    console.log("Apply state: " + focusItemId);
     if (focusItemId) {
       this.focusedElement = document.getElementById(focusItemId);
       this.focusedElement.classList.add("focused");
@@ -52,6 +53,7 @@ class Focus {
   }
 
   #onFocusOut(event) {
+    console.log("On focused out: " + this.focusedElement.id);
     this.focusedElement.removeEventListener("focusout", this.focusOutListener);
     this.focusedElement.classList.remove("focused");
     this.focusedElement = null;
@@ -60,9 +62,11 @@ class Focus {
   #onFocus(event) {
     const isTracked = Focus.TRACKED_ELEMENTS.filter(c => event.target.parentElement.classList.contains(c)).length > 0;
     if (isTracked) {
+      console.log("On focused tracked: " + event.target.parentElement.id);
       window.sessionStorage.setItem(Focus.FOCUS_STORAGE_KEY, event.target.parentElement.id);
       this.#applyState();
     } else {
+      console.log("On focused not tracked: " + event.target);
       window.sessionStorage.removeItem(Focus.FOCUS_STORAGE_KEY);
     }
   }
