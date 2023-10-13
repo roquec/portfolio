@@ -34,7 +34,7 @@ class Focus {
   #onDomReady() {
     this.#applyState();
     //window.addEventListener("focusin", (event) => this.#onFocus(event));
-    document.addEventListener("mousedown", (event) => this.#onItemMouseUp(event));
+    document.addEventListener("focusin", (event) => this.#onItemMouseUp(event));
   }
 
   #onPageReady() {
@@ -66,6 +66,7 @@ class Focus {
     if (event.target.parentElement.classList.contains("file-item")) {
       window.sessionStorage.setItem(Focus.FOCUS_STORAGE_KEY, event.target.parentElement.id);
       event.target.parentElement.classList.add("focused");
+      this.focusedElement = event.target.parentElement;
     }
   }
 
