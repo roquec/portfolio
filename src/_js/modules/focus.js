@@ -10,7 +10,7 @@ class Focus {
   init() {
     const focusItemId = window.sessionStorage.getItem(Focus.FOCUS_STORAGE_KEY);
     if (focusItemId) {
-      //this.#setInitialStateStyles(focusItemId);
+      this.#setInitialStateStyles(focusItemId);
     }
 
     Util.onDomLoaded(() => this.#onDomReady());
@@ -40,6 +40,7 @@ class Focus {
     if (focusItemId) {
       //document.getElementById(focusItemId).classList.add("focused");
       document.getElementById(focusItemId).children[0].focus();
+      window.sessionStorage.removeItem(Focus.FOCUS_STORAGE_KEY);
     }
   }
 
@@ -52,11 +53,6 @@ class Focus {
         outline: 0.0625rem solid var(--color-file-active-border) !important;
       }
       .initial-state #${CSS.escape(focusItemId)}:hover {
-        background-color: var(--color-file-active-background) !important;
-        color: var(--color-file-active-foreground) !important;
-        outline: 0.0625rem solid var(--color-file-active-border) !important;
-      }
-      .initial-state #${CSS.escape(focusItemId)}.focused {
         background-color: var(--color-file-active-background) !important;
         color: var(--color-file-active-foreground) !important;
         outline: 0.0625rem solid var(--color-file-active-border) !important;
