@@ -46,19 +46,23 @@ class Focus {
       this.focusedElement = document.getElementById(focusItemId);
       this.focusedElement.classList.add("focused");
       this.focusedElement.children[0].focus();
-      window.sessionStorage.removeItem(Focus.FOCUS_STORAGE_KEY);
+      this.focusOutListener = (event) => this.#onFocusOut(event);
+      this.focusedElement.addEventListener("focusout", this.focusOutListener);
     }
   }
 
+  #onFocusOut(event) {
+    this.focusedElement.removeEventListener("focusout", this.focusOutListener);
+    this.focusedElement.classList.remove("focused");
+    window.sessionStorage.removeItem(Focus.FOCUS_STORAGE_KEY);
+    this.focusedElement = null;
+  }
+
   #onFocus(event) {
-    if (this.focusedElement && event.target.parentElement.id !== this.focusedElement.id) {
-      this.focusedElement.classList.remove("focused");
-    }
     const isTracked = Focus.TRACKED_ELEMENTS.filter(c => event.target.parentElement.classList.contains(c)).length > 0;
     if (isTracked) {
       window.sessionStorage.setItem(Focus.FOCUS_STORAGE_KEY, event.target.parentElement.id);
-      event.target.parentElement.classList.add("focused");
-      this.focusedElement = event.target.parentElement;
+      this.#applyState();
     }
   }
 }
