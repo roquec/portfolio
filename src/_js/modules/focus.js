@@ -52,13 +52,13 @@ class Focus {
     if (event.target?.parentElement?.id === this.focusItemId) {
       document.getElementById(this.focusItemId).classList.remove("focused");
       this.focusItemId = null;
-      console.log("On focused out: " + this.focusItemId);
+      console.log("On focused out: " + event.target?.parentElement?.id);
     }
   }
 
   #onFocus(event) {
     const isTracked = Focus.TRACKED_ELEMENTS.filter(c => event.target.parentElement.classList.contains(c)).length > 0;
-    if (isTracked) {
+    if (isTracked && this.focusItemId !== event.target.parentElement.id) {
       this.focusItemId = event.target.parentElement.id;
       window.sessionStorage.setItem(Focus.FOCUS_STORAGE_KEY, this.focusItemId);
       event.target.parentElement.classList.add("focused");
