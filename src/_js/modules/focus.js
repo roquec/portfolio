@@ -15,7 +15,7 @@ class Focus {
     Util.onDomLoaded(() => this.#onDomReady());
     Util.onPageReady(() => this.#onPageReady());
     document.addEventListener("focusin", (event) => this.#onFocus(event));
-    document.addEventListener("focusout", (event) => this.#onFocusOut(event));
+    //document.addEventListener("focusout", (event) => this.#onFocusOut(event));
     return this;
   }
 
@@ -43,7 +43,7 @@ class Focus {
     if (this.focusItemId) {
       const focusedElement = document.getElementById(this.focusItemId);
       focusedElement.classList.add("focused");
-      focusedElement.children[0].focus();
+      //focusedElement.children[0].focus();
     }
     console.log("Apply state: " + this.focusItemId);
   }
