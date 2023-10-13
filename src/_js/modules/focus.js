@@ -20,18 +20,23 @@ class Focus {
   }
 
   #onDomReady() {
+    console.log(new Date().toISOString() + " - DOM READY");
     this.#applyState();
     window.addEventListener("focusin", (event) => this.#onFocus(event));
   }
 
   #onPageReady() {
+    console.log(new Date().toISOString() + " - PAGE READY");
     document.body.classList.remove("initial-state");
   }
+
 
   #applyState() {
     const focusItemId = window.sessionStorage.getItem(Focus.FOCUS_STORAGE_KEY);
     if (focusItemId) {
-      document.getElementById(focusItemId).children[0].focus();
+      this.element = document.getElementById(focusItemId);
+      this.element.classList.add("focused");
+      this.element.children[0].focus();
     }
   }
 
@@ -48,6 +53,8 @@ class Focus {
   }
 
   #onFocus(event) {
+    this.element.classList.remove("focused");
+    console.log(new Date().toISOString() + " - FOCUS EVENT " + event.target.parentElement.id);
     let element = event.target.parentElement;
     const tracked = Focus.TRACKED_ELEMENTS.filter(c => element.classList.contains(c)).length > 0;
     if (element.id && tracked) {
