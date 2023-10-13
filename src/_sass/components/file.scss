@@ -64,9 +64,9 @@ html {
 ==========================*/
 @media (hover: hover) {
   .file-item {
-    //&:hover:not(.open) {
-    //  background-color: var(--color-file-hover-background);
-    //}
+    &:hover:not(.open):not(.focused) {
+      background-color: var(--color-file-hover-background);
+    }
   }
 }
 
@@ -77,7 +77,7 @@ html {
   &.open {
     background-color: var(--color-file-selected-background);
   }
-  
+
   &.focused {
     background-color: var(--color-file-active-background);
     color: var(--color-file-active-foreground);

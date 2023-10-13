@@ -59,7 +59,7 @@ class Focus {
 
 
   #onItemMouseUp(event) {
-    if (event.target.parentElement.id !== this.focusedElement.id) {
+    if (this.focusedElement && event.target.parentElement.id !== this.focusedElement.id) {
       this.focusedElement.classList.remove("focused");
     }
 
