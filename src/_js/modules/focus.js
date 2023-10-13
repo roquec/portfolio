@@ -38,7 +38,7 @@ class Focus {
     if (focusItemId) {
       this.element = document.getElementById(focusItemId);
       this.element.classList.add("focused");
-      this.element.children[0].focus();
+      //this.element.children[0].focus();
     }
   }
 
