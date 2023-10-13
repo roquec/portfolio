@@ -26,10 +26,6 @@ class Focus {
   }
 
   #onPageReady() {
-    const focusItemId = window.sessionStorage.getItem(Focus.FOCUS_STORAGE_KEY);
-    if (focusItemId) {
-      document.getElementById(focusItemId).children[0].focus();
-    }
     document.body.classList.remove("initial-state");
   }
 
@@ -37,7 +33,7 @@ class Focus {
   #applyState() {
     const focusItemId = window.sessionStorage.getItem(Focus.FOCUS_STORAGE_KEY);
     if (focusItemId) {
-      document.getElementById(focusItemId).classList.add("focused");
+      document.getElementById(focusItemId).children[0].focus();
     }
   }
 
