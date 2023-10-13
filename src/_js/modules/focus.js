@@ -54,6 +54,7 @@ class Focus {
 
     document.getElementById(this.focusItemId)?.classList.remove("focused");
     window.sessionStorage.removeItem(Focus.FOCUS_STORAGE_KEY);
+    this.focusItemId = null;
 
     const isTracked = Focus.TRACKED_ELEMENTS.filter(c => event.target.parentElement.classList.contains(c)).length > 0;
     if (isTracked) {
