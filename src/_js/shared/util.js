@@ -24,7 +24,7 @@ class Util {
       } else {
         window.addEventListener("load", () => callback());
       }
-    }, 100)
+    }, 5000)
   }
 
   /**

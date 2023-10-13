@@ -8,6 +8,8 @@ class Focus {
   }
 
   init() {
+    console.log(new Date().toISOString() + " - INIT");
+
     const focusItemId = window.sessionStorage.getItem(Focus.FOCUS_STORAGE_KEY);
     if (focusItemId) {
       this.#setInitialStateStyles(focusItemId);
