@@ -33,19 +33,13 @@ class Focus {
 
   #onDomReady() {
     this.#applyState();
-    //window.addEventListener("focusin", (event) => this.#onFocus(event));
     document.addEventListener("focusin", (event) => this.#onFocus(event));
   }
 
   #onPageReady() {
     document.body.classList.remove("initial-state");
-
-    //const focusItemId = window.sessionStorage.getItem(Focus.FOCUS_STORAGE_KEY);
-    //if (focusItemId) {
-    //  document.getElementById(focusItemId).classList.remove("focused");
-    //}
   }
-  
+
   #applyState() {
     const focusItemId = window.sessionStorage.getItem(Focus.FOCUS_STORAGE_KEY);
     if (focusItemId) {
