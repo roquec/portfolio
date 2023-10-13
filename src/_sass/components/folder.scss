@@ -38,10 +38,6 @@
   .icon-chevron-down {
     display: none;
   }
-
-  &:focus-within {
-    background-color: var(--color-file-hover-background);
-  }
 }
 
 /*=========================
@@ -76,7 +72,7 @@
 ==========================*/
 @media (hover: hover) {
   .folder-item {
-    &:hover:not(.open):not(:focus-within) {
+    &:hover:not(:focus-within) {
       background-color: var(--color-file-hover-background);
     }
   }
@@ -99,5 +95,13 @@ $folders: "portfolio-folder", "projects-folder", "drawings-folder", "articles-fo
     + .folder-contents {
       display: flex;
     }
+  }
+}
+
+.folder-item {
+  &:focus-within {
+    background-color: var(--color-file-active-background);
+    color: var(--color-file-active-foreground);
+    outline: rem(1px) solid var(--color-file-active-border);
   }
 }
