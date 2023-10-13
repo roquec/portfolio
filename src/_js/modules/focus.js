@@ -27,12 +27,18 @@ class Focus {
 
   #onPageReady() {
     document.body.classList.remove("initial-state");
+
+    const focusItemId = window.sessionStorage.getItem(Focus.FOCUS_STORAGE_KEY);
+    if (focusItemId) {
+      document.getElementById(focusItemId).classList.remove("focused");
+    }
   }
 
 
   #applyState() {
     const focusItemId = window.sessionStorage.getItem(Focus.FOCUS_STORAGE_KEY);
     if (focusItemId) {
+      document.getElementById(focusItemId).classList.add("focused");
       document.getElementById(focusItemId).children[0].focus();
     }
   }
