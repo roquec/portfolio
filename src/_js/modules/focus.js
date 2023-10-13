@@ -10,7 +10,7 @@ class Focus {
   init() {
     const focusItemId = window.sessionStorage.getItem(Focus.FOCUS_STORAGE_KEY);
     if (focusItemId) {
-      this.#setInitialStateStyles(focusItemId);
+      //this.#setInitialStateStyles(focusItemId);
     }
 
     Util.onDomLoaded(() => this.#onDomReady());
@@ -21,24 +21,24 @@ class Focus {
 
   #onDomReady() {
     this.#applyState();
-    window.addEventListener("focusin", (event) => this.#onFocus(event));
-    document.addEventListener("mouseup", (event) => this.#onItemMouseUp(event));
+    //window.addEventListener("focusin", (event) => this.#onFocus(event));
+    document.addEventListener("click", (event) => this.#onItemMouseUp(event));
   }
 
   #onPageReady() {
     document.body.classList.remove("initial-state");
 
-    const focusItemId = window.sessionStorage.getItem(Focus.FOCUS_STORAGE_KEY);
-    if (focusItemId) {
-      document.getElementById(focusItemId).classList.remove("focused");
-    }
+    //const focusItemId = window.sessionStorage.getItem(Focus.FOCUS_STORAGE_KEY);
+    //if (focusItemId) {
+    //  document.getElementById(focusItemId).classList.remove("focused");
+    //}
   }
 
 
   #applyState() {
     const focusItemId = window.sessionStorage.getItem(Focus.FOCUS_STORAGE_KEY);
     if (focusItemId) {
-      document.getElementById(focusItemId).classList.add("focused");
+      //document.getElementById(focusItemId).classList.add("focused");
       document.getElementById(focusItemId).children[0].focus();
     }
   }
@@ -52,6 +52,11 @@ class Focus {
         outline: 0.0625rem solid var(--color-file-active-border) !important;
       }
       .initial-state #${CSS.escape(focusItemId)}:hover {
+        background-color: var(--color-file-active-background) !important;
+        color: var(--color-file-active-foreground) !important;
+        outline: 0.0625rem solid var(--color-file-active-border) !important;
+      }
+      .initial-state #${CSS.escape(focusItemId)}.focused {
         background-color: var(--color-file-active-background) !important;
         color: var(--color-file-active-foreground) !important;
         outline: 0.0625rem solid var(--color-file-active-border) !important;
