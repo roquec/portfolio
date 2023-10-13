@@ -38,7 +38,7 @@ class Focus {
     if (focusItemId) {
       this.element = document.getElementById(focusItemId);
       this.element.classList.add("focused");
-      //this.element.children[0].focus();
+      this.element.children[0].focus();
     }
   }
 
@@ -46,6 +46,11 @@ class Focus {
     let style = `
     <style>
       .initial-state #${CSS.escape(focusItemId)} {
+        background-color: var(--color-file-active-background) !important;
+        color: var(--color-file-active-foreground) !important;
+        outline: 0.0625rem solid var(--color-file-active-border) !important;
+      }
+      .initial-state #${CSS.escape(focusItemId)}:hover {
         background-color: var(--color-file-active-background) !important;
         color: var(--color-file-active-foreground) !important;
         outline: 0.0625rem solid var(--color-file-active-border) !important;
