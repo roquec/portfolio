@@ -54,7 +54,6 @@ class Focus {
   #onFocusOut(event) {
     this.focusedElement.removeEventListener("focusout", this.focusOutListener);
     this.focusedElement.classList.remove("focused");
-    window.sessionStorage.removeItem(Focus.FOCUS_STORAGE_KEY);
     this.focusedElement = null;
   }
 
@@ -63,6 +62,8 @@ class Focus {
     if (isTracked) {
       window.sessionStorage.setItem(Focus.FOCUS_STORAGE_KEY, event.target.parentElement.id);
       this.#applyState();
+    } else {
+      window.sessionStorage.removeItem(Focus.FOCUS_STORAGE_KEY);
     }
   }
 }
