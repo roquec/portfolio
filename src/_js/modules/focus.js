@@ -34,6 +34,7 @@ class Focus {
   #onDomReady() {
     this.#applyState();
     document.addEventListener("focusin", (event) => this.#onFocus(event));
+    document.addEventListener("focusout", (event) => this.#onFocusOut(event));
   }
 
   #onPageReady() {
@@ -47,24 +48,24 @@ class Focus {
       this.focusedElement = document.getElementById(focusItemId);
       this.focusedElement.classList.add("focused");
       this.focusedElement.children[0].focus();
-      this.focusOutListener = (event) => this.#onFocusOut(event);
-      this.focusedElement.addEventListener("focusout", this.focusOutListener);
     }
   }
 
   #onFocusOut(event) {
-    console.log("On focused out: " + this.focusedElement.id);
-    this.focusedElement.removeEventListener("focusout", this.focusOutListener);
-    this.focusedElement.classList.remove("focused");
-    this.focusedElement = null;
+    console.log("On focused out: " + event.target.parentElement.id);
+    if (event.target?.parentElement?.id === this.focusedElement?.id) {
+      this.focusedElement.classList.remove("focused");
+      this.focusedElement = null;
+    }
   }
 
   #onFocus(event) {
     const isTracked = Focus.TRACKED_ELEMENTS.filter(c => event.target.parentElement.classList.contains(c)).length > 0;
     if (isTracked) {
-      console.log("On focused tracked: " + event.target.parentElement.id);
-      window.sessionStorage.setItem(Focus.FOCUS_STORAGE_KEY, event.target.parentElement.id);
-      this.#applyState();
+      this.focusedElement = event.target.parentElement;
+      window.sessionStorage.setItem(Focus.FOCUS_STORAGE_KEY, this.focusedElement.id);
+      this.focusedElement.classList.add("focused");
+      console.log("On focused tracked: " + this.focusedElement.id);
     } else {
       console.log("On focused not tracked: " + event.target);
       window.sessionStorage.removeItem(Focus.FOCUS_STORAGE_KEY);
