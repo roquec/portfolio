@@ -62,7 +62,7 @@ class Focus {
       this.focusItemId = event.target.parentElement.id;
       window.sessionStorage.setItem(Focus.FOCUS_STORAGE_KEY, this.focusItemId);
       event.target.parentElement.classList.add("focused");
-      console.log("On focused tracked: " + this.focusedElement.id);
+      console.log("On focused tracked: " + this.focusItemId);
     } else {
       window.sessionStorage.removeItem(Focus.FOCUS_STORAGE_KEY);
       console.log("On focused not tracked: " + event.target);
