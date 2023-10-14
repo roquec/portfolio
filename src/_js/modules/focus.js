@@ -12,7 +12,8 @@ class Focus {
 
   // Variables
   #focusedElement;
-  #focusEventListener = this.#onFocus.bind(this);
+  #focusInEventListener = this.#onFocusIn.bind(this);
+  #focusOutEventListener = this.#onFocusOut.bind(this);
 
   constructor(stateManager) {
     const focusItemId = window.sessionStorage.getItem(Focus.FOCUS_STORAGE_KEY);
@@ -24,7 +25,8 @@ class Focus {
 
   #registerInitialStyles(stateManager, focusItemId) {
     if (focusItemId) {
-      stateManager.setStateById(focusItemId,
+      stateManager.setStateById(
+        focusItemId,
         (element) => {
           element.classList.add("focused");
           console.log("Added focused class to: " + element.id);
@@ -35,8 +37,8 @@ class Focus {
 
   #initialize() {
     this.#applyState();
-    document.addEventListener("focusin", this.#focusEventListener);
-    document.addEventListener("focusout", this.#focusEventListener);
+    document.addEventListener("focusin", this.#focusInEventListener);
+    document.addEventListener("focusout", this.#focusOutEventListener);
     return this;
   }
 
@@ -59,16 +61,21 @@ class Focus {
   }
 
   stopListeners() {
-    document.removeEventListener("focusin", this.#focusEventListener);
-    document.removeEventListener("focusout", this.#focusEventListener);
+    document.removeEventListener("focusin", this.#focusInEventListener);
+    document.removeEventListener("focusout", this.#focusOutEventListener);
   }
 
-  #onFocus(event) {
-    let element = document.activeElement;
-    console.log("Focus event on " + element.nodeName + " with ID " + element.id);
-    if (element.nodeName === "A" && element.id !== null) {
+  #onFocusIn(event) {
+    const element = event.target;
+    if (element.nodeName === "A" && element.id) {
       window.sessionStorage.setItem(Focus.FOCUS_STORAGE_KEY, element.id);
-    } else {
+    }
+    this.#applyState();
+  }
+
+  #onFocusOut(event) {
+    const element = event.target;
+    if (element.nodeName === "A" && element.id) {
       window.sessionStorage.removeItem(Focus.FOCUS_STORAGE_KEY);
     }
     this.#applyState();
