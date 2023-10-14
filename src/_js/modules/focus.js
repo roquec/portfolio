@@ -43,10 +43,12 @@ class Focus {
 
     window.sessionStorage.removeItem(Focus.FOCUS_STORAGE_KEY);
 
-    const focused = document.getElementsByClassName(Focus.FOCUSED_CLASS);
-    for (let focusedElement of focused) {
-      focusedElement.classList.remove(Focus.FOCUSED_CLASS);
-    }
+    setTimeout(function () {
+      const focused = document.getElementsByClassName(Focus.FOCUSED_CLASS);
+      for (let focusedElement of focused) {
+        focusedElement.classList.remove(Focus.FOCUSED_CLASS);
+      }
+    }, 2000);
   }
 
   #applyState() {
