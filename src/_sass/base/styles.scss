@@ -30,22 +30,6 @@ body, input, button {
   font-weight: #{$base-font-weight};
 }
 
-.link-overlay {
-  position: absolute;
-  left: 0;
-  top: 0;
-  bottom: 0;
-  right: 0;
-  border: none;
-  outline: none;
-  opacity: 0;
-  cursor: pointer;
-  z-index: 1;
-  width: 100%;
-  height: 100%;
-}
-
-
 .button {
   color: inherit;
   text-decoration: none;

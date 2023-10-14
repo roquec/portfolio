@@ -9,7 +9,7 @@ class Focus {
   // Constants
   static FOCUS_STORAGE_KEY = "focus-element";
   static FOCUSED_CLASS = "focused";
-  static FOCUS_TARGETS = "a[id]";
+  static FOCUS_TARGETS = "a[id]:not(.no-focus-state)";
 
   // Variables
   #clickEventListener = this.#onClick.bind(this);

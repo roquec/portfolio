@@ -122,31 +122,6 @@ $tooltip-tip-width: rem(5px);
   }
 }
 
-/*=========================
-   STATE STYLES
-==========================*/
-#sidebar {
-  #actions-top,
-  #actions-bottom {
-    .button {
-      &.focused {
-        color: var(--color-actions-selected-foreground);
-
-        img {
-          outline: rem(2px) solid var(--color-actions-selected-foreground);
-        }
-      }
-
-      &.open {
-        color: var(--color-actions-selected-foreground);
-
-        &::before {
-          display: block;
-        }
-      }
-    }
-  }
-}
 
 /*=========================
    HOVER STYLES
@@ -166,6 +141,35 @@ $tooltip-tip-width: rem(5px);
           visibility: visible !important;
           opacity: 1 !important;
           transition-delay: 0.4s;
+        }
+      }
+    }
+  }
+}
+
+
+/*=========================
+   STATE STYLES
+==========================*/
+#sidebar {
+  #actions-top,
+  #actions-bottom {
+    .button {
+
+      &:focus-visible,
+      &.focused {
+        color: var(--color-actions-selected-foreground);
+
+        img {
+          outline: rem(2px) solid var(--color-actions-selected-foreground);
+        }
+      }
+
+      &.open {
+        color: var(--color-actions-selected-foreground);
+
+        &::before {
+          display: block;
         }
       }
     }
