@@ -27,6 +27,7 @@ class Focus {
       stateManager.setStateById(focusItemId,
         (element) => {
           element.classList.add("focused");
+          console.log("Added focused class to: " + element.id);
         }
       )
     }
@@ -45,6 +46,7 @@ class Focus {
     // Clear previous focus if existed
     if (this.#focusedElement && focusItemId !== this.#focusedElement.id) {
       this.#focusedElement.classList.remove(Focus.FOCUSED_CLASS);
+      console.log("Removed focused class from: " + this.#focusedElement.id);
     }
 
     // Set new focus
@@ -63,6 +65,7 @@ class Focus {
 
   #onFocus(event) {
     let element = document.activeElement;
+    console.log("Focus event on " + element.nodeName + " with ID " + element.id);
     if (element.nodeName === "A" && element.id !== null) {
       window.sessionStorage.setItem(Focus.FOCUS_STORAGE_KEY, element.id);
     } else {
