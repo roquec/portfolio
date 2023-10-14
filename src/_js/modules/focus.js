@@ -49,7 +49,9 @@ class Focus {
   }
 
   startListeners() {
+    console.log("LISTENER");
     document.addEventListener("focusin", this.#focusEventListener);
+    document.addEventListener("focusout", this.#focusEventListener);
   }
 
   stopListeners() {
@@ -57,9 +59,10 @@ class Focus {
   }
 
   #onFocus(event) {
-    let element = event.target;
-    if (event.target.classList.contains(Focus.LINK_OVERLAY_CLASS) && event.target.parentElement) {
-      element = event.target.parentElement;
+    let element = document.activeElement;
+    console.log("FOCUS");
+    if (element.classList.contains(Focus.LINK_OVERLAY_CLASS) && element.parentElement) {
+      element = element.parentElement;
     }
 
     if (element.id) {
