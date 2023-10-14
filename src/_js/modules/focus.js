@@ -9,18 +9,33 @@ class Focus {
   // Constants
   static FOCUS_STORAGE_KEY = "focus-element";
   static FOCUSED_CLASS = "focused";
-  static LINK_OVERLAY_CLASS = "link-overlay";
 
   // Variables
   #focusedElement;
   #focusEventListener = this.#onFocus.bind(this);
 
-  constructor() {
+  constructor(stateManager) {
+    const focusItemId = window.sessionStorage.getItem(Focus.FOCUS_STORAGE_KEY);
+
+    this.#registerInitialStyles(stateManager, focusItemId);
+
+    Util.onPageReady(this.#initialize.bind(this));
   }
 
-  run() {
+  #registerInitialStyles(stateManager, focusItemId) {
+    if (focusItemId) {
+      stateManager.setStateById(focusItemId,
+        (element) => {
+          element.classList.add("focused");
+        }
+      )
+    }
+  }
+
+  #initialize() {
     this.#applyState();
-    Util.onPageReady(this.#onPageReady.bind(this));
+    document.addEventListener("focusin", this.#focusEventListener);
+    document.addEventListener("focusout", this.#focusEventListener);
     return this;
   }
 
@@ -37,35 +52,18 @@ class Focus {
       const elementToFocus = document.getElementById(focusItemId);
       this.#focusedElement = elementToFocus;
       elementToFocus?.classList.add(Focus.FOCUSED_CLASS);
+      elementToFocus.focus();
     }
-  }
-
-  #onPageReady() {
-    if (this.#focusedElement) {
-      const element = this.#focusedElement.getElementsByClassName(Focus.LINK_OVERLAY_CLASS)[0] ?? this.#focusedElement;
-      element.focus();
-    }
-    this.startListeners();
-  }
-
-  startListeners() {
-    console.log("LISTENER");
-    document.addEventListener("focusin", this.#focusEventListener);
-    document.addEventListener("focusout", this.#focusEventListener);
   }
 
   stopListeners() {
     document.removeEventListener("focusin", this.#focusEventListener);
+    document.removeEventListener("focusout", this.#focusEventListener);
   }
 
   #onFocus(event) {
     let element = document.activeElement;
-    console.log("FOCUS");
-    if (element.classList.contains(Focus.LINK_OVERLAY_CLASS) && element.parentElement) {
-      element = element.parentElement;
-    }
-
-    if (element.id) {
+    if (element.nodeName === "A" && element.id !== null) {
       window.sessionStorage.setItem(Focus.FOCUS_STORAGE_KEY, element.id);
     } else {
       window.sessionStorage.removeItem(Focus.FOCUS_STORAGE_KEY);

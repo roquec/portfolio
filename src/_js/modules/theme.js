@@ -11,19 +11,15 @@ class Theme {
   static LIGHT_THEME_KEY = "light";
   static DEFAULT_THEME = this.DARK_THEME_KEY;
 
-  theme = Theme.DEFAULT_THEME;
+  #theme = Theme.DEFAULT_THEME;
 
   constructor() {
-  }
-
-  init() {
     this.#applyState();
-    return this;
   }
 
   #applyState() {
-    this.theme = localStorage.getItem(Theme.THEME_STORAGE_KEY) ?? Theme.DEFAULT_THEME;
-    document.documentElement.setAttribute(Theme.THEME_ATTRIBUTE, this.theme);
+    this.#theme = Util.getState(Theme.THEME_STORAGE_KEY, Theme.DEFAULT_THEME, localStorage);
+    document.documentElement.setAttribute(Theme.THEME_ATTRIBUTE, this.#theme);
   }
 
   toggle() {
@@ -31,12 +27,12 @@ class Theme {
     document.body.classList.add("no-transition");
 
     // Update theme
-    if (this.theme === Theme.DARK_THEME_KEY) {
-      this.theme = Theme.LIGHT_THEME_KEY;
+    if (this.#theme === Theme.DARK_THEME_KEY) {
+      this.#theme = Theme.LIGHT_THEME_KEY;
     } else {
-      this.theme = Theme.DARK_THEME_KEY;
+      this.#theme = Theme.DARK_THEME_KEY;
     }
-    window.localStorage.setItem(Theme.THEME_STORAGE_KEY, this.theme);
+    window.localStorage.setItem(Theme.THEME_STORAGE_KEY, this.#theme);
     this.#applyState();
 
     // Trigger CSS update while transitions are disabled

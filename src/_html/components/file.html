@@ -26,14 +26,13 @@
 {% assign id = item.path | slugify %}
 {% endif %}
 
-<div class="file-item {% if page.url == item.url %}open{% endif %}" id="{{ id }}">
-
-  <a class="link-overlay" title="{{ title }}" href="{{ link }}"></a>
+<a class="file-item button {% if page.url == item.url %}open{% endif %}" id="{{ id }}" title="{{ title }}"
+   href="{{ link }}">
 
   <i class="icon icon-{{ item.icon }}"></i>
 
   <div class="file-name">{{ file }}</div>
 
-</div>
+</a>
 
 {% endif %}

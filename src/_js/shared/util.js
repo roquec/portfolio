@@ -52,4 +52,18 @@ class Util {
     const breakpoint = getComputedStyle(document.documentElement).getPropertyValue(this.MOBILE_BREAKPOINT_KEY)
     return window.matchMedia(`(max-width: ${breakpoint})`).matches;
   }
+
+  /**
+   * Method to get state data
+   * Sets a default value if provided there is no current state
+   * @returns {string}
+   */
+  static getState(key, defaultValue = null, storage = window.sessionStorage) {
+    const value = storage.getItem(key);
+    if (defaultValue && !value) {
+      storage.setItem(key, defaultValue);
+      return defaultValue;
+    }
+    return value;
+  }
 }

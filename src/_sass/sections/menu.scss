@@ -25,8 +25,8 @@ html {
    STYLES
 ==========================*/
 #menu {
-  position: relative;
   display: flex;
+  position: relative;
   background: var(--color-menu-background);
   color: var(--color-menu-foreground);
   font-size: rem(13px);
@@ -103,28 +103,22 @@ html {
 /*=========================
    STATE STYLES
 ==========================*/
-html {
-  &[data-menu="closed"] #menu {
+#menu {
+  &.open {
+    display: flex;
+  }
+
+  &.closed {
     display: none;
   }
 
-  &[data-menu="explorer"] #menu {
-    #explorer {
+  .menu-panel {
+    &.open {
       display: flex;
     }
 
-    #search {
+    &.closed {
       display: none;
-    }
-  }
-
-  &[data-menu="search"] #menu {
-    #explorer {
-      display: none;
-    }
-
-    #search {
-      display: flex;
     }
   }
 }

@@ -1,62 +1,50 @@
 <nav id="sidebar">
 
   <div id="actions-top">
-
-    <div id="explorer-icon" class="icon-wrapper files-icon">
-      <button aria-label="Files" class="link-overlay" onclick="menu.toggle(Menu.MENU_EXPLORER_ID)"></button>
-      <div class="highlight"></div>
+    <button id="explorer-action" class="button" aria-label="Files" onclick="menu.toggle(Menu.EXPLORER_PANEL_ID)">
+      <span class="highlight"></span>
       <i class="icon icon-files"></i>
       <span class="tooltip-wrapper"><span class="icon-tooltip">Navigation</span></span>
-    </div>
+    </button>
 
-    <div id="search-icon" class="icon-wrapper search-icon">
-      <button aria-label="Search" class="link-overlay" onclick="menu.toggle(Menu.MENU_SEARCH_ID)"></button>
-      <div class="highlight"></div>
+    <button id="search-action" class="button" aria-label="Search" onclick="menu.toggle(Menu.SEARCH_PANEL_ID)">
+      <span class="highlight"></span>
       <i class="icon icon-search"></i>
       <span class="tooltip-wrapper"><span class="icon-tooltip">Search</span></span>
-    </div>
+    </button>
 
-    <div class="icon-wrapper">
-      <a aria-label="GitHub" class="link-overlay" href="https://github.com/roquec" target="_blank"></a>
-      <div class="highlight"></div>
+    <a class="button" aria-label="GitHub" href="https://github.com/roquec" target="_blank">
+      <span class="highlight"></span>
       <i class="icon icon-github"></i>
       <span class="tooltip-wrapper"><span class="icon-tooltip">My Github</span></span>
-    </div>
+    </a>
 
-    <div class="icon-wrapper">
-      <a aria-label="LinkedIn" class="link-overlay" href="https://www.linkedin.com/in/roquec" target="_blank"></a>
-      <div class="highlight"></div>
+    <a class="button" aria-label="LinkedIn" href="https://www.linkedin.com/in/roquec" target="_blank">
+      <span class="highlight"></span>
       <i class="icon icon-linkedin"></i>
       <span class="tooltip-wrapper"><span class="icon-tooltip">My LinkedIn</span></span>
-    </div>
+    </a>
 
-    <div class="icon-wrapper">
-      <a aria-label="Email" class="link-overlay" href="{{ site.obfuscated_mailto }}"></a>
-      <div class="highlight"></div>
+    <a class="button" aria-label="Email" href="{{ site.obfuscated_mailto }}">
+      <span class="highlight"></span>
       <i class="icon icon-email"></i>
       <span class="tooltip-wrapper"><span class="icon-tooltip">{{ site.obfuscated_email }}</span></span>
-    </div>
-
+    </a>
   </div>
 
   <div id="actions-bottom">
-
-    <div class="icon-wrapper" id="about-action">
-      <a aria-label="About me" class="link-overlay" href="/main"></a>
-      <div class="highlight"></div>
+    <a id="about-action" class="button" aria-label="About me" href="/main">
+      <span class="highlight"></span>
       <i class="icon profile-pic">
         <img src="/assets/images/roque_profile.webp" alt="Profile Picture">
       </i>
       <span class="tooltip-wrapper"><span class="icon-tooltip">About me</span></span>
-    </div>
+    </a>
 
-    <div class="icon-wrapper" id="settings-action">
-      <a aria-label="Settings" class="link-overlay" href="/config"></a>
-      <div class="highlight"></div>
+    <a id="settings-action" class="button" aria-label="Settings" href="/config">
+      <span class="highlight"></span>
       <i class="icon icon-settings"></i>
       <span class="tooltip-wrapper"><span class="icon-tooltip">Settings</span></span>
-    </div>
-
+    </a>
   </div>
-
 </nav>

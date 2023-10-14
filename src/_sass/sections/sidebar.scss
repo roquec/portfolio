@@ -46,13 +46,16 @@ $tooltip-tip-width: rem(5px);
     align-items: center;
     justify-content: center;
 
-    .icon-wrapper {
+    .button {
       width: 100%;
       display: flex;
       align-items: center;
+      justify-content: center;
       position: relative;
+      aspect-ratio: 1 / 1;
 
-      .highlight {
+      &::before {
+        content: "";
         width: 0;
         height: 100%;
         position: absolute;
@@ -62,13 +65,7 @@ $tooltip-tip-width: rem(5px);
       }
 
       .icon {
-        width: 100%;
-        aspect-ratio: 1 / 1;
-        display: flex;
-        align-items: center;
-        justify-content: center;
         font-size: rem(24px);
-        text-decoration: none;
       }
 
       .profile-pic img {
@@ -121,21 +118,30 @@ $tooltip-tip-width: rem(5px);
           }
         }
       }
+    }
+  }
+}
 
-      &.open {
-        color: var(--color-actions-selected-foreground);
-
-        .highlight {
-          display: block;
-        }
-      }
-
-      &.focused,
-      &:focus-within {
+/*=========================
+   STATE STYLES
+==========================*/
+#sidebar {
+  #actions-top,
+  #actions-bottom {
+    .button {
+      &.focused {
         color: var(--color-actions-selected-foreground);
 
         img {
           outline: rem(2px) solid var(--color-actions-selected-foreground);
+        }
+      }
+
+      &.open {
+        color: var(--color-actions-selected-foreground);
+
+        &::before {
+          display: block;
         }
       }
     }
@@ -149,44 +155,19 @@ $tooltip-tip-width: rem(5px);
   #sidebar {
     #actions-top,
     #actions-bottom {
-      .icon-wrapper {
-        &:hover {
-          color: var(--color-actions-selected-foreground);
+      .button:hover {
+        color: var(--color-actions-selected-foreground);
 
-          img {
-            outline: rem(2px) solid var(--color-actions-selected-foreground);
-          }
+        img {
+          outline: rem(2px) solid var(--color-actions-selected-foreground);
+        }
 
-          .tooltip-wrapper {
-            visibility: visible !important;
-            opacity: 1 !important;
-            transition-delay: 0.4s;
-          }
+        .tooltip-wrapper {
+          visibility: visible !important;
+          opacity: 1 !important;
+          transition-delay: 0.4s;
         }
       }
-    }
-  }
-}
-
-/*=========================
-   STATE STYLES
-==========================*/
-html[data-menu="explorer"] #sidebar #actions-top {
-  #explorer-icon {
-    color: var(--color-actions-selected-foreground);
-
-    .highlight {
-      display: block;
-    }
-  }
-}
-
-html[data-menu="search"] #sidebar #actions-top {
-  #search-icon {
-    color: var(--color-actions-selected-foreground);
-
-    .highlight {
-      display: block;
     }
   }
 }

@@ -1,52 +1,86 @@
-<div id="explorer">
+<div id="explorer" class="menu-panel">
 
   <div class="nav-header">EXPLORER</div>
 
-  {% include _html/components/folder.html id='portfolio-folder' title='roquec' name='ROQUEC' %}
+  <!-- ========= PORTFOLIO FOLDER CONTENTS ========= -->
+  {% capture portfolio_folder_contents %}
 
+  <!-- ========= SCROLL CONTENTS ========= -->
   {% capture explorer_content %}
+
+  <!-- main.html -->
   {% include _html/components/file.html id='main.html' %}
 
+  <!-- profile.md -->
   {% include _html/components/file.html id='profile.md' %}
 
+  <!-- README.md -->
   {% include _html/components/file.html id='README.md' %}
 
+  <!-- config.html -->
   {% include _html/components/file.html id='config.html' %}
 
-  {% include _html/components/folder.html id='projects-folder' title='roquec/projects' name='projects' %}
-  <div class="folder-contents">
-    {% include _html/components/file.html id='projects.html' %}
 
-    {% for project in site.projects %}
-    {% include _html/components/file.html page=project %}
-    {% endfor %}
-  </div>
-
-  {% include _html/components/folder.html id='articles-folder' title='roquec/articles' name='articles' %}
-  <div class="folder-contents">
-    {% include _html/components/file.html id='articles.html' %}
-
-    {% for article in site.articles %}
-    {% include _html/components/file.html page=article %}
-    {% endfor %}
-  </div>
-
-  {% include _html/components/folder.html id='drawings-folder' title='roquec/drawings' name='drawings' %}
-  <div class="folder-contents">
-    {% include _html/components/file.html id='drawings.html' %}
-
-    {% for drawing in site.drawings %}
-    {% include _html/components/file.html page=drawing %}
-    {% endfor %}
-  </div>
-
-  {% include _html/components/file.html id='version.html' %}
-
-  {% include _html/components/file.html id='404.html' %}
+  <!-- ========= PROJECT FOLDER CONTENTS ========= -->
+  {% capture projects_folder_contents %}
+  <!-- projects.html -->
+  {% include _html/components/file.html id='projects.html' %}
+  <!-- Project file items -->
+  {% for project in site.projects %}
+  {% include _html/components/file.html page=project %}
+  {% endfor %}
   {% endcapture %}
 
-  <div class="folder-contents">
-    {% include _html/components/scroll.html content=explorer_content id="explorer-scroll" %}
-  </div>
+  <!-- PROJECTS FOLDER -->
+  {% include _html/components/folder.html id='projects-folder' title='roquec/projects' name='projects'
+  contents=projects_folder_contents %}
+
+
+  <!-- ========= ARTICLES FOLDER CONTENTS ========= -->
+  {% capture articles_folder_contents %}
+  <!-- articles.html -->
+  {% include _html/components/file.html id='articles.html' %}
+  <!-- Articles file items -->
+  {% for article in site.articles %}
+  {% include _html/components/file.html page=article %}
+  {% endfor %}
+  {% endcapture %}
+
+  <!-- ARTICLES FOLDER  -->
+  {% include _html/components/folder.html id='articles-folder' title='roquec/articles' name='articles'
+  contents=articles_folder_contents %}
+
+
+  <!-- ========= DRAWINGS FOLDER CONTENTS ========= -->
+  {% capture drawings_folder_contents %}
+  <!-- drawings.html -->
+  {% include _html/components/file.html id='drawings.html' %}
+  <!-- Drawings file items -->
+  {% for drawing in site.drawings %}
+  {% include _html/components/file.html page=drawing %}
+  {% endfor %}
+  {% endcapture %}
+
+  <!-- DRAWINGS FOLDER  -->
+  {% include _html/components/folder.html id='drawings-folder' title='roquec/drawings' name='drawings'
+  contents=drawings_folder_contents %}
+
+
+  <!-- version.html -->
+  {% include _html/components/file.html id='version.html' %}
+
+  <!-- 404.html -->
+  {% include _html/components/file.html id='404.html' %}
+
+  {% endcapture %}
+
+  <!-- SCROLL -->
+  {% include _html/components/scroll.html id="explorer-scroll" content=explorer_content %}
+
+  {% endcapture %}
+
+  <!-- PORTFOLIO FOLDER -->
+  {% include _html/components/folder.html id='portfolio-folder' title='roquec' name='ROQUEC'
+  contents=portfolio_folder_contents %}
 
 </div>

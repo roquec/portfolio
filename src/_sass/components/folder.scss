@@ -4,57 +4,61 @@
 /*=========================
    STYLES
 ==========================*/
-.folder-item {
+.folder {
   display: flex;
-  flex-direction: row;
-  position: relative;
-  height: rem(22px);
-  outline-offset: rem(-1px);
-  align-items: center;
-  justify-content: center;
-
-  .folder-name {
-    flex: 1;
-    font-size: rem(13px);
-    line-height: rem(20px);
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    padding-left: rem(1px);
-  }
-
-  .icon {
-    font-size: rem(16px);
-    font-weight: normal;
-    width: rem(20px);
-    flex-grow: 0;
-    flex-shrink: 0;
-  }
-
-  .icon-chevron-right {
-    display: inline-flex;
-  }
-
-  .icon-chevron-down {
-    display: none;
-  }
-}
-
-/*=========================
-   FOLDER CONTENTS STYLES
-==========================*/
-.folder-contents {
-  display: none;
   flex-direction: column;
 
-  & .file-item,
-  & .folder-item {
-    padding-left: rem(13px);
+  .folder-item {
+    display: flex;
+    width: 100%;
+    flex-direction: row;
+    position: relative;
+    height: rem(22px);
+    outline-offset: rem(-1px);
+    align-items: center;
+    justify-content: left;
+
+    .folder-name {
+      display: flex;
+      flex: 1;
+      font-size: rem(13px);
+      line-height: rem(20px);
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      padding-left: rem(1px);
+    }
+
+    .icon {
+      font-size: rem(16px);
+      font-weight: normal;
+      width: rem(20px);
+      flex-grow: 0;
+      flex-shrink: 0;
+    }
+
+    .icon-chevron-right {
+      display: inline-flex;
+    }
+
+    .icon-chevron-down {
+      display: none;
+    }
   }
 
-  .folder-contents .file-item,
-  .folder-contents .folder-item, {
-    padding-left: rem(21px);
+  .folder-contents {
+    display: none;
+    flex-direction: column;
+
+    & .file-item,
+    & .folder-item {
+      padding-left: rem(13px);
+    }
+
+    .folder-contents .file-item,
+    .folder-contents .folder-item, {
+      padding-left: rem(21px);
+    }
   }
 }
 
@@ -81,28 +85,18 @@
 /*=========================
    STATE STYLES
 ==========================*/
-$folders: "portfolio-folder", "projects-folder", "drawings-folder", "articles-folder", "search-results", "search-results-projects", "search-results-drawings", "search-results-articles";
-@each $folder in $folders {
-  html[data-folders~="#{$folder}"] ##{$folder} {
-    .icon-chevron-right {
-      display: none;
-    }
+.folder {
+  &.open > .folder-contents {
+    display: flex;
+  }
 
-    .icon-chevron-down {
-      display: inline-flex;
-    }
-
-    + .folder-contents {
-      display: flex;
+  .folder-item {
+    &:focus-within,
+    &.focused {
+      background-color: var(--color-file-active-background);
+      color: var(--color-file-active-foreground);
+      outline: rem(1px) solid var(--color-file-active-border);
     }
   }
 }
 
-.folder-item {
-  &:focus-within,
-  &.focused {
-    background-color: var(--color-file-active-background);
-    color: var(--color-file-active-foreground);
-    outline: rem(1px) solid var(--color-file-active-border);
-  }
-}

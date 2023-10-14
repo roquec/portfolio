@@ -6,33 +6,51 @@ class Folders {
 
   // Constants
   static FOLDERS_STORAGE_KEY = "open-folders";
-  static FOLDERS_ATTRIBUTE = "data-folders";
   static DEFAULT_OPEN_FOLDERS = ["portfolio-folder"];
+  static FOLDERS_CLASS = "folder";
+  static OPEN_FOLDER_CLASS = "open";
 
-  constructor() {
+
+  constructor(stateManager) {
+    this.#registerInitialStyles(stateManager, this.#getState());
+
+    Util.onPageReady(this.#initialize.bind(this));
   }
 
-  init() {
-    if (!window.sessionStorage.getItem(Folders.FOLDERS_STORAGE_KEY)) {
-      window.sessionStorage.setItem(Folders.FOLDERS_STORAGE_KEY, JSON.stringify(Folders.DEFAULT_OPEN_FOLDERS));
+  #registerInitialStyles(stateManager, openFolders) {
+    if (openFolders.length > 0) {
+      stateManager.setStateByClass(Folders.FOLDERS_CLASS,
+        (element) => {
+          if (openFolders.includes(element.id)) {
+            element.classList.add(Folders.OPEN_FOLDER_CLASS);
+          }
+        }
+      )
     }
+  }
 
+  #initialize() {
     this.#applyState();
-    return this;
   }
 
   #applyState() {
-    let folders = this.#getOpenFolders();
-    if (folders.length > 0) {
-      let attribute = folders.join(" ");
-      document.documentElement.setAttribute(Folders.FOLDERS_ATTRIBUTE, attribute);
-    } else {
-      document.documentElement.setAttribute(Folders.FOLDERS_ATTRIBUTE, "");
+    let folders = this.#getState();
+
+    const currentFolders = document.querySelectorAll(".folder.open");
+
+    for (let currentFolder of currentFolders) {
+      if (!folders.includes(currentFolder)) {
+        currentFolder.classList.remove(Folders.OPEN_FOLDER_CLASS);
+      }
+    }
+
+    for (let folderId of folders) {
+      document.getElementById(folderId).classList.add(Folders.OPEN_FOLDER_CLASS);
     }
   }
 
   toggle(folderId) {
-    const folders = this.#getOpenFolders();
+    const folders = this.#getState();
     const index = folders.indexOf(folderId);
     if (index > -1) {
       folders.splice(index, 1);
@@ -43,7 +61,8 @@ class Folders {
     this.#applyState();
   }
 
-  #getOpenFolders() {
-    return JSON.parse(window.sessionStorage.getItem(Folders.FOLDERS_STORAGE_KEY) ?? "[]");
+  #getState() {
+    const state = Util.getState(Folders.FOLDERS_STORAGE_KEY, JSON.stringify(Folders.DEFAULT_OPEN_FOLDERS));
+    return JSON.parse(state);
   }
 }

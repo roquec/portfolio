@@ -1,6 +1,15 @@
-<div class="folder-item" id="{{ include.id }}">
-  <button title="{{ include.title }}" class="link-overlay" onclick="folders.toggle('{{ include.id }}')"></button>
-  <i class="icon icon-chevron-down"></i>
-  <i class="icon icon-chevron-right"></i>
-  <div class="folder-name">{{ include.name }}</div>
+<div class="folder" id="{{ include.id }}">
+  <button class="folder-item button" title="{{ include.title }}"
+          onclick="folders.toggle('{{ include.id }}')">
+
+    <i class="icon icon-chevron-down"></i>
+    <i class="icon icon-chevron-right"></i>
+
+    <span class="folder-name">{{ include.name }}</span>
+  </button>
+
+  <div class="folder-contents">
+    {{ include.contents }}
+  </div>
 </div>
+

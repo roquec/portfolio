@@ -12,20 +12,16 @@ class Scroll {
   #content = null;
   #thumb = null;
 
-  #resizeObserver = new ResizeObserver(() => this.#applyState());
-  #thumbClickListener;
-  #thumbDragListener;
-  #thumbReleaseListener;
-  #contentScrollListener;
-  #thumbWheelListener;
+  #resizeObserver = new ResizeObserver(this.#applyState.bind(this));
+  #thumbClickListener = this.#onThumbClick.bind(this);
+  #thumbDragListener = this.#onScrollThumbDrag.bind(this);
+  #thumbReleaseListener = this.#onScrollThumbRelease.bind(this);
+  #contentScrollListener = this.#applyState.bind(this);
+  #thumbWheelListener = this.#onThumbWheel.bind(this);
 
   constructor(targetId) {
     this.#targetId = targetId;
-  }
-
-  init() {
-    Util.onDomLoaded(() => this.#onDomReady());
-    return this;
+    Util.onDomLoaded(this.#onDomReady.bind(this));
   }
 
   #onDomReady() {
@@ -41,11 +37,8 @@ class Scroll {
     for (const child of this.#content.children) {
       this.#resizeObserver.observe(child);
     }
-    this.#thumbClickListener = (event) => this.#onThumbClick(event);
     this.#thumb.addEventListener("mousedown", this.#thumbClickListener);
-    this.#contentScrollListener = () => this.#applyState();
     this.#content.addEventListener("scroll", this.#contentScrollListener);
-    this.#thumbWheelListener = (event) => this.#onThumbWheel(event);
     this.#thumb.addEventListener("wheel", this.#thumbWheelListener, {passive: true});
   }
 
@@ -74,9 +67,7 @@ class Scroll {
   }
 
   #onThumbClick(event) {
-    this.#thumbDragListener = (event) => this.#onScrollThumbDrag(event);
     document.addEventListener("mousemove", this.#thumbDragListener);
-    this.#thumbReleaseListener = () => this.#onScrollThumbRelease();
     document.addEventListener("mouseup", this.#thumbReleaseListener);
 
     this.thumbClickOffsetY = event.offsetY;

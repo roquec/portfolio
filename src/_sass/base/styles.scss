@@ -46,6 +46,19 @@ body, input, button {
 }
 
 
+.button {
+  color: inherit;
+  text-decoration: none;
+  cursor: pointer;
+  background: transparent;
+  outline: 0;
+  border: 0;
+  margin: 0;
+  padding: 0;
+  display: flex;
+}
+
+
 .no-transition * {
   transition: none !important;
 }
