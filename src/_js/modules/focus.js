@@ -19,6 +19,7 @@ class Focus {
     const focusItemId = window.sessionStorage.getItem(Focus.FOCUS_STORAGE_KEY);
     const focusedElement = document.getElementById(focusItemId);
     if (focusedElement) {
+      this.focusedElement = focusedElement;
       focusedElement.classList.add("focused");
       focusedElement.children[0].focus();
     }
@@ -41,14 +42,17 @@ class Focus {
   }
 
   #onFocus(event) {
-    const isTracked = Focus.TRACKED_ELEMENTS.filter(c => event.target.parentElement.classList.contains(c)).length > 0;
-    if (isTracked) {
-      window.sessionStorage.setItem(Focus.FOCUS_STORAGE_KEY, event.target.parentElement.id);
-    } else {
-      const focusItemId = window.sessionStorage.getItem(Focus.FOCUS_STORAGE_KEY);
-      const focusedElement = document.getElementById(focusItemId);
-      focusedElement.classList.remove("focused");
+    if (this.focusedElement && this.focusedElement.id !== event.target?.parentElement?.id) {
+      this.focusedElement.classList.remove("focused");
       window.sessionStorage.removeItem(Focus.FOCUS_STORAGE_KEY);
+    }
+
+    const isTracked = Focus.TRACKED_ELEMENTS.filter(c => event.target.parentElement.classList.contains(c)).length > 0;
+
+    if (isTracked) {
+      this.focusedElement = document.getElementById(event.target.parentElement.id);
+      window.sessionStorage.setItem(Focus.FOCUS_STORAGE_KEY, this.focusedElement.id);
+      this.focusedElement.classList.add("focused");
     }
   }
 }
