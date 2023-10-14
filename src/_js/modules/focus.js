@@ -8,9 +8,18 @@ class Focus {
   }
 
   init() {
+    this.#applyState();
     Util.onDomLoaded(() => this.#onDomReady());
     document.addEventListener("focusin", (event) => this.#onFocus(event));
     return this;
+  }
+
+  #applyState() {
+    const focusItemId = window.sessionStorage.getItem(Focus.FOCUS_STORAGE_KEY);
+    if (focusItemId) {
+      const focusedElement = document.getElementById(focusItemId);
+      focusedElement.classList.add("focused");
+    }
   }
 
   #onDomReady() {
@@ -18,6 +27,7 @@ class Focus {
     if (focusItemId) {
       const focusedElement = document.getElementById(focusItemId);
       focusedElement.children[0].focus();
+      focusedElement.classList.remove("focused");
     }
   }
 
