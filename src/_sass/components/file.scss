@@ -78,7 +78,7 @@ html {
     background-color: var(--color-file-selected-background);
   }
 
-  &:focus-within,
+  &:focus,
   &.focused {
     background-color: var(--color-file-active-background);
     color: var(--color-file-active-foreground);
