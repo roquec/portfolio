@@ -41,16 +41,12 @@ class Focus {
       target.addEventListener("click", this.#clickEventListener);
     }
 
-    /*
     window.sessionStorage.removeItem(Focus.FOCUS_STORAGE_KEY);
 
-    setTimeout(function () {
-      const focused = document.getElementsByClassName(Focus.FOCUSED_CLASS);
-      for (let focusedElement of focused) {
-        focusedElement.classList.remove(Focus.FOCUSED_CLASS);
-      }
-    }, 2000);
-    */
+    const focused = document.getElementsByClassName(Focus.FOCUSED_CLASS);
+    for (let focusedElement of focused) {
+      focusedElement.classList.remove(Focus.FOCUSED_CLASS);
+    }
   }
 
   #applyState() {
@@ -64,8 +60,8 @@ class Focus {
   }
 
   #onClick(event) {
-    const id = event.target.closest(Focus.FOCUS_TARGETS).id;
-    window.sessionStorage.setItem(Focus.FOCUS_STORAGE_KEY, id);
-    this.#applyState();
+    const element = event.target.closest(Focus.FOCUS_TARGETS);
+    window.sessionStorage.setItem(Focus.FOCUS_STORAGE_KEY, element.id);
+    element.classList.add("focused");
   }
 }
