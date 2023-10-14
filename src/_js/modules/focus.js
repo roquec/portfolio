@@ -9,11 +9,10 @@ class Focus {
   // Constants
   static FOCUS_STORAGE_KEY = "focus-element";
   static FOCUSED_CLASS = "focused";
+  static FOCUS_TARGETS = "a[id]";
 
   // Variables
-  #focusedElement;
-  #focusInEventListener = this.#onFocusIn.bind(this);
-  #focusOutEventListener = this.#onFocusOut.bind(this);
+  #clickEventListener = this.#onClick.bind(this);
 
   constructor(stateManager) {
     const focusItemId = window.sessionStorage.getItem(Focus.FOCUS_STORAGE_KEY);
@@ -28,8 +27,7 @@ class Focus {
       stateManager.setStateById(
         focusItemId,
         (element) => {
-          element.classList.add("focused");
-          console.log("Added focused class to: " + element.id);
+          element.classList.add(Focus.FOCUSED_CLASS);
         }
       )
     }
@@ -37,47 +35,32 @@ class Focus {
 
   #initialize() {
     this.#applyState();
-    document.addEventListener("focusin", this.#focusInEventListener);
-    document.addEventListener("focusout", this.#focusOutEventListener);
-    return this;
+
+    const focused = document.getElementsByClassName(Focus.FOCUSED_CLASS);
+    for (let focusedElement of focused) {
+      focusedElement.classList.remove(Focus.FOCUSED_CLASS);
+    }
+    window.sessionStorage.removeItem(Focus.FOCUS_STORAGE_KEY);
+
+    const targets = document.querySelectorAll(Focus.FOCUS_TARGETS);
+    for (let target of targets) {
+      target.addEventListener("click", this.#clickEventListener);
+    }
   }
 
   #applyState() {
     const focusItemId = window.sessionStorage.getItem(Focus.FOCUS_STORAGE_KEY);
 
-    // Clear previous focus if existed
-    if (this.#focusedElement && focusItemId !== this.#focusedElement.id) {
-      this.#focusedElement.classList.remove(Focus.FOCUSED_CLASS);
-      console.log("Removed focused class from: " + this.#focusedElement.id);
-    }
-
     // Set new focus
     if (focusItemId) {
       const elementToFocus = document.getElementById(focusItemId);
-      this.#focusedElement = elementToFocus;
-      elementToFocus?.classList.add(Focus.FOCUSED_CLASS);
-      elementToFocus.focus();
+      elementToFocus?.focus();
     }
   }
 
-  stopListeners() {
-    document.removeEventListener("focusin", this.#focusInEventListener);
-    document.removeEventListener("focusout", this.#focusOutEventListener);
-  }
-
-  #onFocusIn(event) {
-    const element = event.target;
-    if (element.nodeName === "A" && element.id) {
-      window.sessionStorage.setItem(Focus.FOCUS_STORAGE_KEY, element.id);
-    }
-    this.#applyState();
-  }
-
-  #onFocusOut(event) {
-    const element = event.target;
-    if (element.nodeName === "A" && element.id) {
-      window.sessionStorage.removeItem(Focus.FOCUS_STORAGE_KEY);
-    }
+  #onClick(event) {
+    const id = event.target.closest(Focus.FOCUS_TARGETS).id;
+    window.sessionStorage.setItem(Focus.FOCUS_STORAGE_KEY, id);
     this.#applyState();
   }
 }
