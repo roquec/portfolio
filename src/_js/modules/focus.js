@@ -59,7 +59,7 @@ class Focus {
     // Set new focus
     if (focusItemId) {
       const elementToFocus = document.getElementById(focusItemId);
-      //elementToFocus?.focus();
+      elementToFocus?.focus();
     }
   }
 
