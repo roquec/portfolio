@@ -130,11 +130,12 @@ $tooltip-tip-width: rem(5px);
         }
       }
 
-      .link-overlay:focus-visible {
-        outline: none;
+      &.focused,
+      &:focus-within {
+        color: var(--color-actions-selected-foreground);
 
-        + .highlight {
-          display: block;
+        img {
+          outline: rem(2px) solid var(--color-actions-selected-foreground);
         }
       }
     }

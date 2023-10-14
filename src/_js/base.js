@@ -1,4 +1,4 @@
-const focus = new Focus().init();
+const focus = new Focus().run();
 const resizer = new Resizer().init();
 const contentScroll = new Scroll("content-scroll").init();
 const explorerScroll = new Scroll("explorer-scroll").init();

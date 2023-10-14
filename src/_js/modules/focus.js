@@ -1,58 +1,72 @@
+/**
+ * Focus class manages and persists focus state for elements using sessionStorage.
+ * It adds and removes a 'focused' class to indicate the focused element and ensures that the focused element is
+ * retained even after page refreshes. It also handles focusing on elements with a 'link-overlay' class and tracks
+ * focus changes to maintain the current focus state.
+ */
 class Focus {
 
   // Constants
   static FOCUS_STORAGE_KEY = "focus-element";
-  static TRACKED_ELEMENTS = ["file-item", "folder-item"];
+  static FOCUSED_CLASS = "focused";
+  static LINK_OVERLAY_CLASS = "link-overlay";
+
+  // Variables
+  #focusedElement;
+  #focusEventListener = this.#onFocus.bind(this);
 
   constructor() {
   }
 
-  init() {
+  run() {
     this.#applyState();
-    document.addEventListener("focusin", (event) => this.#onFocus(event));
-    //Util.onDomLoaded(() => this.#onDomReady());
-    //Util.onPageReady(() => this.#onPageReady());
+    Util.onPageReady(this.#onPageReady.bind(this));
     return this;
   }
 
   #applyState() {
     const focusItemId = window.sessionStorage.getItem(Focus.FOCUS_STORAGE_KEY);
-    const focusedElement = document.getElementById(focusItemId);
-    if (focusedElement) {
-      this.focusedElement = focusedElement;
-      focusedElement.classList.add("focused");
-      focusedElement.children[0].focus();
-    }
-  }
 
-  #onDomReady() {
-    const focusItemId = window.sessionStorage.getItem(Focus.FOCUS_STORAGE_KEY);
+    // Clear previous focus if existed
+    if (this.#focusedElement && focusItemId !== this.#focusedElement.id) {
+      this.#focusedElement.classList.remove(Focus.FOCUSED_CLASS);
+    }
+
+    // Set new focus
     if (focusItemId) {
-      const focusedElement = document.getElementById(focusItemId);
-      focusedElement.children[0].focus();
+      const elementToFocus = document.getElementById(focusItemId);
+      this.#focusedElement = elementToFocus;
+      elementToFocus?.classList.add(Focus.FOCUSED_CLASS);
     }
   }
 
   #onPageReady() {
-    const focusItemId = window.sessionStorage.getItem(Focus.FOCUS_STORAGE_KEY);
-    if (focusItemId) {
-      const focusedElement = document.getElementById(focusItemId);
-      focusedElement.children[0].focus();
+    if (this.#focusedElement) {
+      const element = this.#focusedElement.getElementsByClassName(Focus.LINK_OVERLAY_CLASS)[0] ?? this.#focusedElement;
+      element.focus();
     }
+    this.startListeners();
+  }
+
+  startListeners() {
+    document.addEventListener("focusin", this.#focusEventListener);
+  }
+
+  stopListeners() {
+    document.removeEventListener("focusin", this.#focusEventListener);
   }
 
   #onFocus(event) {
-    if (this.focusedElement && this.focusedElement.id !== event.target?.parentElement?.id) {
-      this.focusedElement.classList.remove("focused");
+    let element = event.target;
+    if (event.target.classList.contains(Focus.LINK_OVERLAY_CLASS) && event.target.parentElement) {
+      element = event.target.parentElement;
+    }
+
+    if (element.id) {
+      window.sessionStorage.setItem(Focus.FOCUS_STORAGE_KEY, element.id);
+    } else {
       window.sessionStorage.removeItem(Focus.FOCUS_STORAGE_KEY);
     }
-
-    const isTracked = Focus.TRACKED_ELEMENTS.filter(c => event.target.parentElement.classList.contains(c)).length > 0;
-
-    if (isTracked) {
-      this.focusedElement = document.getElementById(event.target.parentElement.id);
-      window.sessionStorage.setItem(Focus.FOCUS_STORAGE_KEY, this.focusedElement.id);
-      this.focusedElement.classList.add("focused");
-    }
+    this.#applyState();
   }
 }
