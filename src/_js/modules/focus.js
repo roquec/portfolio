@@ -9,8 +9,9 @@ class Focus {
 
   init() {
     this.#applyState();
-    Util.onDomLoaded(() => this.#onDomReady());
     document.addEventListener("focusin", (event) => this.#onFocus(event));
+    Util.onDomLoaded(() => this.#onDomReady());
+    Util.onPageReady(() => this.#onPageReady());
     return this;
   }
 
@@ -19,6 +20,7 @@ class Focus {
     if (focusItemId) {
       const focusedElement = document.getElementById(focusItemId);
       focusedElement.classList.add("focused");
+      focusedElement.children[0].focus();
     }
   }
 
@@ -27,7 +29,15 @@ class Focus {
     if (focusItemId) {
       const focusedElement = document.getElementById(focusItemId);
       focusedElement.children[0].focus();
+    }
+  }
+
+  #onPageReady() {
+    const focusItemId = window.sessionStorage.getItem(Focus.FOCUS_STORAGE_KEY);
+    if (focusItemId) {
+      const focusedElement = document.getElementById(focusItemId);
       focusedElement.classList.remove("focused");
+      focusedElement.children[0].focus();
     }
   }
 
