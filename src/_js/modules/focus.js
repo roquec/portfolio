@@ -8,16 +8,16 @@ class Focus {
   }
 
   init() {
-    this.#applyState();
+    Util.onDomLoaded(() => this.#onDomReady());
     document.addEventListener("focusin", (event) => this.#onFocus(event));
     return this;
   }
 
-  #applyState() {
+  #onDomReady() {
     const focusItemId = window.sessionStorage.getItem(Focus.FOCUS_STORAGE_KEY);
     if (focusItemId) {
       const focusedElement = document.getElementById(focusItemId);
-      focusedElement?.children[0]?.focus();
+      focusedElement.children[0].focus();
     }
   }
 
@@ -28,6 +28,5 @@ class Focus {
     } else {
       window.sessionStorage.removeItem(Focus.FOCUS_STORAGE_KEY);
     }
-    this.#applyState();
   }
 }
