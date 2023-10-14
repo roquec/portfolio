@@ -41,6 +41,7 @@ class Focus {
       target.addEventListener("click", this.#clickEventListener);
     }
 
+    /*
     window.sessionStorage.removeItem(Focus.FOCUS_STORAGE_KEY);
 
     setTimeout(function () {
@@ -49,6 +50,7 @@ class Focus {
         focusedElement.classList.remove(Focus.FOCUSED_CLASS);
       }
     }, 2000);
+    */
   }
 
   #applyState() {
