@@ -20,6 +20,14 @@ class Focus {
     this.#registerInitialStyles(stateManager, focusItemId);
 
     Util.onPageReady(this.#initialize.bind(this));
+    Util.onCacheNavigation(this.#onCacheNavigation.bind(this));
+  }
+
+  #onCacheNavigation() {
+    const focusedElements = document.getElementsByClassName(Focus.FOCUSED_CLASS);
+    while (focusedElements.length > 0) {
+      focusedElements[0].classList.remove(Focus.FOCUSED_CLASS);
+    }
   }
 
   #registerInitialStyles(stateManager, focusItemId) {

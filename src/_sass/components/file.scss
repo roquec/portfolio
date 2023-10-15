@@ -79,7 +79,7 @@ html {
   }
 
   &:focus,
-  &:active {
+  &.focused {
     background-color: var(--color-file-active-background);
     color: var(--color-file-active-foreground);
     outline: rem(1px) solid var(--color-file-active-border);

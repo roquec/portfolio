@@ -34,7 +34,6 @@ class Menu {
     this.#registerInitialStyles(stateManager, menuState);
 
     Util.onPageReady(this.#initialize.bind(this));
-
     Util.onCacheNavigation(this.#onCacheNavigation.bind(this));
   }
 
