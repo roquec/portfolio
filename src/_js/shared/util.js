@@ -56,11 +56,11 @@ class Util {
   /**
    * Method to get state data
    * Sets a default value if provided there is no current state
-   * @returns {string}
+   * @returns {any}
    */
   static getState(key, defaultValue = null, storage = window.sessionStorage) {
     const value = storage.getItem(key);
-    if (defaultValue && !value) {
+    if (!value) {
       storage.setItem(key, defaultValue);
       return defaultValue;
     }

@@ -10,27 +10,20 @@ class Folders {
   static FOLDERS_CLASS = "folder";
   static OPEN_FOLDER_CLASS = "open";
 
-
   constructor(stateManager) {
     this.#registerInitialStyles(stateManager, this.#getState());
-
-    Util.onPageReady(this.#initialize.bind(this));
   }
 
   #registerInitialStyles(stateManager, openFolders) {
     if (openFolders.length > 0) {
       stateManager.setStateByClass(Folders.FOLDERS_CLASS,
         (element) => {
-          if (openFolders.includes(element.id)) {
+          if (openFolders.includes(element.id) || element.querySelector(".file-item.open")) {
             element.classList.add(Folders.OPEN_FOLDER_CLASS);
           }
         }
       )
     }
-  }
-
-  #initialize() {
-    this.#applyState();
   }
 
   #applyState() {
