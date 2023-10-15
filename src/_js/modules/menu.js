@@ -34,6 +34,15 @@ class Menu {
     this.#registerInitialStyles(stateManager, menuState);
 
     Util.onPageReady(this.#initialize.bind(this));
+
+    Util.onCacheNavigation(this.#onCacheNavigation.bind(this));
+  }
+
+  #onCacheNavigation() {
+    this.#close(this.#explorerPanel, this.#explorerAction);
+    this.#close(this.#searchPanel, this.#searchAction);
+    this.#menu.classList.add(Menu.CLOSED_CLASS);
+    this.#menu.classList.remove(Menu.OPEN_CLASS);
   }
 
   #registerInitialStyles(stateManager, menuState) {

@@ -15,7 +15,7 @@ class Util {
   }
 
   /**
-   * Method to run provided function as soon as the DOM is loaded
+   * Method to run provided function as soon as the page is ready
    */
   static onPageReady(callback) {
     if (document.readyState !== "loading") {
@@ -23,6 +23,17 @@ class Util {
     } else {
       window.addEventListener("load", () => callback());
     }
+  }
+
+  /**
+   * Method to run provided function when bfcache navigation occurred
+   */
+  static onCacheNavigation(callback) {
+    window.addEventListener("pageshow", (e) => {
+      if (e.persisted) {
+        callback();
+      }
+    });
   }
 
   /**

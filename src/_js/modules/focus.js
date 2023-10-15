@@ -62,6 +62,6 @@ class Focus {
   #onClick(event) {
     const element = event.target.closest(Focus.FOCUS_TARGETS);
     window.sessionStorage.setItem(Focus.FOCUS_STORAGE_KEY, element.id);
-    element.classList.add("focused");
+    element.classList.add(Focus.FOCUSED_CLASS);
   }
 }
