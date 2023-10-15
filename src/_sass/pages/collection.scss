@@ -18,7 +18,7 @@
 
   .collection-posts {
     display: grid;
-    grid-template-columns: 1fr;
+    grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
     gap: rem(20px);
   }
 }
@@ -26,8 +26,8 @@
 /*  ===================
     DESKTOP
     =================== */
-@container content (min-width: #{$breakpoint-mobile}) {
+@container content (max-width: #{$breakpoint-mobile}) {
   .collection-page .collection-posts {
-    grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+    grid-template-columns: 1fr;
   }
 }
