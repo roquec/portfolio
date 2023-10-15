@@ -8,21 +8,30 @@ $icon-font-url: "/assets/fonts/roquec-portfolio.woff2";
   src: url($icon-font-url) format("woff2");
 }
 
+$base-font-family: Segoe WPC, Segoe UI, -apple-system, BlinkMacSystemFont, system-ui, Ubuntu, Droid Sans, sans-serif;
 $base-font-size: rem(13px);
 $base-font-weight: 400;
 $base-font-style: normal;
-$base-font-family: Segoe WPC, Segoe UI, sans-serif;
-$code-font-family: "Menlo", "Inconsolata", "Consolas", "Roboto Mono", "Ubuntu Mono", "Liberation Mono", "Courier New", monospace;
-$content-font-family: "Roboto", sans-serif;
-$icon-font-family: roquec-portfolio, serif;
+$base-line-height: normal;
 
 // Layout
-$layout-font: $base-font-style $base-font-weight $base-font-size $base-font-family;
+$layout-font-family: $base-font-family;
+$layout-font: $base-font-style $base-font-weight $base-font-size/$base-line-height $base-font-family;
+
 // Icons
-$icon-font: $base-font-style $base-font-weight $base-font-size $icon-font-family;
+$icon-font-family: roquec-portfolio, serif;
+$icon-font: $base-font-style $base-font-weight $base-font-size/$base-line-height $icon-font-family;
+
 // Content
-$content-font: $base-font-style $base-font-weight $base-font-size $content-font-family;
+$content-font-family: $base-font-family;
+$content-font: $base-font-style $base-font-weight $base-font-size/1.6 $content-font-family;
+
 // Markdown pages
-$markdown-font: $base-font-style $base-font-weight $base-font-size $base-font-family;
+$markdown-font-family: Segoe WPC, Segoe UI, -apple-system, BlinkMacSystemFont, system-ui, Ubuntu, Droid Sans, sans-serif;
+$markdown-font-size: rem(14px);
+$markdown-font: $base-font-style $base-font-weight $markdown-font-size/1.6 $markdown-font-family;
+
 // Code blocks
-$code-font: $base-font-style $base-font-weight $base-font-size $code-font-family;
+$code-font-family: Consolas, Courier New, monospace, SF Mono, Monaco, Menlo, Consolas, Ubuntu Mono, Liberation Mono, DejaVu Sans Mono, Courier New, monospace;
+$code-font-size: rem(14px);
+$code-font: $base-font-style $base-font-weight $code-font-size/1.6 $code-font-family;

@@ -58,7 +58,7 @@
    MOBILE STYLES
 ==========================*/
 @media (max-width: #{$breakpoint-mobile}) {
-  .folder-item {
+  .folder .folder-item {
     height: rem(28px);
   }
 }
@@ -67,7 +67,7 @@
    HOVER STYLES
 ==========================*/
 @media (hover: hover) {
-  .folder-item {
+  .folder .folder-item {
     &:hover:not(:focus-within):not(.focused) {
       background-color: var(--color-file-hover-background);
     }

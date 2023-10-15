@@ -2,34 +2,29 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
+  <!-- LOAD FONTS -->
+  <link rel="preconnect" href="/"/>
+  <link href="/assets/fonts/roquec-portfolio.woff2" rel="preload" as="font" type="font/woff2" crossorigin>
+
+  <!-- LOAD STYLES -->
+  <link href="/assets/css/styles.css" rel="stylesheet">
+
+  <!-- LOAD SCRIPTS -->
+  <script type="text/javascript" src="/assets/js/scripts.js"></script>
+
   <title>RoqueC - {{ page.title }}</title>
   <meta name="description" content="Roque's very own personal portfolio website!"/>
+
   <meta property="og:title" content="RoqueC"/>
-  <meta property="og:url" content="{{ page.url | absolute_url }}"/>
   <meta property="og:description" content="Roque's very own personal portfolio website!"/>
+  <meta property="og:url" content="{{ page.url | absolute_url }}"/>
   <meta property="og:image" content="{{ '/assets/images/roque_profile.webp' | absolute_url }}"/>
   <meta property="og:type" content="website"/>
 
   <link rel="apple-touch-icon" sizes="180x180" href="/assets/images/favicon/apple-touch-icon.png">
   <link rel="icon" type="image/png" sizes="32x32" href="/assets/images/favicon/favicon-32x32.png">
   <link rel="icon" type="image/png" sizes="16x16" href="/assets/images/favicon/favicon-16x16.png">
-  <link rel="manifest" href="/assets/images/favicon/site.webmanifest">
-
-  <link rel="preconnect" href="https://fonts.gstatic.com"/>
-  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500&display=swap"
-        rel="preload"
-        as="style">
-  <link href="https://fonts.gstatic.com/s/roboto/v30/KFOlCnqEu92Fr1MmSU5fBBc4.woff2" rel="preload" as="font"
-        type="font/woff2" crossorigin>
-  <link href="https://fonts.gstatic.com/s/roboto/v30/KFOmCnqEu92Fr1Mu4mxK.woff2" rel="preload" as="font"
-        type="font/woff2" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500&display=swap" rel="stylesheet">
-
-  <link href="/assets/fonts/roquec-portfolio.woff2" rel="preload" as="font" type="font/woff2" crossorigin>
-
-  <link href="/assets/css/styles.css" rel="stylesheet">
-
-  <script type="text/javascript" src="/assets/js/scripts.js"></script>
+  <link rel="manifest" href="/assets/files/site.webmanifest">
 
   {% seo %}
 </head>

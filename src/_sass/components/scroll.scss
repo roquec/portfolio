@@ -59,7 +59,7 @@ html {
 ==========================*/
 @media (max-width: #{$breakpoint-mobile}) {
   .scroll-container .scroll-thumb {
-    width: rem(5px);
+    width: rem(4px);
   }
 }
 

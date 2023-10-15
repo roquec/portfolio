@@ -24,7 +24,6 @@ class Search {
     const searchText = Util.getState(Search.SEARCH_TEXT_KEY, "");
     const searchResults = JSON.parse(Util.getState(Search.SEARCH_RESULTS_KEY, "[]"));
 
-    fetch("/assets/search.json").then(response => response.json().then(json => this.#posts = json));
 
     this.#registerInitialStyles(stateManager, searchText, searchResults);
 
@@ -73,6 +72,10 @@ class Search {
   }
 
   #initialize() {
+    fetch("/assets/files/search.json").then(response => response.json().then(json => {
+      this.#posts = json;
+      this.#applyState();
+    }));
     this.#tagsWrapperElement = document.getElementById(Search.SEARCH_TAGS_WRAPPER_ID);
     this.#searchResultsWrapperElement = document.getElementById(Search.SEARCH_RESULTS_WRAPPER_ID);
     this.#searchBoxElement = document.getElementById(Search.SEARCH_BOX_INPUT_ID);

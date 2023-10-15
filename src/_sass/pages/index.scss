@@ -34,12 +34,13 @@ html[data-theme="light"] .index-page {
   padding-top: 0;
   padding-bottom: 0;
   gap: 0;
-  font: $content-font;
+  font-family: $content-font-family;
 
   .index-page-top {
     flex-grow: 1;
     display: flex;
     align-items: center;
+    margin: 20px;
 
     .welcome-wrapper {
       flex-direction: row;
@@ -48,7 +49,7 @@ html[data-theme="light"] .index-page {
       display: flex;
       align-items: center;
 
-      font-weight: 300;
+      font-weight: lighter;
       font-size: rem(38px);
 
       .welcome-name, .welcome-occupation {
@@ -68,7 +69,7 @@ html[data-theme="light"] .index-page {
         .welcome-accent {
           color: var(--color-index-welcome-accent);
           font-size: rem(45px);
-          font-weight: 400;
+          font-weight: normal;
           letter-spacing: 1px;
         }
 
@@ -118,8 +119,8 @@ html[data-theme="light"] .index-page {
         font-weight: 300;
         color: var(--color-index-links);
 
-        padding-top: rem(40px);
-        padding-bottom: rem(40px);
+        padding-top: rem(50px);
+        padding-bottom: rem(50px);
         flex-grow: 1;
         flex-direction: column;
         gap: rem(10px);
@@ -132,6 +133,7 @@ html[data-theme="light"] .index-page {
         .link-title {
           flex-grow: 1;
           font-size: rem(28px);
+          letter-spacing: 1px;
         }
       }
     }
