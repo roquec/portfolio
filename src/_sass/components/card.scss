@@ -72,8 +72,8 @@ html {
   .card {
     height: rem(260px);
 
-    .card-content {
-      .card-title {
+    & > .card-content {
+      & > .card-title {
         padding: rem(12px) rem(16px);
         font-size: rem(20px);
       }

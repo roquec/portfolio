@@ -149,43 +149,44 @@ html[data-theme="light"] .index-page {
     padding-bottom: rem(60px);
     gap: rem(60px);
 
-    .index-page-top {
+    & > .index-page-top {
       flex-grow: 0;
 
-      .welcome-wrapper {
+      & > .welcome-wrapper {
         flex-direction: column;
         gap: rem(30px);
 
-        .welcome-name, .welcome-occupation {
+        & > .welcome-name,
+        & > .welcome-occupation {
           flex: 0;
           flex-flow: column;
           align-items: center;
           text-align: center;
           align-self: center;
 
-          .welcome-name-second {
+          & > .welcome-name-second {
             padding-right: 0;
           }
 
-          .welcome-occupation-first {
+          & > .welcome-occupation-first {
             padding-left: 0;
           }
         }
       }
     }
 
-    .index-page-bottom {
-      .links-wrapper {
+    & > .index-page-bottom {
+      & > .links-wrapper {
         flex-direction: column;
         gap: rem(40px);
 
-        .link {
+        & > .link {
           flex-direction: row;
           gap: rem(20px);
           padding-top: 0;
           padding-bottom: 0;
 
-          .link-icon {
+          & > .link-icon {
             font-size: rem(30px);
           }
         }
