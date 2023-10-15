@@ -11,7 +11,9 @@ class Scroll {
   #container = null;
   #content = null;
   #thumb = null;
+  #isDragging = false;
 
+  // Listeners
   #resizeObserver = new ResizeObserver(this.#applyState.bind(this));
   #thumbClickListener = this.#onThumbClick.bind(this);
   #thumbDragListener = this.#onScrollThumbDrag.bind(this);
@@ -70,6 +72,7 @@ class Scroll {
   }
 
   #onThumbClick(event) {
+    this.#isDragging = true;
     document.addEventListener("mousemove", this.#thumbDragListener);
     document.addEventListener("mouseup", this.#thumbReleaseListener);
 
@@ -80,6 +83,7 @@ class Scroll {
   }
 
   #onScrollThumbDrag(event) {
+    this.#isDragging = true;
     const containerBounds = this.#container.getBoundingClientRect();
 
     const containerTopOffsetY = event.clientY - containerBounds.top;
@@ -98,6 +102,7 @@ class Scroll {
     document.removeEventListener("mousemove", this.#thumbDragListener);
     document.removeEventListener("mouseup", this.#thumbReleaseListener);
     this.#thumb.classList.remove(Scroll.SCROLL_THUMB_ACTIVE_CLASS);
+    this.#isDragging = false;
   }
 
   #onThumbWheel(event) {
@@ -111,6 +116,8 @@ class Scroll {
   }
 
   #onScrollEnd() {
-    this.#thumb.classList.remove(Scroll.SCROLL_THUMB_ACTIVE_CLASS);
+    if (!this.#isDragging) {
+      this.#thumb.classList.remove(Scroll.SCROLL_THUMB_ACTIVE_CLASS);
+    }
   }
 }
