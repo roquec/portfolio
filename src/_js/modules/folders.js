@@ -10,8 +10,11 @@ class Folders {
   static FOLDERS_CLASS = "folder";
   static OPEN_FOLDER_CLASS = "open";
 
+
   constructor(stateManager) {
     this.#registerInitialStyles(stateManager, this.#getState());
+
+    Util.onPageReady(this.#initialize.bind(this));
   }
 
   #registerInitialStyles(stateManager, openFolders) {
@@ -24,6 +27,27 @@ class Folders {
         }
       )
     }
+  }
+
+  #initialize() {
+    const stateFolders = this.#getState();
+    const folders = document.getElementsByClassName("folder");
+
+    let currentFolders = [];
+    for (let folder of folders) {
+      if (folder.querySelector(".file-item.open")) {
+        currentFolders.push(folder);
+      }
+    }
+
+    for (let currentFolder of currentFolders) {
+      if (currentFolder.id && !stateFolders.includes(currentFolder.id)) {
+        stateFolders.push(currentFolder.id);
+      }
+    }
+
+    window.sessionStorage.setItem(Folders.FOLDERS_STORAGE_KEY, JSON.stringify(stateFolders));
+    this.#applyState();
   }
 
   #applyState() {
