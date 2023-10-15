@@ -38,10 +38,12 @@ class Menu {
   }
 
   #onCacheNavigation() {
-    this.#close(this.#explorerPanel, this.#explorerAction);
-    this.#close(this.#searchPanel, this.#searchAction);
-    this.#menu.classList.add(Menu.CLOSED_CLASS);
-    this.#menu.classList.remove(Menu.OPEN_CLASS);
+    if (!Util.isWideScreen()) {
+      this.#close(this.#explorerPanel, this.#explorerAction);
+      this.#close(this.#searchPanel, this.#searchAction);
+      this.#menu.classList.add(Menu.CLOSED_CLASS);
+      this.#menu.classList.remove(Menu.OPEN_CLASS);
+    }
   }
 
   #registerInitialStyles(stateManager, menuState) {
