@@ -27,9 +27,7 @@
     DESKTOP
     =================== */
 @container content (min-width: #{$breakpoint-mobile}) {
-  .collection-page {
-    .collection-posts {
-      grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
-    }
+  .collection-page .collection-posts {
+    grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
   }
 }

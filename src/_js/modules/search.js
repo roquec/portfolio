@@ -103,7 +103,6 @@ class Search {
       resultItems[0].classList.remove(Search.SEARCH_RESULTS_CLASS);
     }
     for (let searchResult of searchResults) {
-      console.log("Result: " + searchResult);
       const fileItem = document.getElementById(searchResult);
       fileItem.classList.add(Search.SEARCH_RESULTS_CLASS);
       fileItem.parentElement.parentElement.classList.add(Search.SEARCH_RESULTS_CLASS);
