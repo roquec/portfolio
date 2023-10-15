@@ -18,7 +18,7 @@
 {% assign title = "roquec" | append: '/' | append: file %}
 {% endif %}
 
-{% assign link = item.url | remove: "/index.html" | remove: ".html" %}
+{% assign link = item.url | remove: "index.html" | remove: ".html" %}
 
 {% if include.scope %}
 {% assign id = include.scope | append: '-' | append: item.path | slugify %}
