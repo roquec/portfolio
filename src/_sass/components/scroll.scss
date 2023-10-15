@@ -50,7 +50,7 @@ html {
     opacity: 0;
     width: rem(12px);
     background: var(--color-scrollbar-thumb);
-    transition: opacity 0.5s linear 0s;
+    transition: opacity 0.5s linear 0.1s;
   }
 }
 
@@ -60,13 +60,6 @@ html {
 @media (max-width: #{$breakpoint-mobile}) {
   .scroll-container .scroll-thumb {
     width: rem(5px);
-    transition: opacity 0.4s linear 0.2s;
-    background: var(--color-scrollbar-thumb-hover);
-
-    &.active {
-      opacity: 1;
-      transition: opacity 0.2s linear 0s;
-    }
   }
 }
 
@@ -80,15 +73,25 @@ html {
       opacity: 1;
       transition: opacity 0.1s linear 0s;
     }
+  }
+}
 
-    .scroll-thumb {
-      &:hover {
-        background: var(--color-scrollbar-thumb-hover);
-      }
+.scroll-container {
+  .scroll-thumb {
+    &.scrolling {
+      opacity: 1;
+      background: var(--color-scrollbar-thumb);
+      transition: opacity 0.1s linear 0s;
+    }
 
-      &.active {
-        background: var(--color-scrollbar-thumb-active);
-      }
+    &:hover {
+      opacity: 1;
+      background: var(--color-scrollbar-thumb-hover);
+    }
+
+    &.active {
+      opacity: 1;
+      background: var(--color-scrollbar-thumb-active);
     }
   }
 }

@@ -6,6 +6,7 @@
 class Scroll {
 
   static SCROLL_THUMB_ACTIVE_CLASS = "active";
+  static SCROLL_THUMB_SCROLL_CLASS = "scrolling";
 
   #targetId = null;
   #container = null;
@@ -112,12 +113,10 @@ class Scroll {
 
   #onScroll() {
     this.#applyState();
-    this.#thumb.classList.add(Scroll.SCROLL_THUMB_ACTIVE_CLASS);
+    this.#thumb.classList.add(Scroll.SCROLL_THUMB_SCROLL_CLASS);
   }
 
   #onScrollEnd() {
-    if (!this.#isDragging) {
-      this.#thumb.classList.remove(Scroll.SCROLL_THUMB_ACTIVE_CLASS);
-    }
+    this.#thumb.classList.remove(Scroll.SCROLL_THUMB_SCROLL_CLASS);
   }
 }

@@ -132,7 +132,7 @@ html {
         outline-color: transparent;
         transition: flex-grow 0.1s, outline-color 0.1s, background-color 0.1s, color 0.1s;
 
-        padding: 0 rem(10px) 0 rem(10px);
+        padding: 0 rem(8px) 0 rem(8px);
         color: var(--color-search-tag-foreground);
         outline-offset: rem(-1px);
         height: rem(25px);
@@ -149,7 +149,6 @@ html {
         }
 
         .tag-name {
-          flex: 1;
           font-size: rem(13px);
           text-align: center;
           line-height: rem(25px);
@@ -163,7 +162,6 @@ html {
           font-size: rem(11px);
           line-height: rem(25px);
           text-align: center;
-          letter-spacing: 1px;
           vertical-align: middle;
           color: var(--color-search-tag-number-foreground);
         }
