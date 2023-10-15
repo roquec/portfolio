@@ -5,8 +5,8 @@ const menu = new Menu(state);
 const focus = new Focus(state);
 const resizer = new Resizer(state);
 const folders = new Folders(state);
-const search = new Search().init();
+const search = new Search(state);
 
-const contentScroll = new Scroll("content-scroll");
-const explorerScroll = new Scroll("explorer-scroll");
-const searchScroll = new Scroll("search-scroll");
+new Scroll("content-scroll");
+new Scroll("explorer-scroll");
+new Scroll("search-scroll");

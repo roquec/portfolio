@@ -36,18 +36,10 @@
       flex-grow: 0;
       flex-shrink: 0;
     }
-
-    .icon-chevron-right {
-      display: inline-flex;
-    }
-
-    .icon-chevron-down {
-      display: none;
-    }
   }
 
   .folder-contents {
-    display: none;
+    display: flex;
     flex-direction: column;
 
     & .file-item,
@@ -86,8 +78,16 @@
    STATE STYLES
 ==========================*/
 .folder {
-  &.open > .folder-contents {
-    display: flex;
+  &.open > button > .icon-chevron-right {
+    display: none;
+  }
+
+  &:not(.open) > button > .icon-chevron-down {
+    display: none;
+  }
+
+  &:not(.open) > .folder-contents {
+    display: none;
   }
 
   .folder-item {

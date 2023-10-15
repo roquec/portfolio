@@ -1,191 +1,183 @@
 class Search {
 
   // Constants
-  static SEARCH_TEXT = "search-text";
-  static SEARCH_TAG = "selected-tag";
-  static SEARCH_RESULTS = "search-results";
+  static SEARCH_TEXT_KEY = "search-text";
+  static SEARCH_RESULTS_KEY = "search-results";
 
-  static SEARCH_BOX_WRAPPER_ID = "search-box-wrapper";
-  static TAGS_WRAPPER_ID = "tags-wrapper";
-  static SEARCH_RESULTS_WRAPPER_ID = "search-results";
+  static SEARCH_TAGS_WRAPPER_ID = "search-tags-wrapper";
+  static SEARCH_RESULTS_WRAPPER_ID = "search-results-wrapper";
   static SEARCH_BOX_INPUT_ID = "search-box";
+  static SEARCH_RESULTS_LABEL_ID = "search-results-label";
+  static SEARCH_BOX_CLEAR_ID = "search-box-clear";
 
-  #searchBoxWrapperElement;
+  static SEARCH_RESULTS_CLASS = "result-item";
+  static HIDDEN_CLASS = "hidden";
+
   #tagsWrapperElement;
   #searchResultsWrapperElement;
   #searchBoxElement;
+  #searchBoxClearElement;
 
   #posts = [];
 
-  constructor() {
-  }
+  constructor(stateManager) {
+    const searchText = Util.getState(Search.SEARCH_TEXT_KEY, "");
+    const searchResults = JSON.parse(Util.getState(Search.SEARCH_RESULTS_KEY, "[]"));
 
-  init() {
-    Util.onDomLoaded(() => this.#onDomReady());
     fetch("/assets/search.json").then(response => response.json().then(json => this.#posts = json));
-    this.#setInitialStateStyles();
-    return this;
+
+    this.#registerInitialStyles(stateManager, searchText, searchResults);
+
+    Util.onPageReady(this.#initialize.bind(this));
   }
 
-  #onDomReady() {
-    this.#searchBoxWrapperElement = document.getElementById(Search.SEARCH_BOX_WRAPPER_ID);
-    this.#tagsWrapperElement = document.getElementById(Search.TAGS_WRAPPER_ID);
+  #registerInitialStyles(stateManager, searchText, searchResults) {
+    stateManager.setStateById(
+      Search.SEARCH_BOX_INPUT_ID,
+      (element) => element.value = searchText
+    );
+
+    if (searchText === "" || searchText === "#") {
+      stateManager.setStateById(
+        Search.SEARCH_BOX_CLEAR_ID,
+        (element) => element.classList.add(Search.HIDDEN_CLASS)
+      );
+    }
+
+    stateManager.setStateByQuery(
+      (element) => searchResults.includes(element.id),
+      (element) => {
+        element.classList.add(Search.SEARCH_RESULTS_CLASS);
+        element.parentElement.parentElement.classList.add(Search.SEARCH_RESULTS_CLASS);
+      }
+    );
+
+    const label = this.#getResultsLabel(searchResults);
+    stateManager.setStateById(
+      Search.SEARCH_RESULTS_LABEL_ID,
+      (element) => element.innerHTML = label
+    );
+
+
+    if (searchText === "" || searchText === "#") {
+      stateManager.setStateById(
+        Search.SEARCH_RESULTS_WRAPPER_ID,
+        (element) => element.classList.add(Search.HIDDEN_CLASS)
+      );
+    } else {
+      stateManager.setStateById(
+        Search.SEARCH_TAGS_WRAPPER_ID,
+        (element) => element.classList.add(Search.HIDDEN_CLASS)
+      );
+    }
+  }
+
+  #initialize() {
+    this.#tagsWrapperElement = document.getElementById(Search.SEARCH_TAGS_WRAPPER_ID);
     this.#searchResultsWrapperElement = document.getElementById(Search.SEARCH_RESULTS_WRAPPER_ID);
     this.#searchBoxElement = document.getElementById(Search.SEARCH_BOX_INPUT_ID);
+    this.#searchBoxClearElement = document.getElementById(Search.SEARCH_BOX_CLEAR_ID);
     this.#applyState();
   }
 
   #applyState() {
     // Get search panel state
-    let searchText = window.sessionStorage.getItem(Search.SEARCH_TEXT);
-    let selectedTag = window.sessionStorage.getItem(Search.SEARCH_TAG);
-    let searchResults = window.sessionStorage.getItem(Search.SEARCH_RESULTS);
+    const searchText = sessionStorage.getItem(Search.SEARCH_TEXT_KEY);
+    const searchResults = JSON.parse(sessionStorage.getItem(Search.SEARCH_RESULTS_KEY));
 
     // Apply search box state
-    this.#searchBoxElement.value = searchText ?? "";
+    this.#searchBoxElement.value = searchText;
 
-    // Apply tags state
-    let selectedTagElement = document.getElementById("tag-" + selectedTag);
-    let tags = document.getElementsByClassName("selected");
-    while (tags.length > 0) {
-      tags[0].classList.remove("selected");
-    }
-    if (selectedTagElement) {
-      this.#tagsWrapperElement.classList.add("selected");
-      selectedTagElement.classList.add("selected");
+    if (searchText === "" || searchText === "#") {
+      this.#searchBoxClearElement.classList.add(Search.HIDDEN_CLASS)
     } else {
-      this.#tagsWrapperElement.classList.remove("selected");
+      this.#searchBoxClearElement.classList.remove(Search.HIDDEN_CLASS)
     }
 
     // Apply results state
-    let resultItems = document.getElementsByClassName("result");
+    const resultItems = document.getElementsByClassName(Search.SEARCH_RESULTS_CLASS);
     while (resultItems.length > 0) {
-      resultItems[0].classList.remove("result");
+      resultItems[0].classList.remove(Search.SEARCH_RESULTS_CLASS);
     }
-    if (searchResults) {
-      let resultsArray = JSON.parse(searchResults);
-      for (let searchResult of resultsArray) {
-        let fileItem = document.getElementById(searchResult);
-        fileItem.parentElement.classList.add("result");
-        fileItem.parentElement.previousElementSibling.classList.add("result");
-        fileItem.classList.add("result");
-      }
-      let countElement = document.getElementById("search-results-count");
-      countElement.setAttribute("data-value", resultsArray.length);
+    for (let searchResult of searchResults) {
+      console.log("Result: " + searchResult);
+      const fileItem = document.getElementById(searchResult);
+      fileItem.classList.add(Search.SEARCH_RESULTS_CLASS);
+      fileItem.parentElement.parentElement.classList.add(Search.SEARCH_RESULTS_CLASS);
     }
 
+    // Apply results label state
+    let resultsLabel = document.getElementById(Search.SEARCH_RESULTS_LABEL_ID);
+    resultsLabel.innerHTML = this.#getResultsLabel(searchResults);
+
     // Set visibility
-    if (searchText) {
-      this.#searchBoxWrapperElement.classList.remove("hidden");
-      this.#tagsWrapperElement.classList.add("hidden");
-      this.#searchResultsWrapperElement.classList.remove("hidden");
-    } else if (selectedTag) {
-      this.#searchBoxWrapperElement.classList.add("hidden");
-      this.#tagsWrapperElement.classList.remove("hidden");
-      this.#searchResultsWrapperElement.classList.remove("hidden");
+    if (searchText === "" || searchText === "#") {
+      this.#tagsWrapperElement.classList.remove(Search.HIDDEN_CLASS);
+      this.#searchResultsWrapperElement.classList.add(Search.HIDDEN_CLASS);
     } else {
-      this.#searchBoxWrapperElement.classList.remove("hidden");
-      this.#tagsWrapperElement.classList.remove("hidden");
-      this.#searchResultsWrapperElement.classList.add("hidden");
+      this.#tagsWrapperElement.classList.add(Search.HIDDEN_CLASS);
+      this.#searchResultsWrapperElement.classList.remove(Search.HIDDEN_CLASS);
     }
   }
 
-  #setInitialStateStyles() {
-    // Get search panel state
-    let searchText = window.sessionStorage.getItem(Search.SEARCH_TEXT);
-    let selectedTag = window.sessionStorage.getItem(Search.SEARCH_TAG);
-    let searchResults = window.sessionStorage.getItem(Search.SEARCH_RESULTS);
-
-    let style = "<style>";
-
-    // Set visibility
-    if (searchText) {
-      style = style + ".initial-state #tags-wrapper { display: none !important; } ";
-    } else if (selectedTag) {
-      style = style + ".initial-state #search-box-wrapper { display: none !important; } ";
-    } else {
-      style = style + ".initial-state #search-results { display: none !important; } ";
+  #getResultsLabel(results) {
+    let label = "No files found";
+    if (results.length === 1) {
+      label = "1 file found";
     }
-
-    // Search
-    if (searchText) {
-      style = style + `.initial-state #search-box-wrapper span::after { content: "${searchText}" !important; display: block !important; } `;
-      style = style + `.initial-state #search-box::placeholder { visibility: hidden !important; } `;
+    if (results.length > 1) {
+      label = `${results.length} files found`;
     }
-
-    // Tags
-    if (selectedTag) {
-      style = style + `.initial-state .tag-item { display: none !important; } `;
-      style = style + `
-    .initial-state #tag-${CSS.escape(selectedTag)} {
-      display: flex !important;
-      flex-grow: 1 !important;
-      color: var(--color-file-item-active-foreground) !important;
-      padding: 0 rem(20px) !important;
-    }
-    .initial-state #tag-${CSS.escape(selectedTag)}:hover {
-      outline-color: #ff4f4f !important;
-      background-color: #831c1c !important;
-      color: var(--color-file-item-active-foreground) !important;
-    }
-    .initial-state #tag-${CSS.escape(selectedTag)} .tag-name { font-size: 14px !important; }
-    .initial-state #tag-${CSS.escape(selectedTag)} .tag-number { display: none !important; }
-    .initial-state #tag-${CSS.escape(selectedTag)} .icon-cross { display: block !important; }
-    `;
-    }
-
-    // Results
-    if (searchResults) {
-      let resultsArray = JSON.parse(searchResults);
-      style = style + `.initial-state #search-results .file-item:not(.folder-item) { display: none !important; } `;
-      for (let searchResult of resultsArray) {
-        style = style + `.initial-state #search-results #${CSS.escape(searchResult)} { display: flex !important; } `;
-      }
-      style = style + `.initial-state #search-results-count::after { content: "${resultsArray.length}" !important; } `;
-    }
-
-    style = style + "</style>";
-
-    document.head.insertAdjacentHTML("beforeend", style)
+    return label;
   }
 
-  onSearch() {
-    let searchText = this.#searchBoxElement.value;
-    if (searchText) {
-      window.sessionStorage.setItem(Search.SEARCH_TEXT, this.#searchBoxElement.value);
-    } else {
-      window.sessionStorage.removeItem(Search.SEARCH_TEXT);
-    }
+  search(searchText) {
+    window.sessionStorage.setItem(Search.SEARCH_TEXT_KEY, searchText ?? "");
     this.#executeSearch();
     this.#applyState();
   }
 
-  tagToggle(tag) {
-    let selectedTag = window.sessionStorage.getItem(Search.SEARCH_TAG);
-    if (tag && tag !== selectedTag) {
-      window.sessionStorage.setItem(Search.SEARCH_TAG, tag);
-    } else {
-      window.sessionStorage.removeItem(Search.SEARCH_TAG);
+  searchTag(tag) {
+    let searchText = ""
+    if (tag) {
+      searchText = "#" + tag;
     }
+    window.sessionStorage.setItem(Search.SEARCH_TEXT_KEY, searchText);
     this.#executeSearch();
     this.#applyState();
+  }
+
+  clearSearch() {
+    window.sessionStorage.setItem(Search.SEARCH_TEXT_KEY, "");
+    this.#executeSearch();
+    this.#applyState();
+    this.focus();
+  }
+
+  focus() {
+    this.#searchBoxElement.focus();
+    this.#searchBoxElement.select();
   }
 
   #executeSearch() {
-    let searchText = window.sessionStorage.getItem(Search.SEARCH_TEXT);
-    let selectedTag = window.sessionStorage.getItem(Search.SEARCH_TAG);
+    let searchText = window.sessionStorage.getItem(Search.SEARCH_TEXT_KEY);
     let results = [];
+
+    if (searchText === "" || searchText === "#") {
+      window.sessionStorage.setItem(Search.SEARCH_RESULTS_KEY, "[]");
+      return;
+    }
 
     for (let post of this.#posts) {
       let match = false;
 
-      if (searchText) {
+      if (searchText[0] !== "#") {
         let searchTextClean = searchText.toLowerCase();
-        match = post.title.includes(searchTextClean) || post.tags.includes(searchTextClean) || post.content.includes(searchTextClean);
+        match = post.title.includes(searchTextClean) || post.tags.join().includes(searchTextClean) || post.content.includes(searchTextClean);
       }
 
-      if (selectedTag) {
-        let selectedTagClean = selectedTag.toLowerCase();
+      if (searchText[0] === "#") {
+        let selectedTagClean = searchText.slice(1).toLowerCase();
         match = post.tags.includes(selectedTagClean);
       }
 
@@ -194,10 +186,6 @@ class Search {
       }
     }
 
-    if (results.length > 0) {
-      window.sessionStorage.setItem(Search.SEARCH_RESULTS, JSON.stringify(results));
-    } else {
-      window.sessionStorage.removeItem(Search.SEARCH_RESULTS);
-    }
+    window.sessionStorage.setItem(Search.SEARCH_RESULTS_KEY, JSON.stringify(results));
   }
 }

@@ -43,9 +43,9 @@ class Focus {
 
     window.sessionStorage.removeItem(Focus.FOCUS_STORAGE_KEY);
 
-    const focused = document.getElementsByClassName(Focus.FOCUSED_CLASS);
-    for (let focusedElement of focused) {
-      focusedElement.classList.remove(Focus.FOCUSED_CLASS);
+    const focusedElements = document.getElementsByClassName(Focus.FOCUSED_CLASS);
+    while (focusedElements.length > 0) {
+      focusedElements[0].classList.remove(Focus.FOCUSED_CLASS);
     }
   }
 

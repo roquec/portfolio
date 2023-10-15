@@ -2,16 +2,27 @@
 
   <label class="nav-header" for="search-box">SEARCH</label>
 
-  {% capture search_content %}
-  <div class="search-box-wrapper" id="search-box-wrapper">
+
+  <div id="search-box-wrapper" class="search-box-wrapper">
     <i class="icon icon-chevron-right"></i>
-    <input type="text" autocomplete="off" spellcheck="false" autocapitalize="off" title="Search" placeholder="Search"
-           id="search-box" oninput="search.onSearch()"/>
-    <span></span>
+    <input type="text"
+           autocomplete="off"
+           spellcheck="false"
+           autocapitalize="off"
+           title="Search"
+           placeholder="Search"
+           id="search-box"
+           oninput="search.search(value)"
+           autofocus/>
+    <button id="search-box-clear" class="button" onclick="search.clearSearch()" title="Clear Search Results">
+      <i class="icon icon-cross"></i>
+    </button>
   </div>
 
-  <div class="tags-wrapper" id="tags-wrapper">
-    <i class="icon icon-tag"></i>
+
+  {% capture scrollable_content %}
+
+  <div id="search-tags-wrapper" class="search-tags-wrapper">
     {% assign posts = site.projects | concat: site.articles | concat: site.drawings %}
     {% assign grouptag = posts | map: 'tags' | join: ',' | split: ',' | group_by_exp: "item", "item" |
     sort: 'name' %}
@@ -24,46 +35,64 @@
 
     {% for tag in grouptag %}
     {% assign scale = tag.size | minus: minSize | times: step | plus: 1.0 | round %}
-    <button class="tag-item tag-size-{{ scale }}" id="tag-{{tag.name}}" onclick="search.tagToggle('{{ tag.name }}')">
-      <span class="tag-name">{{ tag.name }}</span>
-      <span class="tag-number">{{ tag.size }}</span>
-      <i class="icon icon-cross"></i>
+    <button id="tag-{{tag.name}}"
+            class="button tag-item tag-size-{{ scale }}"
+            title="#{{ tag.name }}"
+            onclick="search.searchTag('{{ tag.name }}')">
+      <span class="tag-name">#{{ tag.name }}</span>
+      <span class="tag-number">({{ tag.size }})</span>
     </button>
     {% endfor %}
   </div>
 
-  <div class="search-results" id="search-results">
+  <div id="search-results-wrapper" class="search-results folder">
 
-    <div id="search-results-label"><span id="search-results-count"></span> files found</div>
+    <div id="search-results-label">Results</div>
 
     <div id="search-results-items" class="folder-contents">
 
-      {% include _html/components/folder.html id='search-results-projects' title='roquec/projects' name='projects' %}
-      <div class="folder-contents">
-        {% for project in site.projects %}
-        {% include _html/components/file.html page=project scope="search-panel" %}
-        {% endfor %}
-      </div>
+      <!-- ========= PROJECTS FOLDER CONTENTS ========= -->
+      {% capture projects_folder_contents %}
+      <!-- Project file items -->
+      {% for project in site.projects %}
+      {% include _html/components/file.html page=project scope="search-panel" %}
+      {% endfor %}
+      {% endcapture %}
 
-      {% include _html/components/folder.html id='search-results-articles' title='roquec/articles' name='articles' %}
-      <div class="folder-contents">
-        {% for article in site.articles %}
-        {% include _html/components/file.html page=article scope="search-panel" %}
-        {% endfor %}
-      </div>
+      <!-- PROJECTS FOLDER -->
+      {% include _html/components/folder.html id='search-results-projects' title='roquec/projects' name='projects'
+      contents=projects_folder_contents %}
 
-      {% include _html/components/folder.html id='search-results-drawings' title='roquec/drawings' name='drawings' %}
-      <div class="folder-contents">
-        {% for drawing in site.drawings %}
-        {% include _html/components/file.html page=drawing scope="search-panel" %}
-        {% endfor %}
-      </div>
+
+      <!-- ========= ARTICLES FOLDER CONTENTS ========= -->
+      {% capture articles_folder_contents %}
+      <!-- Project file items -->
+      {% for article in site.articles %}
+      {% include _html/components/file.html page=article scope="search-panel" %}
+      {% endfor %}
+      {% endcapture %}
+
+      <!-- PROJECTS FOLDER -->
+      {% include _html/components/folder.html id='search-results-articles' title='roquec/articles' name='articles'
+      contents=articles_folder_contents %}
+
+
+      <!-- ========= DRAWINGS FOLDER CONTENTS ========= -->
+      {% capture drawings_folder_contents %}
+      <!-- Project file items -->
+      {% for drawing in site.drawings %}
+      {% include _html/components/file.html page=drawing scope="search-panel" %}
+      {% endfor %}
+      {% endcapture %}
+
+      <!-- PROJECTS FOLDER -->
+      {% include _html/components/folder.html id='search-results-drawings' title='roquec/drawings' name='drawings'
+      contents=drawings_folder_contents %}
 
     </div>
   </div>
+
   {% endcapture %}
 
-  <div class="search-contents">
-    {% include _html/components/scroll.html content=search_content id="search-scroll" %}
-  </div>
+  {% include _html/components/scroll.html id="search-scroll" content=scrollable_content %}
 </div>

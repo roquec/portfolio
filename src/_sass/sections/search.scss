@@ -12,6 +12,7 @@ html {
   --color-search-bar-placeholder: #{colors.$dark-mode-search-bar-placeholder};
   --color-search-tag-foreground: #{colors.$dark-mode-search-tag-foreground};
   --color-search-tag-background: #{colors.$dark-mode-search-tag-background};
+  --color-search-tag-number-foreground: #{colors.$dark-mode-search-tag-number-foreground};
   --color-search-tag-hover-background: #{colors.$dark-mode-search-tag-hover-background};
   --color-search-tag-hover-foreground: #{colors.$dark-mode-search-tag-hover-foreground};
   --color-search-tag-hover-border: #{colors.$dark-mode-search-tag-hover-border};
@@ -28,7 +29,9 @@ html {
     --color-search-bar-foreground: #{colors.$light-mode-search-bar-foreground};
     --color-search-bar-active-border: #{colors.$light-mode-search-bar-active-border};
     --color-search-bar-placeholder: #{colors.$light-mode-search-bar-placeholder};
+    --color-search-tag-foreground: #{colors.$light-mode-search-tag-foreground};
     --color-search-tag-background: #{colors.$light-mode-search-tag-background};
+    --color-search-tag-number-foreground: #{colors.$light-mode-search-tag-number-foreground};
     --color-search-tag-hover-background: #{colors.$light-mode-search-tag-hover-background};
     --color-search-tag-hover-foreground: #{colors.$light-mode-search-tag-hover-foreground};
     --color-search-tag-hover-border: #{colors.$light-mode-search-tag-hover-border};
@@ -52,20 +55,15 @@ html {
   overflow-x: hidden;
   padding-top: rem(12px);
 
-  .search-contents {
-    flex: 1;
-    height: 0;
-  }
-
   #search-box-wrapper {
-    margin-top: rem(5px);
-    margin-bottom: rem(12px);
     display: flex;
+    margin-top: rem(6px);
+    margin-bottom: rem(12px);
     align-items: center;
     justify-content: center;
     position: relative;
 
-    i {
+    .icon-chevron-right {
       font-size: rem(16px);
       width: rem(20px);
     }
@@ -73,162 +71,125 @@ html {
     #search-box {
       flex: 1;
       font-size: rem(13px);
-      margin: rem(1px) rem(12px) 0 0;
+      margin-right: rem(12px);
       padding: rem(4px) rem(7px);
       outline: none;
       border: none;
       border-radius: rem(2px);
       color: var(--color-search-bar-foreground);
       background-color: var(--color-search-bar-background);
-      min-width: 50px;
+      min-width: 0;
 
       &::placeholder {
         color: var(--color-search-bar-placeholder);
       }
 
       &:focus {
-        outline: 1px solid var(--color-search-bar-active-border);
-        outline-offset: -1px;
+        outline: rem(1px) solid var(--color-search-bar-active-border);
+        outline-offset: rem(-1px);
       }
     }
 
-    span::after {
-      content: "";
-      display: none;
-      z-index: 1;
-      position: absolute;
-      left: rem(27px);
-      top: rem(7px);
-      font: inherit;
-      color: var(--color-search-bar-foreground);
-    }
-
-    &.hidden {
-      display: none;
-    }
-  }
-
-  #tags-wrapper {
-    margin-top: rem(5px);
-    margin-bottom: rem(12px);
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    padding: 0 12px 0 12px;
-    align-items: center;
-    gap: 6px;
-
-    i {
-      font-size: rem(14px);
-      width: rem(14px);
-      margin-left: -5px;
-    }
-
-    &::after {
-      content: "";
-      flex-grow: 200;
-    }
-
-    .tag-item {
-      padding: 0 10px;
-      flex-grow: 1;
-      transition: flex-grow 0.1s, outline-width 0.1s, outline-color 0.1s, background-color 0.1s, color 0.1s;
-      border: none;
-      color: var(--color-search-tag-foreground);
-      overflow: hidden;
-      user-select: none;
-      border-radius: 20px;
-      outline-offset: -1px;
-      outline: 1px solid transparent;
+    #search-box-clear {
       display: flex;
       align-items: center;
       justify-content: center;
-      height: 26px;
+      position: absolute;
+      height: 100%;
+      width: rem(25px);
+      right: rem(12px);
+      border-radius: rem(2px);
 
-      $min: 0.1;
-      $max: 0.25;
-      $steps: 10;
-      @for $i from 1 through $steps {
-        &.tag-size-#{$i} {
-          background-color: rgba(var(--color-search-tag-background), calc(($max - $min) / ($steps - 1)) * ($i - 1) + $min);
-        }
+      i {
+        font-size: rem(16px);
       }
-
-      .tag-name {
-        font-size: 12px;
-      }
-
-      .tag-number {
-        margin-left: 5px;
-        color: rgba(128, 128, 128, 0.5);
-        font-size: 12px;
-      }
-
-      .icon-cross {
-        padding-left: 15px;
-        display: none;
-      }
-
-      &.selected {
-        flex-grow: 1;
-        padding: 0 rem(20px);
-        color: var(--color-search-tag-selected-foreground);
-        background-color: var(--color-search-tag-selected-background);
-        outline-color: var(--color-search-tag-selected-border);
-
-        .tag-name {
-          font-size: 14px;
-        }
-
-        .tag-number {
-          display: none;
-        }
-
-        .icon-cross {
-          display: block;
-        }
-      }
-    }
-
-    &.selected {
-      .tag-item:not(.selected) {
-        display: none;
-      }
-    }
-
-    &.hidden {
-      display: none;
     }
   }
 
-  #search-results {
-    margin-top: rem(5px);
+  #search-scroll {
+    flex: 1;
+    height: 0;
 
-    #search-results-label {
-      margin-left: rem(22px);
-      margin-bottom: rem(10px);
-      color: var(--color-search-results-label);
-      font-weight: 400;
+    #search-tags-wrapper {
+      display: flex;
+      margin-top: rem(5px);
+      margin-bottom: rem(12px);
+      flex-direction: row;
+      flex-wrap: wrap;
+      padding: 0 rem(12px);
+      align-items: center;
+      gap: rem(6px);
 
-      #search-results-count::after {
-        content: attr(data-value);
-      }
-    }
 
-    #search-results-items {
-      display: block;
-    }
-
-    .file-item, .folder-item {
-      display: none;
-
-      &.result {
+      .tag-item {
+        flex-grow: 1;
         display: flex;
+        align-items: center;
+        justify-content: center;
+        overflow: hidden;
+        user-select: none;
+
+        outline-color: transparent;
+        transition: flex-grow 0.1s, outline-color 0.1s, background-color 0.1s, color 0.1s;
+
+        padding: 0 rem(10px) 0 rem(10px);
+        color: var(--color-search-tag-foreground);
+        outline-offset: rem(-1px);
+        height: rem(25px);
+        border-radius: rem(50px);
+
+
+        $min: 0.1;
+        $max: 0.25;
+        $steps: 10;
+        @for $i from 1 through $steps {
+          &.tag-size-#{$i} {
+            background-color: rgba(var(--color-search-tag-background), calc(($max - $min) / ($steps - 1)) * ($i - 1) + $min);
+          }
+        }
+
+        .tag-name {
+          flex: 1;
+          font-size: rem(13px);
+          text-align: center;
+          line-height: rem(25px);
+          vertical-align: middle;
+          height: rem(25px);
+        }
+
+        .tag-number {
+          display: inline-block;
+          margin-left: rem(4px);
+          font-size: rem(11px);
+          line-height: rem(25px);
+          text-align: center;
+          letter-spacing: 1px;
+          vertical-align: middle;
+          color: var(--color-search-tag-number-foreground);
+        }
+      }
+
+      &::after {
+        content: "";
+        flex-grow: 200;
       }
     }
 
-    &.hidden {
-      display: none;
+    #search-results-wrapper {
+      display: flex;
+      flex-direction: column;
+      margin-top: rem(5px);
+
+      #search-results-label {
+        margin-left: rem(22px);
+        margin-bottom: rem(10px);
+        color: var(--color-search-results-label);
+      }
+
+      #search-results-items {
+        display: flex;
+        flex-direction: column;
+      }
     }
   }
 }
@@ -237,26 +198,70 @@ html {
    MOBILE STYLES
 ==========================*/
 @media (max-width: #{$breakpoint-mobile}) {
+  #search {
+    #search-box-wrapper {
+      #search-box {
+        padding: rem(7px) rem(7px);
+      }
 
+      #search-box-clear {
+        width: rem(30px);
+      }
+    }
+
+    #search-scroll #search-tags-wrapper .tag-item {
+      height: rem(30px);
+    }
+  }
 }
 
 /*=========================
    HOVER STYLES
 ==========================*/
 @media (hover: hover) {
-  #search #tags-wrapper .tag-item {
+  #search #search-scroll #search-tags-wrapper .tag-item {
     &:hover, &:focus-visible {
-      cursor: pointer;
       flex-grow: 100;
-      outline-color: var(--color-search-tag-hover-border);
+      outline: rem(1px) solid var(--color-search-tag-hover-border);
       background-color: var(--color-search-tag-hover-background);
       color: var(--color-search-tag-hover-foreground);
     }
+  }
+}
 
-    &.selected:hover {
-      outline-color: var(--color-search-tag-selected-hover-border);
-      background-color: var(--color-search-tag-selected-hover-background);
-      color: var(--color-search-tag-selected-hover-foreground);
+/*=========================
+   STATE STYLES
+==========================*/
+#search {
+  #search-box-wrapper #search-box-clear.hidden {
+    display: none;
+  }
+
+  #search-scroll {
+    #search-tags-wrapper {
+      &.hidden {
+        display: none;
+      }
+
+      .tag-item:active {
+        outline: rem(1px) solid var(--color-search-tag-hover-border);
+        background-color: var(--color-search-tag-hover-background);
+        color: var(--color-search-tag-hover-foreground);
+      }
+    }
+
+    #search-results-wrapper {
+      &.hidden {
+        display: none;
+      }
+
+      .folder:not(.result-item) {
+        display: none;
+      }
+
+      .file-item:not(.result-item) {
+        display: none;
+      }
     }
   }
 }

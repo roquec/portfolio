@@ -16,8 +16,9 @@ class Scroll {
   #thumbClickListener = this.#onThumbClick.bind(this);
   #thumbDragListener = this.#onScrollThumbDrag.bind(this);
   #thumbReleaseListener = this.#onScrollThumbRelease.bind(this);
-  #contentScrollListener = this.#applyState.bind(this);
+  #contentScrollListener = this.#onScroll.bind(this);
   #thumbWheelListener = this.#onThumbWheel.bind(this);
+  #contentScrollEndListener = this.#onScrollEnd.bind(this);
 
   constructor(targetId) {
     this.#targetId = targetId;
@@ -40,6 +41,7 @@ class Scroll {
     this.#thumb.addEventListener("mousedown", this.#thumbClickListener);
     this.#content.addEventListener("scroll", this.#contentScrollListener);
     this.#thumb.addEventListener("wheel", this.#thumbWheelListener, {passive: true});
+    this.#content.addEventListener("scrollend", this.#contentScrollEndListener);
   }
 
   stop() {
@@ -49,6 +51,7 @@ class Scroll {
     document.removeEventListener("mouseup", this.#thumbReleaseListener);
     this.#content.removeEventListener("scroll", this.#contentScrollListener);
     this.#thumb.removeEventListener("wheel", this.#thumbWheelListener);
+    this.#content.removeEventListener("scrollend", this.#contentScrollEndListener);
   }
 
   #applyState() {
@@ -100,5 +103,14 @@ class Scroll {
   #onThumbWheel(event) {
     const newScrollDistance = this.#content.scrollTop - event.deltaY;
     this.#content.scrollTo(0, newScrollDistance);
+  }
+
+  #onScroll() {
+    this.#applyState();
+    this.#thumb.classList.add(Scroll.SCROLL_THUMB_ACTIVE_CLASS);
+  }
+
+  #onScrollEnd() {
+    this.#thumb.classList.remove(Scroll.SCROLL_THUMB_ACTIVE_CLASS);
   }
 }

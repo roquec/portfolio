@@ -6,7 +6,7 @@ class Folders {
 
   // Constants
   static FOLDERS_STORAGE_KEY = "open-folders";
-  static DEFAULT_OPEN_FOLDERS = ["portfolio-folder"];
+  static DEFAULT_OPEN_FOLDERS = ["portfolio-folder", "search-results-projects", "search-results-articles", "search-results-drawings"];
   static FOLDERS_CLASS = "folder";
   static OPEN_FOLDER_CLASS = "open";
 

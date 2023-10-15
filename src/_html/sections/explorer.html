@@ -6,7 +6,7 @@
   {% capture portfolio_folder_contents %}
 
   <!-- ========= SCROLL CONTENTS ========= -->
-  {% capture explorer_content %}
+  {% capture scrollable_content %}
 
   <!-- main.html -->
   {% include _html/components/file.html id='main.html' %}
@@ -21,7 +21,7 @@
   {% include _html/components/file.html id='config.html' %}
 
 
-  <!-- ========= PROJECT FOLDER CONTENTS ========= -->
+  <!-- ========= PROJECTS FOLDER CONTENTS ========= -->
   {% capture projects_folder_contents %}
   <!-- projects.html -->
   {% include _html/components/file.html id='projects.html' %}
@@ -75,7 +75,7 @@
   {% endcapture %}
 
   <!-- SCROLL -->
-  {% include _html/components/scroll.html id="explorer-scroll" content=explorer_content %}
+  {% include _html/components/scroll.html id="explorer-scroll" content=scrollable_content %}
 
   {% endcapture %}
 
