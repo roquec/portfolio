@@ -210,26 +210,81 @@ html {
   }
 }
 
+.welcome-pic-background {
+  display: none;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  opacity: 0;
+}
 
 .welcome-pic {
-  circle {
-    display: none;
-  }
 
-  #mask {
-    display: none;
-  }
+  svg {
+    * {
+      transform-box: fill-box;
+    }
 
-  #portrait path {
-    fill: transparent;
-    fill-opacity: 0.5;
-    stroke-width: 0.3px;
-    stroke-opacity: 1;
-    stroke: rgb(140, 140, 140);
-    animation: dash 3s linear 0s forwards;
+    circle {
+      display: none;
+    }
 
-    &:hover {
-      fill-opacity: 1;
+    #mask {
+      display: none;
+    }
+
+    #portrait path {
+      fill-opacity: 0.6;
+      //transform: translateY(-190px);
+      //transition: transform 0.5s ease-in;
+
+      stroke-width: 0.2px;
+      stroke-opacity: 1;
+
+      transform-origin: center;
+
+      // LINE
+      @if (true) {
+        @for $i from 1 through 113 {
+          &.top-left-#{$i} {
+            fill: transparent;
+            stroke: #D4D4D4;
+            stroke-dasharray: 115;
+            stroke-dashoffset: 115;
+            $pace: 0.04;
+            animation: dash #{$pace}s linear #{$pace * $i + 3}s forwards;
+          }
+        }
+      }
+
+      @if (false) {
+        // PAINT
+        @for $i from 1 through 113 {
+          &.top-left-#{$i} {
+            $pace: 0.015;
+            transform: scale(0);
+            fill: inherit;
+            stroke: #1E1E1E;
+            stroke-width: 0.6px;
+            animation: paint 0.2s linear #{$pace * $i + 3}s forwards;
+          }
+        }
+      }
+
+      // MOVE
+      @for $i from 1 through 113 {
+        &.top-left-#{$i} {
+          //transform: translate(#{random(1000) - 500}px, #{random(1000) - 50}px);
+          //$pace: 0.02;
+          //animation: fall 2s ease-in #{$pace * $i}s forwards;
+        }
+      }
+    }
+
+    #details path {
+      //stroke-width: 0 !important;
     }
   }
 }
@@ -237,21 +292,29 @@ html {
 
 @keyframes dash {
   0% {
-    fill: transparent;
-    stroke: rgb(140, 140, 140);
-    stroke-dasharray: 100;
-    stroke-dashoffset: 100;
-  }
-  85% {
-    fill: transparent;
-    stroke: rgb(140, 140, 140);
-    stroke-dasharray: 100;
-    stroke-dashoffset: 0;
+    stroke-dasharray: 115;
+    stroke-dashoffset: 115;
   }
   100% {
-    fill: inherit;
-    stroke: rgb(30, 30, 30);
-    stroke-dasharray: 100;
+    stroke-dasharray: 115;
     stroke-dashoffset: 0;
+  }
+}
+
+@keyframes paint {
+  0% {
+    transform: scale(0);
+  }
+  100% {
+    transform: scale(100%);
+  }
+}
+
+@keyframes fall {
+  0% {
+  }
+  100% {
+    transform: translate(0, 0);
+
   }
 }
