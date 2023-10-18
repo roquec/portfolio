@@ -31,221 +31,61 @@ html {
   min-height: 100%;
   display: flex;
   flex-direction: column;
-  padding-top: 0;
-  padding-bottom: 0;
-  gap: 0;
+  align-items: center;
+  justify-items: center;
+  padding: rem(20px);
 
-  .index-page-top {
-    flex-grow: 1;
+  .welcome-pic {
+    margin-top: auto;
+    max-height: rem(300px);
+    border-radius: 50%;
+    background-color: #151515;
+
+    svg {
+      filter: brightness(75%);
+
+      * {
+        transform-box: fill-box;
+        transform-origin: center;
+      }
+
+      circle {
+        display: none;
+      }
+    }
+  }
+
+  .welcome-links {
+    margin-bottom: auto;
+    margin-top: rem(22px);
     display: flex;
-    align-items: center;
-    margin: 20px;
+    flex-direction: column;
+    gap: rem(16px);
+    font-size: rem(13px);
+    font-weight: normal;
+    text-align: right;
 
-    .welcome-wrapper {
-      flex-direction: row;
-      gap: 0;
-      flex-grow: 1;
-      display: flex;
-      align-items: center;
+    .welcome-link {
+      text-decoration: none;
+      color: #848484;
 
-      font-weight: lighter;
-      font-size: rem(38px);
-
-      .welcome-name, .welcome-occupation {
-        flex: 0;
-        flex-flow: column;
-        align-items: center;
-        text-align: center;
-      }
-
-      .welcome-name {
-        display: flex;
-        flex: 1;
-        align-items: center;
-        align-self: center;
-
-        .welcome-accent {
-          color: var(--color-index-welcome-accent);
-          font-size: rem(45px);
-          font-weight: normal;
-          letter-spacing: 1px;
-        }
-      }
-
-      .welcome-occupation {
-        display: flex;
-        flex: 1;
-        align-items: center;
-        align-self: center;
-      }
-
-      .welcome-pic {
-        height: 350px;
-        border-radius: 50%;
-      }
-    }
-  }
-
-  .index-page-bottom {
-    display: none;
-    flex-grow: 0;
-
-    .links-wrapper {
-      flex-grow: 1;
-      display: flex;
-      align-items: center;
-
-      flex-direction: row;
-      width: 100%;
-      gap: 0;
-
-      .link {
-        position: relative;
-        display: flex;
-        align-items: center;
-
-        font-weight: 300;
-        color: var(--color-index-links);
-
-        padding-top: rem(50px);
-        padding-bottom: rem(50px);
-        flex-grow: 1;
-        flex-direction: column;
-        gap: rem(10px);
-
-        .link-icon {
-          flex-grow: 1;
-          font-size: rem(40px);
-        }
-
-        .link-title {
-          flex-grow: 1;
-          font-size: rem(28px);
-          letter-spacing: 1px;
-        }
+      i {
+        background-color: #2C2C2C;
+        padding: rem(4px);
+        border-radius: rem(4px);
+        margin-left: rem(5px);
+        width: rem(28px);
       }
     }
   }
 }
 
-/*=========================
-   MOBILE STYLES
-==========================*/
-@container content (max-width: #{$breakpoint-mobile}) {
-  .index-page {
-    padding-top: rem(40px);
-    padding-bottom: rem(60px);
-    gap: rem(60px);
-
-    & > .index-page-top {
-      flex-grow: 0;
-
-      & > .welcome-wrapper {
-        flex-direction: column;
-        gap: rem(30px);
-
-        & > .welcome-name,
-        & > .welcome-occupation {
-          flex: 0;
-          flex-flow: column;
-          align-items: center;
-          text-align: center;
-          align-self: center;
-
-          & > .welcome-name-second {
-            padding-right: 0;
-          }
-
-          & > .welcome-occupation-first {
-            padding-left: 0;
-          }
-        }
-      }
-    }
-
-    & > .index-page-bottom {
-      & > .links-wrapper {
-        flex-direction: column;
-        gap: rem(40px);
-
-        & > .link {
-          flex-direction: row;
-          gap: rem(20px);
-          padding-top: 0;
-          padding-bottom: 0;
-
-          & > .link-icon {
-            font-size: rem(30px);
-          }
-        }
-      }
-    }
-  }
-}
 
 /*=========================
    HOVER STYLES
 ==========================*/
 @media (hover: hover) {
-  .index-page .link {
-    &:hover, &:focus-within {
-      font-weight: 300;
-
-      &.projects-link {
-        color: var(--color-index-link-projects-hover);
-      }
-
-      &.drawings-link {
-        color: var(--color-index-link-drawings-hover);
-      }
-
-      &.articles-link {
-        color: var(--color-index-link-articles-hover);
-      }
-
-      &.about-link {
-        color: var(--color-index-link-about-hover);
-      }
-    }
-  }
-}
-
-
-.welcome-pic {
-
-  svg {
-
-    filter: brightness(70%);
-
-    * {
-      transform-box: fill-box;
-      transform-origin: center;
-    }
-
-    path {
-    }
-
-    $totalTime: 1;
-    $groups: 1;
-
-    $pathsPerGroup: calc(120 / $groups);
-    @for $i from 1 through $groups {
-
-      path:nth-child(n+ #{(($i - 1) * $pathsPerGroup)}):nth-child(-n+ #{$pathsPerGroup * $i}) {
-        $speed: calc($totalTime / $groups);
-        $delay: (($i - $groups) * - 1) * $speed;
-        animation: svg #{$speed}s ease-in-out #{$delay}s backwards;
-      }
-    }
-  }
-}
-
-
-@keyframes svg {
-  0% {
-    scale: 0;
-  }
-  100% {
-    scale: 1;
+  .index-page > .welcome-links > .welcome-link:hover {
+    color: inherit;
   }
 }

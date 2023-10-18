@@ -6,54 +6,19 @@ type: html
 ---
 
 <div class="index-page">
-
-  <div class="index-page-top">
-
-    <div class="welcome-wrapper">
-
-      <div class="welcome-name">
-        <div class="welcome-name-first">Hello, I'm</div>
-        <div class="welcome-name-second"><span class="welcome-accent">Roque Carrizo</span>.</div>
-      </div>
-
-      <div class="welcome-pic">
-        {% include _html/snippets/profile-svg.svg %}
-      </div>
-
-      <div class="welcome-occupation">
-        <div class="welcome-occupation-first">I'm a</div>
-        <div class="welcome-occupation-second">software engineer.</div>
-      </div>
-
-    </div>
-
+  <div class="welcome-pic">
+    {% include _html/snippets/profile-svg.svg %}
   </div>
 
-  <div class="index-page-bottom">
-    <div class="links-wrapper">
-
-      <a class="button link projects-link" aria-label="Projects" href="/projects">
-        <i class="icon link-icon icon-wrench"></i>
-        <div class="link-title">PROJECTS</div>
-      </a>
-
-      <a class="button link drawings-link" aria-label="Drawings" href="/drawings">
-        <i class="icon link-icon icon-palette"></i>
-        <div class="link-title">DRAWINGS</div>
-      </a>
-
-      <a class="button link articles-link" aria-label="Articles" href="/articles">
-        <i class="icon link-icon icon-article"></i>
-        <div class="link-title">ARTICLES</div>
-      </a>
-
-      <a class="button link about-link" aria-label="About me" href="/profile">
-        <i class="icon link-icon icon-user"></i>
-        <div class="link-title">ABOUT ME</div>
-      </a>
-
-    </div>
+  <div class="welcome-links">
+    <a class="welcome-link about-link" title="About me" href="/profile">Go to Profile <i
+      class="icon link-icon icon-user"></i></a>
+    <a class="welcome-link projects-link" title="Projects" href="/projects">Go to Projects <i
+      class="icon link-icon icon-wrench"></i></a>
+    <a class="welcome-link articles-link" title="Articles" href="/articles">Go to Articles <i
+      class="icon link-icon icon-article"></i></a>
+    <a class="welcome-link drawings-link" title="Drawings" href="/drawings">Go to Drawings <i
+      class="icon link-icon icon-palette"></i></a>
   </div>
-
 </div>
 
