@@ -80,7 +80,7 @@ html {
       }
 
       .welcome-pic {
-        height: 400px;
+        height: 350px;
         border-radius: 50%;
       }
     }
@@ -210,111 +210,42 @@ html {
   }
 }
 
-.welcome-pic-background {
-  display: none;
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  opacity: 0;
-}
 
 .welcome-pic {
 
   svg {
+
+    filter: brightness(70%);
+
     * {
       transform-box: fill-box;
-    }
-
-    circle {
-      display: none;
-    }
-
-    #mask {
-      display: none;
-    }
-
-    #portrait path {
-      fill-opacity: 0.6;
-      //transform: translateY(-190px);
-      //transition: transform 0.5s ease-in;
-
-      stroke-width: 0.2px;
-      stroke-opacity: 1;
-
       transform-origin: center;
-
-      // LINE
-      @if (true) {
-        @for $i from 1 through 113 {
-          &.top-left-#{$i} {
-            fill: transparent;
-            stroke: #D4D4D4;
-            stroke-dasharray: 115;
-            stroke-dashoffset: 115;
-            $pace: 0.04;
-            animation: dash #{$pace}s linear #{$pace * $i + 3}s forwards;
-          }
-        }
-      }
-
-      @if (false) {
-        // PAINT
-        @for $i from 1 through 113 {
-          &.top-left-#{$i} {
-            $pace: 0.015;
-            transform: scale(0);
-            fill: inherit;
-            stroke: #1E1E1E;
-            stroke-width: 0.6px;
-            animation: paint 0.2s linear #{$pace * $i + 3}s forwards;
-          }
-        }
-      }
-
-      // MOVE
-      @for $i from 1 through 113 {
-        &.top-left-#{$i} {
-          //transform: translate(#{random(1000) - 500}px, #{random(1000) - 50}px);
-          //$pace: 0.02;
-          //animation: fall 2s ease-in #{$pace * $i}s forwards;
-        }
-      }
     }
 
-    #details path {
-      //stroke-width: 0 !important;
+    path {
+    }
+
+    $totalTime: 1;
+    $groups: 1;
+
+    $pathsPerGroup: calc(120 / $groups);
+    @for $i from 1 through $groups {
+
+      path:nth-child(n+ #{(($i - 1) * $pathsPerGroup)}):nth-child(-n+ #{$pathsPerGroup * $i}) {
+        $speed: calc($totalTime / $groups);
+        $delay: (($i - $groups) * - 1) * $speed;
+        animation: svg #{$speed}s ease-in-out #{$delay}s backwards;
+      }
     }
   }
 }
 
 
-@keyframes dash {
+@keyframes svg {
   0% {
-    stroke-dasharray: 115;
-    stroke-dashoffset: 115;
+    scale: 0;
   }
   100% {
-    stroke-dasharray: 115;
-    stroke-dashoffset: 0;
-  }
-}
-
-@keyframes paint {
-  0% {
-    transform: scale(0);
-  }
-  100% {
-    transform: scale(100%);
-  }
-}
-
-@keyframes fall {
-  0% {
-  }
-  100% {
-    transform: translate(0, 0);
-
+    scale: 1;
   }
 }
