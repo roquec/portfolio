@@ -6,30 +6,27 @@
    STYLES
 ==========================*/
 .collection-page {
-  padding: rem(14px);
+  padding: rem(24px);
 
   .collection-title {
     display: flex;
     align-items: center;
     justify-items: center;
-    margin-top: 10px;
-    padding-left: 12px;
+
     font-size: rem(28px);
-    padding-bottom: rem(18px);
-    margin-bottom: rem(25px);
-    border-bottom: rem(1px) solid var(--color-base-foreground-muted);
     text-align: center;
 
     i {
-      font-size: rem(22px);
-      margin-right: 10px;
+      font-size: rem(20px);
+      margin-right: rem(14px);
     }
   }
 
   .collection-posts {
+    margin-top: rem(24px);
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(450px, 1fr));
-    grid-gap: rem(22px) rem(14px);
+    grid-gap: rem(24px) rem(24px);
   }
 }
 
@@ -38,7 +35,11 @@
 ==========================*/
 @container content (max-width: #{$breakpoint-mobile}) {
   .collection-page {
-    padding: rem(8px);
+    padding: rem(24px) 0;
+
+    & > .collection-title {
+      margin: 0 rem(16px);
+    }
 
     & > .collection-posts {
       grid-template-columns: 1fr;

@@ -64,8 +64,8 @@ $file-active-border: #90C2F9;
 
 // Card
 $card-foreground: #24292f;
-$card-background: #CCCCCCDD;
-$card-outline: #24292f;
+$card-foreground-muted: #757575;
+$card-hover-background: #F4F4F4;
 
 // Scroll
 $scrollbar-thumb: rgba(0, 0, 0, 0.16);
@@ -103,6 +103,6 @@ $markdown-code-highlight-constant: #79c0ff;
 $markdown-code-highlight-function: #d2a8ff;
 
 // Index Page
-$index-picture-background: #F2F2F2;
+$index-picture-background: #151515;
 $index-link-foreground: #757575;
 $index-link-icon-background: #F4F4F4;

@@ -1,22 +1,28 @@
-<a class="button card" title="{{ include.post.title }}" href="{{ include.post.url | remove:'index.html' }}">
-
-  <div class="card-thumbnail">
-    <img src="{{ include.post.url | replace:'/index.html','/thumbnail.webp' }}" alt="Thumbnail">
-
-    <div class="card-tags">
-      {% for tag in include.post.tags %}
-      <div class="card-tag">{{ tag }}</div>
-      {% endfor %}
-    </div>
-  </div>
-
-  <div class="card-content">
-    <div class="card-title">
-      {{ include.post.title }}
+<div class="card-wrapper">
+  <a class="button card" title="{{ include.post.title }}" href="{{ include.post.url | remove:'index.html' }}">
+    <div class="card-thumbnail">
+      <img src="{{ include.post.url | replace:'/index.html','/thumbnail.webp' }}" alt="Thumbnail">
     </div>
 
-    <div class="card-excerpt">
-      {{ include.post.excerpt | strip_html }}
+    <div class="card-content">
+
+      <div class="card-tags">
+        {% for tag in include.post.tags %}
+        <div class="card-tag">
+          #{{ tag }}
+        </div>
+        {% endfor %}
+      </div>
+
+      <div class="card-title">
+        {{ include.post.title }}
+      </div>
+
+
+      <div class="card-excerpt">
+        {{ include.post.excerpt | strip_html }}
+      </div>
     </div>
-  </div>
-</a>
+  </a>
+
+</div>

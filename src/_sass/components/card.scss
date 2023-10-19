@@ -7,97 +7,110 @@
 ==========================*/
 html {
   --color-card-foreground: #{colors.$dark-mode-card-foreground};
-  --color-card-outline: #{colors.$dark-mode-card-outline};
-  --color-card-background: #{colors.$dark-mode-card-background};
+  --color-card-foreground-muted: #{colors.$dark-mode-card-foreground-muted};
+  --color-card-hover-background: #{colors.$dark-mode-card-hover-background};
 
   &[data-theme="light"] {
     --color-card-foreground: #{colors.$light-mode-card-foreground};
-    --color-card-outline: #{colors.$light-mode-card-outline};
-    --color-card-background: #{colors.$light-mode-card-background};
+    --color-card-foreground-muted: #{colors.$light-mode-card-foreground-muted};
+    --color-card-hover-background: #{colors.$light-mode-card-hover-background};
   }
 }
 
 /*=========================
+   VARIABLES
+==========================*/
+$card-height: rem(230px);
+
+/*=========================
    STYLES
 ==========================*/
-.card {
-  transition: outline-color 0.15s ease-in-out, outline-width 0.15s ease-in-out;
-  display: flex;
-  flex-direction: column;
-  overflow: hidden;
-  border-radius: rem(5px);
-  outline: 1px solid #252526;
+.card-wrapper {
+  .card {
+    display: flex;
+    flex-direction: column;
 
-  .card-thumbnail {
-    position: relative;
-    max-height: rem(230px);
-    overflow: hidden;
-
-    img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      object-position: center;
-      transition: transform 0.15s ease-in-out;
-    }
-
-    .card-tags {
-      width: 100%;
-      position: absolute;
-      top: 0;
-      right: 0;
-      padding: rem(5px) rem(5px) rem(5px) rem(40px);
-
-      display: flex;
-      flex-direction: row;
-      gap: rem(5px);
-      align-items: center;
-      justify-content: end;
-      flex-wrap: wrap;
-      max-height: rem(28px);
+    .card-thumbnail {
+      position: relative;
+      height: $card-height;
       overflow: hidden;
 
-      .card-tag {
-        font-size: rem(14px);
-        align-self: end;
-        padding: rem(4px) rem(6px);
-        background: #252526AA;
-        border-radius: rem(6px);
-        backdrop-filter: blur(6px);
+      img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        object-position: center;
+        transition: transform 0.15s ease-in-out;
+      }
+
+      &::after {
+        content: "";
+        display: block;
+        height: 100%;
+        width: 100%;
+        position: absolute;
+        top: 0;
+        box-shadow: inset 0 0 rem(5px) rem(-2px) rgba(0, 0, 0, 0.75);
+      }
+    }
+
+    .card-content {
+      flex: 1;
+      width: 100%;
+      padding: rem(8px) rem(8px) rem(8px) rem(8px);
+
+      .card-tags {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: start;
+        gap: rem(4px) rem(8px);
+        flex-wrap: wrap;
+        margin-bottom: rem(6px);
+
+        .card-tag {
+          font-size: rem(13px);
+          color: var(--color-card-foreground-muted);
+        }
+      }
+
+      .card-title {
+        margin-bottom: rem(4px);
+        width: 100%;
+        font-size: rem(18px);
+        overflow: hidden;
+        text-overflow: ellipsis;
+        display: -webkit-box;
+        -webkit-line-clamp: 2;
+        -webkit-box-orient: vertical;
+        line-height: 1.4;
+        color: var(--color-card-foreground);
+      }
+
+
+      .card-excerpt {
+        width: 100%;
+        font-size: rem(13px);
+        color: var(--color-card-foreground-muted);
+        overflow: hidden;
+        text-overflow: ellipsis;
+        display: -webkit-box;
+        -webkit-line-clamp: 3;
+        -webkit-box-orient: vertical;
+        line-height: 1.3;
+        font-style: italic;
       }
     }
   }
+}
+
+.card:active {
+  .card-thumbnail img {
+    filter: contrast(90%);
+  }
 
   .card-content {
-    flex: 1;
-    width: 100%;
-    padding: 8px;
-    background: #252526;
-
-    .card-title {
-      margin-bottom: rem(4px);
-      width: 100%;
-      font-size: rem(18px);
-      overflow: hidden;
-      text-overflow: ellipsis;
-      display: -webkit-box;
-      -webkit-line-clamp: 2;
-      -webkit-box-orient: vertical;
-      line-height: 1.4;
-    }
-
-    .card-excerpt {
-      width: 100%;
-      font-size: rem(13px);
-      color: #878787;
-      overflow: hidden;
-      text-overflow: ellipsis;
-      display: -webkit-box;
-      -webkit-line-clamp: 3;
-      -webkit-box-orient: vertical;
-      line-height: 1.2;
-      font-style: italic;
-    }
+    background-color: var(--color-card-hover-background);
   }
 }
 
@@ -108,8 +121,6 @@ html {
   .card {
     & > .card-thumbnail {
       max-height: rem(180px);
-      border-top-left-radius: 0;
-      border-top-right-radius: 0;
     }
   }
 }
@@ -118,24 +129,17 @@ html {
     HOVER EFFECTS
     =================== */
 @media (hover: hover) {
+  .card-wrapper {
+    .card:hover,
+    .card:focus {
+      .card-thumbnail img {
+        filter: contrast(90%);
+        transform: scale(1.1);
+      }
 
-  .card {
-    .card-content {
-    }
-  }
-
-  .card:hover,
-  .card:focus {
-
-    outline: 1px solid var(--color-card-outline);
-
-    .card-thumbnail img {
-      filter: contrast(90%);
-      transform: scale(1.1);
-    }
-
-    .card-content {
-      background-color: #2B2B2B; //var(--color-card-background);
+      .card-content {
+        background-color: var(--color-card-hover-background);
+      }
     }
   }
 }

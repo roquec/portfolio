@@ -153,4 +153,9 @@ class Menu {
     window.sessionStorage.setItem(Menu.STORAGE_KEY, Menu.CLOSED_STATUS);
     this.#applyState();
   }
+
+  open(id) {
+    window.sessionStorage.setItem(Menu.STORAGE_KEY, id);
+    this.#applyState();
+  }
 }
