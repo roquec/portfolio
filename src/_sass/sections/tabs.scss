@@ -55,28 +55,29 @@ html {
       white-space: nowrap;
       overflow: hidden;
       text-overflow: ellipsis;
-      margin-left: 3px;
-      line-height: 35px;
+      margin-left: rem(3px);
+      line-height: rem(35px);
     }
 
     &.index-tab {
       flex-shrink: 0;
-      padding-right: 22px;
+      padding-right: rem(22px);
     }
 
     &.content-tab {
-      padding-right: 4px;
+      padding-right: rem(4px);
 
       .name {
         font-style: italic;
+        padding-right: rem(2px);
       }
 
       .icon-cross {
-        font-size: 16px;
-        margin-left: 8px;
-        border-radius: 5px;
+        font-size: rem(16px);
+        margin-left: rem(6px);
+        border-radius: rem(5px);
         width: rem(21px);
-        padding: 2px 0;
+        padding: rem(2px) 0;
         color: var(--color-tab-selected-foreground);
         outline: none;
       }

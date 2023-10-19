@@ -10,6 +10,7 @@ html {
   --color-icon-markdown: #{colors.$dark-mode-icon-markdown};
   --color-icon-editorconfig: #{colors.$dark-mode-icon-editorconfig};
   --color-icon-json: #{colors.$dark-mode-icon-json};
+  --color-icon-pdf: #{colors.$dark-mode-icon-pdf};
 
   &[data-theme="light"] {
     --color-icon-html: #{colors.$light-mode-icon-html};
@@ -17,6 +18,7 @@ html {
     --color-icon-markdown: #{colors.$light-mode-icon-markdown};
     --color-icon-editorconfig: #{colors.$light-mode-icon-editorconfig};
     --color-icon-json: #{colors.$light-mode-icon-json};
+    --color-icon-pdf: #{colors.$light-mode-icon-pdf};
   }
 }
 
@@ -90,6 +92,11 @@ html {
   color: var(--color-icon-json);
 }
 
+.icon-pdf::before {
+  content: "\e817";
+  color: var(--color-icon-pdf);
+}
+
 // Folder icons
 .icon-chevron-down::before {
   content: "\e80b";
@@ -143,3 +150,4 @@ html {
 .icon-article::before {
   content: "\e815";
 }
+
