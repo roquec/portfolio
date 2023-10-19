@@ -35,24 +35,6 @@
   {% assign baseKeywords = "roque, portfolio" | split: ", " %}
   <meta name="keywords" content="{{ page.tags | concat: baseKeywords | join: ', ' }}">
 
-  <!-- OPEN GRAPH -->
-  <meta property="og:title" content="RoqueC - {{ page.title }}"/>
-  <meta property="og:description" content="{{ site.description }}"/>
-  <meta property="og:image" content="{{ '/assets/images/share_image.jpg' | absolute_url }}"/>
-  <meta property="og:url" content="{{ page.url | absolute_url | remove: 'index.html' | remove: '.html' }}"/>
-  <meta property="og:site_name" content="RoqueC - {{ page.title }}">
-  <meta property="og:type" content="website"/>
-  <meta property="og:image:width" content="256"/>
-  <meta property="og:image:height" content="256"/>
-  <meta property="og:image:type" content="image/jpeg"/>
-
-  <!-- TWITTER -->
-  <meta name="twitter:card" content="summary_large_image">
-  <meta property="twitter:domain" content="roquec.com">
-  <meta property="twitter:url" content="{{ page.url | absolute_url | remove: 'index.html' | remove: '.html' }}">
-  <meta name="twitter:title" content="RoqueC - {{ page.title }}">
-  <meta name="twitter:description" content="{{ site.description }}">
-  <meta name="twitter:image" content="{{ '/assets/images/share_image.jpg' | absolute_url }}">
 
   <!-- GOOGLE -->
   <meta name="robots" content="index,follow"/>
