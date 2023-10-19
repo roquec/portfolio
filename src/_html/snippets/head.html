@@ -12,18 +12,39 @@
   <!-- LOAD SCRIPTS -->
   <script type="text/javascript" src="/assets/js/scripts.js"></script>
 
-  <title>RoqueC - {{ page.title }}</title>
-  <meta name="description" content="Roque's very own personal portfolio website!"/>
-
-  <meta property="og:title" content="RoqueC"/>
-  <meta property="og:description" content="Roque's very own personal portfolio website!"/>
-  <meta property="og:url" content="{{ page.url | absolute_url }}"/>
-  <meta property="og:image" content="{{ '/assets/images/roque_profile.webp' | absolute_url }}"/>
-  <meta property="og:type" content="website"/>
-
+  <!-- ICONS -->
   <link rel="apple-touch-icon" sizes="180x180" href="/assets/images/favicon/apple-touch-icon.png">
   <link rel="icon" type="image/png" sizes="32x32" href="/assets/images/favicon/favicon-32x32.png">
   <link rel="icon" type="image/png" sizes="16x16" href="/assets/images/favicon/favicon-16x16.png">
 
-  {% seo %}
+  <!-- SITE -->
+  <title>RoqueC - {{ page.title }}</title>
+  <meta name="description" content="{{ site.description }}"/>
+  <link rel="canonical" href="{{ page.url | absolute_url | remove: 'index.html' | remove: '.html' }}"/>
+  <meta name="author" content="{{ site.author }}">
+  <meta name="copyright" content="{{ site.author }}"/>
+
+  <!-- OPEN GRAPH -->
+  <meta property="og:type" content="website"/>
+  <meta property="og:title" content="RoqueC - {{ page.title }}"/>
+  <meta property="og:description" content="{{ site.description }}"/>
+  <meta property="og:url" content="{{ page.url | absolute_url | remove: 'index.html' | remove: '.html' }}"/>
+  <meta property="og:image" content="{{ '/assets/images/profile_picture.svg' | absolute_url }}"/>
+  <meta property="og:locale" content="en_US"/>
+
+  <!-- GOOGLE -->
+  <meta name="robots" content="index,follow"/>
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebPage",
+      "name": "RoqueC - {{ page.title }}",
+      "description": "{{ site.description }}",
+      "url": "{{ page.url | absolute_url | remove: 'index.html' | remove: '.html' }}",
+      "author": {
+        "@type": "Person",
+        "name": "{{ site.author }}"
+      }
+    }
+  </script>
 </head>
