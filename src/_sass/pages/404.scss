@@ -6,6 +6,7 @@
 #not-found-page {
   height: 100%;
   width: 100%;
+  overflow: hidden;
 
   .not-found-wrapper {
     position: relative;
@@ -43,7 +44,6 @@
       width: rem(450px);
       left: 100%;
       bottom: 0;
-      filter: brightness(0%);
       animation: move 30s ease-in-out 0s infinite alternate,
       step 0.6s ease-in 0s infinite alternate;
     }
