@@ -7,20 +7,16 @@
    COLORS
 ==========================*/
 html {
-  --color-index-welcome-accent: #{colors.$dark-mode-index-welcome-accent};
-  --color-index-links: #{colors.$dark-mode-index-links};
-  --color-index-link-projects-hover: #{colors.$dark-mode-index-link-projects-hover};
-  --color-index-link-drawings-hover: #{colors.$dark-mode-index-link-drawings-hover};
-  --color-index-link-articles-hover: #{colors.$dark-mode-index-link-articles-hover};
-  --color-index-link-about-hover: #{colors.$dark-mode-index-link-about-hover};
+  --color-index-picture-background: #{colors.$dark-mode-index-picture-background};
+  --color-index-link-foreground: #{colors.$dark-mode-index-link-foreground};
+  --color-index-link-icon-background: #{colors.$dark-mode-index-link-icon-background};
+  --index-profile-picture-filter: brightness(90%);
 
   &[data-theme="light"] {
-    --color-index-welcome-accent: #{colors.$light-mode-index-welcome-accent};
-    --color-index-links: #{colors.$light-mode-index-links};
-    --color-index-link-projects-hover: #{colors.$light-mode-index-link-projects-hover};
-    --color-index-link-drawings-hover: #{colors.$light-mode-index-link-drawings-hover};
-    --color-index-link-articles-hover: #{colors.$light-mode-index-link-articles-hover};
-    --color-index-link-about-hover: #{colors.$light-mode-index-link-about-hover};
+    --color-index-picture-background: #{colors.$light-mode-index-picture-background};
+    --color-index-link-foreground: #{colors.$light-mode-index-link-foreground};
+    --color-index-link-icon-background: #{colors.$light-mode-index-link-icon-background};
+    --index-profile-picture-filter: contrast(90%);
   }
 }
 
@@ -33,16 +29,16 @@ html {
   flex-direction: column;
   align-items: center;
   justify-items: center;
-  padding: rem(20px);
+  padding: rem(30px);
 
   .welcome-pic {
     margin-top: auto;
     max-height: rem(300px);
     border-radius: 50%;
-    background-color: #151515;
+    background-color: var(--color-index-picture-background);
 
     svg {
-      filter: brightness(75%);
+      filter: var(--index-profile-picture-filter);
 
       * {
         transform-box: fill-box;
@@ -57,7 +53,7 @@ html {
 
   .welcome-links {
     margin-bottom: auto;
-    margin-top: rem(22px);
+    margin-top: rem(24px);
     display: flex;
     flex-direction: column;
     gap: rem(16px);
@@ -67,10 +63,10 @@ html {
 
     .welcome-link {
       text-decoration: none;
-      color: #848484;
+      color: var(--color-index-link-foreground);
 
       i {
-        background-color: #2C2C2C;
+        background-color: var(--color-index-link-icon-background);
         padding: rem(4px);
         border-radius: rem(4px);
         margin-left: rem(5px);

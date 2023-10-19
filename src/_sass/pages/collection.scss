@@ -2,32 +2,46 @@
 @use "../shared/vars" as *;
 @use "../themes/colors" as colors;
 
-/*  ===================
-    MOBILE
-    =================== */
+/*=========================
+   STYLES
+==========================*/
 .collection-page {
-  padding: rem(20px);
+  padding: rem(14px);
 
   .collection-title {
-    font-size: rem(32px);
-    font-weight: 300;
-    padding-bottom: rem(8px);
-    margin-bottom: rem(20px);
+    display: flex;
+    align-items: center;
+    justify-items: center;
+    margin-top: 10px;
+    padding-left: 12px;
+    font-size: rem(28px);
+    padding-bottom: rem(18px);
+    margin-bottom: rem(25px);
     border-bottom: rem(1px) solid var(--color-base-foreground-muted);
+    text-align: center;
+
+    i {
+      font-size: rem(22px);
+      margin-right: 10px;
+    }
   }
 
   .collection-posts {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
-    gap: rem(20px);
+    grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+    grid-gap: rem(22px) rem(14px);
   }
 }
 
-/*  ===================
-    DESKTOP
-    =================== */
+/*=========================
+   MOBILE STYLES
+==========================*/
 @container content (max-width: #{$breakpoint-mobile}) {
-  .collection-page > .collection-posts {
-    grid-template-columns: 1fr;
+  .collection-page {
+    padding: rem(8px);
+
+    & > .collection-posts {
+      grid-template-columns: 1fr;
+    }
   }
 }

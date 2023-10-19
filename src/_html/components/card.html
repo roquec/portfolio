@@ -1,13 +1,16 @@
 <a class="button card" aria-label="{{ include.post.title }}" href="{{ include.post.url | remove:'index.html' }}">
 
-  <img class="card-thumbnail"
-       src="{{ include.post.url | replace:'/index.html','/thumbnail.webp' }}"
-       alt="Thumbnail">
+  <div class="card-thumbnail">
+    <img src="{{ include.post.url | replace:'/index.html','/thumbnail.webp' }}" alt="Thumbnail">
+  </div>
 
   <div class="card-content">
     <div class="card-title">
       {{ include.post.title }}
     </div>
-  </div>
 
+    <div class="card-excerpt">
+      {{ include.post.excerpt | strip_html }}
+    </div>
+  </div>
 </a>
