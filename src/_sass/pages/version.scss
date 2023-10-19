@@ -1,0 +1,44 @@
+@use "../shared/util" as *;
+@use "../shared/vars" as *;
+@use "../themes/colors" as colors;
+
+/*=========================
+   COLORS
+==========================*/
+html {
+  --color-version-json-bracket: #{colors.$dark-mode-version-json-bracket};
+  --color-version-json-key: #{colors.$dark-mode-version-json-key};
+  --color-version-json-value: #{colors.$dark-mode-version-json-value};
+
+  &[data-theme="light"] {
+    --color-version-json-bracket: #{colors.$light-mode-version-json-bracket};
+    --color-version-json-key: #{colors.$light-mode-version-json-key};
+    --color-version-json-value: #{colors.$light-mode-version-json-value};
+  }
+}
+
+/*=========================
+   STYLES
+==========================*/
+#version-json {
+  padding: rem(14px);
+  display: flex;
+  flex-direction: column;
+  gap: rem(8px);
+
+  .version-line:not(.json-bracket) {
+    padding-left: rem(14px);
+  }
+
+  .json-bracket {
+    color: var(--color-version-json-bracket);
+  }
+
+  .json-key {
+    color: var(--color-version-json-key);
+  }
+
+  .json-value {
+    color: var(--color-version-json-value);
+  }
+}
