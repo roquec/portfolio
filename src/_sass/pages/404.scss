@@ -1,0 +1,75 @@
+@use "../shared/util" as *;
+@use "../shared/vars" as *;
+@use "../themes/colors" as colors;
+
+
+#not-found-page {
+  height: 100%;
+  width: 100%;
+
+  .not-found-wrapper {
+    position: relative;
+    height: 100%;
+    width: 100%;
+
+    .not-found-message-wrapper {
+      position: absolute;
+      width: 100%;
+      left: 50%;
+      top: 40%;
+      transform: translate(-50%, -50%);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+
+      .error-text {
+        font-size: rem(85px);
+        letter-spacing: rem(10px);
+        font-weight: bold;
+        margin-bottom: rem(40px);
+      }
+
+      .error-message {
+        font-size: rem(30px);
+        font-weight: lighter;
+        margin-bottom: rem(10px);
+        text-align: center;
+      }
+    }
+
+    img {
+      position: absolute;
+      width: rem(450px);
+      left: 100%;
+      bottom: 0;
+      filter: brightness(0%);
+      animation: move 30s ease-in-out 0s infinite alternate,
+      step 0.6s ease-in 0s infinite alternate;
+    }
+  }
+}
+
+@keyframes move {
+  0% {
+    left: 100%;
+  }
+  40% {
+    left: calc(30% - 225px);
+  }
+  60% {
+    left: calc(70% - 225px);
+  }
+  100% {
+    left: rem(-455px);
+  }
+}
+
+@keyframes step {
+  0% {
+    bottom: 0;
+  }
+  100% {
+    bottom: -1%;
+  }
+}

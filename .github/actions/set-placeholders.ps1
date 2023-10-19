@@ -1,5 +1,5 @@
 # Get the version and commit hash from GitHub Actions environment variables
-$time = (Get-Date).ToUniversalTime().ToString(‘yyyy-MM-ddTHH:mm:ss’)
+$time = (Get-Date).ToUniversalTime().ToString(‘yyyy-MM-ddTHH:mm:ssZ’)
 $branch = $env:GITHUB_REF_NAME
 $commit = $env:GITHUB_SHA
 $build = $env:GITHUB_RUN_ID
