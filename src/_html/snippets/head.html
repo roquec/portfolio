@@ -23,13 +23,15 @@
   <link rel="canonical" href="{{ page.url | absolute_url | remove: 'index.html' | remove: '.html' }}"/>
   <meta name="author" content="{{ site.author }}">
   <meta name="copyright" content="{{ site.author }}"/>
+  {% assign baseKeywords = "roque, portfolio" | split: ", " %}
+  <meta name="keywords" content="{{ page.tags | concat: baseKeywords | join: ', ' }}">
 
   <!-- OPEN GRAPH -->
   <meta property="og:type" content="website"/>
   <meta property="og:title" content="RoqueC - {{ page.title }}"/>
   <meta property="og:description" content="{{ site.description }}"/>
   <meta property="og:url" content="{{ page.url | absolute_url | remove: 'index.html' | remove: '.html' }}"/>
-  <meta property="og:image" content="{{ '/assets/images/profile_picture.svg' | absolute_url }}"/>
+  <meta property="og:image" content="{{ '/assets/images/favicon/android-chrome-512x512.png' | absolute_url }}"/>
   <meta property="og:locale" content="en_US"/>
 
   <!-- GOOGLE -->
