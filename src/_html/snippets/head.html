@@ -13,7 +13,6 @@
   <script type="text/javascript" src="/assets/js/scripts.js"></script>
 
   <!-- ICONS -->
-  <link rel="apple-touch-icon" href="{{ '/assets/images/share_image.png' | absolute_url }}">
   <link rel="apple-touch-icon" sizes="180x180"
         href="{{ '/assets/images/favicon/apple-touch-icon.png' | absolute_url }}">
   <link rel="icon" type="image/png" sizes="32x32"
@@ -36,6 +35,10 @@
   {% assign baseKeywords = "roque, portfolio" | split: ", " %}
   <meta name="keywords" content="{{ page.tags | concat: baseKeywords | join: ', ' }}">
 
+  <meta property="og:title" content="RoqueC - {{ page.title }}"/>
+  <meta property="og:description" content="{{ site.description }}"/>
+  <meta property="og:url" content="{{ page.url | absolute_url | remove: 'index.html' | remove: '.html' }}"/>
+  <meta property="og:image" content="{{ '/assets/images/share_image.png' | absolute_url }}"/>
 
   <!-- GOOGLE -->
   <meta name="robots" content="index,follow"/>
