@@ -13,12 +13,15 @@
   <script type="text/javascript" src="/assets/js/scripts.js"></script>
 
   <!-- ICONS -->
-  <link rel="apple-touch-icon" sizes="180x180" href="/assets/images/favicon/apple-touch-icon.png">
-  <link rel="icon" type="image/png" sizes="32x32" href="/assets/images/favicon/favicon-32x32.png">
-  <link rel="icon" type="image/png" sizes="16x16" href="/assets/images/favicon/favicon-16x16.png">
-  <link rel="manifest" href="/assets/images/favicon/site.webmanifest">
-  <link rel="mask-icon" href="/assets/images/favicon/safari-pinned-tab.svg" color="#5bbad5">
-  <link rel="shortcut icon" href="/assets/images/favicon/favicon.ico">
+  <link rel="apple-touch-icon" sizes="180x180"
+        href="{{ '/assets/images/favicon/apple-touch-icon.png' | absolute_url }}">
+  <link rel="icon" type="image/png" sizes="32x32"
+        href="{{ '/assets/images/favicon/favicon-32x32.png' | absolute_url }}">
+  <link rel="icon" type="image/png" sizes="16x16"
+        href="{{ '/assets/images/favicon/favicon-16x16.png' | absolute_url }}">
+  <link rel="manifest" href="{{ '/assets/images/favicon/site.webmanifest' | absolute_url }}">
+  <link rel="mask-icon" href="{{ '/assets/images/favicon/safari-pinned-tab.svg' | absolute_url }}" color="#5bbad5">
+  <link rel="shortcut icon" href="{{ '/assets/images/favicon/favicon.ico' | absolute_url }}">
   <meta name="msapplication-TileColor" content="#000000">
   <meta name="msapplication-config" content="/assets/images/favicon/browserconfig.xml">
   <meta name="theme-color" content="#ffffff">
@@ -32,6 +35,24 @@
   {% assign baseKeywords = "roque, portfolio" | split: ", " %}
   <meta name="keywords" content="{{ page.tags | concat: baseKeywords | join: ', ' }}">
 
+  <!-- OPEN GRAPH -->
+  <meta property="og:title" content="RoqueC - {{ page.title }}"/>
+  <meta property="og:description" content="{{ site.description }}"/>
+  <meta property="og:image" content="{{ '/assets/images/share_image.jpg' | absolute_url }}"/>
+  <meta property="og:url" content="{{ page.url | absolute_url | remove: 'index.html' | remove: '.html' }}"/>
+  <meta property="og:site_name" content="RoqueC - {{ page.title }}">
+  <meta property="og:type" content="website"/>
+  <meta property="og:image:width" content="256"/>
+  <meta property="og:image:height" content="256"/>
+  <meta property="og:image:type" content="image/jpeg"/>
+
+  <!-- TWITTER -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta property="twitter:domain" content="roquec.com">
+  <meta property="twitter:url" content="{{ page.url | absolute_url | remove: 'index.html' | remove: '.html' }}">
+  <meta name="twitter:title" content="RoqueC - {{ page.title }}">
+  <meta name="twitter:description" content="{{ site.description }}">
+  <meta name="twitter:image" content="{{ '/assets/images/share_image.jpg' | absolute_url }}">
 
   <!-- GOOGLE -->
   <meta name="robots" content="index,follow"/>
