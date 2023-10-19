@@ -35,10 +35,10 @@
 ==========================*/
 @container content (max-width: #{$breakpoint-mobile}) {
   .collection-page {
-    padding: rem(24px) 0;
+    padding: rem(24px) 0 rem(24px) 0;
 
     & > .collection-title {
-      margin: 0 rem(16px);
+      margin: 0 rem(16px) 0 rem(16px);
     }
 
     & > .collection-posts {
