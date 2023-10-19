@@ -1,7 +1,13 @@
-<a class="button card" aria-label="{{ include.post.title }}" href="{{ include.post.url | remove:'index.html' }}">
+<a class="button card" title="{{ include.post.title }}" href="{{ include.post.url | remove:'index.html' }}">
 
   <div class="card-thumbnail">
     <img src="{{ include.post.url | replace:'/index.html','/thumbnail.webp' }}" alt="Thumbnail">
+
+    <div class="card-tags">
+      {% for tag in include.post.tags %}
+      <div class="card-tag">{{ tag }}</div>
+      {% endfor %}
+    </div>
   </div>
 
   <div class="card-content">
