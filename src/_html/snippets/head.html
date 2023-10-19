@@ -34,10 +34,11 @@
 
   <!-- OPEN GRAPH -->
   <meta property="og:type" content="website"/>
+  <meta property="og:site_name" content="RoqueC - {{ page.title }}">
   <meta property="og:title" content="RoqueC - {{ page.title }}"/>
   <meta property="og:description" content="{{ site.description }}"/>
   <meta property="og:url" content="{{ page.url | absolute_url | remove: 'index.html' | remove: '.html' }}"/>
-  <meta property="og:image" content="/assets/images/share_image.png"/>
+  <meta property="og:image" itemprop="image" content="/assets/images/share_image.png"/>
   <meta property="og:locale" content="en_US"/>
 
   <!-- GOOGLE -->
