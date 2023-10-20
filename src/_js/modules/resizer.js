@@ -57,7 +57,7 @@ class Resizer {
   #applyState() {
     const storedWidth = window.localStorage.getItem(Resizer.WIDTH_STORAGE_KEY);
     if (storedWidth) {
-      this.resizerElement.width = `${storedWidth}px`;
+      this.resizerTarget.style.width = storedWidth;
     }
   }
 
@@ -79,5 +79,13 @@ class Resizer {
     document.removeEventListener("mouseup", this.releaseResizerListener);
     this.resizerElement.classList.remove(Resizer.RESIZER_ACTIVE_CLASS);
     window.localStorage.setItem(Resizer.WIDTH_STORAGE_KEY, this.resizerTarget.style.width);
+    config?.storageChange();
+  }
+
+  set(width) {
+    if (width.match(/\d+px/g)) {
+      window.localStorage.setItem(Resizer.WIDTH_STORAGE_KEY, width);
+      this.#applyState();
+    }
   }
 }

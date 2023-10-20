@@ -4,5 +4,56 @@ file: ''
 icon: config
 type: editorconfig
 ---
+<div id="config-page">
 
-Config!
+  <div class="config-line">
+    <span class="config-comment"># roquec.com site configuration</span>
+  </div>
+
+  <div class="config-line">
+    <span class="config-comment"># actually editable :)</span>
+  </div>
+
+  <div class="config-empty-line"></div>
+
+  <div class="config-line">
+    <span class="config-key">root</span>&nbsp;=&nbsp;true
+  </div>
+
+  <div class="config-empty-line"></div>
+
+
+  <div class="config-line">
+    <span class="config-bracket">[</span>*<span class="config-bracket">]</span>
+  </div>
+
+  <div class="config-line">
+    <label class="config-key" for="config-theme-input">theme</label>&nbsp;=&nbsp;<input id="config-theme-input"
+                                                                                        type="text"
+                                                                                        onblur="config.setThemeConfig()"/>
+  </div>
+
+  <div class="config-line">
+    <label class="config-key" for="config-search-query-input">search_query</label>&nbsp;=&nbsp;<input
+    id="config-search-query-input" type="text" onblur="config.setSearchConfig()"/>
+  </div>
+
+  <div class="config-empty-line"></div>
+
+  <div class="config-line">
+    <span class="config-bracket">[</span>widescreen<span class="config-bracket">]</span>
+  </div>
+
+  <div class="config-line">
+    <label class="config-key" for="config-menu-panel-input">menu_panel</label>&nbsp;=&nbsp;<input
+    id="config-menu-panel-input"
+    type="text"
+    onblur="config.setMenuConfig()"/>
+  </div>
+
+  <div class="config-line">
+    <label class="config-key" for="config-panel-width-input">menu_panel_width</label>&nbsp;=&nbsp;<input
+    id="config-panel-width-input" type="text" onblur="config.setWidthConfig()"/>
+  </div>
+
+</div>

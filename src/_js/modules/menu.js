@@ -120,6 +120,8 @@ class Menu {
       this.#menu.classList.add(Menu.CLOSED_CLASS);
       this.#menu.classList.remove(Menu.OPEN_CLASS);
     }
+
+    config?.storageChange();
   }
 
   #open(panel, action) {
@@ -157,5 +159,12 @@ class Menu {
   open(id) {
     window.sessionStorage.setItem(Menu.STORAGE_KEY, id);
     this.#applyState();
+  }
+
+  set(value) {
+    if (value === Menu.CLOSED_STATUS || value === Menu.EXPLORER_PANEL_ID || value === Menu.SEARCH_PANEL_ID) {
+      sessionStorage.setItem(Menu.STORAGE_KEY, value);
+      this.#applyState();
+    }
   }
 }

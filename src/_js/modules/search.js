@@ -120,6 +120,8 @@ class Search {
       this.#tagsWrapperElement.classList.add(Search.HIDDEN_CLASS);
       this.#searchResultsWrapperElement.classList.remove(Search.HIDDEN_CLASS);
     }
+
+    config?.storageChange();
   }
 
   #getResultsLabel(results) {

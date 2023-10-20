@@ -1,17 +1,18 @@
 @use "../shared/util" as *;
 @use "../shared/vars" as *;
+@use "../shared/fonts" as *;
 @use "../themes/colors" as colors;
 
 /*=========================
    COLORS
 ==========================*/
 html {
-  --color-version-json-bracket: #{colors.$dark-mode-version-json-bracket};
+  --color-version-json-brace: #{colors.$dark-mode-version-json-brace};
   --color-version-json-key: #{colors.$dark-mode-version-json-key};
   --color-version-json-value: #{colors.$dark-mode-version-json-value};
 
   &[data-theme="light"] {
-    --color-version-json-bracket: #{colors.$light-mode-version-json-bracket};
+    --color-version-json-brace: #{colors.$light-mode-version-json-brace};
     --color-version-json-key: #{colors.$light-mode-version-json-key};
     --color-version-json-value: #{colors.$light-mode-version-json-value};
   }
@@ -21,17 +22,18 @@ html {
    STYLES
 ==========================*/
 #version-json {
-  padding: rem(14px);
+  padding: rem(14px) rem(8px) rem(14px) rem(30px);
   display: flex;
   flex-direction: column;
-  gap: rem(8px);
+  font-size: rem(14px);
+  font: $code-font;
 
-  .version-line:not(.json-bracket) {
+  .version-line:not(.json-brace) {
     padding-left: rem(14px);
   }
 
-  .json-bracket {
-    color: var(--color-version-json-bracket);
+  .json-brace {
+    color: var(--color-version-json-brace);
   }
 
   .json-key {
@@ -40,5 +42,14 @@ html {
 
   .json-value {
     color: var(--color-version-json-value);
+  }
+}
+
+/*=========================
+   MOBILE STYLES
+==========================*/
+@container content (max-width: #{$breakpoint-mobile}) {
+  #version-json {
+    padding: rem(14px) rem(8px) rem(14px) rem(14px);
   }
 }

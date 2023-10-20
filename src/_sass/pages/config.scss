@@ -1,0 +1,83 @@
+@use "../shared/util" as *;
+@use "../shared/vars" as *;
+@use "../shared/fonts" as *;
+@use "../themes/colors" as colors;
+
+/*=========================
+   COLORS
+==========================*/
+html {
+  --color-config-key: #{colors.$dark-mode-config-key};
+  --color-config-string: #{colors.$dark-mode-config-string};
+  --color-config-comment: #{colors.$dark-mode-config-comment};
+  --color-config-bracket: #{colors.$dark-mode-config-bracket};
+
+  &[data-theme="light"] {
+    --color-config-key: #{colors.$light-mode-config-key};
+    --color-config-string: #{colors.$light-mode-config-string};
+    --color-config-comment: #{colors.$light-mode-config-comment};
+    --color-config-bracket: #{colors.$light-mode-config-bracket};
+  }
+}
+
+/*=========================
+   STYLES
+==========================*/
+#config-page {
+  padding: rem(14px) rem(8px) rem(14px) rem(30px);
+  display: flex;
+  flex-direction: column;
+  font-size: rem(14px);
+  font: $code-font;
+
+  .config-line {
+
+    display: flex;
+    flex-direction: row;
+
+    .config-comment {
+      color: var(--color-config-comment);
+    }
+
+    .config-key {
+      color: var(--color-config-key);
+    }
+
+    input {
+      border: 0;
+      outline: 0;
+      background: none;
+      color: var(--color-base-foreground);
+      font-size: rem(14px);
+      width: auto;
+    }
+
+    #config-search-query-input {
+      color: var(--color-config-string);;
+    }
+
+    .config-bracket {
+      color: var(--color-config-bracket);
+    }
+  }
+
+  .config-empty-line {
+    height: rem(14px);
+  }
+}
+
+/*=========================
+   MOBILE STYLES
+==========================*/
+@container content (max-width: #{$breakpoint-mobile}) {
+  #config-page {
+    padding: rem(14px) rem(8px) rem(14px) rem(14px);
+
+    & > .config-line {
+      & > #config-menu-panel-input,
+      & > #config-panel-width-input {
+        pointer-events: none;
+      }
+    }
+  }
+}

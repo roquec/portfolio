@@ -20,6 +20,7 @@ class Theme {
   #applyState() {
     this.#theme = Util.getState(Theme.THEME_STORAGE_KEY, Theme.DEFAULT_THEME, localStorage);
     document.documentElement.setAttribute(Theme.THEME_ATTRIBUTE, this.#theme);
+    config?.storageChange();
   }
 
   toggle() {
@@ -32,7 +33,7 @@ class Theme {
     } else {
       this.#theme = Theme.DARK_THEME_KEY;
     }
-    window.localStorage.setItem(Theme.THEME_STORAGE_KEY, this.#theme);
+    localStorage.setItem(Theme.THEME_STORAGE_KEY, this.#theme);
     this.#applyState();
 
     // Trigger CSS update while transitions are disabled
@@ -40,5 +41,12 @@ class Theme {
 
     // Re-enable transitions after theme change
     document.body.classList.remove("no-transition");
+  }
+
+  set(value) {
+    if (value === Theme.DARK_THEME_KEY || value === Theme.LIGHT_THEME_KEY) {
+      localStorage.setItem(Theme.THEME_STORAGE_KEY, value);
+      this.#applyState();
+    }
   }
 }
