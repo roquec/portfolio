@@ -1,0 +1,86 @@
+@use "../shared/util" as *;
+@use "../shared/vars" as *;
+@use "../themes/colors" as colors;
+
+/*=========================
+   COLORS
+==========================*/
+html {
+  --color-resume-download-background: #{colors.$dark-mode-resume-download-background};
+  --color-resume-download-hover-background: #{colors.$dark-mode-resume-download-hover-background};
+
+  &[data-theme="light"] {
+    --color-resume-download-background: #{colors.$light-mode-resume-download-background};
+    --color-resume-download-hover-background: #{colors.$light-mode-resume-download-hover-background};
+  }
+}
+
+/*=========================
+   STYLES
+==========================*/
+#resume-download-link {
+  position: absolute;
+  top: rem(24px);
+  right: rem(24px);
+
+  a {
+    background-color: var(--color-resume-download-background);
+    border-radius: rem(12px);
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    text-decoration: none;
+    padding: 0 rem(20px) 0 rem(20px);
+
+    span {
+      max-width: 0;
+      white-space: nowrap;
+      overflow: hidden;
+      transition: max-width 0.4s;
+      line-height: rem(50px);
+      text-align: center;
+    }
+
+    i {
+      font-size: rem(25px);
+      line-height: rem(50px);
+      text-align: center;
+    }
+  }
+}
+
+/*=========================
+   MOBILE STYLES
+==========================*/
+@container content (max-width: #{$breakpoint-mobile}) {
+  #resume-download-link {
+    position: initial;
+    margin-left: auto;
+    margin-right: auto;
+
+    & > a {
+      display: block;
+
+      & > span {
+        max-width: initial;
+      }
+    }
+  }
+}
+
+/*=========================
+   HOVER STYLES
+==========================*/
+@media (hover: hover) {
+  #resume-download-link {
+    a:hover {
+      background-color: var(--color-resume-download-hover-background);
+
+      & > span {
+        max-width: rem(100px);
+      }
+    }
+  }
+}
+

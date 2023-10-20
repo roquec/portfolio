@@ -6,6 +6,10 @@ icon: pdf
 type: pdf
 ---
 
+<div id="resume-download-link">
+  <a href="/assets/files/roque-carrizo-resume.pdf" download><span>Download PDF&nbsp;&nbsp;</span><i class="icon icon-download"></i></a>
+</div>
+
 # Alberto Roque Carrizo Fernández
 
 <div id="webaddress">
