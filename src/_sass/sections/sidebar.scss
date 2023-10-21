@@ -6,20 +6,20 @@
    COLORS
 ==========================*/
 html {
-  --color-actions-background: #{colors.$dark-mode-actions-background};
-  --color-actions-foreground: #{colors.$dark-mode-actions-foreground};
-  --color-actions-selected-foreground: #{colors.$dark-mode-actions-selected-foreground};
-  --color-actions-tooltip-background: #{colors.$dark-mode-actions-tooltip-background};
-  --color-actions-tooltip-foreground: #{colors.$dark-mode-actions-tooltip-foreground};
-  --color-actions-tooltip-border: #{colors.$dark-mode-actions-tooltip-border};
+  --color-sidebar-background: #{colors.$dark-mode-sidebar-background};
+  --color-sidebar-foreground: #{colors.$dark-mode-sidebar-foreground};
+  --color-sidebar-selected-foreground: #{colors.$dark-mode-sidebar-selected-foreground};
+  --color-sidebar-tooltip-background: #{colors.$dark-mode-sidebar-tooltip-background};
+  --color-sidebar-tooltip-foreground: #{colors.$dark-mode-sidebar-tooltip-foreground};
+  --color-sidebar-tooltip-border: #{colors.$dark-mode-sidebar-tooltip-border};
 
   &[data-theme="light"] {
-    --color-actions-background: #{colors.$light-mode-actions-background};
-    --color-actions-foreground: #{colors.$light-mode-actions-foreground};
-    --color-actions-selected-foreground: #{colors.$light-mode-actions-selected-foreground};
-    --color-actions-tooltip-background: #{colors.$light-mode-actions-tooltip-background};
-    --color-actions-tooltip-foreground: #{colors.$light-mode-actions-tooltip-foreground};
-    --color-actions-tooltip-border: #{colors.$light-mode-actions-tooltip-border};
+    --color-sidebar-background: #{colors.$light-mode-sidebar-background};
+    --color-sidebar-foreground: #{colors.$light-mode-sidebar-foreground};
+    --color-sidebar-selected-foreground: #{colors.$light-mode-sidebar-selected-foreground};
+    --color-sidebar-tooltip-background: #{colors.$light-mode-sidebar-tooltip-background};
+    --color-sidebar-tooltip-foreground: #{colors.$light-mode-sidebar-tooltip-foreground};
+    --color-sidebar-tooltip-border: #{colors.$light-mode-sidebar-tooltip-border};
   }
 }
 
@@ -35,11 +35,11 @@ $tooltip-tip-width: rem(5px);
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  background-color: var(--color-actions-background);
-  color: var(--color-actions-foreground);
+  background-color: var(--color-sidebar-background);
+  color: var(--color-sidebar-foreground);
 
-  #actions-top,
-  #actions-bottom {
+  #sidebar-top,
+  #sidebar-bottom {
     width: 100%;
     display: flex;
     flex-direction: column;
@@ -61,7 +61,7 @@ $tooltip-tip-width: rem(5px);
         position: absolute;
         left: 0;
         display: none;
-        border-left: rem(2px) solid var(--color-actions-selected-foreground);
+        border-left: rem(2px) solid var(--color-sidebar-selected-foreground);
       }
 
       .icon {
@@ -85,13 +85,14 @@ $tooltip-tip-width: rem(5px);
 
         .icon-tooltip {
           position: relative;
-          background-color: var(--color-actions-tooltip-background);
-          color: var(--color-actions-tooltip-foreground);
-          padding: rem(2px) rem(8px);
+          background-color: var(--color-sidebar-tooltip-background);
+          color: var(--color-sidebar-tooltip-foreground);
+          border-radius: rem(2px);
+          padding: rem(4px) rem(8px);
           font-size: rem(12px);
           line-height: rem(19px);
           white-space: nowrap;
-          outline: rem(1px) solid var(--color-actions-tooltip-border);
+          outline: rem(1px) solid var(--color-sidebar-tooltip-border);
           box-shadow: 0 rem(2px) rem(6px) rem(3px) rgba(0, 0, 0, 0.3);
 
           &:before {
@@ -103,7 +104,7 @@ $tooltip-tip-width: rem(5px);
             width: 0;
             height: 0;
             border: #{$tooltip-tip-width} solid transparent;
-            border-right-color: var(--color-actions-tooltip-border);
+            border-right-color: var(--color-sidebar-tooltip-border);
           }
 
           &:after {
@@ -115,7 +116,7 @@ $tooltip-tip-width: rem(5px);
             width: 0;
             height: 0;
             border: #{$tooltip-tip-width} solid transparent;
-            border-right-color: var(--color-actions-tooltip-background);
+            border-right-color: var(--color-sidebar-tooltip-background);
           }
         }
       }
@@ -129,13 +130,13 @@ $tooltip-tip-width: rem(5px);
 ==========================*/
 @media (hover: hover) {
   #sidebar {
-    #actions-top,
-    #actions-bottom {
+    #sidebar-top,
+    #sidebar-bottom {
       .button:hover {
-        color: var(--color-actions-selected-foreground);
+        color: var(--color-sidebar-selected-foreground);
 
         img {
-          outline: rem(2px) solid var(--color-actions-selected-foreground);
+          outline: rem(2px) solid var(--color-sidebar-selected-foreground);
         }
 
         .tooltip-wrapper {
@@ -153,21 +154,21 @@ $tooltip-tip-width: rem(5px);
    STATE STYLES
 ==========================*/
 #sidebar {
-  #actions-top,
-  #actions-bottom {
+  #sidebar-top,
+  #sidebar-bottom {
     .button {
 
       &:focus-visible,
       &.focused {
-        color: var(--color-actions-selected-foreground);
+        color: var(--color-sidebar-selected-foreground);
 
         img {
-          outline: rem(2px) solid var(--color-actions-selected-foreground);
+          outline: rem(2px) solid var(--color-sidebar-selected-foreground);
         }
       }
 
       &.open {
-        color: var(--color-actions-selected-foreground);
+        color: var(--color-sidebar-selected-foreground);
 
         &::before {
           display: block;
