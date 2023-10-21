@@ -16,12 +16,6 @@ html {
   --color-search-tag-hover-background: #{colors.$dark-mode-search-tag-hover-background};
   --color-search-tag-hover-foreground: #{colors.$dark-mode-search-tag-hover-foreground};
   --color-search-tag-hover-border: #{colors.$dark-mode-search-tag-hover-border};
-  --color-search-tag-selected-background: #{colors.$dark-mode-search-tag-selected-background};
-  --color-search-tag-selected-foreground: #{colors.$dark-mode-search-tag-selected-foreground};
-  --color-search-tag-selected-border: #{colors.$dark-mode-search-tag-selected-border};
-  --color-search-tag-selected-hover-background: #{colors.$dark-mode-search-tag-selected-hover-background};
-  --color-search-tag-selected-hover-foreground: #{colors.$dark-mode-search-tag-selected-hover-foreground};
-  --color-search-tag-selected-hover-border: #{colors.$dark-mode-search-tag-selected-hover-border};
   --color-search-results-label: #{colors.$dark-mode-search-results-label};
 
   &[data-theme="light"] {
@@ -35,12 +29,6 @@ html {
     --color-search-tag-hover-background: #{colors.$light-mode-search-tag-hover-background};
     --color-search-tag-hover-foreground: #{colors.$light-mode-search-tag-hover-foreground};
     --color-search-tag-hover-border: #{colors.$light-mode-search-tag-hover-border};
-    --color-search-tag-selected-background: #{colors.$light-mode-search-tag-selected-background};
-    --color-search-tag-selected-foreground: #{colors.$light-mode-search-tag-selected-foreground};
-    --color-search-tag-selected-border: #{colors.$light-mode-search-tag-selected-border};
-    --color-search-tag-selected-hover-background: #{colors.$light-mode-search-tag-selected-hover-background};
-    --color-search-tag-selected-hover-foreground: #{colors.$light-mode-search-tag-selected-hover-foreground};
-    --color-search-tag-selected-hover-border: #{colors.$light-mode-search-tag-selected-hover-border};
     --color-search-results-label: #{colors.$light-mode-search-results-label};
   }
 }

@@ -7,16 +7,16 @@ type: pdf
 ---
 
 <div id="resume-download-link">
-  <a href="/assets/files/roque-carrizo-resume.pdf" download><span>Download PDF&nbsp;&nbsp;</span><i class="icon icon-download"></i></a>
+  <a href="/assets/files/roque-carrizo-resume.pdf" download><span>Download</span><i class="icon icon-download"></i></a>
 </div>
 
 # Alberto Roque Carrizo Fernández
 
-<div id="webaddress">
-  <a href="https://roquec.com/">roquec.com</a>
-  | <a href="https://github.com/roquec">GitHub</a>
-  | <a href="https://www.linkedin.com/in/roque-carrizo-fernandez/">LinkedIn</a>
-  | <a href="{{ site.obfuscated_mailto }}"  target="_top">{{ site.obfuscated_email }}</a>
+<div>
+  <a href="{{site.obfuscated_mailto}}">{{site.obfuscated_email}}</a>
+  | <a href="https://roquec.com">roquec.com</a>
+  | <a href="https://github.com/roquec">github.com/roquec</a>
+  | <a href="https://www.linkedin.com/in/roquec">linkedin.com/in/roquec</a>
 </div>
 
 ## Introduction
@@ -80,4 +80,3 @@ science”. [http://neo4j.com/blog/graph-gist-winter-challenge-winners/](http://
 English ǀ **Advanced level (C2)**. IELTS with a 7.5 grade, April 30, 2010.
 
 Spanish ǀ **Native**.
-

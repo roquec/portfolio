@@ -8,10 +8,12 @@
 html {
   --color-resume-download-background: #{colors.$dark-mode-resume-download-background};
   --color-resume-download-hover-background: #{colors.$dark-mode-resume-download-hover-background};
+  --color-resume-download-foreground: #{colors.$dark-mode-resume-download-foreground};
 
   &[data-theme="light"] {
     --color-resume-download-background: #{colors.$light-mode-resume-download-background};
     --color-resume-download-hover-background: #{colors.$light-mode-resume-download-hover-background};
+    --color-resume-download-foreground: #{colors.$light-mode-resume-download-foreground};
   }
 }
 
@@ -20,32 +22,22 @@ html {
 ==========================*/
 #resume-download-link {
   position: absolute;
-  top: rem(24px);
+  top: rem(14px);
   right: rem(24px);
 
   a {
-    background-color: var(--color-resume-download-background);
-    border-radius: rem(12px);
     display: flex;
     flex-direction: row;
-    justify-content: center;
-    align-items: center;
+    border-radius: rem(8px);
+    padding: rem(8px) rem(12px);
+    background-color: var(--color-resume-download-background);
+    color: var(--color-resume-download-foreground);
     text-decoration: none;
-    padding: 0 rem(20px) 0 rem(20px);
-
-    span {
-      max-width: 0;
-      white-space: nowrap;
-      overflow: hidden;
-      transition: max-width 0.4s;
-      line-height: rem(50px);
-      text-align: center;
-    }
+    text-align: center;
 
     i {
-      font-size: rem(25px);
-      line-height: rem(50px);
-      text-align: center;
+      margin-left: rem(8px);
+      font-size: rem(22px);
     }
   }
 }
@@ -55,15 +47,9 @@ html {
 ==========================*/
 @container content (max-width: #{$breakpoint-mobile}) {
   #resume-download-link {
-    position: initial;
-    margin-left: auto;
-    margin-right: auto;
-
-    & > a {
-      & > span {
-        max-width: initial;
-      }
-    }
+    top: unset;
+    bottom: rem(12px);
+    right: rem(12px);
   }
 }
 
@@ -74,11 +60,6 @@ html {
   #resume-download-link {
     a:hover {
       background-color: var(--color-resume-download-hover-background);
-
-      & > span {
-        max-width: rem(100px);
-      }
     }
   }
 }
-

@@ -5,7 +5,6 @@
 // Base
 $base-background: #FFFFFF;
 $base-foreground: #24292f;
-$base-foreground-muted: #CCCCCC;
 
 // Footer
 $footer-background: #007ACC;
@@ -40,12 +39,6 @@ $search-tag-number-foreground: #A6A6A6;
 $search-tag-hover-background: #0060C0;
 $search-tag-hover-foreground: #FFFFFF;
 $search-tag-hover-border: #90C2F9;
-$search-tag-selected-background: #831c1c;
-$search-tag-selected-foreground: #FFFFFF;
-$search-tag-selected-border: #ff4f4f;
-$search-tag-selected-hover-background: #831c1c;
-$search-tag-selected-hover-foreground: #FFFFFF;
-$search-tag-selected-hover-border: #ff4f4f;
 $search-results-label: #616161;
 
 // Tabs
@@ -87,7 +80,7 @@ $markdown-fg-subtle: #6e7781;
 $markdown-canvas-default: #ffffff;
 $markdown-canvas-subtle: #f6f8fa;
 $markdown-border-default: #d0d7de;
-$markdown-border-muted: hsla(210, 18%, 87%, 1);
+$markdown-border-muted: rgba(0, 0, 0, 0.18);
 $markdown-neutral-muted: rgba(175, 184, 193, 0.2);
 $markdown-accent-fg: #0969da;
 $markdown-accent-emphasis: #0969da;
@@ -120,5 +113,10 @@ $config-comment: #008000;
 $config-bracket: #0431FA;
 
 // Resume Page
-$resume-download-background: #F4F4F4;
-$resume-download-hover-background: #757575;
+$resume-download-background: #3db08a;
+$resume-download-hover-background: #43c298;
+$resume-download-foreground: #FFFFFF;
+
+// Article Page
+$article-foreground-muted: #757575;
+$article-border-muted: rgba(0, 0, 0, 0.18);

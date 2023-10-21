@@ -10,13 +10,11 @@ html {
   color-scheme: dark;
   --color-base-background: #{colors.$dark-mode-base-background};
   --color-base-foreground: #{colors.$dark-mode-base-foreground};
-  --color-base-foreground-muted: #{colors.$dark-mode-base-foreground-muted};
 
   &[data-theme="light"] {
     color-scheme: light;
     --color-base-background: #{colors.$light-mode-base-background};
     --color-base-foreground: #{colors.$light-mode-base-foreground};
-    --color-base-foreground-muted: #{colors.$light-mode-base-foreground-muted};
   }
 }
 

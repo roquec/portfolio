@@ -1,5 +1,5 @@
 ---
-tags: [ bibendum, eget, ultricies, fermentum, malesuada ]
+tags: [ bibendum, eget ]
 title: Drawing 1
 ---
 

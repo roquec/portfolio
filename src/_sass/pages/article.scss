@@ -1,0 +1,51 @@
+@use "../shared/util" as *;
+@use "../shared/vars" as *;
+@use "../themes/colors" as colors;
+
+
+/*=========================
+   COLORS
+==========================*/
+html {
+  --color-article-foreground-muted: #{colors.$dark-mode-article-foreground-muted};
+  --color-article-border-muted: #{colors.$dark-mode-article-border-muted};
+
+  &[data-theme="light"] {
+    --color-article-foreground-muted: #{colors.$light-mode-article-foreground-muted};
+    --color-article-border-muted: #{colors.$light-mode-article-border-muted};
+  }
+}
+
+
+/*=========================
+   STYLES
+==========================*/
+.article-wrapper {
+  .article-header {
+    h1 {
+      border: 0;
+      margin-bottom: 0;
+      padding-bottom: 0;
+    }
+
+    .article-meta {
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+      gap: rem(10px);
+      margin: rem(16px) 0;
+      padding: rem(12px) 0;
+      border-bottom: rem(1px) solid var(--color-article-border-muted);
+      border-top: rem(1px) solid var(--color-article-border-muted);
+      color: var(--color-article-foreground-muted);
+
+      .article-meta-tags {
+        display: flex;
+        flex-direction: row;
+        justify-content: end;
+        gap: 0 rem(6px);
+        flex-wrap: wrap;
+      }
+    }
+  }
+}

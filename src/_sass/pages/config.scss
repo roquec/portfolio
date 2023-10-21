@@ -31,7 +31,6 @@ html {
   font: $code-font;
 
   .config-line {
-
     display: flex;
     flex-direction: row;
 
@@ -50,6 +49,7 @@ html {
       color: var(--color-base-foreground);
       font-size: rem(14px);
       width: auto;
+      font: $code-font;
     }
 
     #config-search-query-input {

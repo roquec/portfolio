@@ -55,27 +55,17 @@ html {
 ==========================*/
 .markdown-body {
   max-width: #{$content-max-width};
-  display: flex;
-  flex-direction: column;
-  padding: 24px 24px;
+  padding: $content-padding;
   font: $markdown-font;
-  -ms-text-size-adjust: 100%;
-  -webkit-text-size-adjust: 100%;
-  margin: 0;
+
   color: var(--color-fg-default);
   background-color: var(--color-canvas-default);
   word-wrap: break-word;
 }
 
-@media (max-width: #{$breakpoint-wide}) {
+@container content (max-width: #{$breakpoint-mobile}) {
   .markdown-body {
-    padding: 24px 12px;
-  }
-}
-
-@media (max-width: #{$breakpoint-mobile}) {
-  .markdown-body {
-    padding: 20px 8px;
+    padding: $content-padding-mobile;
   }
 }
 
@@ -128,7 +118,7 @@ html {
 
 .markdown-body b,
 .markdown-body strong {
-  font-weight: var(--base-text-weight-semibold, 600);
+  font-weight: var(--base-text-weight-semibold, 700);
 }
 
 .markdown-body dfn {
@@ -1006,4 +996,9 @@ html {
 
 .kd, .nb, .nl, .nv, .vc, .vg, .vi, .vm {
   font-style: italic;
+}
+
+
+.markdown-body h1 {
+  margin-top: 0;
 }
