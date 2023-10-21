@@ -37,7 +37,7 @@
   <meta property="og:title" content="{{ page.title }}"/>
   <meta property="og:description" content="{{ page.description }}"/>
   <meta property="og:url" content="{{ page.url | absolute_url | remove: 'index.html' | remove: '.html' }}"/>
-  <meta property="og:image" content="{{ include.post.url | replace:'/index.html','/thumbnail.webp' | absolute_url }}"/>
+  <meta property="og:image" content="{{ page.url | replace:'/index.html','/thumbnail.webp' | absolute_url }}"/>
   <meta property="og:type" content="article"/>
   {% endif %}
 
