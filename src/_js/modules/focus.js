@@ -15,7 +15,7 @@ class Focus {
   #clickEventListener = this.#onClick.bind(this);
 
   constructor(stateManager) {
-    const focusItemId = window.sessionStorage.getItem(Focus.FOCUS_STORAGE_KEY);
+    const focusItemId = Storage.get(Focus.FOCUS_STORAGE_KEY);
 
     this.#registerInitialStyles(stateManager, focusItemId);
 
@@ -49,7 +49,7 @@ class Focus {
       target.addEventListener("click", this.#clickEventListener);
     }
 
-    window.sessionStorage.removeItem(Focus.FOCUS_STORAGE_KEY);
+    Storage.remove(Focus.FOCUS_STORAGE_KEY);
 
     const focusedElements = document.getElementsByClassName(Focus.FOCUSED_CLASS);
     while (focusedElements.length > 0) {
@@ -58,7 +58,7 @@ class Focus {
   }
 
   #applyState() {
-    const focusItemId = window.sessionStorage.getItem(Focus.FOCUS_STORAGE_KEY);
+    const focusItemId = Storage.get(Focus.FOCUS_STORAGE_KEY);
 
     // Set new focus
     if (focusItemId) {
@@ -69,7 +69,7 @@ class Focus {
 
   #onClick(event) {
     const element = event.target.closest(Focus.FOCUS_TARGETS);
-    window.sessionStorage.setItem(Focus.FOCUS_STORAGE_KEY, element.id);
+    Storage.set(Focus.FOCUS_STORAGE_KEY, element.id);
     element.classList.add(Focus.FOCUSED_CLASS);
   }
 }

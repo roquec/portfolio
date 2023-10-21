@@ -21,9 +21,8 @@ class Search {
   #posts = [];
 
   constructor(stateManager) {
-    const searchText = Util.getState(Search.SEARCH_TEXT_KEY, "");
-    const searchResults = JSON.parse(Util.getState(Search.SEARCH_RESULTS_KEY, "[]"));
-
+    const searchText = this.getQueryState();
+    const searchResults = this.getResultsState();
 
     this.#registerInitialStyles(stateManager, searchText, searchResults);
 
@@ -85,8 +84,8 @@ class Search {
 
   #applyState() {
     // Get search panel state
-    const searchText = sessionStorage.getItem(Search.SEARCH_TEXT_KEY);
-    const searchResults = JSON.parse(sessionStorage.getItem(Search.SEARCH_RESULTS_KEY));
+    const searchText = this.getQueryState();
+    const searchResults = this.getResultsState();
 
     // Apply search box state
     this.#searchBoxElement.value = searchText;
@@ -120,8 +119,6 @@ class Search {
       this.#tagsWrapperElement.classList.add(Search.HIDDEN_CLASS);
       this.#searchResultsWrapperElement.classList.remove(Search.HIDDEN_CLASS);
     }
-
-    config?.storageChange();
   }
 
   #getResultsLabel(results) {
@@ -136,7 +133,7 @@ class Search {
   }
 
   search(searchText) {
-    window.sessionStorage.setItem(Search.SEARCH_TEXT_KEY, searchText ?? "");
+    this.#setQueryState(searchText ?? "");
     this.#executeSearch();
     this.#applyState();
   }
@@ -146,13 +143,13 @@ class Search {
     if (tag) {
       searchText = "#" + tag;
     }
-    window.sessionStorage.setItem(Search.SEARCH_TEXT_KEY, searchText);
+    this.#setQueryState(searchText);
     this.#executeSearch();
     this.#applyState();
   }
 
   clearSearch() {
-    window.sessionStorage.setItem(Search.SEARCH_TEXT_KEY, "");
+    this.#setQueryState("");
     this.#executeSearch();
     this.#applyState();
     this.focus();
@@ -164,11 +161,11 @@ class Search {
   }
 
   #executeSearch() {
-    let searchText = window.sessionStorage.getItem(Search.SEARCH_TEXT_KEY);
+    const searchText = this.getQueryState();
     let results = [];
 
     if (searchText === "" || searchText === "#") {
-      window.sessionStorage.setItem(Search.SEARCH_RESULTS_KEY, "[]");
+      this.#setResultsState([]);
       return;
     }
 
@@ -190,6 +187,22 @@ class Search {
       }
     }
 
-    window.sessionStorage.setItem(Search.SEARCH_RESULTS_KEY, JSON.stringify(results));
+    this.#setResultsState(results);
+  }
+
+  getQueryState() {
+    return Storage.get(Search.SEARCH_TEXT_KEY, "");
+  }
+
+  getResultsState() {
+    return JSON.parse(Storage.get(Search.SEARCH_RESULTS_KEY, "[]"));
+  }
+
+  #setQueryState(value) {
+    Storage.set(Search.SEARCH_TEXT_KEY, value);
+  }
+
+  #setResultsState(value) {
+    Storage.set(Search.SEARCH_RESULTS_KEY, JSON.stringify(value));
   }
 }

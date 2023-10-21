@@ -10,7 +10,6 @@ class Folders {
   static FOLDERS_CLASS = "folder";
   static OPEN_FOLDER_CLASS = "open";
 
-
   constructor(stateManager) {
     this.#registerInitialStyles(stateManager, this.#getState());
 
@@ -46,7 +45,8 @@ class Folders {
       }
     }
 
-    window.sessionStorage.setItem(Folders.FOLDERS_STORAGE_KEY, JSON.stringify(stateFolders));
+    Storage.set(Folders.FOLDERS_STORAGE_KEY, JSON.stringify(stateFolders));
+
     this.#applyState();
   }
 
@@ -74,12 +74,14 @@ class Folders {
     } else {
       folders.push(folderId);
     }
-    window.sessionStorage.setItem(Folders.FOLDERS_STORAGE_KEY, JSON.stringify(folders));
+
+    Storage.set(Folders.FOLDERS_STORAGE_KEY, JSON.stringify(folders));
+
     this.#applyState();
   }
 
   #getState() {
-    const state = Util.getState(Folders.FOLDERS_STORAGE_KEY, JSON.stringify(Folders.DEFAULT_OPEN_FOLDERS));
+    const state = Storage.get(Folders.FOLDERS_STORAGE_KEY, JSON.stringify(Folders.DEFAULT_OPEN_FOLDERS));
     return JSON.parse(state);
   }
 }

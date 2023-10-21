@@ -10,6 +10,10 @@ class Config {
   #menuElement;
   #searchElement;
 
+  // Listeners
+  #stateListener = this.#onStateChange.bind(this);
+  #inputChangeListener = this.#onInputChange.bind(this);
+
   constructor() {
     Util.onPageReady(this.#initialize.bind(this));
   }
@@ -19,22 +23,33 @@ class Config {
     this.#widthElement = document.getElementById(Config.CONFIG_PANEL_WIDTH_INPUT_ID);
     this.#menuElement = document.getElementById(Config.CONFIG_MENU_PANEL_INPUT_ID);
     this.#searchElement = document.getElementById(Config.CONFIG_SEARCH_QUERY_INPUT_ID);
-    this.storageChange();
+
+    window.addEventListener("state", this.#stateListener);
+    this.#themeElement.addEventListener("change", this.#inputChangeListener);
+    this.#widthElement.addEventListener("change", this.#inputChangeListener);
+    this.#menuElement.addEventListener("change", this.#inputChangeListener);
+    this.#searchElement.addEventListener("change", this.#inputChangeListener);
+
+    this.#onStateChange();
   }
 
-  storageChange() {
+  #onStateChange() {
     if (this.#themeElement) {
-      this.#themeElement.value = localStorage.getItem(Theme.THEME_STORAGE_KEY);
+      this.#themeElement.value = theme.getState();
     }
     if (this.#widthElement) {
-      this.#widthElement.value = localStorage.getItem(Resizer.WIDTH_STORAGE_KEY);
+      this.#widthElement.value = resizer.getState();
     }
     if (this.#menuElement) {
-      this.#menuElement.value = sessionStorage.getItem(Menu.STORAGE_KEY);
+      this.#menuElement.value = menu.getState();
     }
     if (this.#searchElement) {
-      this.#searchElement.value = "\"" + sessionStorage.getItem(Search.SEARCH_TEXT_KEY) + "\"";
+      this.#searchElement.value = "\"" + search.getQueryState() + "\"";
     }
+  }
+
+  #onInputChange() {
+    this.#onStateChange();
   }
 
   setThemeConfig() {

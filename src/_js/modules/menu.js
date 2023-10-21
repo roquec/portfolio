@@ -26,10 +26,10 @@ class Menu {
   constructor(stateManager) {
     //Always start closed if not wide screen
     if (!Util.isWideScreen()) {
-      window.sessionStorage.setItem(Menu.STORAGE_KEY, Menu.CLOSED_STATUS);
+      this.#setState(Menu.CLOSED_STATUS);
     }
 
-    const menuState = Util.getState(Menu.STORAGE_KEY, Menu.DEFAULT_STATUS);
+    const menuState = this.getState();
 
     this.#registerInitialStyles(stateManager, menuState);
 
@@ -102,7 +102,7 @@ class Menu {
   }
 
   #applyState() {
-    let menuStatus = window.sessionStorage.getItem(Menu.STORAGE_KEY);
+    let menuStatus = this.getState();
 
     if (menuStatus === Menu.EXPLORER_PANEL_ID) {
       this.#open(this.#explorerPanel, this.#explorerAction);
@@ -120,8 +120,6 @@ class Menu {
       this.#menu.classList.add(Menu.CLOSED_CLASS);
       this.#menu.classList.remove(Menu.OPEN_CLASS);
     }
-
-    config?.storageChange();
   }
 
   #open(panel, action) {
@@ -141,30 +139,43 @@ class Menu {
   }
 
   toggle(id) {
-    let menuStatus = window.sessionStorage.getItem(Menu.STORAGE_KEY);
+    let menuStatus = this.getState();
+
     if (id === menuStatus) {
       menuStatus = Menu.CLOSED_STATUS;
     } else {
       menuStatus = id;
     }
-    window.sessionStorage.setItem(Menu.STORAGE_KEY, menuStatus);
+
+    this.#setState(menuStatus);
+
     this.#applyState();
   }
 
   close() {
-    window.sessionStorage.setItem(Menu.STORAGE_KEY, Menu.CLOSED_STATUS);
+    this.#setState(Menu.CLOSED_STATUS);
     this.#applyState();
   }
 
   open(id) {
-    window.sessionStorage.setItem(Menu.STORAGE_KEY, id);
-    this.#applyState();
+    if (id === Menu.CLOSED_STATUS || id === Menu.EXPLORER_PANEL_ID) {
+      this.#setState(id);
+      this.#applyState();
+    }
   }
 
   set(value) {
     if (value === Menu.CLOSED_STATUS || value === Menu.EXPLORER_PANEL_ID || value === Menu.SEARCH_PANEL_ID) {
-      sessionStorage.setItem(Menu.STORAGE_KEY, value);
+      this.#setState(value);
       this.#applyState();
     }
+  }
+
+  getState() {
+    return Storage.get(Menu.STORAGE_KEY, Menu.DEFAULT_STATUS);
+  }
+
+  #setState(value) {
+    Storage.set(Menu.STORAGE_KEY, value);
   }
 }

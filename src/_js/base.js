@@ -1,6 +1,5 @@
 const state = new State();
 
-const config = new Config();
 const theme = new Theme();
 const menu = new Menu(state);
 const focus = new Focus(state);

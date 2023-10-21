@@ -5,7 +5,6 @@ icon: config
 type: editorconfig
 ---
 <div id="config-page">
-
   <div class="config-line">
     <span class="config-comment"># roquec.com site configuration</span>
   </div>
@@ -33,7 +32,7 @@ type: editorconfig
   <div class="config-line">
     <label class="config-key" for="config-theme-input">theme</label>&nbsp;=&nbsp;<input id="config-theme-input"
                                                                                         type="text"
-                                                                                        onblur="config.setThemeConfig()"/>
+                                                                                        oninput="config.setThemeConfig()"/>
   </div>
 
 
@@ -42,7 +41,7 @@ type: editorconfig
   </div>
   <div class="config-line">
     <label class="config-key" for="config-search-query-input">search_query</label>&nbsp;=&nbsp;<input
-    id="config-search-query-input" type="text" onblur="config.setSearchConfig()"/>
+    id="config-search-query-input" type="text" oninput="config.setSearchConfig()"/>
   </div>
 
   <div class="config-empty-line"></div>
@@ -59,7 +58,7 @@ type: editorconfig
     <label class="config-key" for="config-menu-panel-input">menu_panel</label>&nbsp;=&nbsp;<input
     id="config-menu-panel-input"
     type="text"
-    onblur="config.setMenuConfig()"/>
+    oninput="config.setMenuConfig()"/>
   </div>
 
   <div class="config-line">
@@ -67,7 +66,10 @@ type: editorconfig
   </div>
   <div class="config-line">
     <label class="config-key" for="config-panel-width-input">menu_panel_width</label>&nbsp;=&nbsp;<input
-    id="config-panel-width-input" type="text" onblur="config.setWidthConfig()"/>
+    id="config-panel-width-input" type="text" oninput="config.setWidthConfig()"/>
   </div>
 
+  <script>
+    const config = new Config();
+  </script>
 </div>

@@ -11,17 +11,19 @@ class Resizer {
   static MENU_WIDTH_PROPERTY = "--menu-panel-width";
   static RESIZER_ACTIVE_CLASS = "active";
 
-  resizerElement = null;
-  resizerTarget = null;
+  #defaultWidth = "300px";
+  #resizerElement = null;
+  #resizerTarget = null;
 
   // Listeners
-  clickResizerListener = this.#onResizerClick.bind(this);
-  dragResizerListener = this.#onResizerDrag.bind(this);
-  releaseResizerListener = this.#onResizerRelease.bind(this);
+  #clickResizerListener = this.#onResizerClick.bind(this);
+  #dragResizerListener = this.#onResizerDrag.bind(this);
+  #releaseResizerListener = this.#onResizerRelease.bind(this);
 
   constructor(stateManager) {
-    const defaultWidth = getComputedStyle(document.documentElement).getPropertyValue(Resizer.MENU_WIDTH_PROPERTY);
-    const width = Util.getState(Resizer.WIDTH_STORAGE_KEY, defaultWidth, localStorage);
+    this.#defaultWidth = getComputedStyle(document.documentElement).getPropertyValue(Resizer.MENU_WIDTH_PROPERTY) ?? this.#defaultWidth;
+
+    const width = this.getState();
 
     this.#registerInitialStyles(stateManager, width);
 
@@ -38,54 +40,61 @@ class Resizer {
   }
 
   #initialize() {
-    this.resizerElement = document.getElementById(Resizer.RESIZER_ID);
-    this.resizerTarget = document.getElementById(Resizer.RESIZER_TARGET_ID);
+    this.#resizerElement = document.getElementById(Resizer.RESIZER_ID);
+    this.#resizerTarget = document.getElementById(Resizer.RESIZER_TARGET_ID);
     this.start();
     this.#applyState();
   }
 
   start() {
-    this.resizerElement.addEventListener("mousedown", this.clickResizerListener);
+    this.#resizerElement.addEventListener("mousedown", this.#clickResizerListener);
   }
 
   stop() {
-    this.resizerElement.removeEventListener("mousedown", this.clickResizerListener);
-    this.resizerElement.removeEventListener("mousedown", this.dragResizerListener);
-    this.resizerElement.removeEventListener("mousedown", this.releaseResizerListener);
+    this.#resizerElement.removeEventListener("mousedown", this.#clickResizerListener);
+    this.#resizerElement.removeEventListener("mousedown", this.#dragResizerListener);
+    this.#resizerElement.removeEventListener("mousedown", this.#releaseResizerListener);
   }
 
   #applyState() {
-    const storedWidth = window.localStorage.getItem(Resizer.WIDTH_STORAGE_KEY);
+    const storedWidth = this.getState();
     if (storedWidth) {
-      this.resizerTarget.style.width = storedWidth;
+      this.#resizerTarget.style.width = storedWidth;
     }
   }
 
   #onResizerClick(e) {
-    document.addEventListener("mousemove", this.dragResizerListener);
-    document.addEventListener("mouseup", this.releaseResizerListener);
-    this.resizerElement.classList.add(Resizer.RESIZER_ACTIVE_CLASS);
+    document.addEventListener("mousemove", this.#dragResizerListener);
+    document.addEventListener("mouseup", this.#releaseResizerListener);
+    this.#resizerElement.classList.add(Resizer.RESIZER_ACTIVE_CLASS);
     Util.pauseEvent(e);
   }
 
   #onResizerDrag(e) {
-    const newWidth = e.clientX - this.resizerElement.parentElement.offsetLeft;
-    this.resizerTarget.style.width = `${newWidth}px`;
+    const newWidth = e.clientX - this.#resizerElement.parentElement.offsetLeft;
+    this.#resizerTarget.style.width = `${newWidth}px`;
     Util.pauseEvent(e);
   }
 
   #onResizerRelease() {
-    document.removeEventListener("mousemove", this.dragResizerListener);
-    document.removeEventListener("mouseup", this.releaseResizerListener);
-    this.resizerElement.classList.remove(Resizer.RESIZER_ACTIVE_CLASS);
-    window.localStorage.setItem(Resizer.WIDTH_STORAGE_KEY, this.resizerTarget.style.width);
-    config?.storageChange();
+    document.removeEventListener("mousemove", this.#dragResizerListener);
+    document.removeEventListener("mouseup", this.#releaseResizerListener);
+    this.#resizerElement.classList.remove(Resizer.RESIZER_ACTIVE_CLASS);
+    this.#setState(this.#resizerTarget.style.width);
   }
 
   set(width) {
     if (width.match(/\d+px/g)) {
-      window.localStorage.setItem(Resizer.WIDTH_STORAGE_KEY, width);
+      this.#setState(width);
       this.#applyState();
     }
+  }
+
+  getState() {
+    return Storage.get(Resizer.WIDTH_STORAGE_KEY, this.#defaultWidth, localStorage);
+  }
+
+  #setState(value) {
+    Storage.set(Resizer.WIDTH_STORAGE_KEY, value, localStorage);
   }
 }

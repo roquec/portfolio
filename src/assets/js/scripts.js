@@ -3,6 +3,8 @@ layout: none
 ---
 
 {% include _js/shared/util.js %}
+{% include _js/shared/storage.js %}
+
 {% include _js/modules/state.js %}
 {% include _js/modules/config.js %}
 {% include _js/modules/resizer.js %}
