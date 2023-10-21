@@ -33,13 +33,15 @@
   <meta name="keywords" content="{{ page.tags | concat: baseKeywords | join: ', ' }}">
 
   <!-- OPEN GRAPH -->
-  <meta property="og:title" content="RoqueC - {{ page.title }}"/>
-  <meta property="og:description" content="{{ site.description }}"/>
+  {% if page.layout == "layouts/article" %}
+  <meta property="og:title" content="{{ page.title }}"/>
+  <meta property="og:description" content="{{ page.description }}"/>
   <meta property="og:url" content="{{ page.url | absolute_url | remove: 'index.html' | remove: '.html' }}"/>
-  <meta property="og:image" content="{{ '/assets/images/share_image.png' | absolute_url }}"/>
+  <meta property="og:image" content="{{ include.post.url | replace:'/index.html','/thumbnail.webp' | absolute_url }}"/>
+  <meta property="og:type" content="article"/>
+  {% endif %}
 
   <!-- GOOGLE -->
-  <meta name="robots" content="index,follow"/>
   <script type="application/ld+json">
     {
       "@context": "https://schema.org",
