@@ -23,34 +23,40 @@
   <meta name="msapplication-config" content="/assets/images/favicon/browserconfig.xml">
   <meta name="theme-color" content="#1E1E1E">
 
+
+  {% assign meta_url = page.url | absolute_url | remove: 'index.html' | remove: '.html' %}
+  {% assign baseKeywords = "roque, carrizo, portfolio" | split: ", " %}
+
+  {% if page.layout == "layouts/article" %}
+
+  {% assign meta_title = page.title | append: " - Roque Carrizo" %}
+  {% assign meta_description = page.excerpt | strip_html | truncatewords: 20 %}
+  {% assign meta_image = page.url | replace:'/index.html','/thumbnail.webp' | absolute_url %}
+  {% assign meta_type = 'article' %}
+
+  {% else %}
+
+  {% assign meta_title = "Roque Carrizo - " | append: page.title %}
+  {% assign meta_description = page.description | truncatewords: 20 %}
+  {% assign meta_image = '/assets/images/share_1200x630.png' | absolute_url %}
+  {% assign meta_type = 'website' %}
+
+  {% endif %}
+
   <!-- SITE -->
-  <title>RoqueC - {{ page.title }}</title>
-  <meta name="description" content="{{ site.description }}"/>
-  <link rel="canonical" href="{{ page.url | absolute_url | remove: 'index.html' | remove: '.html' }}"/>
+  <title>{{ meta_title }}</title>
+  <meta name="description" content="{{ meta_description }}"/>
+  <link rel="canonical" href="{{ meta_url }}"/>
   <meta name="author" content="{{ site.author }}">
   <meta name="copyright" content="{{ site.author }}"/>
-  {% assign baseKeywords = "roque, portfolio" | split: ", " %}
   <meta name="keywords" content="{{ page.tags | concat: baseKeywords | join: ', ' }}">
 
   <!-- OPEN GRAPH -->
-  {% if page.layout == "layouts/article" %}
-  <meta property="og:title" content="{{ page.title }}"/>
-  <meta property="og:description" content="{{ page.description }}"/>
-  <meta property="og:url" content="{{ page.url | absolute_url | remove: 'index.html' | remove: '.html' }}"/>
-  <meta property="og:image" content="{{ page.url | replace:'/index.html','/thumbnail.webp' | absolute_url }}"/>
-  <meta property="og:type" content="article"/>
-  {% else %}
-  <meta property="og:title" content="RoqueC - {{ page.title }}"/>
-  <meta property="og:description" content="{{ site.description }}"/>
-  <meta property="og:url" content="{{ page.url | absolute_url | remove: 'index.html' | remove: '.html' }}"/>
-  <meta property="og:image" content="{{ '/assets/images/share_114x114.png' | absolute_url }}"/>
-  <meta property="og:image:width" content="114"/>
-  <meta property="og:image:height" content="114"/>
-  <meta property="og:image" content="{{ '/assets/images/share_1200x630.png' | absolute_url }}"/>
-  <meta property="og:image:width" content="1200"/>
-  <meta property="og:image:height" content="630"/>
-  <meta property="og:type" content="website"/>
-  {% endif %}
+  <meta property="og:title" content="{{ meta_title }}"/>
+  <meta property="og:description" content="{{ meta_description }}"/>
+  <meta property="og:url" content="{{ meta_url }}"/>
+  <meta property="og:image" content="{{ meta_image }}"/>
+  <meta property="og:type" content="{{ meta_type }}"/>
 
   <!-- GOOGLE -->
   <script type="application/ld+json">
