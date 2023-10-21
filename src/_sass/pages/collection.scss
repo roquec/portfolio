@@ -10,21 +10,22 @@
 
   .collection-title {
     display: flex;
-    align-items: center;
-    justify-items: center;
-
+    flex-direction: row;
     font-size: rem(28px);
-    text-align: center;
     font-weight: 600;
+    line-height: rem(35px);
 
     i {
-      font-size: rem(20px);
-      margin-right: rem(14px);
+      font-size: rem(24px);
+      margin: 0 rem(10px) 0 rem(8px);
     }
+
+    padding-bottom: rem(9px);
+    border-bottom: rem(1px) solid var(--color-article-border-muted);
+    margin-bottom: rem(24px);
   }
 
   .collection-posts {
-    margin-top: rem(24px);
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(450px, 1fr));
     grid-gap: rem(24px) rem(24px);
@@ -39,7 +40,7 @@
     padding: rem(24px) 0 rem(24px) 0;
 
     & > .collection-title {
-      margin: 0 rem(16px) 0 rem(16px);
+      margin: 0 rem(8px) rem(24px) rem(8px);
     }
 
     & > .collection-posts {

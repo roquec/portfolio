@@ -4,10 +4,7 @@ layout: base
 
 <div class="collection-page">
 
-  <div class="collection-title">
-    <i class="icon icon-{{ page.collection_icon }}"></i>
-    <span>{{ page.title }}</span>
-  </div>
+  <h1 class="collection-title"><i class="icon icon-{{ page.collection_icon }}"></i> {{ page.title }}</h1>
 
   <div class="collection-posts">
     {% assign posts = site[page.collection] %}
