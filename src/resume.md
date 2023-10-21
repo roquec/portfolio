@@ -4,6 +4,7 @@ layout: layouts/markdown
 file: resume
 icon: pdf
 type: pdf
+description: Roque Carrizo's full resume
 ---
 
 <div id="resume-download-link">
