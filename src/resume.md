@@ -5,6 +5,7 @@ file: resume
 icon: pdf
 type: pdf
 description: Roque Carrizo's full resume
+tags: [ resume, curriculum, cv ]
 ---
 
 <div id="resume-download-link">

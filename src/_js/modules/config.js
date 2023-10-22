@@ -30,6 +30,11 @@ class Config {
     this.#menuElement.addEventListener("change", this.#inputChangeListener);
     this.#searchElement.addEventListener("change", this.#inputChangeListener);
 
+    if (Util.isMobile()) {
+      this.#menuElement.disabled = true;
+      this.#widthElement.disabled = true;
+    }
+
     this.#onStateChange();
   }
 

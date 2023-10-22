@@ -31,7 +31,9 @@ type: editorconfig
   </div>
   <div class="config-line">
     <label class="config-key" for="config-theme-input">theme</label>&nbsp;=&nbsp;<input id="config-theme-input"
-                                                                                        type="text"
+                                                                                        type="text" autocomplete="off"
+                                                                                        spellcheck="false"
+                                                                                        autocapitalize="off"
                                                                                         oninput="config.setThemeConfig()"/>
   </div>
 
@@ -41,7 +43,8 @@ type: editorconfig
   </div>
   <div class="config-line">
     <label class="config-key" for="config-search-query-input">search_query</label>&nbsp;=&nbsp;<input
-    id="config-search-query-input" type="text" oninput="config.setSearchConfig()"/>
+    id="config-search-query-input" type="text" autocomplete="off" spellcheck="false" autocapitalize="off"
+    oninput="config.setSearchConfig()"/>
   </div>
 
   <div class="config-empty-line"></div>
@@ -56,8 +59,7 @@ type: editorconfig
   </div>
   <div class="config-line">
     <label class="config-key" for="config-menu-panel-input">menu_panel</label>&nbsp;=&nbsp;<input
-    id="config-menu-panel-input"
-    type="text"
+    id="config-menu-panel-input" type="text" autocomplete="off" spellcheck="false" autocapitalize="off"
     oninput="config.setMenuConfig()"/>
   </div>
 
@@ -66,7 +68,8 @@ type: editorconfig
   </div>
   <div class="config-line">
     <label class="config-key" for="config-panel-width-input">menu_panel_width</label>&nbsp;=&nbsp;<input
-    id="config-panel-width-input" type="text" oninput="config.setWidthConfig()"/>
+    id="config-panel-width-input" type="text" autocomplete="off" spellcheck="false" autocapitalize="off"
+    oninput="config.setWidthConfig()"/>
   </div>
 
   <script>

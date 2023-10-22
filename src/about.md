@@ -1,7 +1,7 @@
 ---
-title: Profile
+title: About
 layout: layouts/markdown
-file: profile
+file: about
 icon: markdown
 type: md
 ---
