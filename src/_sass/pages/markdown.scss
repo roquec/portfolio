@@ -65,7 +65,10 @@ html {
 
 @container content (max-width: #{$breakpoint-mobile}) {
   .markdown-body {
-    padding: $content-padding-mobile;
+    padding-top: rem(16px);
+    padding-bottom: rem(16px);
+    padding-left: rem(8px);
+    padding-right: rem(8px);
   }
 }
 

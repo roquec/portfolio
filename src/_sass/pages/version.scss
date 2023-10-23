@@ -22,8 +22,7 @@ html {
    STYLES
 ==========================*/
 #version-json {
-  margin: rem(14px) rem(8px) rem(14px) rem(30px);
-  padding: rem(4px) 0;
+  padding: rem(14px) rem(14px) rem(14px) rem(30px);
   display: flex;
   flex-direction: column;
   font-size: rem(14px);
@@ -53,6 +52,6 @@ html {
 ==========================*/
 @container content (max-width: #{$breakpoint-mobile}) {
   #version-json {
-    margin: rem(14px) rem(8px) rem(14px) rem(14px);
+    padding: rem(14px);
   }
 }
