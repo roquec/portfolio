@@ -7,7 +7,18 @@ layout: base
   <h1 class="collection-title"><i class="icon icon-{{ page.collection_icon }}"></i> {{ page.title }}</h1>
 
   <div class="collection-posts">
+
     {% assign posts = site[page.collection] %}
+    {% assign grouped = posts | group_by: 'feature_index' | sort: 'name' | reverse %}
+    {% for item in grouped %}
+    {% assign sorted = item['items'] | sort: 'date' | reverse %}
+    {% if forloop.first %}
+    {% assign posts = sorted %}
+    {% else %}
+    {% assign posts = posts | concat: sorted %}
+    {% endif %}
+    {% endfor %}
+
     {% for post in posts %}
     {% include _html/components/card.html post=post %}
     {% endfor %}

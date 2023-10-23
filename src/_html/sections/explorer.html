@@ -23,7 +23,8 @@
   <!-- projects.html -->
   {% include _html/components/file.html id='projects.html' %}
   <!-- Project file items -->
-  {% for project in site.projects %}
+  {% assign projects = site.projects | sort: "feature_index" | reverse %}
+  {% for project in projects %}
   {% include _html/components/file.html page=project %}
   {% endfor %}
   {% endcapture %}
@@ -38,7 +39,8 @@
   <!-- articles.html -->
   {% include _html/components/file.html id='articles.html' %}
   <!-- Articles file items -->
-  {% for article in site.articles %}
+  {% assign articles = site.articles | sort: "date" | reverse %}
+  {% for article in articles %}
   {% include _html/components/file.html page=article %}
   {% endfor %}
   {% endcapture %}
@@ -53,7 +55,8 @@
   <!-- drawings.html -->
   {% include _html/components/file.html id='drawings.html' %}
   <!-- Drawings file items -->
-  {% for drawing in site.drawings %}
+  {% assign drawings = site.drawings | sort: "feature_index" | reverse %}
+  {% for drawing in drawings %}
   {% include _html/components/file.html page=drawing %}
   {% endfor %}
   {% endcapture %}
