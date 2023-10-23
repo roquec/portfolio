@@ -1,7 +1,6 @@
 ---
 title: Portfolio Website
 feature_index: 3
-date: 23/10/2023
 tags: [ css, html, markdown, github ]
 ---
 

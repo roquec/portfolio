@@ -38,6 +38,7 @@ html {
       border-bottom: rem(1px) solid var(--color-article-border-muted);
       border-top: rem(1px) solid var(--color-article-border-muted);
       color: var(--color-article-foreground-muted);
+      flex-wrap: wrap;
 
       .article-meta-tags {
         display: flex;
