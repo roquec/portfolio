@@ -37,7 +37,7 @@
   {% else %}
 
   {% assign meta_title = "Roque Carrizo - " | append: page.title %}
-  {% assign meta_description = page.description | truncatewords: 20 %}
+  {% assign meta_description = page.description | default: site.description | truncatewords: 20 %}
   {% assign meta_image = '/assets/images/share_1200x630.png' | absolute_url %}
   {% assign meta_type = 'website' %}
 

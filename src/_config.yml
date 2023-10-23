@@ -1,5 +1,6 @@
 url: "https://roquec.com"
 author: "Roque Carrizo"
+description: "Roque's very own personal portfolio website!"
 
 layouts_dir: ./_html
 includes_dir: .
@@ -25,7 +26,6 @@ defaults:
       layout: "base"
       type: "md"
       icon: "markdown"
-      description: "Roque's very own personal portfolio website!"
 
 plugins:
   - jekyll-sitemap
