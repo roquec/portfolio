@@ -1,6 +1,7 @@
 ---
 title: Lighthouse automated testing and reporting with GitHub Actions and Shields.io
 tags: [ GitHub, Lighthouse, powershell ]
+date: 2023-10-24
 ---
 
 Ever noticed those snazzy badges on GitHub repositories showcasing website performance metrics and wished you could have them for your own site? Not only do they look cool, but they also offer a quick glance into the health of a project. In this article, I'll unravel the magic behind automating Lighthouse reports and effortlessly integrating them into your README page using GitHub Actions, Gists, and Shields.io.

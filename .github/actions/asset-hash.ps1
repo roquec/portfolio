@@ -39,7 +39,17 @@ try
     foreach ($key in $fileHashDictionary.Keys)
     {
       $value = $fileHashDictionary[$key]
+
+      # Replace occurrences of the absolute path (full key)
       $fileContent = $fileContent.Replace($key, $key + "?v=" + $value)
+
+      # Calculate relative path and replace it
+      if ($key.StartsWith($currentDirectory)) {
+        $relativePath = $key -replace "^$currentDirectory", ""
+        if ($relativePath.StartsWith("/")) { $relativePath = $relativePath.Substring(1) }
+        $fileContent = $fileContent.Replace('"'+$relativePath, '"'+$relativePath + "?v=" + $value)
+        $fileContent = $fileContent.Replace('"./'+$relativePath, '"./'+$relativePath + "?v=" + $value)
+      }
     }
     Set-Content -Path $_.FullName -Value $fileContent
   }
