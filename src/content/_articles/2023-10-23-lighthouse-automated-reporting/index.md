@@ -206,6 +206,6 @@ https://htmlpreview.github.io/?https://gist.githubusercontent.com/<USER>/<GIST_I
 That’s it! With these steps, you've got an automated Lighthouse testing setup with nifty badges showcasing your website's performance. It's a little bragging, a little quality assurance, and a whole lot of geeky fun. Enjoy!
 
 ## References
-* GitHub Actions: https://github.com/features/actions
-* Lighthouse: https://developer.chrome.com/docs/lighthouse/overview/
-* Shields.io: https://shields.io/
+* GitHub Actions: [https://github.com/features/actions](https://github.com/features/actions)
+* Lighthouse: [https://developer.chrome.com/docs/lighthouse/overview/](https://developer.chrome.com/docs/lighthouse/overview/)
+* Shields.io: [https://shields.io/](https://shields.io/)
