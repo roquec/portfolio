@@ -1,7 +1,7 @@
 ---
 title: Live Puzzle
 feature_index: 1
-tags: [ unity, game, C#, android ]
+tags: [ unity, game, c#, android ]
 ---
 
 Live Puzzle is a puzzle game for mobile devices that breaks down the camera input and makes you reassemble it live by

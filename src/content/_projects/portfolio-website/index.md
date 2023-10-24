@@ -1,7 +1,7 @@
 ---
 title: Portfolio Website
 feature_index: 3
-tags: [ Jekyll, markdown, github, SASS, javascript ]
+tags: [ jekyll, markdown, github, sass, javascript ]
 ---
 
 Welcome to my personal portfolio website, [roquec.com](https://roquec.com). This project serves as a showcase for my creative work and a platform for easy content management. Here, I'll provide insights into the creation process, the decisions I made, the challenges I encountered, and the solutions I implemented.

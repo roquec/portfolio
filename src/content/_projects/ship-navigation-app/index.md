@@ -1,7 +1,7 @@
 ---
 title: Ship Navigation App
 feature_index: 2
-tags: [ windows, desktop, C#, WinUI3 ]
+tags: [ windows, desktop, c#, winui3 ]
 ---
 
 This project consists of the development of an application that assists in ship navigation and collision prevention. It

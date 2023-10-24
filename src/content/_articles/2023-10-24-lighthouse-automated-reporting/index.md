@@ -1,6 +1,6 @@
 ---
 title: Lighthouse automated testing and reporting with GitHub Actions and Shields.io
-tags: [ GitHub, Lighthouse, powershell ]
+tags: [ github, lighthouse, powershell ]
 date: 2023-10-24
 ---
 

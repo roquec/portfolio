@@ -1,7 +1,7 @@
 ---
 title: Rock Slide
 date: 2016-04-25
-tags: [ unity, C#, game, android ]
+tags: [ unity, c#, game, android ]
 ---
 
 Rock Slide is a fun rock dodging game made with Unity for Android.
