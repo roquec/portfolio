@@ -20,6 +20,10 @@ layout: layouts/markdown
     </div>
   </div>
 
+  {% if page.collection != "drawings" %}
+  <img class="article-thumbnail" src="./thumbnail.webp" alt="Thumbnail">
+  {% endif %}
+
   <div class="article-content">
     {{ content }}
   </div>
