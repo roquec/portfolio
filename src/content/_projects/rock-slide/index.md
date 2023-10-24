@@ -1,7 +1,6 @@
 ---
 title: Rock Slide
-feature_index: 2
-date: 23/10/2023
+date: 2016-04-25
 tags: [ unity, C#, game, android ]
 ---
 

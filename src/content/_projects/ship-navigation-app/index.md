@@ -1,5 +1,6 @@
 ---
 title: Ship Navigation App
+feature_index: 2
 tags: [ windows, desktop, C#, WinUI3 ]
 ---
 
