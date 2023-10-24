@@ -43,6 +43,7 @@ try
       # Replace occurrences of the absolute path (full key)
       $fileContent = $fileContent.Replace($key, $key + "?v=" + $value)
 
+      $currentDirectory = $_.DirectoryName -replace "\\", "/" -replace ".*\/_site\/", ""
       # Calculate relative path and replace it
       if ($key.StartsWith($currentDirectory)) {
         $relativePath = $key -replace "^$currentDirectory", ""
