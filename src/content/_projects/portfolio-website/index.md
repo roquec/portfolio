@@ -102,7 +102,7 @@ By default, GitHub Pages caches everything for 10 minutes. This is a very shor c
 Of course, if we set a long cache on everything then changes we make to our website will not be visible to the users for months until the cache expires. I created a rule within Cloudflare dashboard to only cache anything in the `/assets/` folder and images from posts folders for 6 months. Now changes to the HTML will be fine because those files are not cached but if we change the CSS or any other asset it would be cached for 6 months, that is a problem. To fix this I generate a hash from each asset and add it to the link so that any change will immediately invalidate the cache.
 
 ```
-<link href="/assets/css/styles.css?v=AB6D2B0BCFA7E6A2B635C904E7625C8CD97320933547E3039809ADE5530D491E" rel="stylesheet">
+<link href="/css/styles.css?v=AB6D2B0BCFA7E6A2B635C904E7625C8CD97320933547E3039809ADE5530D491E" rel="stylesheet">
 ```
 
 ### Lighthouse Reporting

@@ -43,6 +43,8 @@ If we want to have status badges for Lighthouse metrics on our GitHub README pag
 
 One option would be to commit a change to our own repository every time to update the badges with the new data. While this works it is kind of messy and pollutes our commit history with a lot of automated extra commits. So we need a clean way to do this without changing the README file every time which means the badges need to get their data dynamically from somewhere.
 
+{% raw %}
+
 ## The Solution
 
 My solution for this challenge? [GitHub Gists](https://gist.github.com/). Gists are like lightweight repos made for sharing code snippets and such. We can use one to publish our report and have our badges read data from it. We will leverage the [endpoint badge](https://shields.io/badges/endpoint-badge) for this. So the process now looks like this:
@@ -158,6 +160,7 @@ Gists are an easy way to share snippets of code or data. We'll use them to host 
 * Create a gist [here](https://gist.github.com/) and take note of the ID
 * Set up an [access token](https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/managing-your-personal-access-tokens) so your job is allowed to push to your gist
 * Add a final step to the job to push the files to the gist (I use a custom powershell script for this)
+
 ```yaml
       - name: Publish reports to gist
         shell: pwsh
@@ -210,3 +213,5 @@ That’s it! With these steps, you've got an automated Lighthouse testing setup 
 * GitHub Actions: [https://github.com/features/actions](https://github.com/features/actions)
 * Lighthouse: [https://developer.chrome.com/docs/lighthouse/overview/](https://developer.chrome.com/docs/lighthouse/overview/)
 * Shields.io: [https://shields.io/](https://shields.io/)
+
+{% endraw %}
