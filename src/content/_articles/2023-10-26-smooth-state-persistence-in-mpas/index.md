@@ -13,6 +13,7 @@ You can see a working example of this technique in [roquec.com](https://roquec.c
 </video>
 
 ## Context
+This article is aimed at intermediate to advanced front-end developers with a base knowledge of javascript and web development technologies and architectures.
 
 ### What is SPA?
 A Single Page Application (SPA) dynamically rewrites its current content instead of loading new pages, providing a fluid and faster experience. Read more about SPAs [here](https://developer.mozilla.org/en-US/docs/Glossary/SPA).
@@ -31,10 +32,10 @@ A straightforward approach might involve storing the state in localStorage. Then
     <source src="flicker.webm" type="video/webm"/>
 </video>
 
-### Apply state earlier
+### Applying State Before DOM Loads
 While we might think about applying the state changes as soon as possible, this would mean acting before the full DOM has loaded. As a result, our desired element (like the menu) might not yet be accessible, leaving us with no way to add our class to it.
 
-### Styles instead of DOM changes
+### Using Styles Over DOM Modifications
 We could inject style rules in the `head` or apply them to the `html` before the DOM loads allowing us to prepare styles depending on the state of the elements beforehand. This approach does indeed work but has some serious limitations. 
 
 First of all now we cannot just add our class to the element and rely on our css, we need custom style rules to be added via javascript to override the normal css (probably need `!important`). This means duplication of the css and bad maintainability. Secondly this solution is limited to what CSS can do, for example we can't make changes to the inner text of an element. All in all this approach is hacky and not reliable enough for us.
@@ -58,7 +59,7 @@ observer.observe(document.documentElement, config);
 * Finally, we start observing for changes by calling the `observe` method.
 
 ### 2. Observation
-Look for the elements we are interested in withing the `callback` function of the `MutationObserver`.
+Look for the elements we are interested in within the `callback` function of our `MutationObserver`.
 ```javascript
 function callback(mutationList, observer) {
   for (const mutation of mutationList) {
@@ -108,6 +109,12 @@ stateManager.setStateById(
 * The function `setStateById` encapsulates the same solution we implemented previously but in a more reusable and maintainable way.
 * `Resizer.RESIZER_TARGET_ID` is the ID of the element we are interested in.
 * `(element) => element.style.width = width` is the callback where we apply the state to the element.
+
+### Concerns
+
+While this solution seems promising there might a risk of performance issues at larger scales. If you are thinking of implementing this on a bigger application be sure to test the performance impact of running `MutationObserver` during DOM load.
+
+Also make sure `MutationObserver` is supported in all your target browsers: [compatibility](https://caniuse.com/mutationobserver).
 
 ## Conclusion
 Utilizing the `MutationObserver` offers a straightforward solution to a nuanced problem. It bridges the gap between the fluidity of SPAs and the architectural simplicity of MPAs. Experiment with the `MutationObserver` to enhance your MPA's user experience. If you've tried this at a larger scale or have improvements, I'd love to hear about your findings.
