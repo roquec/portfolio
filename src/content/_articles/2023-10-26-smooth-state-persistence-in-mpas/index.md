@@ -4,8 +4,6 @@ tags: [ javascript, front-end ]
 date: 2023-10-26
 ---
 
-# Achieving Smooth SPA-Like State Persistence in Multi-Page Applications
-
 Modern web design aims for seamless, swift user experiences reminiscent of native applications. While Single Page Applications (SPAs) cater to this, what if we could mirror this behavior in the simpler and scalable Multi-Page Applications (MPAs)? This article delves into a method to achieve such smooth navigation in MPAs.
 
 You can see a working example of this technique in [roquec.com](https://roquec.com). The frame around the content (menu, tabs...) maintains its state while the content changes with navigation.
