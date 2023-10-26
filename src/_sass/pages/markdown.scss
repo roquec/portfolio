@@ -977,12 +977,12 @@ html {
 
 // Constants
 .m, .mb, .mf, .mh, .mi, .mo, .il {
-  color: #79c0ff
+  color: var(--color-code-highlight-constant);
 }
 
 // Functions
 .na, .nc, .nf, .fm {
-  color: #d2a8ff;
+  color: var(--color-code-highlight-function);
 }
 
 .gh, .gi, .gu {
