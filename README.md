@@ -19,11 +19,7 @@
     <img alt="Lighthouse SEO badge" src="https://img.shields.io/endpoint?url=https%3A%2F%2Fgist.githubusercontent.com%2Froquec%2F3f8ee5d85053832ea374a05b301f57aa%2Fraw%2Fseo.json&logo=lighthouse&label=SEO&labelColor=333333&cacheSeconds=300"></a>
 </p>
 
-<br/>
-
 Welcome to the repository of my personal portfolio website [roquec.com](https://roquec.com/). The site is built using `Jekyll`, styled to imitate `Visual Studio Code` and hosted on `GitHub Pages`. For more information check out [Portfolio Website Project](https://roquec.com/projects/portfolio-website/).
-
-<br/>
 
 ![Screenshot of roquec.com](https://roquec.com/projects/portfolio-website/thumbnail.webp)
 
@@ -38,15 +34,15 @@ Before running the website locally, follow these steps to prepare the environmen
 
 ### Downloading Repository and Dependencies:
 1. Clone portfolio repository.
-```shell
+```
 git clone https://github.com/roquec/portfolio.git
 ```
 2. Navigate to directory.
-```shell
+```
 cd portfolio
 ```
 3. Run [install script](https://github.com/roquec/portfolio/blob/main/scripts/install.ps1) to install bundler and gems.
-```shell
+```
 .\scripts\install.ps1
 ```
 
@@ -57,7 +53,7 @@ Once your environment is set up, here's how to run and develop the site locally.
 
 Execute [serve script](https://github.com/roquec/portfolio/blob/main/scripts/serve.ps1) to build the site and serve it locally:
 
-```shell
+```
 .\scripts\serve.ps1
 ```
 
