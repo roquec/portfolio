@@ -19,9 +19,11 @@
     <img alt="Lighthouse SEO badge" src="https://img.shields.io/endpoint?url=https%3A%2F%2Fgist.githubusercontent.com%2Froquec%2F3f8ee5d85053832ea374a05b301f57aa%2Fraw%2Fseo.json&logo=lighthouse&label=SEO&labelColor=333333&cacheSeconds=300"></a>
 </p>
 
----
+<br/>
 
 Welcome to the repository of my personal portfolio website [roquec.com](https://roquec.com/). The site is built using `Jekyll`, styled to imitate `Visual Studio Code` and hosted on `GitHub Pages`. For more information check out [Portfolio Website Project](https://roquec.com/projects/portfolio-website/).
+
+<br/>
 
 ![Screenshot of roquec.com](https://roquec.com/projects/portfolio-website/thumbnail.webp)
 
