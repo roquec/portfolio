@@ -9,4 +9,4 @@ will be integrated with the Automatic Identification System (AIS), which will pr
 data for all nearby ships. All this information will be decoded and processed to ultimately provide the user with a
 simple visualization that can help them make decisions.
 
-![Ship Navigation Image](thumbnail.webp)
+This project is currently closed source.
