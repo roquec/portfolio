@@ -34,14 +34,19 @@ Before running the website locally, follow these steps to prepare the environmen
 
 ### Downloading Repository and Dependencies:
 1. Clone portfolio repository.
+
 ```
 git clone https://github.com/roquec/portfolio.git
 ```
+
 2. Navigate to directory.
+
 ```
 cd portfolio
 ```
+
 3. Run [install script](https://github.com/roquec/portfolio/blob/main/scripts/install.ps1) to install bundler and gems.
+
 ```
 .\scripts\install.ps1
 ```
