@@ -1,5 +1,5 @@
 ---
-title: Lighthouse automated testing and reporting with GitHub Actions and Shields.io
+title: Lighthouse Automated Testing and Reporting with GitHub Actions and Shields.io
 tags: [ github, lighthouse, powershell ]
 date: 2023-10-24
 ---
@@ -21,7 +21,7 @@ You can see a working example for this website here:
 * Working [README](https://github.com/roquec/portfolio/blob/main/README.md)
 * Working [report](https://htmlpreview.github.io/?https://gist.githubusercontent.com/roquec/3f8ee5d85053832ea374a05b301f57aa/raw/report.html)
 
-## The Context
+## Context
 ### What is Lighthouse?
 
 Lighthouse is a free, open-source, and automated tool from Google that helps developers improve the quality of web pages. It provides a comprehensive report on various parameters like performance, accessibility, SEO, best practices, and more. Think of it as an audit for your website – Lighthouse will highlight what we're doing right and where there’s room for improvement. Read more about [Lighthouse](https://developer.chrome.com/docs/lighthouse/overview/).
@@ -34,7 +34,7 @@ You know those fancy little badges you see on some GitHub repos indicating build
 
 ![Shield.io Badges Image](badges.webp)
 
-## The Challenge
+## Challenge
 
 If we want to have status badges for Lighthouse metrics on our GitHub README page we need multiple things:
 * Run Lighthouse report on every new change
@@ -45,7 +45,7 @@ One option would be to commit a change to our own repository every time to updat
 
 {% raw %}
 
-## The Solution
+## Solution
 
 My solution for this challenge? [GitHub Gists](https://gist.github.com/). Gists are like lightweight repos made for sharing code snippets and such. We can use one to publish our report and have our badges read data from it. We will leverage the [endpoint badge](https://shields.io/badges/endpoint-badge) for this. So the process now looks like this:
 1. Run Lighthouse in GitHub Actions
