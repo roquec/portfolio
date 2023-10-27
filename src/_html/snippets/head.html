@@ -13,14 +13,14 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   <!-- LOAD FONTS -->
-  <link rel="preconnect" href="/"/>
+  <link rel="preconnect" href="/">
   <link href="/assets/fonts/roquec-portfolio.woff2" rel="preload" as="font" type="font/woff2" crossorigin>
 
   <!-- LOAD STYLES -->
   <link href="/assets/css/styles.css" rel="stylesheet">
 
   <!-- LOAD SCRIPTS -->
-  <script type="text/javascript" src="/assets/js/scripts.js"></script>
+  <script src="/assets/js/scripts.js"></script>
 
   <!-- ICONS -->
   <link rel="apple-touch-icon" sizes="180x180" href="/assets/images/favicon/apple-touch-icon.png">
@@ -55,18 +55,19 @@
 
   <!-- SITE -->
   <title>{{ meta_title }}</title>
-  <meta name="description" content="{{ meta_description }}"/>
-  <link rel="canonical" href="{{ meta_url }}"/>
+  <meta name="description" content="{{ meta_description }}">
+  <link rel="canonical" href="{{ meta_url }}">
   <meta name="author" content="{{ site.author }}">
-  <meta name="copyright" content="{{ site.author }}"/>
+  <meta name="copyright" content="{{ site.author }}">
   <meta name="keywords" content="{{ page.tags | concat: baseKeywords | join: ', ' }}">
+  <link rel="sitemap" type="application/xml" title="Sitemap" href="/sitemap.xml">
 
   <!-- OPEN GRAPH -->
-  <meta property="og:title" content="{{ meta_title }}"/>
-  <meta property="og:description" content="{{ meta_description }}"/>
-  <meta property="og:url" content="{{ meta_url }}"/>
-  <meta property="og:image" content="{{ meta_image }}"/>
-  <meta property="og:type" content="{{ meta_type }}"/>
+  <meta property="og:title" content="{{ meta_title }}">
+  <meta property="og:description" content="{{ meta_description }}">
+  <meta property="og:url" content="{{ meta_url }}">
+  <meta property="og:image" content="{{ meta_image }}">
+  <meta property="og:type" content="{{ meta_type }}">
 
   <!-- GOOGLE -->
   <script type="application/ld+json">
