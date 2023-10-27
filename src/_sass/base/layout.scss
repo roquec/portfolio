@@ -61,7 +61,7 @@ html {
         #content {
           flex: 1;
           height: 0;
-          container-type: size;
+          container-type: inline-size;
           container-name: content;
         }
       }
