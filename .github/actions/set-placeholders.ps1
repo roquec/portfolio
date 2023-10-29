@@ -25,3 +25,16 @@ $readmePlaceholder = Get-Content $readmeFilePath -Raw
 $readmeContent = Get-Content "./README.md" -Raw
 $readmeContent = $readmePlaceholder -replace "__README__", $readmeContent
 $readmeContent | Set-Content $readmeFilePath
+
+# Get resume markdown from github.com/roquec/resume
+$resumeUrl = "https://raw.githubusercontent.com/roquec/resume/main/src/resume.md"
+$resumeFilePath = "./src/resume.md"
+$resumePlaceholder = Get-Content $resumeFilePath -Raw
+$resumeContent = Invoke-WebRequest -Uri $resumeUrl -UseBasicParsing | Select-Object -ExpandProperty Content
+$resumeContent = $resumePlaceholder -replace "__RESUME__", $resumeContent
+$resumeContent | Set-Content $resumeFilePath
+
+# Get resume PDF file from github.com/roquec/resume
+$resumePdfUrl = "https://raw.githubusercontent.com/roquec/resume/main/src/resume.pdf"
+$resumePdfTargetPath = "./src/assets/files/roque-carrizo-resume.pdf"
+Invoke-WebRequest -Uri $resumePdfUrl -OutFile $resumePdfDestination
