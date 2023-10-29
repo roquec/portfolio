@@ -12,7 +12,6 @@ permissions:
   id-token: write
 
 jobs:
-
   # Generate the site artifact and makes it available for future jobs
   build:
     runs-on: ubuntu-latest
@@ -89,8 +88,8 @@ jobs:
       #   - Results from mobile run are stored in ./reports/desktop
       - name: Run Lighthouse
         run: |
-          lhci autorun --collect.numberOfRuns=5 --collect.url=https://roquec.com?v=${{github.run_id}} --upload.target=filesystem --upload.outputDir=./reports/mobile
-          lhci autorun --collect.numberOfRuns=5 --collect.url=https://roquec.com?v=${{github.run_id}} --upload.target=filesystem --upload.outputDir=./reports/desktop --collect.settings.preset=desktop
+          lhci autorun --collect.numberOfRuns=5 --collect.url=https://roquec.com?v=${{github.run_id}}&testing=true --upload.target=filesystem --upload.outputDir=./reports/mobile
+          lhci autorun --collect.numberOfRuns=5 --collect.url=https://roquec.com?v=${{github.run_id}}&testing=true --upload.target=filesystem --upload.outputDir=./reports/desktop --collect.settings.preset=desktop
       # Use custom script to generate needed reports from Lighthouse results
       #   - Generates outputs in ./summary
       #     - Shield.io badge JSON files according to https://shields.io/badges/endpoint-badge

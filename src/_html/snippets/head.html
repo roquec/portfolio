@@ -1,11 +1,17 @@
 <head>
   <!-- Google tag (gtag.js) -->
+  <script>
+    const urlParams = new URLSearchParams(window.location.search);
+    const testing = urlParams.get('testing');
+    if(testing) {
+      window['ga-disable-G-KREZJE1HK9'] = true;
+    }
+  </script>
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-KREZJE1HK9"></script>
   <script>
     window.dataLayer = window.dataLayer || [];
     function gtag(){dataLayer.push(arguments);}
     gtag('js', new Date());
-
     gtag('config', 'G-KREZJE1HK9');
   </script>
 
