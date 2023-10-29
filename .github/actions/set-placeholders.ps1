@@ -36,5 +36,5 @@ $resumeContent | Set-Content $resumeFilePath
 
 # Get resume PDF file from github.com/roquec/resume
 $resumePdfUrl = "https://raw.githubusercontent.com/roquec/resume/main/output/resume.pdf"
-$resumePdfTargetPath = "./src/assets/files/roque-carrizo-resume.pdf"
+$resumePdfDestination = "./src/assets/files/roque-carrizo-resume.pdf"
 Invoke-WebRequest -Uri $resumePdfUrl -OutFile $resumePdfDestination
