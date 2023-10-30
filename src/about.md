@@ -27,9 +27,7 @@ so you can expect a lot in that realm. For example the creation of this website 
 which you can read more
 about [here](/projects/portfolio-website).
 
-In addition to my software engineering pursuits, I have a quite enjoy [drawing](/drawings). I've created a section here
-to showcase my drawings (the decent ones that is!). It's my hope that this platform will motivate me to
-draw more frequently, as it's a hobby I cherish.
+In addition to my software engineering pursuits, I quite enjoy [drawing](/drawings). I've created a section here to showcase some of my favorite drawings. It's my hope that this platform will motivate me to draw more frequently, as it's a hobby I cherish.
 
 ![Drawing](assets/images/roque_drawing.webp)
 

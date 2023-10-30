@@ -1,8 +1,8 @@
 <h1 align="center">roquec.com</h1>
 
 <p align="center">
-<code><a href="https://roquec.com/">roquec.com</a></code> |
-<code><a href="https://github.com/roquec/portfolio">source</a></code> |
+<code><a href="https://roquec.com/">roquec.com</a></code>&nbsp;&nbsp;·&nbsp;
+<code><a href="https://github.com/roquec/portfolio">source</a></code>&nbsp;&nbsp;·&nbsp;
 <code><a href="https://roquec.com/projects/portfolio-website/">project</a></code>
 </p>
 
