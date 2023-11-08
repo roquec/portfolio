@@ -1,6 +1,6 @@
 url: "https://roquec.com"
 author: "Roque Carrizo"
-description: "Roque's very own personal portfolio website!"
+description: "Roque Carrizo's personal portfolio website where I post about my projects, art and anything in tech that I find interesting."
 
 layouts_dir: ./_html
 includes_dir: .

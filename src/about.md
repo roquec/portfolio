@@ -4,15 +4,13 @@ layout: layouts/markdown
 file: about
 icon: markdown
 type: md
-description: "Hello, I'm Roque, a software engineer on a mission to create new interesting, useful, cool stuff."
+description: "Hello, I'm Roque, a software engineer trying to make things better via tech. My full name is Alberto Roque Carrizo Fernández, and I was born in Spain in 1992. Ever since I can remember I've always had a practical problem-solving mindset, and when I discovered coding, I was instantly hooked."
 tags: [ about ]
 ---
 
 # About Me
 
-Hello, I'm Roque, a software engineer on a mission to create new interesting, useful, cool stuff. My full name is
-Alberto Roque Carrizo Fernández, and I was born in Spain in 1992. Ever since I can remember I've always had a practical
-problem-solving mindset, and when I discovered coding, I was instantly hooked.
+Hello, I'm Roque, a software engineer trying to make things better via tech. My full name is Alberto Roque Carrizo Fernández, and I was born in Spain in 1992. Ever since I can remember I've always had a practical problem-solving mindset, and when I discovered coding, I was instantly hooked.
 
 I earned my Bachelor's degree in computer science from Oviedo University. During my journey, I had the opportunity to
 live and work in various cities, including Barcelona and Amsterdam, where I honed my skills and collaborated on exciting

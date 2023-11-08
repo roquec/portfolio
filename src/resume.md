@@ -4,7 +4,7 @@ layout: layouts/markdown
 file: resume
 icon: pdf
 type: pdf
-description: Roque Carrizo's full resume
+description: Alberto Roque Carrizo Fernández - Curriculum Vitae. 
 tags: [ resume, curriculum, cv ]
 ---
 

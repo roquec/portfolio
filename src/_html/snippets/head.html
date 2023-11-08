@@ -29,12 +29,12 @@
   <script src="/assets/js/scripts.js"></script>
 
   <!-- ICONS -->
+  <link rel="shortcut icon" href="/assets/images/favicon/favicon.ico">
   <link rel="apple-touch-icon" sizes="180x180" href="/assets/images/favicon/apple-touch-icon.png">
   <link rel="icon" type="image/png" sizes="32x32" href="/assets/images/favicon/favicon-32x32.png">
   <link rel="icon" type="image/png" sizes="16x16" href="/assets/images/favicon/favicon-16x16.png">
   <link rel="manifest" href="/assets/images/favicon/site.webmanifest">
   <link rel="mask-icon" href="/assets/images/favicon/safari-pinned-tab.svg" color="#5bbad5">
-  <link rel="shortcut icon" href="/assets/images/favicon/favicon.ico">
   <meta name="msapplication-TileColor" content="#1E1E1E">
   <meta name="msapplication-config" content="/assets/images/favicon/browserconfig.xml">
   <meta name="theme-color" content="#1E1E1E">
@@ -46,14 +46,19 @@
   {% if page.layout == "layouts/article" %}
 
   {% assign meta_title = page.title | append: " - Roque Carrizo" %}
-  {% assign meta_description = page.excerpt | strip_html | truncatewords: 20 %}
+  {% assign meta_description = page.excerpt | strip_html | truncatewords: 25 %}
   {% assign meta_image = page.url | replace:'/index.html','/thumbnail.webp' | absolute_url %}
   {% assign meta_type = 'article' %}
 
   {% else %}
 
+  {% if page.file != "index" %}
   {% assign meta_title = "Roque Carrizo - " | append: page.title %}
-  {% assign meta_description = page.description | default: site.description | truncatewords: 20 %}
+  {% else %}
+  {% assign meta_title = "Roque Carrizo" %}
+  {% endif %}
+
+  {% assign meta_description = page.description | default: site.description | truncatewords: 25 %}
   {% assign meta_image = '/assets/images/share_1200x630.png' | absolute_url %}
   {% assign meta_type = 'website' %}
 
@@ -80,9 +85,9 @@
     {
       "@context": "https://schema.org",
       "@type": "WebPage",
-      "name": "RoqueC - {{ page.title }}",
-      "description": "{{ site.description }}",
-      "url": "{{ page.url | absolute_url | remove: 'index.html' | remove: '.html' }}",
+      "name": "{{ meta_title }}",
+      "description": "{{ meta_description }}",
+      "url": "{{ meta_url }}",
       "author": {
         "@type": "Person",
         "name": "{{ site.author }}"
