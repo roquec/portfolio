@@ -44,7 +44,7 @@ jobs:
       #   - Takes content from ./_site by default
       #   - The output artifact is called "github-pages"
       - name: Upload website artifact
-        uses: actions/upload-pages-artifact@v2
+        uses: actions/upload-pages-artifact@v3
 
   # Downloads site artifact and publishes it to GitHub Pages
   deploy:
