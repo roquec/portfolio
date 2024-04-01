@@ -53,7 +53,7 @@ jobs:
     steps:
       # Configure and enable GitHub Pages
       - name: Configure GitHub Pages
-        uses: actions/configure-pages@v4
+        uses: actions/configure-pages@v5
       # Publish website content from github-pages artifact to our GitHub Pages environment
       - name: Deploy to GitHub Pages
         id: deployment
