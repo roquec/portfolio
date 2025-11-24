@@ -18,7 +18,7 @@ jobs:
     steps:
       # Download latest version of https://github.com/roquec/Portfolio
       - name: Checkout portfolio repository
-        uses: actions/checkout@v5
+        uses: actions/checkout@v6
       # Execute script to make last changes to site source before Jekyll build
       #   - Sets data on version page (commit, build...)
       #   - Copies project README into the site's README page
@@ -70,7 +70,7 @@ jobs:
       # Checkout only needed scripts from repository
       #   - Downloads only files from .github/actions
       - name: Download action scripts
-        uses: actions/checkout@v5
+        uses: actions/checkout@v6
         with:
           sparse-checkout: '.github/actions'
       # Install Node to be able to use npm later
