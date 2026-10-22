@@ -46,7 +46,8 @@ try {
     Write-Host "Found $($source_files.Count) readable files from source: $($source_files)"
 
     # Define gist git
-    $gist_git_url = "https://$($token)@gist.github.com/$($gist_id).git"
+
+	$gist_git_url = "https://gist.github.com/$($gist_id).git"
     $gist_git_dir = "gist-clones-$($gist_id)"
 
     # Clean repo directory
@@ -103,8 +104,17 @@ try {
     # Git commit
     git commit -m "Sync from Portfolio repo by GitHub Actions."
     Write-Host "Commited changes ready to push"
+	
+	$basicAuth = [Convert]::ToBase64String(
+		[Text.Encoding]::ASCII.GetBytes("x-access-token:$token")
+	)
 
-    git push
+	git -c "http.https://gist.github.com/.extraheader=AUTHORIZATION: basic $basicAuth" push origin HEAD
+
+	if ($LASTEXITCODE -ne 0) {
+		Handle-Error "Failed to push changes to Gist."
+	}
+	
     Write-Host "Pushed changes to Gist repo"
     Write-Host "Script ran successfully!"
 
